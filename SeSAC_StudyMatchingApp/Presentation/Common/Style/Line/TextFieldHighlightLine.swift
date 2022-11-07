@@ -7,12 +7,12 @@
 
 import UIKit
 
-class BlackLine: BaseView {
+class TextFieldHighlightLine: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        backgroundColor = .black
+        backgroundColor = .sesacGray3
     }
 }

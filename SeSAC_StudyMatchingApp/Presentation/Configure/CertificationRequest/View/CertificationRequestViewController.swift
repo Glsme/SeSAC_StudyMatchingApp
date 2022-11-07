@@ -8,6 +8,7 @@
 import UIKit
 
 import RxCocoa
+import RxGesture
 import RxSwift
 
 class CertificationRequestViewController: BaseViewController {
@@ -24,14 +25,24 @@ class CertificationRequestViewController: BaseViewController {
     }
     
     override func bindData() {
+        mainView.certificationTextField.rx.controlEvent(.editingDidBegin)
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.mainView.line.backgroundColor = .black
+            }
+        
+        mainView.certificationTextField.rx.controlEvent(.editingDidEndOnExit)
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.mainView.line.backgroundColor = .sesacGray3
+            }
+        
         mainView.certificationTextField.rx.text
             .orEmpty
             .changed
             .withUnretained(self)
             .bind { (vc, value) in
                 vc.mainView.certificationTextField.text = vc.viewModel.format(with: "XXX-XXXX-XXXX", phone: value)
-                
-                value.count == 13 ? vc.mainView.requestButton.setEnabledButton(true) : vc.mainView.requestButton.setEnabledButton(false)
             }
             .disposed(by: disposeBag)
         

@@ -34,7 +34,7 @@
 		85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A982919129400C70515 /* CertificationRequestViewController.swift */; };
 		85350A9E291924B500C70515 /* GreenBgButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9D291924B500C70515 /* GreenBgButton.swift */; };
 		85350AA0291924FA00C70515 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9F291924FA00C70515 /* BaseButton.swift */; };
-		85350AA329192A9300C70515 /* BlackLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA229192A9300C70515 /* BlackLine.swift */; };
+		85350AA329192A9300C70515 /* TextFieldHighlightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA229192A9300C70515 /* TextFieldHighlightLine.swift */; };
 		85350AA6291931BC00C70515 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 85350AA5291931BC00C70515 /* RxGesture */; };
 		85350AA8291937EF00C70515 /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA7291937EF00C70515 /* CertificationViewModel.swift */; };
 		85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AAA29193B8700C70515 /* UserConfigureView.swift */; };
@@ -70,7 +70,7 @@
 		85350A982919129400C70515 /* CertificationRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationRequestViewController.swift; sourceTree = "<group>"; };
 		85350A9D291924B500C70515 /* GreenBgButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBgButton.swift; sourceTree = "<group>"; };
 		85350A9F291924FA00C70515 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
-		85350AA229192A9300C70515 /* BlackLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackLine.swift; sourceTree = "<group>"; };
+		85350AA229192A9300C70515 /* TextFieldHighlightLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHighlightLine.swift; sourceTree = "<group>"; };
 		85350AA7291937EF00C70515 /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
 		85350AAA29193B8700C70515 /* UserConfigureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigureView.swift; sourceTree = "<group>"; };
 		85350AAC29193C2700C70515 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -316,7 +316,7 @@
 		85350AA129192A8600C70515 /* Line */ = {
 			isa = PBXGroup;
 			children = (
-				85350AA229192A9300C70515 /* BlackLine.swift */,
+				85350AA229192A9300C70515 /* TextFieldHighlightLine.swift */,
 			);
 			path = Line;
 			sourceTree = "<group>";
@@ -470,7 +470,7 @@
 				85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
-				85350AA329192A9300C70515 /* BlackLine.swift in Sources */,
+				85350AA329192A9300C70515 /* TextFieldHighlightLine.swift in Sources */,
 				85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

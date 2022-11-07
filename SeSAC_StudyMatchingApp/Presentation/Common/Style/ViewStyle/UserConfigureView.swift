@@ -30,7 +30,7 @@ public class UserConfigureView: BaseView {
         return view
     }()
     
-    lazy var line = BlackLine()
+    lazy var line = TextFieldHighlightLine()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
