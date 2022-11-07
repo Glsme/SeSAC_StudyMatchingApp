@@ -25,17 +25,27 @@ class CertificationRequestViewController: BaseViewController {
     }
     
     override func bindData() {
+        view.rx.tapGesture()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe { (vc, _) in
+                vc.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+        
         mainView.certificationTextField.rx.controlEvent(.editingDidBegin)
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.mainView.line.backgroundColor = .black
             }
+            .disposed(by: disposeBag)
         
         mainView.certificationTextField.rx.controlEvent(.editingDidEndOnExit)
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.mainView.line.backgroundColor = .sesacGray3
             }
+            .disposed(by: disposeBag)
         
         mainView.certificationTextField.rx.text
             .orEmpty
