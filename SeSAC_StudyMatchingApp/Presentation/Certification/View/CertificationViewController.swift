@@ -23,10 +23,6 @@ class CertificationViewController: BaseViewController {
         super.viewDidLoad()
     }
     
-    override func configureUI() {
-        
-    }
-    
     override func bindData() {
         mainView.certificationTextField.rx.text
             .orEmpty
