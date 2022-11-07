@@ -15,3 +15,10 @@ enum OnboardingMents: String {
     case firstOnboardingHighlightMent = "위치 기반"
     case secondOnboardingHighlightMent = "스터디를 원하는 친구"
 }
+
+//MARK: - Certification
+enum CertificationMents: String {
+    case description = "새싹 서비스 이용을 위해\n휴대폰 번호를 입력해주세요"
+    case placeholder = "휴대폰 번호(-없이 숫자만 입력)"
+    case buttonText = "인증 문자 받기"
+}

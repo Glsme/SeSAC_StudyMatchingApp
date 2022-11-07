@@ -12,7 +12,7 @@ final class CertificationView: BaseView {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 20)
         view.textAlignment = .center
-        view.text = "새싹 서비스 이용을 위해\n휴대폰 번호를 입력해주세요"
+        view.text = CertificationMents.description.rawValue
         view.numberOfLines = 2
         return view
     }()
@@ -20,17 +20,15 @@ final class CertificationView: BaseView {
     lazy var certificationTextField: UITextField = {
         let view = UITextField()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
-        view.placeholder = "휴대폰 번호(-없이 숫자만 입력)"
+        view.placeholder = CertificationMents.placeholder.rawValue
         return view
     }()
     
-    lazy var requestButton: UIButton = {
-        let view = UIButton()
-        view.setTitle("인증 문자 받기", for: .normal)
+    lazy var requestButton: GreenBgButton = {
+        let view = GreenBgButton()
+        view.setTitle(CertificationMents.buttonText.rawValue, for: .normal)
         view.titleLabel?.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
-        view.setTitleColor(.sesacGray3, for: .normal)
-        view.backgroundColor = .sesacGray6
-        view.layer.cornerRadius = 8
+        view.setEnabledButton(false)
         return view
     }()
     
