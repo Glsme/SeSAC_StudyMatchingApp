@@ -17,14 +17,6 @@ final class OnboardingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UIFont.familyNames.sorted().forEach { familyName in
-            print("*** \(familyName) ***")
-            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
-                print("\(fontName)")
-            }
-            print("---------------------")
-        }
     }
     
     override func configureUI() {
@@ -50,5 +42,10 @@ extension OnboardingViewController: UICollectionViewDataSource {
         cell.setIllustImageView(indexPath: indexPath)
         
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let width = scrollView.frame.width
+        mainView.pageControl.currentPage = Int(scrollView.contentOffset.x / width)
     }
 }

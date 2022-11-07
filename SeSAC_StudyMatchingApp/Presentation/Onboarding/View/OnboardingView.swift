@@ -30,12 +30,20 @@ final class OnboardingView: BaseView {
         return view
     }()
     
+    let pageControl: UIPageControl = {
+        let view = UIPageControl()
+        view.numberOfPages = 3
+        view.pageIndicatorTintColor = .lightGray
+        view.currentPageIndicatorTintColor = .black
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        [onboardingCollectionView, startButton].forEach {
+        [onboardingCollectionView, pageControl, startButton].forEach {
             self.addSubview($0)
         }
     }
@@ -46,6 +54,13 @@ final class OnboardingView: BaseView {
             make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.72)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
             make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.88)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+//            make.width.equalTo(60)
+            make.height.equalTo(8)
+            make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
+            make.bottom.equalTo(startButton.snp.top).offset(-42)
         }
         
         startButton.snp.makeConstraints { make in
