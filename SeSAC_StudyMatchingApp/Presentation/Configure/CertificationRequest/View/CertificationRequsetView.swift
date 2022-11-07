@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CertificationView: UserConfigureView {
+class CertificationRequsetView: UserConfigureView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -18,9 +18,9 @@ class CertificationView: UserConfigureView {
             self.addSubview($0)
         }
         
-        descriptionLabel.text = CertificationMents.description.rawValue
-        certificationTextField.placeholder = CertificationMents.placeholder.rawValue
-        requestButton.setTitle(CertificationMents.buttonText.rawValue, for: .normal)
+        descriptionLabel.text = CertificationRequestMents.description.rawValue
+        certificationTextField.placeholder = CertificationRequestMents.placeholder.rawValue
+        requestButton.setTitle(CertificationRequestMents.buttonText.rawValue, for: .normal)
         requestButton.setEnabledButton(false)
     }
 }

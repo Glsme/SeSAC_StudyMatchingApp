@@ -41,8 +41,8 @@ public class UserConfigureView: BaseView {
             make.width.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.8)
             make.height.lessThanOrEqualTo(100)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
-            make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.47)
-            make.top.greaterThanOrEqualTo(safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).multipliedBy(1.8)
+            make.bottom.lessThanOrEqualTo(certificationTextField.snp.top)
         }
         
         certificationTextField.snp.makeConstraints { make in

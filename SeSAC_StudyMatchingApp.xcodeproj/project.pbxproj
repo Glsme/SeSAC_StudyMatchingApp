@@ -30,8 +30,8 @@
 		85350A8E2919083200C70515 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 85350A8D2919083200C70515 /* RxCocoa */; };
 		85350A902919083200C70515 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 85350A8F2919083200C70515 /* RxSwift */; };
 		85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A91291908D200C70515 /* RxSwiftProtocol.swift */; };
-		85350A972919125E00C70515 /* CertificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A962919125E00C70515 /* CertificationView.swift */; };
-		85350A992919129400C70515 /* CertificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A982919129400C70515 /* CertificationViewController.swift */; };
+		85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A962919125E00C70515 /* CertificationRequsetView.swift */; };
+		85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A982919129400C70515 /* CertificationRequestViewController.swift */; };
 		85350A9E291924B500C70515 /* GreenBgButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9D291924B500C70515 /* GreenBgButton.swift */; };
 		85350AA0291924FA00C70515 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9F291924FA00C70515 /* BaseButton.swift */; };
 		85350AA329192A9300C70515 /* BlackLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA229192A9300C70515 /* BlackLine.swift */; };
@@ -39,6 +39,8 @@
 		85350AA8291937EF00C70515 /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA7291937EF00C70515 /* CertificationViewModel.swift */; };
 		85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AAA29193B8700C70515 /* UserConfigureView.swift */; };
 		85350AAD29193C2700C70515 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85350AAC29193C2700C70515 /* .gitignore */; };
+		85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AB3291944DD00C70515 /* CertificationReceivingView.swift */; };
+		85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AB52919470300C70515 /* CertificationReceivingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,14 +66,16 @@
 		85350A852918F70500C70515 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		85350A8A2918FCCC00C70515 /* Ments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ments.swift; sourceTree = "<group>"; };
 		85350A91291908D200C70515 /* RxSwiftProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftProtocol.swift; sourceTree = "<group>"; };
-		85350A962919125E00C70515 /* CertificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationView.swift; sourceTree = "<group>"; };
-		85350A982919129400C70515 /* CertificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewController.swift; sourceTree = "<group>"; };
+		85350A962919125E00C70515 /* CertificationRequsetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationRequsetView.swift; sourceTree = "<group>"; };
+		85350A982919129400C70515 /* CertificationRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationRequestViewController.swift; sourceTree = "<group>"; };
 		85350A9D291924B500C70515 /* GreenBgButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBgButton.swift; sourceTree = "<group>"; };
 		85350A9F291924FA00C70515 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		85350AA229192A9300C70515 /* BlackLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackLine.swift; sourceTree = "<group>"; };
 		85350AA7291937EF00C70515 /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
 		85350AAA29193B8700C70515 /* UserConfigureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigureView.swift; sourceTree = "<group>"; };
 		85350AAC29193C2700C70515 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		85350AB3291944DD00C70515 /* CertificationReceivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingView.swift; sourceTree = "<group>"; };
+		85350AB52919470300C70515 /* CertificationReceivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +117,6 @@
 				85350A532918C60000C70515 /* Presentation */,
 				85350A522918C5FA00C70515 /* Domain */,
 				85350A512918C24E00C70515 /* Application */,
-				85350A4B2918C1D700C70515 /* Info.plist */,
 			);
 			path = SeSAC_StudyMatchingApp;
 			sourceTree = "<group>";
@@ -137,8 +140,8 @@
 		85350A532918C60000C70515 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				85350AAE2919422B00C70515 /* Configure */,
 				85350A5D2918CA9E00C70515 /* Common */,
-				85350A93291911F400C70515 /* Certification */,
 				85350A542918C7E100C70515 /* Onboarding */,
 			);
 			path = Presentation;
@@ -225,9 +228,9 @@
 			isa = PBXGroup;
 			children = (
 				85350A892918FCB200C70515 /* Ments */,
-				85350A7C2918EF3C00C70515 /* Fonts */,
 				85350A792918E2AD00C70515 /* Assets */,
 				85350A482918C1D700C70515 /* LaunchScreen.storyboard */,
+				85350A4B2918C1D700C70515 /* Info.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 		85350A792918E2AD00C70515 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				85350A7C2918EF3C00C70515 /* Fonts */,
 				85350A462918C1D700C70515 /* Assets.xcassets */,
 				85350A7A2918E2C300C70515 /* Assets.swift */,
 			);
@@ -275,20 +279,20 @@
 			path = Ments;
 			sourceTree = "<group>";
 		};
-		85350A93291911F400C70515 /* Certification */ = {
+		85350A93291911F400C70515 /* CertificationRequest */ = {
 			isa = PBXGroup;
 			children = (
 				85350A952919125300C70515 /* ViewModel */,
 				85350A942919124E00C70515 /* View */,
 			);
-			path = Certification;
+			path = CertificationRequest;
 			sourceTree = "<group>";
 		};
 		85350A942919124E00C70515 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				85350A962919125E00C70515 /* CertificationView.swift */,
-				85350A982919129400C70515 /* CertificationViewController.swift */,
+				85350A962919125E00C70515 /* CertificationRequsetView.swift */,
+				85350A982919129400C70515 /* CertificationRequestViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -323,6 +327,40 @@
 				85350AAA29193B8700C70515 /* UserConfigureView.swift */,
 			);
 			path = ViewStyle;
+			sourceTree = "<group>";
+		};
+		85350AAE2919422B00C70515 /* Configure */ = {
+			isa = PBXGroup;
+			children = (
+				85350AB0291943FF00C70515 /* CertificationReceiving */,
+				85350A93291911F400C70515 /* CertificationRequest */,
+			);
+			path = Configure;
+			sourceTree = "<group>";
+		};
+		85350AB0291943FF00C70515 /* CertificationReceiving */ = {
+			isa = PBXGroup;
+			children = (
+				85350AB1291944B900C70515 /* ViewModel */,
+				85350AB2291944C000C70515 /* View */,
+			);
+			path = CertificationReceiving;
+			sourceTree = "<group>";
+		};
+		85350AB1291944B900C70515 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		85350AB2291944C000C70515 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85350AB3291944DD00C70515 /* CertificationReceivingView.swift */,
+				85350AB52919470300C70515 /* CertificationReceivingViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,7 +453,7 @@
 				85350AA8291937EF00C70515 /* CertificationViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
-				85350A992919129400C70515 /* CertificationViewController.swift in Sources */,
+				85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */,
 				85350AA0291924FA00C70515 /* BaseButton.swift in Sources */,
 				85350A9E291924B500C70515 /* GreenBgButton.swift in Sources */,
 				85350A622918CB0600C70515 /* BaseView.swift in Sources */,
@@ -429,9 +467,11 @@
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85350A8B2918FCCC00C70515 /* Ments.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
+				85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
-				85350A972919125E00C70515 /* CertificationView.swift in Sources */,
+				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
 				85350AA329192A9300C70515 /* BlackLine.swift in Sources */,
+				85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +612,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K4KWAG7KD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SeSAC_StudyMatchingApp/Info.plist;
+				INFOPLIST_FILE = SeSAC_StudyMatchingApp/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "새싹스터디";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -603,7 +643,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K4KWAG7KD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SeSAC_StudyMatchingApp/Info.plist;
+				INFOPLIST_FILE = SeSAC_StudyMatchingApp/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "새싹스터디";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

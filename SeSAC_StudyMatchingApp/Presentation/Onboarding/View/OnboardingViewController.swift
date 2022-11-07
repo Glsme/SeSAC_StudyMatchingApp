@@ -32,7 +32,7 @@ final class OnboardingViewController: BaseViewController {
             .withUnretained(self)
             .subscribe { (vc, _) in
                 UserDefaults.standard.setValue(true, forKey: "first")
-                let certificationVC = CertificationViewController()
+                let certificationVC = CertificationRequestViewController()
                 let naviVC = UINavigationController(rootViewController: certificationVC)
                 naviVC.modalPresentationStyle = .fullScreen
                 naviVC.modalTransitionStyle = .crossDissolve

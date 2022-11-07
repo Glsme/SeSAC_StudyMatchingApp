@@ -10,8 +10,8 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class CertificationViewController: BaseViewController {
-    let mainView = CertificationView()
+class CertificationRequestViewController: BaseViewController {
+    let mainView = CertificationRequsetView()
     let viewModel = CertificationViewModel()
     let disposeBag = DisposeBag()
     
@@ -38,7 +38,8 @@ class CertificationViewController: BaseViewController {
         mainView.requestButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                
+                let pushVC = CertificationReceivingViewController()
+                vc.navigationController?.pushViewController(pushVC, animated: true)
             }
             .disposed(by: disposeBag)
     }
