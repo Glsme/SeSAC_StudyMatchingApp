@@ -38,13 +38,13 @@
 		85350AA6291931BC00C70515 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 85350AA5291931BC00C70515 /* RxGesture */; };
 		85350AA8291937EF00C70515 /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA7291937EF00C70515 /* CertificationViewModel.swift */; };
 		85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AAA29193B8700C70515 /* UserConfigureView.swift */; };
-		85350AAD29193C2700C70515 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85350AAC29193C2700C70515 /* .gitignore */; };
 		85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AB3291944DD00C70515 /* CertificationReceivingView.swift */; };
 		85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AB52919470300C70515 /* CertificationReceivingViewController.swift */; };
 		85350AB92919578200C70515 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 85350AB82919578200C70515 /* IQKeyboardManagerSwift */; };
-		85D341AF29195D7900F27A78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85D341AE29195D7900F27A78 /* GoogleService-Info.plist */; };
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
+		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
+		85D341B82919600000F27A78 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341B72919600000F27A78 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,10 +77,10 @@
 		85350AA229192A9300C70515 /* TextFieldHighlightLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHighlightLine.swift; sourceTree = "<group>"; };
 		85350AA7291937EF00C70515 /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
 		85350AAA29193B8700C70515 /* UserConfigureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigureView.swift; sourceTree = "<group>"; };
-		85350AAC29193C2700C70515 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85350AB3291944DD00C70515 /* CertificationReceivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingView.swift; sourceTree = "<group>"; };
 		85350AB52919470300C70515 /* CertificationReceivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewController.swift; sourceTree = "<group>"; };
-		85D341AE29195D7900F27A78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		85D341B72919600000F27A78 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +104,8 @@
 		85350A312918C1D600C70515 = {
 			isa = PBXGroup;
 			children = (
-				85350AAC29193C2700C70515 /* .gitignore */,
-				85D341AE29195D7900F27A78 /* GoogleService-Info.plist */,
+				85D341B72919600000F27A78 /* APIKey.swift */,
+				85D341B529195FA200F27A78 /* .gitignore */,
 				85350A3C2918C1D600C70515 /* SeSAC_StudyMatchingApp */,
 				85350A3B2918C1D600C70515 /* Products */,
 			);
@@ -446,12 +446,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85350AAD29193C2700C70515 /* .gitignore in Resources */,
+				85D341B629195FA200F27A78 /* .gitignore in Resources */,
 				85350A7E2918F23000C70515 /* NotoSansKR-Medium.otf in Resources */,
 				85350A4A2918C1D700C70515 /* LaunchScreen.storyboard in Resources */,
 				85350A822918F58800C70515 /* NotoSansKR-Regular.otf in Resources */,
 				85350A472918C1D700C70515 /* Assets.xcassets in Resources */,
-				85D341AF29195D7900F27A78 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +485,7 @@
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
 				85350AA329192A9300C70515 /* TextFieldHighlightLine.swift in Sources */,
+				85D341B82919600000F27A78 /* APIKey.swift in Sources */,
 				85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
