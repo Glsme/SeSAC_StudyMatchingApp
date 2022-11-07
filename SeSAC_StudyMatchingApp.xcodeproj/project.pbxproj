@@ -16,6 +16,7 @@
 		85350A5C2918C82500C70515 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A5B2918C82500C70515 /* OnboardingViewModel.swift */; };
 		85350A622918CB0600C70515 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A612918CB0600C70515 /* BaseView.swift */; };
 		85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A652918CC1000C70515 /* BaseViewProtocol.swift */; };
+		85350A682918CC9400C70515 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A672918CC9400C70515 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		85350A5B2918C82500C70515 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		85350A612918CB0600C70515 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		85350A652918CC1000C70515 /* BaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
+		85350A672918CC9400C70515 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				85350A612918CB0600C70515 /* BaseView.swift */,
+				85350A672918CC9400C70515 /* BaseViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A622918CB0600C70515 /* BaseView.swift in Sources */,
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,
+				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
 			);
