@@ -57,7 +57,6 @@ final class OnboardingView: BaseView {
         }
         
         pageControl.snp.makeConstraints { make in
-//            make.width.equalTo(60)
             make.height.equalTo(8)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
             make.bottom.equalTo(startButton.snp.top).offset(-42)

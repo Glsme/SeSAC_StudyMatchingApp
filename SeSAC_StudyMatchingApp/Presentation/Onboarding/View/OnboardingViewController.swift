@@ -29,8 +29,13 @@ final class OnboardingViewController: BaseViewController {
     
     override func bindData() {
         mainView.startButton.rx.tap
-            .subscribe { _ in
+            .withUnretained(self)
+            .subscribe { (vc, _) in
                 UserDefaults.standard.setValue(true, forKey: "first")
+                let certificationVC = CertificationViewController()
+                certificationVC.modalPresentationStyle = .fullScreen
+                certificationVC.modalTransitionStyle = .crossDissolve
+                vc.present(certificationVC, animated: true)
             }
             .disposed(by: disposeBag)
     }
