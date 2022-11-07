@@ -61,6 +61,8 @@ class CertificationRequestViewController: BaseViewController {
         mainView.requestButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
+                guard let text = vc.mainView.certificationTextField.text else { return }
+//                vc.viewModel.requsetPhoneAuth(text)
                 let pushVC = CertificationReceivingViewController()
                 vc.navigationController?.pushViewController(pushVC, animated: true)
             }

@@ -44,7 +44,7 @@
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
-		85D341B82919600000F27A78 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341B72919600000F27A78 /* APIKey.swift */; };
+		85D341BA2919605E00F27A78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B92919605D00F27A78 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +80,8 @@
 		85350AB3291944DD00C70515 /* CertificationReceivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingView.swift; sourceTree = "<group>"; };
 		85350AB52919470300C70515 /* CertificationReceivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewController.swift; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		85D341B72919600000F27A78 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		85D341B92919605D00F27A78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +105,8 @@
 		85350A312918C1D600C70515 = {
 			isa = PBXGroup;
 			children = (
-				85D341B72919600000F27A78 /* APIKey.swift */,
 				85D341B529195FA200F27A78 /* .gitignore */,
+				85D341B92919605D00F27A78 /* GoogleService-Info.plist */,
 				85350A3C2918C1D600C70515 /* SeSAC_StudyMatchingApp */,
 				85350A3B2918C1D600C70515 /* Products */,
 			);
@@ -122,6 +123,7 @@
 		85350A3C2918C1D600C70515 /* SeSAC_StudyMatchingApp */ = {
 			isa = PBXGroup;
 			children = (
+				85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */,
 				85350A742918DC4D00C70515 /* Resource */,
 				85350A532918C60000C70515 /* Presentation */,
 				85350A522918C5FA00C70515 /* Domain */,
@@ -451,6 +453,7 @@
 				85350A4A2918C1D700C70515 /* LaunchScreen.storyboard in Resources */,
 				85350A822918F58800C70515 /* NotoSansKR-Regular.otf in Resources */,
 				85350A472918C1D700C70515 /* Assets.xcassets in Resources */,
+				85D341BA2919605E00F27A78 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +488,6 @@
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
 				85350AA329192A9300C70515 /* TextFieldHighlightLine.swift in Sources */,
-				85D341B82919600000F27A78 /* APIKey.swift in Sources */,
 				85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,7 +556,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -608,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -623,6 +625,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K4KWAG7KD;
@@ -654,6 +657,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K4KWAG7KD;
