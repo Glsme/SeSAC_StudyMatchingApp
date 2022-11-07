@@ -12,7 +12,7 @@ import SnapKit
 final class OnboardingView: BaseView {
     let onboardingCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: onboardingCollectionViewLayout())
-        view.backgroundColor = .red
+        view.backgroundColor = .black
         return view
     }()
     
@@ -29,9 +29,9 @@ final class OnboardingView: BaseView {
     override func setConstraints() {
         onboardingCollectionView.snp.makeConstraints { make in
             make.width.equalTo(safeAreaLayoutGuide.snp.width)
-            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.7)
+            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.65)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
-            make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY)
+            make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.9)
         }
     }
     

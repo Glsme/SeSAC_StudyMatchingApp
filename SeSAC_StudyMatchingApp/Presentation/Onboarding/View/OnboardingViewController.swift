@@ -16,6 +16,9 @@ final class OnboardingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func configureUI() {
         
     }
 }
