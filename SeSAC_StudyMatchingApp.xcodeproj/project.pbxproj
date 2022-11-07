@@ -34,6 +34,7 @@
 		85350A992919129400C70515 /* CertificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A982919129400C70515 /* CertificationViewController.swift */; };
 		85350A9E291924B500C70515 /* GreenBgButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9D291924B500C70515 /* GreenBgButton.swift */; };
 		85350AA0291924FA00C70515 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9F291924FA00C70515 /* BaseButton.swift */; };
+		85350AA329192A9300C70515 /* BlackLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA229192A9300C70515 /* BlackLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		85350A982919129400C70515 /* CertificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewController.swift; sourceTree = "<group>"; };
 		85350A9D291924B500C70515 /* GreenBgButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBgButton.swift; sourceTree = "<group>"; };
 		85350A9F291924FA00C70515 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		85350AA229192A9300C70515 /* BlackLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 		85350A602918CAF100C70515 /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				85350AA129192A8600C70515 /* Line */,
 				85350A9C2919249100C70515 /* ButtonStyle */,
 			);
 			path = Style;
@@ -295,6 +298,14 @@
 			path = ButtonStyle;
 			sourceTree = "<group>";
 		};
+		85350AA129192A8600C70515 /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				85350AA229192A9300C70515 /* BlackLine.swift */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,6 +407,7 @@
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationView.swift in Sources */,
+				85350AA329192A9300C70515 /* BlackLine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

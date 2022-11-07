@@ -32,12 +32,14 @@ final class CertificationView: BaseView {
         return view
     }()
     
+    lazy var line = BlackLine()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        [descriptionLabel, certificationTextField, requestButton].forEach {
+        [descriptionLabel, certificationTextField, requestButton, line].forEach {
             self.addSubview($0)
         }
     }
@@ -55,7 +57,13 @@ final class CertificationView: BaseView {
             make.width.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.85)
             make.height.equalTo(40)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
-            make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.75)
+            make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.78)
+        }
+        
+        line.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.top.equalTo(certificationTextField.snp.bottom)
+            make.leading.trailing.equalTo(certificationTextField)
         }
         
         requestButton.snp.makeConstraints { make in
