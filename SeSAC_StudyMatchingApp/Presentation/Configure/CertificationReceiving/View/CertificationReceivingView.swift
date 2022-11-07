@@ -7,20 +7,24 @@
 
 import UIKit
 
+import SnapKit
+
 class CertificationReceivingView: UserConfigureView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        [descriptionLabel, requestButton, line, certificationTextField].forEach {
-            self.addSubview($0)
-        }
+        super.configureUI()
         
         descriptionLabel.text = CertificationReceivingMents.description.rawValue
         certificationTextField.placeholder = CertificationReceivingMents.placeholder.rawValue
         requestButton.setTitle(CertificationReceivingMents.startButtonText.rawValue, for: .normal)
         requestButton.setEnabledButton(true)
+    }
+    
+    override func setConstraints() {
+        super.setConstraints()
     }
 }
 

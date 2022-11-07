@@ -45,4 +45,12 @@ final class CertificationViewModel {
         let phoneNum = Array(phoneNumber).dropFirst()
         return "+82" + " " + String(phoneNum)
     }
+    
+    public func checkPhoneNumber(_ phoneNumber: String) -> Bool {
+        if phoneNumber.count == 13 {
+            return true
+        } else {
+            return false
+        }
+    }
 }

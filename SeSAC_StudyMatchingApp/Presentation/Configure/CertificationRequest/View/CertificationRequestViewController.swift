@@ -54,7 +54,7 @@ class CertificationRequestViewController: BaseViewController {
             .bind { (vc, value) in
                 vc.mainView.certificationTextField.text = vc.viewModel.format(with: "XXX-XXXX-XXXX", phone: value)
                 guard let text = vc.mainView.certificationTextField.text else { return }
-                vc.checkPhoneNumber(text)
+                vc.mainView.requestButton.setEnabledButton(vc.viewModel.checkPhoneNumber(text))
             }
             .disposed(by: disposeBag)
         
@@ -67,13 +67,5 @@ class CertificationRequestViewController: BaseViewController {
                 vc.navigationController?.pushViewController(pushVC, animated: true)
             }
             .disposed(by: disposeBag)
-    }
-    
-    func checkPhoneNumber(_ phoneNumber: String) {
-        if phoneNumber.count == 13 {
-            mainView.requestButton.setEnabledButton(true)
-        } else {
-            mainView.requestButton.setEnabledButton(false)
-        }
     }
 }

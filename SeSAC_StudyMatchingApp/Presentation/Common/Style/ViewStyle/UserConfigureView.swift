@@ -36,6 +36,12 @@ public class UserConfigureView: BaseView {
         super.init(frame: frame)
     }
     
+    public override func configureUI() {
+        [descriptionLabel, requestButton, line, certificationTextField].forEach {
+            self.addSubview($0)
+        }
+    }
+    
     public override func setConstraints() {
         descriptionLabel.snp.makeConstraints { make in
             make.width.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.8)
