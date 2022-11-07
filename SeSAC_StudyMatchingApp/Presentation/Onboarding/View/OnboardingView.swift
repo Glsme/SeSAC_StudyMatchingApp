@@ -18,15 +18,14 @@ final class OnboardingView: BaseView {
         return view
     }()
     
-    let startButton: UIButton = {
-        let view = UIButton()
+    let startButton: GreenBgButton = {
+        let view = GreenBgButton()
         view.setTitle("시작하기", for: .normal)
-        view.setTitleColor(.white, for: .normal)
+//        view.setTitleColor(.white, for: .normal)
         view.titleLabel?.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
-        view.backgroundColor = .sesacGreen
-        view.layer.cornerRadius = 8
+//        view.backgroundColor = .sesacGreen
+//        view.layer.cornerRadius = 8
+        view.setEnabledButton(true)
         return view
     }()
     
