@@ -44,7 +44,14 @@ final class OnboardingViewController: BaseViewController {
     }
 }
 
-extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension OnboardingViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let width = scrollView.frame.width
+        mainView.pageControl.currentPage = Int(scrollView.contentOffset.x / width)
+    }
+}
+
+extension OnboardingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
@@ -56,10 +63,5 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.setIllustImageView(indexPath: indexPath)
         
         return cell
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let width = scrollView.frame.width
-        mainView.pageControl.currentPage = Int(scrollView.contentOffset.x / width)
     }
 }
