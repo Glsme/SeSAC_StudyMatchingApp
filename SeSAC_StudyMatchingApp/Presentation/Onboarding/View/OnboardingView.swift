@@ -12,7 +12,7 @@ import SnapKit
 final class OnboardingView: BaseView {
     let onboardingCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: onboardingCollectionViewLayout())
-        view.backgroundColor = .black
+//        view.backgroundColor = .black
         return view
     }()
     
@@ -29,20 +29,18 @@ final class OnboardingView: BaseView {
     override func setConstraints() {
         onboardingCollectionView.snp.makeConstraints { make in
             make.width.equalTo(safeAreaLayoutGuide.snp.width)
-            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.65)
+            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.7)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
-            make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.9)
+            make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.88)
         }
     }
     
     static func onboardingCollectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 10
-        let width = (UIScreen.main.bounds.width * 0.95) - (spacing * 5)
+        let width = UIScreen.main.bounds.width
+        let height = UIScreen.main.bounds.height
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: width / 6, height: width / 6)
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width: width, height: height * 0.6)
         
         return layout
     }

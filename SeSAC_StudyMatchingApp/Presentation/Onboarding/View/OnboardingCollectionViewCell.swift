@@ -13,14 +13,16 @@ class OnboardingCollectionViewCell: BaseCollectionViewCell {
     let descriptionImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.backgroundColor = .blue
+        view.clipsToBounds = true
+//        view.backgroundColor = .blue
         return view
     }()
     
     let illustImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.backgroundColor = .brown
+        view.clipsToBounds = true
+//        view.backgroundColor = .brown
         return view
     }()
     
@@ -39,7 +41,8 @@ class OnboardingCollectionViewCell: BaseCollectionViewCell {
             make.top.equalTo(self.snp.top)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
             make.width.equalTo(self.snp.width).multipliedBy(0.8)
-            make.height.equalTo(self.snp.height).multipliedBy(0.1)
+            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.13)
+            make.bottom.lessThanOrEqualTo(illustImageView.snp.top)
         }
         
         illustImageView.snp.makeConstraints { make in

@@ -20,6 +20,9 @@
 		85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A692918D06800C70515 /* OnboardingCollectionViewCell.swift */; };
 		85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A6B2918D08C00C70515 /* BaseCollectionViewCell.swift */; };
 		85350A6F2918D43600C70515 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 85350A6E2918D43600C70515 /* SnapKit */; };
+		85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A722918DC1200C70515 /* ReusableProtocol.swift */; };
+		85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A762918DD7E00C70515 /* ReusableProtocol+Extension.swift */; };
+		85350A7B2918E2C300C70515 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A7A2918E2C300C70515 /* Assets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		85350A672918CC9400C70515 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		85350A692918D06800C70515 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		85350A6B2918D08C00C70515 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		85350A722918DC1200C70515 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		85350A762918DD7E00C70515 /* ReusableProtocol+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableProtocol+Extension.swift"; sourceTree = "<group>"; };
+		85350A7A2918E2C300C70515 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +76,10 @@
 		85350A3C2918C1D600C70515 /* SeSAC_StudyMatchingApp */ = {
 			isa = PBXGroup;
 			children = (
+				85350A742918DC4D00C70515 /* Resource */,
 				85350A532918C60000C70515 /* Presentation */,
 				85350A522918C5FA00C70515 /* Domain */,
 				85350A512918C24E00C70515 /* Application */,
-				85350A462918C1D700C70515 /* Assets.xcassets */,
-				85350A482918C1D700C70515 /* LaunchScreen.storyboard */,
 				85350A4B2918C1D700C70515 /* Info.plist */,
 			);
 			path = SeSAC_StudyMatchingApp;
@@ -145,8 +150,9 @@
 		85350A5E2918CAD100C70515 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				85350A752918DD6400C70515 /* Extension */,
 				85350A642918CBFA00C70515 /* View */,
-				85350A632918CBF100C70515 /* Protocol */,
+				85350A632918CBF100C70515 /* Protocols */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -165,12 +171,13 @@
 			path = Style;
 			sourceTree = "<group>";
 		};
-		85350A632918CBF100C70515 /* Protocol */ = {
+		85350A632918CBF100C70515 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				85350A652918CC1000C70515 /* BaseViewProtocol.swift */,
+				85350A722918DC1200C70515 /* ReusableProtocol.swift */,
 			);
-			path = Protocol;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		85350A642918CBFA00C70515 /* View */ = {
@@ -181,6 +188,32 @@
 				85350A6B2918D08C00C70515 /* BaseCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		85350A742918DC4D00C70515 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				85350A792918E2AD00C70515 /* Assets */,
+				85350A482918C1D700C70515 /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		85350A752918DD6400C70515 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				85350A762918DD7E00C70515 /* ReusableProtocol+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		85350A792918E2AD00C70515 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				85350A462918C1D700C70515 /* Assets.xcassets */,
+				85350A7A2918E2C300C70515 /* Assets.swift */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,12 +292,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
 				85350A5C2918C82500C70515 /* OnboardingViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A622918CB0600C70515 /* BaseView.swift in Sources */,
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,
 				85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */,
+				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
+				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
