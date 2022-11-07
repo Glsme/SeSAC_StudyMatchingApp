@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BaseView: UIView, BaseViewProtocol {
-    override init(frame: CGRect) {
+public class BaseView: UIView, BaseViewProtocol {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         
         configureUI()
@@ -20,6 +20,6 @@ class BaseView: UIView, BaseViewProtocol {
         super.init(coder: coder)
     }
     
-    func configureUI() { }
-    func setConstraints() { }
+    public func configureUI() { }
+    public func setConstraints() { }
 }

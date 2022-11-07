@@ -7,15 +7,15 @@
 
 import UIKit
 
-class BaseViewController: UIViewController, BaseViewProtocol, RxSwiftProtocol {
-    override func viewDidLoad() {
+public class BaseViewController: UIViewController, BaseViewProtocol, RxSwiftProtocol {
+    public override func viewDidLoad() {
         view.backgroundColor = .white
         configureUI()
         setConstraints()
         bindData()
     }
     
-    func configureUI() { }
-    func setConstraints() { }
-    func bindData() { }
+    public func configureUI() { }
+    public func setConstraints() { }
+    public func bindData() { }
 }

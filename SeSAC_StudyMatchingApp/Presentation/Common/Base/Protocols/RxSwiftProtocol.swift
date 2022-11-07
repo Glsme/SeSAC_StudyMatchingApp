@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol RxSwiftProtocol {
+public protocol RxSwiftProtocol {
     func bindData()
 }

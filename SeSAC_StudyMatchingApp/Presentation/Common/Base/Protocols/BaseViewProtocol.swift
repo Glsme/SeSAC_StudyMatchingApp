@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol BaseViewProtocol {
+public protocol BaseViewProtocol {
     func configureUI()
     func setConstraints()
 }
