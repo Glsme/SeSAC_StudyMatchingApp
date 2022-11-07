@@ -12,7 +12,6 @@ import RxSwift
 
 final class OnboardingViewController: BaseViewController {
     let mainView = OnboardingView()
-    let viewModel = OnboardingViewModel()
     let disposeBag = DisposeBag()
     
     override func loadView() {
@@ -24,7 +23,6 @@ final class OnboardingViewController: BaseViewController {
     }
     
     override func configureUI() {
-        mainView.onboardingCollectionView.delegate = self
         mainView.onboardingCollectionView.dataSource = self
         mainView.onboardingCollectionView.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier)
     }
@@ -36,10 +34,6 @@ final class OnboardingViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
-}
-
-extension OnboardingViewController: UICollectionViewDelegate {
-    
 }
 
 extension OnboardingViewController: UICollectionViewDataSource {
