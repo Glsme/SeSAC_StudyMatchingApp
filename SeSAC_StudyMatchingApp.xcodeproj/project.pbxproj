@@ -11,6 +11,9 @@
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
 		85350A4A2918C1D700C70515 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85350A482918C1D700C70515 /* LaunchScreen.storyboard */; };
+		85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A552918C7FA00C70515 /* OnboardingViewController.swift */; };
+		85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A592918C81600C70515 /* OnboardingView.swift */; };
+		85350A5C2918C82500C70515 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A5B2918C82500C70515 /* OnboardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		85350A462918C1D700C70515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85350A492918C1D700C70515 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85350A4B2918C1D700C70515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85350A552918C7FA00C70515 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		85350A592918C81600C70515 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		85350A5B2918C82500C70515 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,8 @@
 		85350A3C2918C1D600C70515 /* SeSAC_StudyMatchingApp */ = {
 			isa = PBXGroup;
 			children = (
+				85350A532918C60000C70515 /* Presentation */,
+				85350A522918C5FA00C70515 /* Domain */,
 				85350A512918C24E00C70515 /* Application */,
 				85350A462918C1D700C70515 /* Assets.xcassets */,
 				85350A482918C1D700C70515 /* LaunchScreen.storyboard */,
@@ -67,6 +75,47 @@
 				85350A3F2918C1D600C70515 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		85350A522918C5FA00C70515 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		85350A532918C60000C70515 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				85350A542918C7E100C70515 /* Onboarding */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		85350A542918C7E100C70515 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				85350A582918C80200C70515 /* ViewModel */,
+				85350A572918C7FD00C70515 /* View */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		85350A572918C7FD00C70515 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85350A552918C7FA00C70515 /* OnboardingViewController.swift */,
+				85350A592918C81600C70515 /* OnboardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85350A582918C80200C70515 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				85350A5B2918C82500C70515 /* OnboardingViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +188,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85350A5C2918C82500C70515 /* OnboardingViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
+				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
+				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
