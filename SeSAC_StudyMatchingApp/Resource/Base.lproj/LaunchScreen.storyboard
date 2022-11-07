@@ -17,14 +17,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="nyw-QV-fqL">
-                                <rect key="frame" x="82" y="194" width="226" height="287"/>
+                                <rect key="frame" x="82" y="215.33333333333337" width="226" height="287"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="txt" translatesAutoresizingMaskIntoConstraints="NO" id="CBk-mZ-gJX">
+                                <rect key="frame" x="43" y="537.33333333333337" width="304" height="101.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CBk-mZ-gJX" secondAttribute="height" multiplier="3:1" id="LT5-E8-chE"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nyw-QV-fqL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.8" id="GiN-mt-r1r"/>
+                            <constraint firstItem="CBk-mZ-gJX" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.78" id="8nh-eq-weQ"/>
+                            <constraint firstItem="CBk-mZ-gJX" firstAttribute="top" secondItem="nyw-QV-fqL" secondAttribute="bottom" constant="35" id="CbZ-Tl-fsb"/>
+                            <constraint firstItem="nyw-QV-fqL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.85" id="GiN-mt-r1r"/>
                             <constraint firstItem="nyw-QV-fqL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Lcp-u4-blV"/>
+                            <constraint firstItem="CBk-mZ-gJX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="c2A-0t-LUl"/>
                             <constraint firstItem="nyw-QV-fqL" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.34" id="dPa-1U-HxI"/>
                             <constraint firstItem="nyw-QV-fqL" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.58" id="xQe-qP-tbG"/>
                         </constraints>
@@ -37,6 +46,7 @@
     </scenes>
     <resources>
         <image name="splash_logo" width="220" height="264"/>
+        <image name="txt" width="328" height="112"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
