@@ -21,6 +21,7 @@ final class CertificationView: BaseView {
         let view = UITextField()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
         view.placeholder = CertificationMents.placeholder.rawValue
+        view.keyboardType = .numberPad
         return view
     }()
     

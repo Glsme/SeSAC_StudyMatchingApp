@@ -35,6 +35,7 @@
 		85350A9E291924B500C70515 /* GreenBgButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9D291924B500C70515 /* GreenBgButton.swift */; };
 		85350AA0291924FA00C70515 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9F291924FA00C70515 /* BaseButton.swift */; };
 		85350AA329192A9300C70515 /* BlackLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA229192A9300C70515 /* BlackLine.swift */; };
+		85350AA6291931BC00C70515 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 85350AA5291931BC00C70515 /* RxGesture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 			files = (
 				85350A902919083200C70515 /* RxSwift in Frameworks */,
 				85350A8E2919083200C70515 /* RxCocoa in Frameworks */,
+				85350AA6291931BC00C70515 /* RxGesture in Frameworks */,
 				85350A6F2918D43600C70515 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +328,7 @@
 				85350A6E2918D43600C70515 /* SnapKit */,
 				85350A8D2919083200C70515 /* RxCocoa */,
 				85350A8F2919083200C70515 /* RxSwift */,
+				85350AA5291931BC00C70515 /* RxGesture */,
 			);
 			productName = SeSAC_StudyMatchingApp;
 			productReference = 85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */;
@@ -358,6 +361,7 @@
 			packageReferences = (
 				85350A6D2918D43600C70515 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				85350A8C2919083200C70515 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				85350AA4291931BC00C70515 /* XCRemoteSwiftPackageReference "RxGesture" */,
 			);
 			productRefGroup = 85350A3B2918C1D600C70515 /* Products */;
 			projectDirPath = "";
@@ -641,6 +645,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		85350AA4291931BC00C70515 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -658,6 +670,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85350A8C2919083200C70515 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		85350AA5291931BC00C70515 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85350AA4291931BC00C70515 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
