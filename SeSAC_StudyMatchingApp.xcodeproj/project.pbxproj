@@ -30,6 +30,7 @@
 		85350A8B2918FCCC00C70515 /* Ments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A8A2918FCCC00C70515 /* Ments.swift */; };
 		85350A8E2919083200C70515 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 85350A8D2919083200C70515 /* RxCocoa */; };
 		85350A902919083200C70515 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 85350A8F2919083200C70515 /* RxSwift */; };
+		85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A91291908D200C70515 /* RxSwiftProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		85350A812918F58800C70515 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		85350A852918F70500C70515 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		85350A8A2918FCCC00C70515 /* Ments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ments.swift; sourceTree = "<group>"; };
+		85350A91291908D200C70515 /* RxSwiftProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				85350A652918CC1000C70515 /* BaseViewProtocol.swift */,
 				85350A722918DC1200C70515 /* ReusableProtocol.swift */,
+				85350A91291908D200C70515 /* RxSwiftProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				85350A802918F24D00C70515 /* Fonts.swift in Sources */,
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
 				85350A5C2918C82500C70515 /* OnboardingViewModel.swift in Sources */,
+				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A622918CB0600C70515 /* BaseView.swift in Sources */,

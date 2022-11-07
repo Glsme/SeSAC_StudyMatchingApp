@@ -7,9 +7,13 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 final class OnboardingViewController: BaseViewController {
     let mainView = OnboardingView()
     let viewModel = OnboardingViewModel()
+    let disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = mainView
@@ -23,6 +27,14 @@ final class OnboardingViewController: BaseViewController {
         mainView.onboardingCollectionView.delegate = self
         mainView.onboardingCollectionView.dataSource = self
         mainView.onboardingCollectionView.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier)
+    }
+    
+    override func bindData() {
+        mainView.startButton.rx.tap
+            .subscribe { _ in
+                UserDefaults.standard.setValue(true, forKey: "first")
+            }
+            .disposed(by: disposeBag)
     }
 }
 
