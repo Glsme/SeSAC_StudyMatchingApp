@@ -37,11 +37,9 @@ extension OnboardingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier, for: indexPath) as? OnboardingCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.descriptionImageView.image = UIImage(named: Assets.onboardingMessage1.rawValue)
-        cell.illustImageView.image = UIImage(named: Assets.onboardingImg1.rawValue)
+//        cell.descriptionImageView.image = UIImage(named: Assets.onboardingMessage1.rawValue)
+//        cell.illustImageView.image = UIImage(named: Assets.onboardingImg1.rawValue)
         
         return cell
     }
-    
-    
 }

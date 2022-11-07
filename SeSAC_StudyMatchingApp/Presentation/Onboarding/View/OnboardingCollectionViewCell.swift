@@ -28,6 +28,7 @@ class OnboardingCollectionViewCell: BaseCollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .black
     }
     
     override func configureUI() {
@@ -40,7 +41,7 @@ class OnboardingCollectionViewCell: BaseCollectionViewCell {
         descriptionImageView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
-            make.width.equalTo(self.snp.width).multipliedBy(0.8)
+            make.width.equalTo(self.snp.width).multipliedBy(0.5)
             make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.13)
             make.bottom.lessThanOrEqualTo(illustImageView.snp.top)
         }
@@ -49,7 +50,7 @@ class OnboardingCollectionViewCell: BaseCollectionViewCell {
             make.bottom.equalTo(self.snp.bottom)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
             make.width.equalTo(self.snp.width)
-            make.height.equalTo(self.snp.height).multipliedBy(0.7)
+            make.height.equalTo(self.snp.height).multipliedBy(0.74)
         }
     }
 }
