@@ -25,9 +25,13 @@ final class OnboardingCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
+    let onboardingImageList = [UIImage(named: Assets.onboardingImg1.rawValue),
+                               UIImage(named: Assets.onboardingImg2.rawValue),
+                               UIImage(named: Assets.onboardingImg3.rawValue)]
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.backgroundColor = .black
+        //        self.backgroundColor = .black
     }
     
     override func configureUI() {
@@ -59,7 +63,7 @@ final class OnboardingCollectionViewCell: BaseCollectionViewCell {
             let ment = OnboardingMents.firstOnboardingMent.rawValue
             let highlightMent = OnboardingMents.firstOnboardingHighlightMent.rawValue
             descriptionLabel.text = ment
-
+            
             let attributedString = NSMutableAttributedString(string: ment)
             attributedString.addAttribute(.font, value: mediumFont ?? .boldSystemFont(ofSize: 24), range: (ment as NSString).range(of: highlightMent))
             attributedString.addAttribute(.foregroundColor, value: UIColor.sesacGreen, range: (ment as NSString).range(of: highlightMent))
@@ -76,6 +80,15 @@ final class OnboardingCollectionViewCell: BaseCollectionViewCell {
         case 2:
             descriptionLabel.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 24)
             descriptionLabel.text = OnboardingMents.thridOnboardingMent.rawValue
+        default:
+            break
+        }
+    }
+    
+    public func setIllustImageView(indexPath: IndexPath) {
+        switch indexPath.item {
+        case 0, 1, 2:
+            illustImageView.image = onboardingImageList[indexPath.item]
         default:
             break
         }

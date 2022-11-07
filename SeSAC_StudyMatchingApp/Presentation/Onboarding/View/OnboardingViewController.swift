@@ -47,7 +47,7 @@ extension OnboardingViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier, for: indexPath) as? OnboardingCollectionViewCell else { return UICollectionViewCell() }
         
         cell.setDescriptionLabel(indexPath: indexPath)
-        cell.illustImageView.image = UIImage(named: Assets.onboardingImg1.rawValue)
+        cell.setIllustImageView(indexPath: indexPath)
         
         return cell
     }
