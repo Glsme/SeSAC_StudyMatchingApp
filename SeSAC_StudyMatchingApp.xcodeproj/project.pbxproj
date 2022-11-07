@@ -36,6 +36,9 @@
 		85350AA0291924FA00C70515 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9F291924FA00C70515 /* BaseButton.swift */; };
 		85350AA329192A9300C70515 /* BlackLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA229192A9300C70515 /* BlackLine.swift */; };
 		85350AA6291931BC00C70515 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 85350AA5291931BC00C70515 /* RxGesture */; };
+		85350AA8291937EF00C70515 /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA7291937EF00C70515 /* CertificationViewModel.swift */; };
+		85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AAA29193B8700C70515 /* UserConfigureView.swift */; };
+		85350AAD29193C2700C70515 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85350AAC29193C2700C70515 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		85350A9D291924B500C70515 /* GreenBgButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBgButton.swift; sourceTree = "<group>"; };
 		85350A9F291924FA00C70515 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		85350AA229192A9300C70515 /* BlackLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackLine.swift; sourceTree = "<group>"; };
+		85350AA7291937EF00C70515 /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
+		85350AAA29193B8700C70515 /* UserConfigureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigureView.swift; sourceTree = "<group>"; };
+		85350AAC29193C2700C70515 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,7 @@
 		85350A312918C1D600C70515 = {
 			isa = PBXGroup;
 			children = (
+				85350AAC29193C2700C70515 /* .gitignore */,
 				85350A3C2918C1D600C70515 /* SeSAC_StudyMatchingApp */,
 				85350A3B2918C1D600C70515 /* Products */,
 			);
@@ -186,6 +193,7 @@
 		85350A602918CAF100C70515 /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				85350AA929193B7B00C70515 /* ViewStyle */,
 				85350AA129192A8600C70515 /* Line */,
 				85350A9C2919249100C70515 /* ButtonStyle */,
 			);
@@ -288,6 +296,7 @@
 		85350A952919125300C70515 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				85350AA7291937EF00C70515 /* CertificationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -306,6 +315,14 @@
 				85350AA229192A9300C70515 /* BlackLine.swift */,
 			);
 			path = Line;
+			sourceTree = "<group>";
+		};
+		85350AA929193B7B00C70515 /* ViewStyle */ = {
+			isa = PBXGroup;
+			children = (
+				85350AAA29193B8700C70515 /* UserConfigureView.swift */,
+			);
+			path = ViewStyle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85350AAD29193C2700C70515 /* .gitignore in Resources */,
 				85350A7E2918F23000C70515 /* NotoSansKR-Medium.otf in Resources */,
 				85350A4A2918C1D700C70515 /* LaunchScreen.storyboard in Resources */,
 				85350A822918F58800C70515 /* NotoSansKR-Regular.otf in Resources */,
@@ -394,6 +412,7 @@
 				85350A802918F24D00C70515 /* Fonts.swift in Sources */,
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
+				85350AA8291937EF00C70515 /* CertificationViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A992919129400C70515 /* CertificationViewController.swift in Sources */,
@@ -406,6 +425,7 @@
 				85350A862918F70500C70515 /* UIColor+Extension.swift in Sources */,
 				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
+				85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85350A8B2918FCCC00C70515 /* Ments.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,

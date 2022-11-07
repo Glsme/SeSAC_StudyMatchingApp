@@ -33,9 +33,11 @@ final class OnboardingViewController: BaseViewController {
             .subscribe { (vc, _) in
                 UserDefaults.standard.setValue(true, forKey: "first")
                 let certificationVC = CertificationViewController()
-                certificationVC.modalPresentationStyle = .fullScreen
-                certificationVC.modalTransitionStyle = .crossDissolve
-                vc.present(certificationVC, animated: true)
+                let naviVC = UINavigationController(rootViewController: certificationVC)
+                naviVC.modalPresentationStyle = .fullScreen
+                naviVC.modalTransitionStyle = .crossDissolve
+                vc.dismiss(animated: false)
+                vc.present(naviVC, animated: true)
             }
             .disposed(by: disposeBag)
     }

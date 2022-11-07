@@ -12,6 +12,7 @@ import RxSwift
 
 class CertificationViewController: BaseViewController {
     let mainView = CertificationView()
+    let viewModel = CertificationViewModel()
     let disposeBag = DisposeBag()
     
     override func loadView() {
@@ -32,29 +33,17 @@ class CertificationViewController: BaseViewController {
             .changed
             .withUnretained(self)
             .bind { (vc, value) in
-                vc.mainView.certificationTextField.text = vc.format(with: "XXX-XXXX-XXXX", phone: value)
+                vc.mainView.certificationTextField.text = vc.viewModel.format(with: "XXX-XXXX-XXXX", phone: value)
+                
+                value.count == 13 ? vc.mainView.requestButton.setEnabledButton(true) : vc.mainView.requestButton.setEnabledButton(false)
             }
             .disposed(by: disposeBag)
-    }
-    
-    func format(with mask: String, phone: String) -> String {
-        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        var result = ""
-        var index = numbers.startIndex // numbers iterator
-
-        // iterate over the mask characters until the iterator of numbers ends
-        for ch in mask where index < numbers.endIndex {
-            if ch == "X" {
-                // mask requires a number in this place, so take the next one
-                result.append(numbers[index])
-
-                // move numbers iterator to the next index
-                index = numbers.index(after: index)
-
-            } else {
-                result.append(ch) // just append a mask character
+        
+        mainView.requestButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                
             }
-        }
-        return result
+            .disposed(by: disposeBag)
     }
 }
