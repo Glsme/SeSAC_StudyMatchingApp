@@ -16,6 +16,14 @@ final class OnboardingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIFont.familyNames.sorted().forEach { familyName in
+            print("*** \(familyName) ***")
+            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+                print("\(fontName)")
+            }
+            print("---------------------")
+        }
     }
     
     override func configureUI() {
@@ -37,8 +45,8 @@ extension OnboardingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier, for: indexPath) as? OnboardingCollectionViewCell else { return UICollectionViewCell() }
         
-//        cell.descriptionImageView.image = UIImage(named: Assets.onboardingMessage1.rawValue)
-//        cell.illustImageView.image = UIImage(named: Assets.onboardingImg1.rawValue)
+        cell.descriptionLabel.text = "위치 기반으로 빠르게\n주위 친구를 확인"
+        cell.illustImageView.image = UIImage(named: Assets.onboardingImg1.rawValue)
         
         return cell
     }

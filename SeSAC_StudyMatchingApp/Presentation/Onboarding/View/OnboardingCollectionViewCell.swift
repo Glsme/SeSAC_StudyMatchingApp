@@ -10,11 +10,11 @@ import UIKit
 import SnapKit
 
 class OnboardingCollectionViewCell: BaseCollectionViewCell {
-    let descriptionImageView: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFit
-        view.clipsToBounds = true
-//        view.backgroundColor = .blue
+    let descriptionLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 24)
+        view.textAlignment = .center
+        view.numberOfLines = 2
         return view
     }()
     
@@ -22,27 +22,25 @@ class OnboardingCollectionViewCell: BaseCollectionViewCell {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         view.clipsToBounds = true
-//        view.backgroundColor = .brown
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .black
+//        self.backgroundColor = .black
     }
     
     override func configureUI() {
-        [descriptionImageView, illustImageView].forEach {
+        [descriptionLabel, illustImageView].forEach {
             self.addSubview($0)
         }
     }
     
     override func setConstraints() {
-        descriptionImageView.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
-            make.width.equalTo(self.snp.width).multipliedBy(0.5)
-            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.13)
+            make.width.equalTo(self.snp.width).multipliedBy(0.9)
             make.bottom.lessThanOrEqualTo(illustImageView.snp.top)
         }
         
@@ -50,7 +48,7 @@ class OnboardingCollectionViewCell: BaseCollectionViewCell {
             make.bottom.equalTo(self.snp.bottom)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
             make.width.equalTo(self.snp.width)
-            make.height.equalTo(self.snp.height).multipliedBy(0.74)
+            make.height.equalTo(self.snp.height).multipliedBy(0.75)
         }
     }
 }

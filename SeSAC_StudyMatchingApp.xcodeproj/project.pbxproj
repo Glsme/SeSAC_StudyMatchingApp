@@ -23,6 +23,9 @@
 		85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A722918DC1200C70515 /* ReusableProtocol.swift */; };
 		85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A762918DD7E00C70515 /* ReusableProtocol+Extension.swift */; };
 		85350A7B2918E2C300C70515 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A7A2918E2C300C70515 /* Assets.swift */; };
+		85350A7E2918F23000C70515 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85350A7D2918F23000C70515 /* NotoSansKR-Medium.otf */; };
+		85350A802918F24D00C70515 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A7F2918F24D00C70515 /* Fonts.swift */; };
+		85350A822918F58800C70515 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85350A812918F58800C70515 /* NotoSansKR-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		85350A722918DC1200C70515 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		85350A762918DD7E00C70515 /* ReusableProtocol+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableProtocol+Extension.swift"; sourceTree = "<group>"; };
 		85350A7A2918E2C300C70515 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		85350A7D2918F23000C70515 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		85350A7F2918F24D00C70515 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		85350A812918F58800C70515 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +199,7 @@
 		85350A742918DC4D00C70515 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				85350A7C2918EF3C00C70515 /* Fonts */,
 				85350A792918E2AD00C70515 /* Assets */,
 				85350A482918C1D700C70515 /* LaunchScreen.storyboard */,
 			);
@@ -214,6 +221,16 @@
 				85350A7A2918E2C300C70515 /* Assets.swift */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		85350A7C2918EF3C00C70515 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				85350A7D2918F23000C70515 /* NotoSansKR-Medium.otf */,
+				85350A812918F58800C70515 /* NotoSansKR-Regular.otf */,
+				85350A7F2918F24D00C70515 /* Fonts.swift */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,7 +297,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85350A7E2918F23000C70515 /* NotoSansKR-Medium.otf in Resources */,
 				85350A4A2918C1D700C70515 /* LaunchScreen.storyboard in Resources */,
+				85350A822918F58800C70515 /* NotoSansKR-Regular.otf in Resources */,
 				85350A472918C1D700C70515 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85350A802918F24D00C70515 /* Fonts.swift in Sources */,
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
 				85350A5C2918C82500C70515 /* OnboardingViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,

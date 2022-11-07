@@ -15,13 +15,13 @@ final class OnboardingView: BaseView {
         view.showsHorizontalScrollIndicator = false
         view.decelerationRate = .fast
         view.isPagingEnabled = true
-//        view.backgroundColor = .black
         return view
     }()
     
     let startButton: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage(named: Assets.startButton.rawValue), for: .normal)
+        view.setTitle("시작하기", for: .normal)
+        view.setTitleColor(.white, for: .normal)
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         return view
@@ -40,7 +40,7 @@ final class OnboardingView: BaseView {
     override func setConstraints() {
         onboardingCollectionView.snp.makeConstraints { make in
             make.width.equalTo(safeAreaLayoutGuide.snp.width)
-            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.7)
+            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.72)
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
             make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.88)
         }
