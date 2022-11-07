@@ -23,6 +23,7 @@ final class OnboardingViewController: BaseViewController {
     }
     
     override func configureUI() {
+        mainView.onboardingCollectionView.delegate = self
         mainView.onboardingCollectionView.dataSource = self
         mainView.onboardingCollectionView.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier)
     }
@@ -43,7 +44,7 @@ final class OnboardingViewController: BaseViewController {
     }
 }
 
-extension OnboardingViewController: UICollectionViewDataSource {
+extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }

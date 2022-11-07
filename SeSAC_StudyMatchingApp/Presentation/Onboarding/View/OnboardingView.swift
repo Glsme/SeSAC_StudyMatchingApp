@@ -29,6 +29,7 @@ final class OnboardingView: BaseView {
     let pageControl: UIPageControl = {
         let view = UIPageControl()
         view.numberOfPages = 3
+        view.currentPage = 0
         view.pageIndicatorTintColor = .lightGray
         view.currentPageIndicatorTintColor = .black
         return view

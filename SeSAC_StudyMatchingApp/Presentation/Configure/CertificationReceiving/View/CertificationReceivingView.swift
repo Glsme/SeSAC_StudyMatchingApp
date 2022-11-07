@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class CertificationReceivingView: UserConfigureView {
+final class CertificationReceivingView: UserConfigureView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

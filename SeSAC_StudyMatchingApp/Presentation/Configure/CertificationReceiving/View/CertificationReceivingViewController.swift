@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CertificationReceivingViewController: BaseViewController {
+final class CertificationReceivingViewController: BaseViewController {
     let mainView = CertificationReceivingView()
     
     override func loadView() {
