@@ -17,6 +17,9 @@
 		85350A622918CB0600C70515 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A612918CB0600C70515 /* BaseView.swift */; };
 		85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A652918CC1000C70515 /* BaseViewProtocol.swift */; };
 		85350A682918CC9400C70515 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A672918CC9400C70515 /* BaseViewController.swift */; };
+		85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A692918D06800C70515 /* OnboardingCollectionViewCell.swift */; };
+		85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A6B2918D08C00C70515 /* BaseCollectionViewCell.swift */; };
+		85350A6F2918D43600C70515 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 85350A6E2918D43600C70515 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,8 @@
 		85350A612918CB0600C70515 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		85350A652918CC1000C70515 /* BaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
 		85350A672918CC9400C70515 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		85350A692918D06800C70515 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		85350A6B2918D08C00C70515 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85350A6F2918D43600C70515 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +119,7 @@
 			children = (
 				85350A552918C7FA00C70515 /* OnboardingViewController.swift */,
 				85350A592918C81600C70515 /* OnboardingView.swift */,
+				85350A692918D06800C70515 /* OnboardingCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +178,7 @@
 			children = (
 				85350A612918CB0600C70515 /* BaseView.swift */,
 				85350A672918CC9400C70515 /* BaseViewController.swift */,
+				85350A6B2918D08C00C70515 /* BaseCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +199,9 @@
 			dependencies = (
 			);
 			name = SeSAC_StudyMatchingApp;
+			packageProductDependencies = (
+				85350A6E2918D43600C70515 /* SnapKit */,
+			);
 			productName = SeSAC_StudyMatchingApp;
 			productReference = 85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */;
 			productType = "com.apple.product-type.application";
@@ -219,6 +230,9 @@
 				Base,
 			);
 			mainGroup = 85350A312918C1D600C70515;
+			packageReferences = (
+				85350A6D2918D43600C70515 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 85350A3B2918C1D600C70515 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -250,9 +264,11 @@
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A622918CB0600C70515 /* BaseView.swift in Sources */,
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,
+				85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
+				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +410,7 @@
 				DEVELOPMENT_TEAM = 3K4KWAG7KD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSAC_StudyMatchingApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "새싹스터디";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -424,6 +441,7 @@
 				DEVELOPMENT_TEAM = 3K4KWAG7KD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSAC_StudyMatchingApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "새싹스터디";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -466,6 +484,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		85350A6D2918D43600C70515 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		85350A6E2918D43600C70515 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85350A6D2918D43600C70515 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 85350A322918C1D600C70515 /* Project object */;
 }
