@@ -9,6 +9,7 @@ import UIKit
 
 final class OnboardingViewController: BaseViewController {
     let mainView = OnboardingView()
+    let viewModel = OnboardingViewModel()
     
     override func loadView() {
         self.view = mainView
@@ -45,7 +46,7 @@ extension OnboardingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier, for: indexPath) as? OnboardingCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.descriptionLabel.text = "위치 기반으로 빠르게\n주위 친구를 확인"
+        cell.setDescriptionLabel(indexPath: indexPath)
         cell.illustImageView.image = UIImage(named: Assets.onboardingImg1.rawValue)
         
         return cell

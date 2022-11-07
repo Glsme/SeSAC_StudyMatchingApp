@@ -9,8 +9,8 @@ import UIKit
 
 import SnapKit
 
-class OnboardingCollectionViewCell: BaseCollectionViewCell {
-    let descriptionLabel: UILabel = {
+final class OnboardingCollectionViewCell: BaseCollectionViewCell {
+    lazy var descriptionLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 24)
         view.textAlignment = .center
@@ -18,7 +18,7 @@ class OnboardingCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    let illustImageView: UIImageView = {
+    lazy var illustImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         view.clipsToBounds = true
@@ -49,6 +49,35 @@ class OnboardingCollectionViewCell: BaseCollectionViewCell {
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
             make.width.equalTo(self.snp.width)
             make.height.equalTo(self.snp.height).multipliedBy(0.75)
+        }
+    }
+    
+    public func setDescriptionLabel(indexPath: IndexPath) {
+        let mediumFont = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 24)
+        switch indexPath.item {
+        case 0:
+            let ment = OnboardingMents.firstOnboardingMent.rawValue
+            let highlightMent = OnboardingMents.firstOnboardingHighlightMent.rawValue
+            descriptionLabel.text = ment
+
+            let attributedString = NSMutableAttributedString(string: ment)
+            attributedString.addAttribute(.font, value: mediumFont ?? .boldSystemFont(ofSize: 24), range: (ment as NSString).range(of: highlightMent))
+            attributedString.addAttribute(.foregroundColor, value: UIColor.sesacGreen, range: (ment as NSString).range(of: highlightMent))
+            descriptionLabel.attributedText = attributedString
+        case 1:
+            let ment = OnboardingMents.secondOnboardingMent.rawValue
+            let highlightMent = OnboardingMents.secondOnboardingHighlightMent.rawValue
+            descriptionLabel.text = ment
+            
+            let attributedString = NSMutableAttributedString(string: ment)
+            attributedString.addAttribute(.font, value: mediumFont ?? .boldSystemFont(ofSize: 24), range: (ment as NSString).range(of: highlightMent))
+            attributedString.addAttribute(.foregroundColor, value: UIColor.sesacGreen, range: (ment as NSString).range(of: highlightMent))
+            descriptionLabel.attributedText = attributedString
+        case 2:
+            descriptionLabel.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 24)
+            descriptionLabel.text = OnboardingMents.thridOnboardingMent.rawValue
+        default:
+            break
         }
     }
 }
