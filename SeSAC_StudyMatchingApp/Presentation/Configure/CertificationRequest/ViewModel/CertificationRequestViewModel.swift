@@ -11,7 +11,7 @@ import FirebaseCore
 import FirebaseAuth
 
 final class CertificationRequestViewModel {
-    public func format(with mask: String, phone: String) -> String {
+    public func changePhoneNumformat(with mask: String, phone: String) -> String {
         let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         var result = ""
         var index = numbers.startIndex
@@ -26,6 +26,12 @@ final class CertificationRequestViewModel {
         }
         return result
     }
+    
+    public func vaildPhoneNumber(_ phoneNumber: String) -> Bool {
+        let regex = RegexValidation.phoneNumber.rawValue
+        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: regex)
+    }
+    
     
     public func requsetPhoneAuth(_ phoneNumber: String) {
         let phoneNum = changePhoneNumberFomat(phoneNumber)
@@ -44,13 +50,5 @@ final class CertificationRequestViewModel {
     private func changePhoneNumberFomat(_ phoneNumber: String) -> String {
         let phoneNum = Array(phoneNumber).dropFirst()
         return "+82" + " " + String(phoneNum)
-    }
-    
-    public func checkPhoneNumber(_ phoneNumber: String) -> Bool {
-        if phoneNumber.count == 13 {
-            return true
-        } else {
-            return false
-        }
     }
 }

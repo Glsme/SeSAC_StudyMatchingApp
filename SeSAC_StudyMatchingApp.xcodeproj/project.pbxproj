@@ -43,6 +43,7 @@
 		85350AB92919578200C70515 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 85350AB82919578200C70515 /* IQKeyboardManagerSwift */; };
 		859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */; };
 		859921E4291A788F007F96A6 /* Userdefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E3291A788F007F96A6 /* Userdefault.swift */; };
+		859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E6291A7D7B007F96A6 /* RegexVaidation.swift */; };
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
@@ -86,6 +87,7 @@
 		85350AB52919470300C70515 /* CertificationReceivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewController.swift; sourceTree = "<group>"; };
 		859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		859921E3291A788F007F96A6 /* Userdefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefault.swift; sourceTree = "<group>"; };
+		859921E6291A7D7B007F96A6 /* RegexVaidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexVaidation.swift; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85D341B92919605D00F27A78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
@@ -395,9 +397,18 @@
 			path = ProtpertyWrapper;
 			sourceTree = "<group>";
 		};
+		859921E5291A7D44007F96A6 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				859921E6291A7D7B007F96A6 /* RegexVaidation.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
 		85D341C2291A33CF00F27A78 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				859921E5291A7D44007F96A6 /* Validation */,
 				859921E2291A787D007F96A6 /* ProtpertyWrapper */,
 				85D341C3291A33D700F27A78 /* Errors */,
 			);
@@ -519,6 +530,7 @@
 				85350A622918CB0600C70515 /* BaseView.swift in Sources */,
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,
 				85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */,
+				859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */,
 				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
 				85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */,
 				85350A862918F70500C70515 /* UIColor+Extension.swift in Sources */,

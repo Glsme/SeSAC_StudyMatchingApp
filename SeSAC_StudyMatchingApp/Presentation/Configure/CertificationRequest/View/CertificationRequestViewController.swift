@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxGesture
 import RxSwift
+import Toast
 
 class CertificationRequestViewController: BaseViewController {
     let mainView = CertificationRequsetView()
@@ -52,9 +53,14 @@ class CertificationRequestViewController: BaseViewController {
             .changed
             .withUnretained(self)
             .bind { (vc, value) in
-                vc.mainView.certificationTextField.text = vc.viewModel.format(with: "XXX-XXXX-XXXX", phone: value)
+                vc.mainView.certificationTextField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXXX-XXXX", phone: value)
                 guard let text = vc.mainView.certificationTextField.text else { return }
-                vc.mainView.requestButton.setEnabledButton(vc.viewModel.checkPhoneNumber(text))
+                
+                if text.count >= 12 {
+                    vc.mainView.requestButton.setEnabledButton(true)
+                } else {
+                    vc.mainView.requestButton.setEnabledButton(false)
+                }
             }
             .disposed(by: disposeBag)
         
@@ -62,10 +68,20 @@ class CertificationRequestViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let text = vc.mainView.certificationTextField.text else { return }
-                vc.viewModel.requsetPhoneAuth("011-2580-2580")
-//                vc.viewModel.requsetPhoneAuth(text)
-                let pushVC = CertificationReceivingViewController()
-                vc.transViewController(ViewController: pushVC, type: .push)
+                guard text.count < 12 else {
+                    self.view.makeToast("전화번호를 모두 연락해주세요", position: .center)
+                    return
+                }
+                
+                if vc.viewModel.vaildPhoneNumber(text) {
+                    vc.viewModel.requsetPhoneAuth("011-2580-2580")
+    //                vc.viewModel.requsetPhoneAuth(text)
+                    let pushVC = CertificationReceivingViewController()
+                    vc.transViewController(ViewController: pushVC, type: .push)
+                } else {
+                    self.view.makeToast("유효성 검사해줘잉~", position: .center)
+                }
+                
             }
             .disposed(by: disposeBag)
     }
