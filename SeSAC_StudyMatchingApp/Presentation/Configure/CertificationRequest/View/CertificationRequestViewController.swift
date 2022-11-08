@@ -65,7 +65,7 @@ class CertificationRequestViewController: BaseViewController {
                 vc.viewModel.requsetPhoneAuth("011-2580-2580")
 //                vc.viewModel.requsetPhoneAuth(text)
                 let pushVC = CertificationReceivingViewController()
-                vc.navigationController?.pushViewController(pushVC, animated: true)
+                vc.transViewController(ViewController: pushVC, type: .push)
             }
             .disposed(by: disposeBag)
     }
