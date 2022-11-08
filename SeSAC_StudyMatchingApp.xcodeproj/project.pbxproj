@@ -168,8 +168,8 @@
 		85350A532918C60000C70515 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				85350A5D2918CA9E00C70515 /* Common */,
 				85D341C2291A33CF00F27A78 /* Utils */,
+				85350A5D2918CA9E00C70515 /* Common */,
 				85350AAE2919422B00C70515 /* Configure */,
 				85350A542918C7E100C70515 /* Onboarding */,
 			);

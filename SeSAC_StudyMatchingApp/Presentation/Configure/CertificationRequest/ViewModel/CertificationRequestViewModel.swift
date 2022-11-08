@@ -10,7 +10,19 @@ import Foundation
 import FirebaseCore
 import FirebaseAuth
 
-final class CertificationRequestViewModel {
+final class CertificationRequestViewModel: CommonViewModel {
+    struct Input {
+        
+    }
+    
+    struct Output {
+        
+    }
+    
+    func transform() {
+        
+    }
+    
     public func changePhoneNumformat(with mask: String, phone: String) -> String {
         let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         var result = ""
