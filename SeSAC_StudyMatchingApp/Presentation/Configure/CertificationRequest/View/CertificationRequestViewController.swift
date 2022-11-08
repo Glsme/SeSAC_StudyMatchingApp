@@ -40,7 +40,7 @@ class CertificationRequestViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.certificationTextField.rx.controlEvent(.editingDidEndOnExit)
+        mainView.certificationTextField.rx.controlEvent(.editingDidEnd)
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.mainView.line.backgroundColor = .sesacGray3
