@@ -9,18 +9,27 @@ import Foundation
 
 import FirebaseCore
 import FirebaseAuth
+import RxCocoa
 
 final class CertificationRequestViewModel: CommonViewModel {
     struct Input {
-        
+        let certificationText: ControlProperty<String?>
+        let requstButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
-        
+        let certificationText: ControlEvent<String>
+        let requsetButtonTapped: ControlEvent<Void>
     }
     
-    func transform() {
+    func transform(input: Input) -> Output {
+        let certificationText = input.certificationText
+            .orEmpty
+            .changed
         
+        let requsetButtonTapped = input.requstButtonTapped
+        
+        return Output(certificationText: certificationText, requsetButtonTapped: requsetButtonTapped)
     }
     
     public func changePhoneNumformat(with mask: String, phone: String) -> String {

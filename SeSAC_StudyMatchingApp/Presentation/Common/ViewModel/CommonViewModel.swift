@@ -11,5 +11,5 @@ protocol CommonViewModel {
     associatedtype Input
     associatedtype Output
     
-    func transform()
+    func transform(input: Input) -> Output
 }

@@ -26,6 +26,9 @@ class CertificationRequestViewController: BaseViewController {
     }
     
     override func bindData() {
+        let input = CertificationRequestViewModel.Input(certificationText: mainView.certificationTextField.rx.text, requstButtonTapped: mainView.requestButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
         view.rx.tapGesture()
             .when(.recognized)
             .withUnretained(self)
@@ -48,9 +51,7 @@ class CertificationRequestViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.certificationTextField.rx.text
-            .orEmpty
-            .changed
+        output.certificationText
             .withUnretained(self)
             .bind { (vc, value) in
                 if value.count <= 12 {
@@ -69,7 +70,7 @@ class CertificationRequestViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.requestButton.rx.tap
+        output.requsetButtonTapped
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let text = vc.mainView.certificationTextField.text else { return }
