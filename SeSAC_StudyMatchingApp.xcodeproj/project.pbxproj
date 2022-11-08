@@ -45,6 +45,8 @@
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
 		85D341BA2919605E00F27A78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B92919605D00F27A78 /* GoogleService-Info.plist */; };
+		85D341BE291A2A8C00F27A78 /* CertificationReceivingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */; };
+		85D341C1291A2C4A00F27A78 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341C0291A2C4A00F27A78 /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,7 @@
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85D341B92919605D00F27A78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
+		85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85D341C1291A2C4A00F27A78 /* Toast in Frameworks */,
 				85350AB92919578200C70515 /* IQKeyboardManagerSwift in Frameworks */,
 				85350A902919083200C70515 /* RxSwift in Frameworks */,
 				85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */,
@@ -361,6 +365,7 @@
 		85350AB1291944B900C70515 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				85350AB82919578200C70515 /* IQKeyboardManagerSwift */,
 				85D341B129195E8800F27A78 /* FirebaseAnalytics */,
 				85D341B329195E8800F27A78 /* FirebaseAuth */,
+				85D341C0291A2C4A00F27A78 /* Toast */,
 			);
 			productName = SeSAC_StudyMatchingApp;
 			productReference = 85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */;
@@ -433,6 +439,7 @@
 				85350AA4291931BC00C70515 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				85350AB72919578200C70515 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				85D341B029195E8800F27A78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				85D341BF291A2C4A00F27A78 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 85350A3B2918C1D600C70515 /* Products */;
 			projectDirPath = "";
@@ -464,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85D341BE291A2A8C00F27A78 /* CertificationReceivingViewModel.swift in Sources */,
 				85350A802918F24D00C70515 /* Fonts.swift in Sources */,
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
@@ -748,6 +756,14 @@
 				kind = branch;
 			};
 		};
+		85D341BF291A2C4A00F27A78 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -785,6 +801,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85D341B029195E8800F27A78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		85D341C0291A2C4A00F27A78 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85D341BF291A2C4A00F27A78 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
