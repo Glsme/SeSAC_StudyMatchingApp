@@ -44,6 +44,7 @@
 		859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */; };
 		859921E4291A788F007F96A6 /* Userdefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E3291A788F007F96A6 /* Userdefault.swift */; };
 		859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E6291A7D7B007F96A6 /* RegexVaidation.swift */; };
+		859921EB291AB490007F96A6 /* FirebaseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921EA291AB490007F96A6 /* FirebaseAPIService.swift */; };
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
@@ -88,6 +89,7 @@
 		859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		859921E3291A788F007F96A6 /* Userdefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefault.swift; sourceTree = "<group>"; };
 		859921E6291A7D7B007F96A6 /* RegexVaidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexVaidation.swift; sourceTree = "<group>"; };
+		859921EA291AB490007F96A6 /* FirebaseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIService.swift; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85D341B92919605D00F27A78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
@@ -138,7 +140,7 @@
 				85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */,
 				85350A742918DC4D00C70515 /* Resource */,
 				85350A532918C60000C70515 /* Presentation */,
-				85350A522918C5FA00C70515 /* Domain */,
+				85350A522918C5FA00C70515 /* Network */,
 				85350A512918C24E00C70515 /* Application */,
 			);
 			path = SeSAC_StudyMatchingApp;
@@ -153,11 +155,12 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		85350A522918C5FA00C70515 /* Domain */ = {
+		85350A522918C5FA00C70515 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				859921E9291AB46E007F96A6 /* Firebase */,
 			);
-			path = Domain;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		85350A532918C60000C70515 /* Presentation */ = {
@@ -405,6 +408,14 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
+		859921E9291AB46E007F96A6 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				859921EA291AB490007F96A6 /* FirebaseAPIService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		85D341C2291A33CF00F27A78 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +554,7 @@
 				85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
+				859921EB291AB490007F96A6 /* FirebaseAPIService.swift in Sources */,
 				85350AA329192A9300C70515 /* TextFieldHighlightLine.swift in Sources */,
 				85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */,
 			);

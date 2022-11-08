@@ -23,11 +23,8 @@ final class GreenBgButton: BaseButton {
     
     func setEnabledButton(_ enabled: Bool) {
         if enabled {
-            self.isEnabled = true
             backgroundColor = .sesacGreen
-            
         } else {
-            self.isEnabled = false
             backgroundColor = .sesacGray6
         }
     }

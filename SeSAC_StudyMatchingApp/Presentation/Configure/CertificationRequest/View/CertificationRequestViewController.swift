@@ -74,17 +74,23 @@ class CertificationRequestViewController: BaseViewController {
             .bind { (vc, _) in
                 guard let text = vc.mainView.certificationTextField.text else { return }
                 guard text.count > 12 else {
-                    self.view.makeToast("전화번호를 모두 연락해주세요", position: .center)
+                    self.view.makeToast(CertificationRequestMents.InvalidFormat.rawValue, position: .center)
                     return
                 }
                 
                 if vc.viewModel.vaildPhoneNumber(text) {
-                    vc.viewModel.requsetPhoneAuth("011-2580-2580")
-    //                vc.viewModel.requsetPhoneAuth(text)
-                    let pushVC = CertificationReceivingViewController()
-                    vc.transViewController(ViewController: pushVC, type: .push)
+                    self.view.makeToast(CertificationRequestMents.validFormat.rawValue, position: .center)
+                    
+                    vc.viewModel.requsetPhoneAuth("011-2580-2580") { valid in
+                        if valid == CertificationRequestMents.validFormat.rawValue {
+                            let nextVC = CertificationReceivingViewController()
+                            vc.transViewController(ViewController: nextVC, type: .push)
+                        } else {
+                            self.view.makeToast(valid, position: .center)
+                        }
+                    }
                 } else {
-                    self.view.makeToast("유효성 검사해줘잉~", position: .center)
+                    self.view.makeToast(CertificationRequestMents.InvalidFormat.rawValue, position: .center)
                 }
                 
             }

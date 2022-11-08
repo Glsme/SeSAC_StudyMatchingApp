@@ -15,7 +15,7 @@ final class CertificationRequestViewModel {
         let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         var result = ""
         var index = numbers.startIndex
-
+        
         for ch in mask where index < numbers.endIndex {
             if ch == "X" {
                 result.append(numbers[index])
@@ -32,19 +32,20 @@ final class CertificationRequestViewModel {
         return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: phoneNumber)
     }
     
-    
-    public func requsetPhoneAuth(_ phoneNumber: String) {
+    public func requsetPhoneAuth(_ phoneNumber: String, completion: @escaping (String) -> Void) {
         let phoneNum = changePhoneNumberFomat(phoneNumber)
+        var valid = CertificationRequestMents.validFormat.rawValue
         
-        PhoneAuthProvider.provider()
-          .verifyPhoneNumber(phoneNum, uiDelegate: nil) { verificationID, error in
-              if let error = error {
-                  print("!!!!error \(error)")
-                return
-              }
-              
-              UserManager.authVerificationID = verificationID
-          }
+        FirebaseAPIService.shared.requsetPhoneAuth(phoneNum) { response in
+            switch response {
+            case .success(let success):
+                UserManager.authVerificationID = success
+                completion(valid)
+            case .failure(let failure):
+                valid = failure.errorDescription!
+                completion(valid)
+            }
+        }
     }
     
     private func changePhoneNumberFomat(_ phoneNumber: String) -> String {
