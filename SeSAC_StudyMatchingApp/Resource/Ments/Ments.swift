@@ -22,9 +22,6 @@ enum CertificationRequestMents: String {
     case placeholder = "휴대폰 번호(-없이 숫자만 입력)"
     case buttonText = "인증 문자 받기"
     case validFormat = "전화 번호 인증 시작"
-    case InvalidFormat = "잘못된 전화번호 형식입니다."
-    case tooManyAuth = "과도한 인증 시도가 있었습니다. 나중에 다시 시도해주세요."
-    case etcError = "에러가 발생했습니다."
 }
 
 //MARK: - Certification Receiving

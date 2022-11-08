@@ -75,7 +75,7 @@ class CertificationRequestViewController: BaseViewController {
             .bind { (vc, _) in
                 guard let text = vc.mainView.certificationTextField.text else { return }
                 guard text.count > 12 else {
-                    self.view.makeToast(CertificationRequestMents.InvalidFormat.rawValue, position: .center)
+                    self.view.makeToast(CertificationError.InvalidFormat.errorDescription, position: .center)
                     return
                 }
                 
@@ -91,7 +91,7 @@ class CertificationRequestViewController: BaseViewController {
                         }
                     }
                 } else {
-                    self.view.makeToast(CertificationRequestMents.InvalidFormat.rawValue, position: .center)
+                    self.view.makeToast(CertificationError.InvalidFormat.errorDescription, position: .center)
                 }
                 
             }
