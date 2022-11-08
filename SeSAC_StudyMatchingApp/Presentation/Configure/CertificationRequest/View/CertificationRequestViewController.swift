@@ -13,7 +13,7 @@ import RxSwift
 
 class CertificationRequestViewController: BaseViewController {
     let mainView = CertificationRequsetView()
-    let viewModel = CertificationViewModel()
+    let viewModel = CertificationRequestViewModel()
     let disposeBag = DisposeBag()
     
     override func loadView() {

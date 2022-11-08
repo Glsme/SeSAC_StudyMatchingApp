@@ -36,7 +36,7 @@
 		85350AA0291924FA00C70515 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A9F291924FA00C70515 /* BaseButton.swift */; };
 		85350AA329192A9300C70515 /* TextFieldHighlightLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA229192A9300C70515 /* TextFieldHighlightLine.swift */; };
 		85350AA6291931BC00C70515 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 85350AA5291931BC00C70515 /* RxGesture */; };
-		85350AA8291937EF00C70515 /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA7291937EF00C70515 /* CertificationViewModel.swift */; };
+		85350AA8291937EF00C70515 /* CertificationRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AA7291937EF00C70515 /* CertificationRequestViewModel.swift */; };
 		85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AAA29193B8700C70515 /* UserConfigureView.swift */; };
 		85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AB3291944DD00C70515 /* CertificationReceivingView.swift */; };
 		85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AB52919470300C70515 /* CertificationReceivingViewController.swift */; };
@@ -47,6 +47,7 @@
 		85D341BA2919605E00F27A78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B92919605D00F27A78 /* GoogleService-Info.plist */; };
 		85D341BE291A2A8C00F27A78 /* CertificationReceivingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */; };
 		85D341C1291A2C4A00F27A78 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341C0291A2C4A00F27A78 /* Toast */; };
+		85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341C4291A33E600F27A78 /* CertificationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,7 +78,7 @@
 		85350A9D291924B500C70515 /* GreenBgButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBgButton.swift; sourceTree = "<group>"; };
 		85350A9F291924FA00C70515 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		85350AA229192A9300C70515 /* TextFieldHighlightLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHighlightLine.swift; sourceTree = "<group>"; };
-		85350AA7291937EF00C70515 /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
+		85350AA7291937EF00C70515 /* CertificationRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationRequestViewModel.swift; sourceTree = "<group>"; };
 		85350AAA29193B8700C70515 /* UserConfigureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigureView.swift; sourceTree = "<group>"; };
 		85350AB3291944DD00C70515 /* CertificationReceivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingView.swift; sourceTree = "<group>"; };
 		85350AB52919470300C70515 /* CertificationReceivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		85D341B92919605D00F27A78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
 		85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewModel.swift; sourceTree = "<group>"; };
+		85D341C4291A33E600F27A78 /* CertificationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 		85350A532918C60000C70515 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				85D341C2291A33CF00F27A78 /* Utils */,
 				85350AAE2919422B00C70515 /* Configure */,
 				85350A5D2918CA9E00C70515 /* Common */,
 				85350A542918C7E100C70515 /* Onboarding */,
@@ -315,7 +318,7 @@
 		85350A952919125300C70515 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				85350AA7291937EF00C70515 /* CertificationViewModel.swift */,
+				85350AA7291937EF00C70515 /* CertificationRequestViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -377,6 +380,22 @@
 				85350AB52919470300C70515 /* CertificationReceivingViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		85D341C2291A33CF00F27A78 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				85D341C3291A33D700F27A78 /* Errors */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		85D341C3291A33D700F27A78 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				85D341C4291A33E600F27A78 /* CertificationError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,7 +494,7 @@
 				85350A802918F24D00C70515 /* Fonts.swift in Sources */,
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
-				85350AA8291937EF00C70515 /* CertificationViewModel.swift in Sources */,
+				85350AA8291937EF00C70515 /* CertificationRequestViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */,
@@ -485,6 +504,7 @@
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,
 				85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */,
 				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
+				85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */,
 				85350A862918F70500C70515 /* UIColor+Extension.swift in Sources */,
 				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,

@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Toast
+
 public class BaseViewController: UIViewController, BaseViewProtocol, RxSwiftProtocol {
     public override func viewDidLoad() {
         view.backgroundColor = .white
