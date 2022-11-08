@@ -53,7 +53,14 @@ class CertificationRequestViewController: BaseViewController {
             .changed
             .withUnretained(self)
             .bind { (vc, value) in
-                vc.mainView.certificationTextField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXXX-XXXX", phone: value)
+                
+                //Subscript 사용해야됨
+                if Array(value)[2] == "0" {
+                    vc.mainView.certificationTextField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXXX-XXXX", phone: value)
+                } else {
+                    vc.mainView.certificationTextField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXX-XXXX", phone: value)
+                }
+                
                 guard let text = vc.mainView.certificationTextField.text else { return }
                 
                 if text.count >= 12 {
@@ -68,7 +75,7 @@ class CertificationRequestViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let text = vc.mainView.certificationTextField.text else { return }
-                guard text.count < 12 else {
+                guard text.count > 12 else {
                     self.view.makeToast("전화번호를 모두 연락해주세요", position: .center)
                     return
                 }

@@ -29,7 +29,7 @@ final class CertificationRequestViewModel {
     
     public func vaildPhoneNumber(_ phoneNumber: String) -> Bool {
         let regex = RegexValidation.phoneNumber.rawValue
-        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: regex)
+        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: phoneNumber)
     }
     
     
