@@ -53,12 +53,10 @@ class CertificationRequestViewController: BaseViewController {
             .changed
             .withUnretained(self)
             .bind { (vc, value) in
-                
-                //Subscript 사용해야됨
-                if Array(value)[2] == "0" {
-                    vc.mainView.certificationTextField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXXX-XXXX", phone: value)
-                } else {
+                if value.count <= 12 {
                     vc.mainView.certificationTextField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXX-XXXX", phone: value)
+                } else {
+                    vc.mainView.certificationTextField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXXX-XXXX", phone: value)
                 }
                 
                 guard let text = vc.mainView.certificationTextField.text else { return }
