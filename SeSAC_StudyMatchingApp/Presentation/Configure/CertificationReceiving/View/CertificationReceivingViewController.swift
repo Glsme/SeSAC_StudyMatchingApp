@@ -8,6 +8,7 @@
 import UIKit
 
 import RxCocoa
+import RxGesture
 import RxSwift
 
 final class CertificationReceivingViewController: BaseViewController {
@@ -29,6 +30,28 @@ final class CertificationReceivingViewController: BaseViewController {
     }
     
     override func bindData() {
+        view.rx.tapGesture()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe { (vc, _) in
+                vc.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.certificationTextField.rx.controlEvent(.editingDidBegin)
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.mainView.line.backgroundColor = .black
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.certificationTextField.rx.controlEvent(.editingDidEnd)
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.mainView.line.backgroundColor = .sesacGray3
+            }
+            .disposed(by: disposeBag)
+        
         mainView.certificationTextField.rx.text
             .orEmpty
             .withUnretained(self)
