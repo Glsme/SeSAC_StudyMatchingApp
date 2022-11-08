@@ -7,6 +7,8 @@
 
 import UIKit
 
+import FirebaseAuth
+import FirebaseCore
 import RxCocoa
 import RxGesture
 import RxSwift
@@ -65,7 +67,7 @@ final class CertificationReceivingViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let key = vc.mainView.certificationTextField.text else { return }
-                vc.showCertificationToast(key)
+                vc.setAuthVerificationID(key)
             }
             .disposed(by: disposeBag)
     }
@@ -86,11 +88,25 @@ final class CertificationReceivingViewController: BaseViewController {
         }
     }
     
-    private func showCertificationToast(_ verificationCode: String) {
-        if viewModel.setAuthVerificationID(verificationCode) {
-            
-        } else {
-            self.view.makeToast("no ID")
+    private func setAuthVerificationID(_ verificationCode: String) {
+        mainView.requestButton.isEnabled = false
+
+        guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else { return }
+        
+        let credential = PhoneAuthProvider.provider().credential(
+          withVerificationID: verificationID,
+          verificationCode: verificationCode
+        )
+        
+        Auth.auth().signIn(with: credential) { authResult, error in
+            if let error = error {
+                print("error \(error)")
+                self.view.makeToast("Error")
+            } else {
+                self.view.makeToast("Success")
+            }
         }
+        
+        mainView.requestButton.isEnabled = true
     }
 }
