@@ -91,7 +91,7 @@ final class CertificationReceivingViewController: BaseViewController {
     private func setAuthVerificationID(_ verificationCode: String) {
         mainView.requestButton.isEnabled = false
 
-        guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else { return }
+        guard let verificationID = UserManager.authVerificationID else { return }
         
         let credential = PhoneAuthProvider.provider().credential(
           withVerificationID: verificationID,

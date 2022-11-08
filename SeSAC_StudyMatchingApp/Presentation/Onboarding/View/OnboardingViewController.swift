@@ -32,7 +32,7 @@ final class OnboardingViewController: BaseViewController {
         mainView.startButton.rx.tap
             .withUnretained(self)
             .subscribe { (vc, _) in
-                UserDefaults.standard.setValue(true, forKey: "first")
+                UserManager.first = true
                 let certificationVC = CertificationRequestViewController()
                 let naviVC = UINavigationController(rootViewController: certificationVC)
                 naviVC.modalTransitionStyle = .crossDissolve

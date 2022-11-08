@@ -37,7 +37,7 @@ final class CertificationRequestViewModel {
                 return
               }
               
-              UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+              UserManager.authVerificationID = verificationID
           }
     }
     
