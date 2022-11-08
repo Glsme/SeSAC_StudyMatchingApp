@@ -7,8 +7,25 @@
 
 import Foundation
 
-import RxSwift
+import RxCocoa
 
-class CertificationReceivingViewModel {
+class CertificationReceivingViewModel: CommonViewModel {
+    struct Input {
+        let certificationText: ControlProperty<String?>
+        let requstButtonTapped: ControlEvent<Void>
+    }
     
+    struct Output {
+        let certificationText: ControlProperty<String>
+        let requsetButtonTapped: ControlEvent<Void>
+    }
+    
+    func transform(input: Input) -> Output {
+        let certificationText = input.certificationText
+            .orEmpty
+        
+        let requsetButtonTapped = input.requstButtonTapped
+        
+        return Output(certificationText: certificationText, requsetButtonTapped: requsetButtonTapped)
+    }
 }

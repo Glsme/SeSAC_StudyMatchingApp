@@ -27,11 +27,10 @@ final class CertificationReceivingViewController: BaseViewController {
         
     }
     
-    override func configureUI() {
-        
-    }
-    
     override func bindData() {
+        let input = CertificationReceivingViewModel.Input(certificationText: mainView.certificationTextField.rx.text, requstButtonTapped: mainView.requestButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
         view.rx.tapGesture()
             .when(.recognized)
             .withUnretained(self)
@@ -54,8 +53,7 @@ final class CertificationReceivingViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.certificationTextField.rx.text
-            .orEmpty
+        output.certificationText
             .withUnretained(self)
             .subscribe { (vc, value) in
                 vc.trimId(value)
@@ -63,7 +61,7 @@ final class CertificationReceivingViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.requestButton.rx.tap
+        output.requsetButtonTapped
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let key = vc.mainView.certificationTextField.text else { return }
