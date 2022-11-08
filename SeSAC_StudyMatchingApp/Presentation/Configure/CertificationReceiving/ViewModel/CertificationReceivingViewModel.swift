@@ -9,6 +9,6 @@ import Foundation
 
 import RxSwift
 
-final class CertificationReceivingViewModel {    
+class CertificationReceivingViewModel {
     
 }
