@@ -100,10 +100,10 @@ final class CertificationReceivingViewController: BaseViewController {
         
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
-                print("error \(error)")
-                self.view.makeToast("Error")
+                print("error:: \(error)")
+                self.view.makeToast("Error", position: .center)
             } else {
-                self.view.makeToast("Success")
+                self.view.makeToast("Success", position: .center)
             }
         }
         
