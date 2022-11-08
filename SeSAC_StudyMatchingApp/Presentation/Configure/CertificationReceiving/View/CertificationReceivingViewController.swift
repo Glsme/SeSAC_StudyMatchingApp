@@ -29,12 +29,45 @@ final class CertificationReceivingViewController: BaseViewController {
     }
     
     override func bindData() {
-//        mainView.requestButton.rx.tap
+        mainView.certificationTextField.rx.text
+            .orEmpty
+            .withUnretained(self)
+            .subscribe { (vc, value) in
+                vc.trimId(value)
+                vc.vaildationCertification(value)
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.requestButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                guard let key = vc.mainView.certificationTextField.text else { return }
+                vc.showCertificationToast(key)
+            }
+            .disposed(by: disposeBag)
     }
     
-    private func showCertificationToast() {
-        viewModel.setAuthVerificationID()
-        
-        view.makeToast("no ID")
+    private func trimId(_ text: String) {
+      if text.count > 6 {
+        let index = text.index(text.startIndex, offsetBy: 6)
+          mainView.certificationTextField.text = String(text[..<index])
+      }
+    }
+
+    
+    private func vaildationCertification(_ text: String) {
+        if text.count >= 6 {
+            mainView.requestButton.setEnabledButton(true)
+        } else {
+            mainView.requestButton.setEnabledButton(false)
+        }
+    }
+    
+    private func showCertificationToast(_ verificationCode: String) {
+        if viewModel.setAuthVerificationID(verificationCode) {
+            
+        } else {
+            self.view.makeToast("no ID")
+        }
     }
 }
