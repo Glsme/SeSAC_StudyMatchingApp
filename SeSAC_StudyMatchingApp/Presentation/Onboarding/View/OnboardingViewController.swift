@@ -26,6 +26,15 @@ final class OnboardingViewController: BaseViewController {
         mainView.onboardingCollectionView.delegate = self
         mainView.onboardingCollectionView.dataSource = self
         mainView.onboardingCollectionView.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier)
+        
+        
+        mainView.pageControl.rx.controlEvent(.valueChanged)
+            .withUnretained(self)
+            .bind { (vc, _) in
+                let currentPage = vc.mainView.pageControl.currentPage
+                vc.mainView.onboardingCollectionView.scrollToItem(at: IndexPath(item: currentPage, section: 0), at: .right, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
     override func bindData() {
