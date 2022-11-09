@@ -84,9 +84,10 @@ final class CertificationReceivingViewController: BaseViewController {
                 vc.mainView.retryButton.isEnabled = false
                 vc.mainView.requestButton.isEnabled = false
                 vc.viewModel.requsetPhoneAuth { valid in
-                    vc.view.makeToast(valid, position: .center)
+                    if !valid.isEmpty {
+                        vc.view.makeToast(valid, position: .center)
+                    }
                 }
-                
                 vc.resetAndGoTimer()
                 vc.mainView.retryButton.setEnabledButton(true)
                 vc.mainView.retryButton.isEnabled = true
@@ -106,7 +107,7 @@ final class CertificationReceivingViewController: BaseViewController {
                 } else if value <= 50 {
                     vc.mainView.timerLabel.text = "00:\(60-value)"
                 } else {
-                    UserManager.authVerificationID = nil
+                    UserDefaults.standard.removeObject(forKey: "authVerificationID")
                     vc.timerDisposable?.dispose()
                 }
             })
@@ -131,6 +132,12 @@ final class CertificationReceivingViewController: BaseViewController {
     private func signInWithVerfiyCode(_ verficationCode: String) {
         mainView.requestButton.isEnabled = false
 
+        guard UserManager.authVerificationID != nil else {
+            self.view.makeToast(CertificationReceivingMents.timeOver.rawValue, position: .center)
+            mainView.requestButton.isEnabled = true
+            return
+        }
+        
         viewModel.signInWithVerfiyCode(verficationCode) { result in
             self.view.makeToast(result, position: .center)
         }

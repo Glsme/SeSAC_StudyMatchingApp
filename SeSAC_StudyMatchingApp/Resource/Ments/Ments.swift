@@ -32,4 +32,5 @@ enum CertificationReceivingMents: String {
     case reSendButtonText = "재전송"
     case sendNumber = "인증번호를 보냈습니다."
     case notSixNumber = "인증 번호 6자리를 입력해주세요"
+    case timeOver = "토큰이 만료되었습니다.\n재전송 버튼을 눌러주세요."
 }

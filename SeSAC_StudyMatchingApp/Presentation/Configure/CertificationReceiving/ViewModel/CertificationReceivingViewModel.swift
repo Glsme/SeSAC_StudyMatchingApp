@@ -47,7 +47,7 @@ final class CertificationReceivingViewModel: CommonViewModel {
     }
     
     public func requsetPhoneAuth(completion: @escaping (String) -> Void) {
-        var valid = CertificationRequestMents.validFormat.rawValue
+        var valid = ""
         guard let phoneNum = UserManager.phoneNumber else { return }
         
         FirebaseAPIService.shared.requsetPhoneAuth(phoneNum) { response in
