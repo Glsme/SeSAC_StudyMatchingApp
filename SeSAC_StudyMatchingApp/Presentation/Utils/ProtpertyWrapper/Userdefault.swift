@@ -34,4 +34,7 @@ class UserManager {
     
     @UserDefault(key: "phoneNumber", defaultValue: nil)
     static var phoneNumber: String?
+    
+    @UserDefault(key: "authVerificationToken", defaultValue: nil)
+    static var authVerificationToken: String?
 }

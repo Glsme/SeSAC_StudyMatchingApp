@@ -139,7 +139,9 @@ final class CertificationReceivingViewController: BaseViewController {
         }
         
         viewModel.signInWithVerfiyCode(verficationCode) { result in
-            self.view.makeToast(result, position: .center)
+            if UserManager.authVerificationID == nil {
+                self.view.makeToast(result, position: .center)
+            }
         }
         
         mainView.requestButton.isEnabled = true

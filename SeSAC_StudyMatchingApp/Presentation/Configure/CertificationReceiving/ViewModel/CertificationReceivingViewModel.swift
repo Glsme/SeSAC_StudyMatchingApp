@@ -34,11 +34,18 @@ final class CertificationReceivingViewModel: CommonViewModel {
     
     public func signInWithVerfiyCode(_ verficationCode: String, completion: @escaping (String) -> Void) {
         guard let verificationID = UserManager.authVerificationID else { return }
-
+        
         FirebaseAPIService.shared.requsetSignIn(verificationID: verificationID, verificationCode: verficationCode) { response in
             switch response {
             case .success(let result):
-                completion(result.description)
+                result.user.getIDToken { token, error in
+                    if let token = token {
+                        UserManager.authVerificationToken = token
+                        completion(token)
+                    } else {
+                        print("Token Error")
+                    }
+                }
             case .failure(let error):
                 guard let error = error.errorDescription else { return }
                 completion(error)
