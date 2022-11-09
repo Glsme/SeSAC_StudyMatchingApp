@@ -46,10 +46,11 @@
 		859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E6291A7D7B007F96A6 /* RegexVaidation.swift */; };
 		859921EB291AB490007F96A6 /* FirebaseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921EA291AB490007F96A6 /* FirebaseAPIService.swift */; };
 		859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921EC291AC1E3007F96A6 /* CommonViewModel.swift */; };
+		859921F2291BFB36007F96A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 859921F1291BFB36007F96A6 /* GoogleService-Info.plist */; };
+		859921F5291BFE11007F96A6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 859921F4291BFE11007F96A6 /* Alamofire */; };
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
-		85D341BA2919605E00F27A78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B92919605D00F27A78 /* GoogleService-Info.plist */; };
 		85D341BE291A2A8C00F27A78 /* CertificationReceivingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */; };
 		85D341C1291A2C4A00F27A78 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341C0291A2C4A00F27A78 /* Toast */; };
 		85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341C4291A33E600F27A78 /* CertificationError.swift */; };
@@ -92,8 +93,8 @@
 		859921E6291A7D7B007F96A6 /* RegexVaidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexVaidation.swift; sourceTree = "<group>"; };
 		859921EA291AB490007F96A6 /* FirebaseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIService.swift; sourceTree = "<group>"; };
 		859921EC291AC1E3007F96A6 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
+		859921F1291BFB36007F96A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		85D341B92919605D00F27A78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
 		85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewModel.swift; sourceTree = "<group>"; };
 		85D341C4291A33E600F27A78 /* CertificationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationError.swift; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				859921F5291BFE11007F96A6 /* Alamofire in Frameworks */,
 				85D341C1291A2C4A00F27A78 /* Toast in Frameworks */,
 				85350AB92919578200C70515 /* IQKeyboardManagerSwift in Frameworks */,
 				85350A902919083200C70515 /* RxSwift in Frameworks */,
@@ -122,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				85D341B529195FA200F27A78 /* .gitignore */,
-				85D341B92919605D00F27A78 /* GoogleService-Info.plist */,
+				859921F1291BFB36007F96A6 /* GoogleService-Info.plist */,
 				85350A3C2918C1D600C70515 /* SeSAC_StudyMatchingApp */,
 				85350A3B2918C1D600C70515 /* Products */,
 			);
@@ -462,6 +464,7 @@
 				85D341B129195E8800F27A78 /* FirebaseAnalytics */,
 				85D341B329195E8800F27A78 /* FirebaseAuth */,
 				85D341C0291A2C4A00F27A78 /* Toast */,
+				859921F4291BFE11007F96A6 /* Alamofire */,
 			);
 			productName = SeSAC_StudyMatchingApp;
 			productReference = 85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */;
@@ -498,6 +501,7 @@
 				85350AB72919578200C70515 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				85D341B029195E8800F27A78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				85D341BF291A2C4A00F27A78 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				859921F3291BFE11007F96A6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 85350A3B2918C1D600C70515 /* Products */;
 			projectDirPath = "";
@@ -518,7 +522,7 @@
 				85350A4A2918C1D700C70515 /* LaunchScreen.storyboard in Resources */,
 				85350A822918F58800C70515 /* NotoSansKR-Regular.otf in Resources */,
 				85350A472918C1D700C70515 /* Assets.xcassets in Resources */,
-				85D341BA2919605E00F27A78 /* GoogleService-Info.plist in Resources */,
+				859921F2291BFB36007F96A6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +702,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K4KWAG7KD;
@@ -713,8 +718,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hano.SeSAC-StudyMatchingApp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesacslp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -730,6 +736,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K4KWAG7KD;
@@ -745,8 +752,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hano.SeSAC-StudyMatchingApp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesacslp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -812,6 +820,14 @@
 				minimumVersion = 6.5.0;
 			};
 		};
+		859921F3291BFE11007F96A6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		85D341B029195E8800F27A78 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -855,6 +871,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85350AB72919578200C70515 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		859921F4291BFE11007F96A6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 859921F3291BFE11007F96A6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		85D341B129195E8800F27A78 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -82,7 +82,7 @@ class CertificationRequestViewController: BaseViewController {
                 if vc.viewModel.vaildPhoneNumber(text) {
                     self.view.makeToast(CertificationRequestMents.validFormat.rawValue, position: .center)
                     
-                    vc.viewModel.requsetPhoneAuth("011-2580-2580") { valid in
+                    vc.viewModel.requsetPhoneAuth(text) { valid in
                         if valid == CertificationRequestMents.validFormat.rawValue {
                             let nextVC = CertificationReceivingViewController()
                             vc.transViewController(ViewController: nextVC, type: .push)
