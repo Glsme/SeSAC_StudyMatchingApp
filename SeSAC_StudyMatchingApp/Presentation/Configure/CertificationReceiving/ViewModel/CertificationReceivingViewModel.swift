@@ -13,11 +13,13 @@ final class CertificationReceivingViewModel: CommonViewModel {
     struct Input {
         let certificationText: ControlProperty<String?>
         let requstButtonTapped: ControlEvent<Void>
+        let retryButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
         let certificationText: ControlProperty<String>
         let requsetButtonTapped: ControlEvent<Void>
+        let retryButtonTapped: ControlEvent<Void>
     }
     
     public func transform(input: Input) -> Output {
@@ -25,8 +27,9 @@ final class CertificationReceivingViewModel: CommonViewModel {
             .orEmpty
         
         let requsetButtonTapped = input.requstButtonTapped
+        let retryButtonTapped = input.retryButtonTapped
         
-        return Output(certificationText: certificationText, requsetButtonTapped: requsetButtonTapped)
+        return Output(certificationText: certificationText, requsetButtonTapped: requsetButtonTapped, retryButtonTapped: retryButtonTapped)
     }
     
     public func signInWithVerfiyCode(_ verficationCode: String, completion: @escaping (String) -> Void) {
@@ -39,6 +42,22 @@ final class CertificationReceivingViewModel: CommonViewModel {
             case .failure(let error):
                 guard let error = error.errorDescription else { return }
                 completion(error)
+            }
+        }
+    }
+    
+    public func requsetPhoneAuth(completion: @escaping (String) -> Void) {
+        var valid = CertificationRequestMents.validFormat.rawValue
+        guard let phoneNum = UserManager.phoneNumber else { return }
+        
+        FirebaseAPIService.shared.requsetPhoneAuth(phoneNum) { response in
+            switch response {
+            case .success(let success):
+                UserManager.authVerificationID = success
+                completion(valid)
+            case .failure(let failure):
+                valid = failure.errorDescription!
+                completion(valid)
             }
         }
     }

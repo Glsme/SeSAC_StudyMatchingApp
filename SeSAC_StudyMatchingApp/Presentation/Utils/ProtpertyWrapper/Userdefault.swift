@@ -31,4 +31,7 @@ class UserManager {
     
     @UserDefault(key: "first", defaultValue: false)
     static var first: Bool
+    
+    @UserDefault(key: "phoneNumber", defaultValue: nil)
+    static var phoneNumber: String?
 }

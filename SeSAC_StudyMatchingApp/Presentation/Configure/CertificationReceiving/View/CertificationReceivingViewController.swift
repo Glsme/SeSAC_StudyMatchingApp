@@ -18,6 +18,8 @@ final class CertificationReceivingViewController: BaseViewController {
     let viewModel = CertificationReceivingViewModel()
     let disposeBag = DisposeBag()
     
+    var timerDisposable: Disposable?
+    
     override func loadView() {
         self.view = mainView
     }
@@ -32,8 +34,10 @@ final class CertificationReceivingViewController: BaseViewController {
     }
     
     override func bindData() {
-        let input = CertificationReceivingViewModel.Input(certificationText: mainView.certificationTextField.rx.text, requstButtonTapped: mainView.requestButton.rx.tap)
+        let input = CertificationReceivingViewModel.Input(certificationText: mainView.certificationTextField.rx.text, requstButtonTapped: mainView.requestButton.rx.tap, retryButtonTapped: mainView.retryButton.rx.tap)
         let output = viewModel.transform(input: input)
+        
+        resetAndGoTimer()
         
         view.rx.tapGesture()
             .when(.recognized)
@@ -72,6 +76,40 @@ final class CertificationReceivingViewController: BaseViewController {
                 vc.signInWithVerfiyCode(key)
             }
             .disposed(by: disposeBag)
+        
+        output.retryButtonTapped
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.mainView.retryButton.setEnabledButton(false)
+                vc.mainView.retryButton.isEnabled = false
+                vc.mainView.requestButton.isEnabled = false
+                vc.viewModel.requsetPhoneAuth { valid in
+                    vc.view.makeToast(valid, position: .center)
+                }
+                
+                vc.resetAndGoTimer()
+                vc.mainView.retryButton.setEnabledButton(true)
+                vc.mainView.retryButton.isEnabled = true
+                vc.mainView.requestButton.isEnabled = true
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func resetAndGoTimer() {
+        timerDisposable?.dispose()
+        timerDisposable = Observable<Int>
+            .timer(.seconds(1), period: .seconds(1), scheduler: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, value) in
+                if value > 50, value <= 60 {
+                    vc.mainView.timerLabel.text = "00:0\(60-value)"
+                } else if value <= 50 {
+                    vc.mainView.timerLabel.text = "00:\(60-value)"
+                } else {
+                    UserManager.authVerificationID = nil
+                    vc.timerDisposable?.dispose()
+                }
+            })
     }
     
     private func trimId(_ text: String) {
@@ -87,7 +125,6 @@ final class CertificationReceivingViewController: BaseViewController {
             mainView.requestButton.setEnabledButton(true)
         } else {
             mainView.requestButton.setEnabledButton(false)
-            self.view.makeToast(CertificationReceivingMents.notSixNumber.rawValue, position: .center)
         }
     }
     
