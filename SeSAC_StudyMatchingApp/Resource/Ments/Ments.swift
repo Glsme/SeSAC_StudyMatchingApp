@@ -30,4 +30,6 @@ enum CertificationReceivingMents: String {
     case placeholder = "인증번호 입력"
     case startButtonText = "인증하고 시작하기"
     case reSendButtonText = "재전송"
+    case sendNumber = "인증번호를 보냈습니다."
+    case notSixNumber = "인증 번호 6자리를 입력해주세요"
 }

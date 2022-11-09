@@ -45,6 +45,12 @@ final class FirebaseAPIService {
                 let errorCode = (error as NSError).code
                 
                 switch errorCode {
+                case 17043:
+                    completion(.failure(.missingVerificationID))
+                case 17044:
+                    completion(.failure(.invalidVerificationCode))
+                case 17045:
+                    completion(.failure(.missingVerificationID))
                 default:
                     completion(.failure(.etcError))
                 }
@@ -52,7 +58,6 @@ final class FirebaseAPIService {
                 guard let result = authResult else {
                     completion(.failure(.etcError))
                     return
-                    
                 }
                 
                 completion(.success(result))

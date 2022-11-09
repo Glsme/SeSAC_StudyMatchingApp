@@ -27,6 +27,10 @@ final class CertificationReceivingViewController: BaseViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.makeToast(CertificationReceivingMents.sendNumber.rawValue, position: .center)
+    }
+    
     override func bindData() {
         let input = CertificationReceivingViewModel.Input(certificationText: mainView.certificationTextField.rx.text, requstButtonTapped: mainView.requestButton.rx.tap)
         let output = viewModel.transform(input: input)
@@ -83,14 +87,14 @@ final class CertificationReceivingViewController: BaseViewController {
             mainView.requestButton.setEnabledButton(true)
         } else {
             mainView.requestButton.setEnabledButton(false)
+            self.view.makeToast(CertificationReceivingMents.notSixNumber.rawValue, position: .center)
         }
     }
     
     private func signInWithVerfiyCode(_ verficationCode: String) {
-        guard let verificationID = UserManager.authVerificationID else { return }
         mainView.requestButton.isEnabled = false
 
-        viewModel.signInWithVerfiyCode(verificationID) { result in
+        viewModel.signInWithVerfiyCode(verficationCode) { result in
             self.view.makeToast(result, position: .center)
         }
         

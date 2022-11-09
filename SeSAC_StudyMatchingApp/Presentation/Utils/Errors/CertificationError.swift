@@ -13,6 +13,9 @@ enum CertificationError: Error {
     case InvalidFormat
     case tooManyRequest
     case etcError
+    case missingVerificationCode
+    case missingVerificationID
+    case invalidVerificationCode
 }
 
 extension CertificationError: LocalizedError {
@@ -26,6 +29,10 @@ extension CertificationError: LocalizedError {
             return "과도한 인증 시도가 있었습니다. 나중에 다시 시도해주세요."
         case .etcError:
             return "에러가 발생했습니다."
+        case .missingVerificationCode:
+            return "에러가 발생했습니다.\n잠시 후 다시 시도해주세요"
+        case .invalidVerificationCode, .missingVerificationID:
+            return "전화 번호 인증 실패"
         }
     }
 }
