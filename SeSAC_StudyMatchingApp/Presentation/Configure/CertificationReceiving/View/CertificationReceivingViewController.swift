@@ -138,9 +138,12 @@ final class CertificationReceivingViewController: BaseViewController {
             return
         }
         
-        viewModel.signInWithVerfiyCode(verficationCode) { result in
+        viewModel.signInWithVerfiyCode(verficationCode) { [weak self] result in
+            guard let self = self else { return }
             if UserManager.authVerificationID == nil {
                 self.view.makeToast(result, position: .center)
+            } else {
+                self.viewModel.requsetLogin()
             }
         }
         

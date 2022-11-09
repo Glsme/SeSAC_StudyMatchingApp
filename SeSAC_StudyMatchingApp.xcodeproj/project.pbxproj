@@ -48,6 +48,10 @@
 		859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921EC291AC1E3007F96A6 /* CommonViewModel.swift */; };
 		859921F2291BFB36007F96A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 859921F1291BFB36007F96A6 /* GoogleService-Info.plist */; };
 		859921F5291BFE11007F96A6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 859921F4291BFE11007F96A6 /* Alamofire */; };
+		859921F8291C0086007F96A6 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921F7291C0086007F96A6 /* UserData.swift */; };
+		859921FC291C01D1007F96A6 /* SesacAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921FB291C01D1007F96A6 /* SesacAPIService.swift */; };
+		859921FE291C0459007F96A6 /* SesacAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921FD291C0459007F96A6 /* SesacAPIRouter.swift */; };
+		85992202291C0B03007F96A6 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992201291C0B03007F96A6 /* LoginError.swift */; };
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
@@ -94,6 +98,10 @@
 		859921EA291AB490007F96A6 /* FirebaseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIService.swift; sourceTree = "<group>"; };
 		859921EC291AC1E3007F96A6 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 		859921F1291BFB36007F96A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		859921F7291C0086007F96A6 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		859921FB291C01D1007F96A6 /* SesacAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIService.swift; sourceTree = "<group>"; };
+		859921FD291C0459007F96A6 /* SesacAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIRouter.swift; sourceTree = "<group>"; };
+		85992201291C0B03007F96A6 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
 		85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewModel.swift; sourceTree = "<group>"; };
@@ -162,7 +170,9 @@
 		85350A522918C5FA00C70515 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				859921E9291AB46E007F96A6 /* Firebase */,
+				859921FA291C0122007F96A6 /* DefaultSesacAPIService */,
+				859921F9291C00CE007F96A6 /* DefaultFirebaseAPIService */,
+				859921F6291BFE40007F96A6 /* Model */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -413,12 +423,46 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
-		859921E9291AB46E007F96A6 /* Firebase */ = {
+		859921F6291BFE40007F96A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				85992200291C0AEE007F96A6 /* APIModel */,
+				859921FF291C0AE7007F96A6 /* Error */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		859921F9291C00CE007F96A6 /* DefaultFirebaseAPIService */ = {
 			isa = PBXGroup;
 			children = (
 				859921EA291AB490007F96A6 /* FirebaseAPIService.swift */,
 			);
-			path = Firebase;
+			path = DefaultFirebaseAPIService;
+			sourceTree = "<group>";
+		};
+		859921FA291C0122007F96A6 /* DefaultSesacAPIService */ = {
+			isa = PBXGroup;
+			children = (
+				859921FB291C01D1007F96A6 /* SesacAPIService.swift */,
+			);
+			name = DefaultSesacAPIService;
+			sourceTree = "<group>";
+		};
+		859921FF291C0AE7007F96A6 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				85992201291C0B03007F96A6 /* LoginError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		85992200291C0AEE007F96A6 /* APIModel */ = {
+			isa = PBXGroup;
+			children = (
+				859921F7291C0086007F96A6 /* UserData.swift */,
+				859921FD291C0459007F96A6 /* SesacAPIRouter.swift */,
+			);
+			path = APIModel;
 			sourceTree = "<group>";
 		};
 		85D341C2291A33CF00F27A78 /* Utils */ = {
@@ -542,6 +586,7 @@
 				859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */,
 				85350AA8291937EF00C70515 /* CertificationRequestViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
+				859921FE291C0459007F96A6 /* SesacAPIRouter.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */,
 				85350AA0291924FA00C70515 /* BaseButton.swift in Sources */,
@@ -558,8 +603,11 @@
 				85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85350A8B2918FCCC00C70515 /* Ments.swift in Sources */,
+				85992202291C0B03007F96A6 /* LoginError.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
+				859921FC291C01D1007F96A6 /* SesacAPIService.swift in Sources */,
 				85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */,
+				859921F8291C0086007F96A6 /* UserData.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
 				859921EB291AB490007F96A6 /* FirebaseAPIService.swift in Sources */,
