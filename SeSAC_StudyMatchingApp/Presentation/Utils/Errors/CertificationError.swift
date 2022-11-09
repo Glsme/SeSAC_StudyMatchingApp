@@ -9,6 +9,7 @@ import Foundation
 
 enum CertificationError: Error {
     case noAuthVerificationID
+    case noAuthResult
     case InvalidFormat
     case tooManyRequest
     case etcError
@@ -17,7 +18,7 @@ enum CertificationError: Error {
 extension CertificationError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .noAuthVerificationID:
+        case .noAuthVerificationID, .noAuthResult:
             return "인증 값이 없습니다."
         case .InvalidFormat:
             return "잘못된 전화번호 형식입니다."

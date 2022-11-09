@@ -9,7 +9,7 @@ import Foundation
 
 import RxCocoa
 
-class CertificationReceivingViewModel: CommonViewModel {
+final class CertificationReceivingViewModel: CommonViewModel {
     struct Input {
         let certificationText: ControlProperty<String?>
         let requstButtonTapped: ControlEvent<Void>
@@ -20,12 +20,26 @@ class CertificationReceivingViewModel: CommonViewModel {
         let requsetButtonTapped: ControlEvent<Void>
     }
     
-    func transform(input: Input) -> Output {
+    public func transform(input: Input) -> Output {
         let certificationText = input.certificationText
             .orEmpty
         
         let requsetButtonTapped = input.requstButtonTapped
         
         return Output(certificationText: certificationText, requsetButtonTapped: requsetButtonTapped)
+    }
+    
+    public func signInWithVerfiyCode(_ verficationCode: String, completion: @escaping (String) -> Void) {
+        guard let verificationID = UserManager.authVerificationID else { return }
+
+        FirebaseAPIService.shared.requsetSignIn(verificationID: verificationID, verificationCode: verficationCode) { response in
+            switch response {
+            case .success(let result):
+                completion(result.description)
+            case .failure(let error):
+                guard let error = error.errorDescription else { return }
+                completion(error)
+            }
+        }
     }
 }

@@ -65,7 +65,7 @@ final class CertificationReceivingViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let key = vc.mainView.certificationTextField.text else { return }
-                vc.setAuthVerificationID(key)
+                vc.signInWithVerfiyCode(key)
             }
             .disposed(by: disposeBag)
     }
@@ -86,23 +86,12 @@ final class CertificationReceivingViewController: BaseViewController {
         }
     }
     
-    private func setAuthVerificationID(_ verificationCode: String) {
+    private func signInWithVerfiyCode(_ verficationCode: String) {
+        guard let verificationID = UserManager.authVerificationID else { return }
         mainView.requestButton.isEnabled = false
 
-        guard let verificationID = UserManager.authVerificationID else { return }
-        
-        let credential = PhoneAuthProvider.provider().credential(
-          withVerificationID: verificationID,
-          verificationCode: verificationCode
-        )
-        
-        Auth.auth().signIn(with: credential) { authResult, error in
-            if let error = error {
-                print("error:: \(error)")
-                self.view.makeToast("Error", position: .center)
-            } else {
-                self.view.makeToast("Success", position: .center)
-            }
+        viewModel.signInWithVerfiyCode(verificationID) { result in
+            self.view.makeToast(result, position: .center)
         }
         
         mainView.requestButton.isEnabled = true

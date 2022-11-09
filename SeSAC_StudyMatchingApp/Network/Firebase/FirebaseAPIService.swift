@@ -33,4 +33,31 @@ final class FirebaseAPIService {
                 }
             }
     }
+    
+    public func requsetSignIn(verificationID: String, verificationCode: String, completion: @escaping (Result<AuthDataResult, CertificationError>) -> Void) {
+        let credential = PhoneAuthProvider.provider().credential(
+          withVerificationID: verificationID,
+          verificationCode: verificationCode
+        )
+        
+        Auth.auth().signIn(with: credential) { authResult, error in
+            if let error = error {
+                let errorCode = (error as NSError).code
+                
+                switch errorCode {
+                default:
+                    completion(.failure(.etcError))
+                }
+            } else {
+                guard let result = authResult else {
+                    completion(.failure(.etcError))
+                    return
+                    
+                }
+                
+                completion(.success(result))
+            }
+        }
+
+    }
 }
