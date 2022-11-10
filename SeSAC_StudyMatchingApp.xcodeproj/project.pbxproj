@@ -52,6 +52,8 @@
 		859921FC291C01D1007F96A6 /* SesacAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921FB291C01D1007F96A6 /* SesacAPIService.swift */; };
 		859921FE291C0459007F96A6 /* SesacAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921FD291C0459007F96A6 /* SesacAPIRouter.swift */; };
 		85992202291C0B03007F96A6 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992201291C0B03007F96A6 /* LoginError.swift */; };
+		85992208291CB01C007F96A6 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992207291CB01C007F96A6 /* NicknameView.swift */; };
+		8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992209291CB0A7007F96A6 /* NicknameViewController.swift */; };
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
@@ -102,6 +104,8 @@
 		859921FB291C01D1007F96A6 /* SesacAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIService.swift; sourceTree = "<group>"; };
 		859921FD291C0459007F96A6 /* SesacAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIRouter.swift; sourceTree = "<group>"; };
 		85992201291C0B03007F96A6 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		85992207291CB01C007F96A6 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
+		85992209291CB0A7007F96A6 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
 		85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewModel.swift; sourceTree = "<group>"; };
@@ -181,8 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				85D341C2291A33CF00F27A78 /* Utils */,
+				85992203291CAFA3007F96A6 /* Signup */,
 				85350A5D2918CA9E00C70515 /* Common */,
-				85350AAE2919422B00C70515 /* Configure */,
+				85350AAE2919422B00C70515 /* Certification */,
 				85350A542918C7E100C70515 /* Onboarding */,
 			);
 			path = Presentation;
@@ -372,13 +377,13 @@
 			path = ViewStyle;
 			sourceTree = "<group>";
 		};
-		85350AAE2919422B00C70515 /* Configure */ = {
+		85350AAE2919422B00C70515 /* Certification */ = {
 			isa = PBXGroup;
 			children = (
 				85350AB0291943FF00C70515 /* CertificationReceiving */,
 				85350A93291911F400C70515 /* CertificationRequest */,
 			);
-			path = Configure;
+			path = Certification;
 			sourceTree = "<group>";
 		};
 		85350AB0291943FF00C70515 /* CertificationReceiving */ = {
@@ -463,6 +468,39 @@
 				859921FD291C0459007F96A6 /* SesacAPIRouter.swift */,
 			);
 			path = APIModel;
+			sourceTree = "<group>";
+		};
+		85992203291CAFA3007F96A6 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				85992206291CAFDD007F96A6 /* Nickname */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		85992204291CAFCB007F96A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85992207291CB01C007F96A6 /* NicknameView.swift */,
+				85992209291CB0A7007F96A6 /* NicknameViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85992205291CAFD0007F96A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		85992206291CAFDD007F96A6 /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				85992205291CAFD0007F96A6 /* ViewModel */,
+				85992204291CAFCB007F96A6 /* View */,
+			);
+			path = Nickname;
 			sourceTree = "<group>";
 		};
 		85D341C2291A33CF00F27A78 /* Utils */ = {
@@ -583,6 +621,7 @@
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
 				859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */,
+				8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */,
 				859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */,
 				85350AA8291937EF00C70515 /* CertificationRequestViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
@@ -597,6 +636,7 @@
 				859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */,
 				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
 				85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */,
+				85992208291CB01C007F96A6 /* NicknameView.swift in Sources */,
 				85350A862918F70500C70515 /* UIColor+Extension.swift in Sources */,
 				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
