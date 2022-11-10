@@ -35,6 +35,8 @@ final class BirthViewController: BaseViewController {
                 if vc.viewModel.calculateAge(date: targetDate) {
                     UserManager.birth = targetDate
                     
+                    let nextVC = EmailViewController()
+                    vc.transViewController(ViewController: nextVC, type: .push)
                 } else {
                     vc.view.makeToast(SignupMents.ageError.rawValue, position: .center)
                 }
