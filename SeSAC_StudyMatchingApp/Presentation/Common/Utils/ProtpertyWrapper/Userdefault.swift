@@ -45,7 +45,7 @@ class UserManager {
     static var nickname: String?
     
     @UserDefault(key: "birth", defaultValue: nil)
-    static var birth: Date?
+    static var birth: String?
     
     @UserDefault(key: "email", defaultValue: nil)
     static var email: String?

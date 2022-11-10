@@ -40,4 +40,10 @@ final class BirthViewModel: CommonViewModel {
         let maxDate = calendar.date(byAdding: components, to: currentDate)!
         return date.dateCompare(fromDate: maxDate)
     }
+    
+    func formatDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date) + "T00:00:00.000Z"
+    }
 }

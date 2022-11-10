@@ -33,7 +33,7 @@ final class BirthViewController: BaseViewController {
             .bind { (vc, _) in
                 let targetDate = vc.mainView.datePicker.date
                 if vc.viewModel.calculateAge(date: targetDate) {
-                    UserManager.birth = targetDate
+                    UserManager.birth = vc.viewModel.formatDate(date: targetDate)
                     
                     let nextVC = EmailViewController()
                     vc.transViewController(ViewController: nextVC, type: .push)
