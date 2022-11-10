@@ -55,8 +55,9 @@ final class CertificationRequestViewModel: CommonViewModel {
     
     public func requsetPhoneAuth(_ phoneNumber: String, completion: @escaping (String) -> Void) {
         let phoneNum = changePhoneNumberFomat(phoneNumber)
-        UserManager.phoneNumber = phoneNum
         var valid = CertificationRequestMents.validFormat.rawValue
+        
+        savePhoneNumberFormatForRequset(phoneNumber: phoneNumber)
         
         FirebaseAPIService.shared.requsetPhoneAuth(phoneNum) { response in
             switch response {
@@ -73,5 +74,11 @@ final class CertificationRequestViewModel: CommonViewModel {
     private func changePhoneNumberFomat(_ phoneNumber: String) -> String {
         let phoneNum = Array(phoneNumber).dropFirst()
         return "+82" + " " + String(phoneNum)
+    }
+    
+    private func savePhoneNumberFormatForRequset(phoneNumber: String) {
+        let phoneNumberArray = phoneNumber.components(separatedBy: "-").map { String($0) }
+        let changedPhoneNumber: String = String("+82" + phoneNumberArray.joined().dropFirst())
+        UserManager.phoneNumber = changedPhoneNumber
     }
 }
