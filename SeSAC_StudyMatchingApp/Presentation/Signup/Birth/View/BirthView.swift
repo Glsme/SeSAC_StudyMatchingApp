@@ -106,7 +106,7 @@ final class BirthView: UserConfigureView {
         
         yearTextField.snp.makeConstraints { make in
             make.width.equalTo(requestButton.snp.width).multipliedBy(0.21)
-            make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(16)
+            make.trailing.equalTo(yearLabel.snp.leading).offset(-4)
             make.height.equalTo(41) // TextField = 40, Line = 1
             make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.75)
         }
@@ -114,7 +114,7 @@ final class BirthView: UserConfigureView {
         yearLabel.snp.makeConstraints { make in
             make.width.equalTo(30)
             make.centerY.equalTo(yearTextField.snp.centerY)
-            make.leading.equalTo(yearTextField.snp.trailing).offset(4)
+            make.trailing.equalTo(monthTextField.snp.leading).offset(-20)
         }
         
         monthTextField.snp.makeConstraints { make in
@@ -132,7 +132,7 @@ final class BirthView: UserConfigureView {
         
         dayTextField.snp.makeConstraints { make in
             make.width.equalTo(requestButton.snp.width).multipliedBy(0.21)
-            make.trailing.equalTo(dayLabel.snp.leading).offset(-4)
+            make.leading.equalTo(monthLabel.snp.trailing).offset(20)
             make.height.equalTo(41) // TextField = 40, Line = 1
             make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.75)
         }
@@ -140,7 +140,7 @@ final class BirthView: UserConfigureView {
         dayLabel.snp.makeConstraints { make in
             make.width.equalTo(30)
             make.centerY.equalTo(dayTextField.snp.centerY)
-            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).offset(-16)
+            make.leading.equalTo(dayTextField.snp.trailing).offset(4)
         }
         
         datePicker.snp.makeConstraints { make in

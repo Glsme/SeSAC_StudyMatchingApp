@@ -31,8 +31,10 @@ final class BirthViewController: BaseViewController {
         output.nextButtonTapped
             .withUnretained(self)
             .bind { (vc, _) in
-                if vc.viewModel.calculateAge(date: vc.mainView.datePicker.date) {
-                    print("success")
+                let targetDate = vc.mainView.datePicker.date
+                if vc.viewModel.calculateAge(date: targetDate) {
+                    UserManager.birth = targetDate
+                    
                 } else {
                     vc.view.makeToast(SignupMents.ageError.rawValue, position: .center)
                 }

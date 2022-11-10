@@ -60,6 +60,9 @@
 		85992217291CD6B0007F96A6 /* BirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992216291CD6B0007F96A6 /* BirthView.swift */; };
 		85992219291CD6B8007F96A6 /* BirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992218291CD6B8007F96A6 /* BirthViewController.swift */; };
 		8599221B291D1BBA007F96A6 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599221A291D1BBA007F96A6 /* Date+Extension.swift */; };
+		85992220291D1ED1007F96A6 /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599221F291D1ED1007F96A6 /* EmailViewModel.swift */; };
+		85992222291D1EDB007F96A6 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992221291D1EDB007F96A6 /* EmailView.swift */; };
+		85992224291D1EE7007F96A6 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992223291D1EE7007F96A6 /* EmailViewController.swift */; };
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
@@ -118,6 +121,9 @@
 		85992216291CD6B0007F96A6 /* BirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthView.swift; sourceTree = "<group>"; };
 		85992218291CD6B8007F96A6 /* BirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewController.swift; sourceTree = "<group>"; };
 		8599221A291D1BBA007F96A6 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		8599221F291D1ED1007F96A6 /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
+		85992221291D1EDB007F96A6 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		85992223291D1EE7007F96A6 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
 		85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewModel.swift; sourceTree = "<group>"; };
@@ -486,6 +492,7 @@
 		85992203291CAFA3007F96A6 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
+				8599221C291D1EAE007F96A6 /* Email */,
 				85992211291CD5FE007F96A6 /* Birth */,
 				85992206291CAFDD007F96A6 /* Nickname */,
 			);
@@ -550,6 +557,32 @@
 				85992218291CD6B8007F96A6 /* BirthViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8599221C291D1EAE007F96A6 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				8599221E291D1EC5007F96A6 /* ViewModel */,
+				8599221D291D1EBE007F96A6 /* View */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		8599221D291D1EBE007F96A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85992221291D1EDB007F96A6 /* EmailView.swift */,
+				85992223291D1EE7007F96A6 /* EmailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8599221E291D1EC5007F96A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8599221F291D1ED1007F96A6 /* EmailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		85D341C2291A33CF00F27A78 /* Utils */ = {
@@ -674,6 +707,7 @@
 				859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */,
 				8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */,
 				8599220D291CB1FA007F96A6 /* BlackHighlightTextField.swift in Sources */,
+				85992222291D1EDB007F96A6 /* EmailView.swift in Sources */,
 				859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */,
 				85350AA8291937EF00C70515 /* CertificationRequestViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
@@ -684,6 +718,7 @@
 				85350AA0291924FA00C70515 /* BaseButton.swift in Sources */,
 				85350A9E291924B500C70515 /* GreenBgButton.swift in Sources */,
 				85350A622918CB0600C70515 /* BaseView.swift in Sources */,
+				85992224291D1EE7007F96A6 /* EmailViewController.swift in Sources */,
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,
 				85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */,
 				859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */,
@@ -696,6 +731,7 @@
 				85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */,
 				85992219291CD6B8007F96A6 /* BirthViewController.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
+				85992220291D1ED1007F96A6 /* EmailViewModel.swift in Sources */,
 				85350A8B2918FCCC00C70515 /* Ments.swift in Sources */,
 				85992202291C0B03007F96A6 /* LoginError.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,

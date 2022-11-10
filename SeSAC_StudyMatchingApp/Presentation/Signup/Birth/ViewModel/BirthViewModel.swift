@@ -30,12 +30,13 @@ final class BirthViewModel: CommonViewModel {
     }
     
     func calculateAge(date: Date) -> Bool {
+        let age: Int = -17
         let calendar = Calendar(identifier: .gregorian)
         let currentDate = Date()
         var components = DateComponents()
         components.calendar = calendar
         
-        components.year = -17
+        components.year = age
         let maxDate = calendar.date(byAdding: components, to: currentDate)!
         return date.dateCompare(fromDate: maxDate)
     }
