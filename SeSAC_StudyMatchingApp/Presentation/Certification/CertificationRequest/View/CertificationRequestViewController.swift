@@ -26,7 +26,7 @@ class CertificationRequestViewController: BaseViewController {
     }
     
     override func bindData() {
-        let input = CertificationRequestViewModel.Input(certificationText: mainView.certificationTextField.rx.text, requstButtonTapped: mainView.requestButton.rx.tap)
+        let input = CertificationRequestViewModel.Input(certificationText: mainView.phoneNumberTextField.textField.rx.text, requstButtonTapped: mainView.requestButton.rx.tap)
         let output = viewModel.transform(input: input)
         
         view.rx.tapGesture()
@@ -37,17 +37,17 @@ class CertificationRequestViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.certificationTextField.rx.controlEvent(.editingDidBegin)
+        mainView.phoneNumberTextField.textField.rx.controlEvent(.editingDidBegin)
             .withUnretained(self)
             .bind { (vc, _) in
-                vc.mainView.line.backgroundColor = .black
+                vc.mainView.phoneNumberTextField.line.backgroundColor = .black
             }
             .disposed(by: disposeBag)
         
-        mainView.certificationTextField.rx.controlEvent(.editingDidEnd)
+        mainView.phoneNumberTextField.textField.rx.controlEvent(.editingDidEnd)
             .withUnretained(self)
             .bind { (vc, _) in
-                vc.mainView.line.backgroundColor = .sesacGray3
+                vc.mainView.phoneNumberTextField.line.backgroundColor = .sesacGray3
             }
             .disposed(by: disposeBag)
         
@@ -55,12 +55,12 @@ class CertificationRequestViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, value) in
                 if value.count <= 12 {
-                    vc.mainView.certificationTextField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXX-XXXX", phone: value)
+                    vc.mainView.phoneNumberTextField.textField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXX-XXXX", phone: value)
                 } else {
-                    vc.mainView.certificationTextField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXXX-XXXX", phone: value)
+                    vc.mainView.phoneNumberTextField.textField.text = vc.viewModel.changePhoneNumformat(with: "XXX-XXXX-XXXX", phone: value)
                 }
                 
-                guard let text = vc.mainView.certificationTextField.text else { return }
+                guard let text = vc.mainView.phoneNumberTextField.textField.text else { return }
                 
                 if text.count >= 12 {
                     vc.mainView.requestButton.setEnabledButton(true)
@@ -73,7 +73,7 @@ class CertificationRequestViewController: BaseViewController {
         output.requsetButtonTapped
             .withUnretained(self)
             .bind { (vc, _) in
-                guard let text = vc.mainView.certificationTextField.text else { return }
+                guard let text = vc.mainView.phoneNumberTextField.textField.text else { return }
                 guard text.count > 12 else {
                     self.view.makeToast(CertificationError.InvalidFormat.errorDescription, position: .center)
                     return

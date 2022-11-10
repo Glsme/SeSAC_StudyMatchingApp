@@ -54,6 +54,7 @@
 		85992202291C0B03007F96A6 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992201291C0B03007F96A6 /* LoginError.swift */; };
 		85992208291CB01C007F96A6 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992207291CB01C007F96A6 /* NicknameView.swift */; };
 		8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992209291CB0A7007F96A6 /* NicknameViewController.swift */; };
+		8599220D291CB1FA007F96A6 /* BlackHighlightTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599220C291CB1FA007F96A6 /* BlackHighlightTextField.swift */; };
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
@@ -106,6 +107,7 @@
 		85992201291C0B03007F96A6 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		85992207291CB01C007F96A6 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		85992209291CB0A7007F96A6 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		8599220C291CB1FA007F96A6 /* BlackHighlightTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackHighlightTextField.swift; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
 		85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewModel.swift; sourceTree = "<group>"; };
@@ -184,7 +186,6 @@
 		85350A532918C60000C70515 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				85D341C2291A33CF00F27A78 /* Utils */,
 				85992203291CAFA3007F96A6 /* Signup */,
 				85350A5D2918CA9E00C70515 /* Common */,
 				85350AAE2919422B00C70515 /* Certification */,
@@ -214,7 +215,7 @@
 		85350A5D2918CA9E00C70515 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				85350A842918F6F400C70515 /* Extension */,
+				85D341C2291A33CF00F27A78 /* Utils */,
 				85350A602918CAF100C70515 /* Style */,
 				85350A5F2918CADA00C70515 /* ViewModel */,
 				85350A5E2918CAD100C70515 /* Base */,
@@ -243,6 +244,7 @@
 		85350A602918CAF100C70515 /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				8599220B291CB1E3007F96A6 /* TextFieldStyle */,
 				85350AA929193B7B00C70515 /* ViewStyle */,
 				85350AA129192A8600C70515 /* Line */,
 				85350A9C2919249100C70515 /* ButtonStyle */,
@@ -503,9 +505,18 @@
 			path = Nickname;
 			sourceTree = "<group>";
 		};
+		8599220B291CB1E3007F96A6 /* TextFieldStyle */ = {
+			isa = PBXGroup;
+			children = (
+				8599220C291CB1FA007F96A6 /* BlackHighlightTextField.swift */,
+			);
+			path = TextFieldStyle;
+			sourceTree = "<group>";
+		};
 		85D341C2291A33CF00F27A78 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				85350A842918F6F400C70515 /* Extension */,
 				859921E5291A7D44007F96A6 /* Validation */,
 				859921E2291A787D007F96A6 /* ProtpertyWrapper */,
 				85D341C3291A33D700F27A78 /* Errors */,
@@ -622,6 +633,7 @@
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
 				859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */,
 				8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */,
+				8599220D291CB1FA007F96A6 /* BlackHighlightTextField.swift in Sources */,
 				859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */,
 				85350AA8291937EF00C70515 /* CertificationRequestViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
