@@ -74,7 +74,7 @@ class CertificationRequestViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let text = vc.mainView.phoneNumberTextField.textField.text else { return }
-                guard text.count > 12 else {
+                guard text.count > 11 else {
                     self.view.makeToast(CertificationError.InvalidFormat.errorDescription, position: .center)
                     return
                 }
