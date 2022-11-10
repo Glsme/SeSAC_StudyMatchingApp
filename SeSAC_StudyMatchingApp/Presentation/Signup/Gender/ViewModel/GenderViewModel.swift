@@ -29,4 +29,16 @@ class GenderViewModel: CommonViewModel {
         
         return Output(womanButtonTapped: womanButon, manButtonTapped: manButton, nextButtonTapped: nextButton)
     }
+    
+    func requsetSignup() {
+        let api = SesacAPIRouter.signupPost
+        SesacSignupAPIService.shared.requsetSesacLogin(router: api) { response in
+            switch response {
+            case .success(let success):
+                print(success)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

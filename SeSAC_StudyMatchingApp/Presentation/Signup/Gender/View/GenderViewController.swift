@@ -68,11 +68,18 @@ class GenderViewController: BaseViewController {
         output.nextButtonTapped
             .withUnretained(self)
             .bind { (vc, _) in
+                guard vc.mainView.manButton.backgroundColor == .sesacWhiteGreen || vc.mainView.womanButton.backgroundColor == .sesacWhiteGreen else {
+                    vc.view.makeToast("성별을 선택해 주세요", position: .center)
+                    return
+                }
+                
                 if vc.mainView.manButton.backgroundColor == .sesacWhiteGreen {
                     UserManager.gender = 1
-                } else if vc.mainView.womanButton.backgroundColor == .white {
+                } else if vc.mainView.womanButton.backgroundColor == .sesacWhiteGreen {
                     UserManager.gender = 0
                 }
+                
+                vc.viewModel.requsetSignup()
             }
             .disposed(by: disposeBag)
     }

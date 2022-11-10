@@ -146,7 +146,9 @@ final class CertificationReceivingViewController: BaseViewController {
                 self.viewModel.requsetLogin { result in
                     switch result {
                     case .success(let success):
-                        print(success)
+                        
+                        let nextVC = HomeViewController()
+                        self.transViewController(ViewController: nextVC, type: .presentFullscreen)
                     case .failure(let error):
                         guard let error = error as? LoginError else { return }
                         if error.rawValue == LoginError.unregisteredUser.rawValue {

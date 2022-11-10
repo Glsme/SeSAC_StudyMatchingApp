@@ -6,9 +6,11 @@
 //
 
 import Foundation
-import Alamofire
 
 enum LoginError: Int, Error {
+    case alreadySignup = 201
+    case cantUseNickname = 202
+    case firbaseTokenError = 401
     case unregisteredUser = 406
     case serverError = 500
     case clientError = 501
@@ -17,12 +19,18 @@ enum LoginError: Int, Error {
 extension LoginError {
     var errorDescription: String? {
         switch self {
+        case .alreadySignup:
+            return "alreadySignup"
+        case .cantUseNickname:
+            return "cantUseNickname"
+        case .firbaseTokenError:
+            return "firbaseTokenError"
         case .unregisteredUser:
-            return "move to Signup"
+            return "unregisteredUser"
         case .serverError:
-            return "server Error"
+            return "serverError"
         case .clientError:
-            return "client Error"
+            return "clientError"
         }
     }
 }

@@ -26,6 +26,9 @@ struct UserDefault<T> {
 }
 
 class UserManager {
+    @UserDefault(key: "fcmToken", defaultValue: nil)
+    static var fcmToken: String?
+    
     @UserDefault(key: "authVerificationID", defaultValue: nil)
     static var authVerificationID: String?
     
