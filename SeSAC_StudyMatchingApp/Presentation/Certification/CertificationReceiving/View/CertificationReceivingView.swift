@@ -10,14 +10,11 @@ import UIKit
 import SnapKit
 
 final class CertificationReceivingView: UserConfigureView {
-    lazy var certificationTextField: UITextField = {
-        let view = UITextField()
-        view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
-        view.keyboardType = .numberPad
+    lazy var certificationTextField: BlackHighlightTextField = {
+        let view = BlackHighlightTextField()
+        view.setStyle(font: UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14), keyboardType: .numberPad)
         return view
     }()
-    
-    lazy var line = TextFieldHighlightLine()
     
     lazy var retryButton: GreenBgButton = {
         let view = GreenBgButton()
@@ -42,14 +39,13 @@ final class CertificationReceivingView: UserConfigureView {
     override func configureUI() {
         super.configureUI()
         
-        [certificationTextField, line, retryButton, timerLabel].forEach {
+        [certificationTextField, retryButton, timerLabel].forEach {
             self.addSubview($0)
         }
         
         descriptionLabel.text = CertificationReceivingMents.description.rawValue
-        certificationTextField.placeholder = CertificationReceivingMents.placeholder.rawValue
+        certificationTextField.setPlaceHolder(CertificationReceivingMents.placeholder.rawValue)
         requestButton.setTitle(CertificationReceivingMents.startButtonText.rawValue, for: .normal)
-//        requestButton.setEnabledButton(true)
     }
     
     override func setConstraints() {
@@ -58,7 +54,7 @@ final class CertificationReceivingView: UserConfigureView {
         certificationTextField.snp.makeConstraints { make in
             make.width.equalTo(requestButton.snp.width).multipliedBy(0.78)
             make.leading.equalTo(requestButton.snp.leading)
-            make.height.equalTo(40)
+            make.height.equalTo(41) // TextField = 40, Line = 1
             make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.75)
         }
         
@@ -72,12 +68,6 @@ final class CertificationReceivingView: UserConfigureView {
         timerLabel.snp.makeConstraints { make in
             make.centerY.equalTo(certificationTextField.snp.centerY)
             make.trailing.equalTo(retryButton.snp.leading).offset(-20)
-        }
-        
-        line.snp.makeConstraints { make in
-            make.height.equalTo(1)
-            make.top.equalTo(certificationTextField.snp.bottom)
-            make.leading.trailing.equalTo(certificationTextField)
         }
     }
 }

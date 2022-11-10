@@ -34,7 +34,7 @@ class CertificationRequsetView: UserConfigureView {
         
         phoneNumberTextField.snp.makeConstraints { make in
             make.width.equalTo(requestButton.snp.width)
-            make.height.equalTo(40)
+            make.height.equalTo(41) // TextField = 40, Line = 1
             make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
             make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.75)
         }

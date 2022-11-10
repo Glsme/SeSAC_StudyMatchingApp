@@ -34,7 +34,7 @@ final class CertificationReceivingViewController: BaseViewController {
     }
     
     override func bindData() {
-        let input = CertificationReceivingViewModel.Input(certificationText: mainView.certificationTextField.rx.text, requstButtonTapped: mainView.requestButton.rx.tap, retryButtonTapped: mainView.retryButton.rx.tap)
+        let input = CertificationReceivingViewModel.Input(certificationText: mainView.certificationTextField.textField.rx.text, requstButtonTapped: mainView.requestButton.rx.tap, retryButtonTapped: mainView.retryButton.rx.tap)
         let output = viewModel.transform(input: input)
         
         resetAndGoTimer()
@@ -47,17 +47,17 @@ final class CertificationReceivingViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.certificationTextField.rx.controlEvent(.editingDidBegin)
+        mainView.certificationTextField.textField.rx.controlEvent(.editingDidBegin)
             .withUnretained(self)
             .bind { (vc, _) in
-                vc.mainView.line.backgroundColor = .black
+                vc.mainView.certificationTextField.line.backgroundColor = .black
             }
             .disposed(by: disposeBag)
         
-        mainView.certificationTextField.rx.controlEvent(.editingDidEnd)
+        mainView.certificationTextField.textField.rx.controlEvent(.editingDidEnd)
             .withUnretained(self)
             .bind { (vc, _) in
-                vc.mainView.line.backgroundColor = .sesacGray3
+                vc.mainView.certificationTextField.line.backgroundColor = .sesacGray3
             }
             .disposed(by: disposeBag)
         
@@ -72,7 +72,7 @@ final class CertificationReceivingViewController: BaseViewController {
         output.requsetButtonTapped
             .withUnretained(self)
             .bind { (vc, _) in
-                guard let key = vc.mainView.certificationTextField.text else { return }
+                guard let key = vc.mainView.certificationTextField.textField.text else { return }
                 vc.signInWithVerfiyCode(key)
             }
             .disposed(by: disposeBag)
@@ -116,7 +116,7 @@ final class CertificationReceivingViewController: BaseViewController {
     private func trimId(_ text: String) {
       if text.count > 6 {
         let index = text.index(text.startIndex, offsetBy: 6)
-          mainView.certificationTextField.text = String(text[..<index])
+          mainView.certificationTextField.textField.text = String(text[..<index])
       }
     }
 
