@@ -69,17 +69,15 @@ final class CertificationReceivingViewModel: CommonViewModel {
         }
     }
     
-    public func requsetLogin() {
+    public func requsetLogin(completion: @escaping (Result<UserData, Error>) -> Void) {
         let router = SesacAPIRouter.loginGet
         SesacSignupAPIService.shared.requsetSesacLogin(router: router) { response in
             switch response {
             case .success(let success):
                 print(success)
+                completion(.success(success))
             case .failure(let failure):
-                guard let loginError = failure as? LoginError else { return }
-                if loginError.rawValue == 406 {
-                    print("미가입 유저!!!!!!!!!!")
-                }
+                completion(.failure(failure))
             }
         }
     }

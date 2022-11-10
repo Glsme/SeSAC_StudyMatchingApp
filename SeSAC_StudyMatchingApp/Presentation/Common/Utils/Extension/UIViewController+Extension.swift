@@ -10,6 +10,7 @@ import UIKit
 extension UIViewController {
     enum Transition {
         case push
+        case pushWithoutAni
         case presentNavigation
         case presentFullScreenNavigation
         case present
@@ -18,6 +19,8 @@ extension UIViewController {
     
     func transViewController<T: UIViewController>(ViewController vc: T, type: Transition) {
         switch type {
+        case .pushWithoutAni:
+            self.navigationController?.pushViewController(vc, animated: false)
         case .push:
             self.navigationController?.pushViewController(vc, animated: true)
         case .present:

@@ -37,4 +37,10 @@ class UserManager {
     
     @UserDefault(key: "authVerificationToken", defaultValue: nil)
     static var authVerificationToken: String?
+    
+    @UserDefault(key: "nickname", defaultValue: nil)
+    static var nickname: String?
+    
+    @UserDefault(key: "birth", defaultValue: nil)
+    static var birth: Date?
 }

@@ -34,3 +34,10 @@ enum CertificationReceivingMents: String {
     case notSixNumber = "인증 번호 6자리를 입력해주세요"
     case timeOver = "토큰이 만료되었습니다.\n재전송 버튼을 눌러주세요."
 }
+
+//MARK: - Signup
+enum SignupMents: String {
+    case nicknameDescription = "닉네임을 입력해주세요"
+    case nicknamePlaceholder = "10자 이내로 입력"
+    case nextButton = "다음"
+}

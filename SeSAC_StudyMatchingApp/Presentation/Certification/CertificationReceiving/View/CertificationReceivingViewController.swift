@@ -143,7 +143,19 @@ final class CertificationReceivingViewController: BaseViewController {
             if UserManager.authVerificationID == nil {
                 self.view.makeToast(result, position: .center)
             } else {
-                self.viewModel.requsetLogin()
+                self.viewModel.requsetLogin { result in
+                    switch result {
+                    case .success(let success):
+                        print(success)
+                    case .failure(let error):
+                        guard let error = error as? LoginError else { return }
+                        if error.rawValue == LoginError.unregisteredUser.rawValue {
+                            print("미가입 유저!!!!")
+                            let nextVC = NicknameViewController()
+                            self.transViewController(ViewController: nextVC, type: .push)
+                        }
+                    }
+                }
             }
         }
         
