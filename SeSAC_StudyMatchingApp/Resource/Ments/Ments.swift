@@ -55,5 +55,4 @@ enum SignupMents: String {
     
     case genderMainDescription = "성별을 선택해 주세요"
     case genderSubSDescription = "새싹 찾기 기능을 이용하기 위해서 필요해요!"
-    
 }

@@ -29,12 +29,10 @@ class EmailViewController: BaseViewController {
     }
     
     override func bindData() {
-        let input = EmailViewModel.Input()
+        let input = EmailViewModel.Input(emailText: mainView.emailTextField.textField.rx.text, nextButtonTapped: mainView.requestButton.rx.tap)
         let output = viewModel.transform(input: input)
         
-        mainView.emailTextField.textField.rx.text
-            .orEmpty
-            .changed
+        output.emailText
             .withUnretained(self)
             .bind { (vc, value) in
                 if vc.viewModel.vaildEmail(value) {
@@ -45,7 +43,7 @@ class EmailViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.requestButton.rx.tap
+        output.nextButtonTapped
             .withUnretained(self)
             .bind { (vc, value) in
                 guard let text = vc.mainView.emailTextField.textField.text else { return }
