@@ -37,7 +37,12 @@ enum CertificationReceivingMents: String {
 
 //MARK: - Signup
 enum SignupMents: String {
-    case nicknameDescription = "닉네임을 입력해주세요"
+    case nicknameDescription = "닉네임을 입력해 주세요"
     case nicknamePlaceholder = "10자 이내로 입력"
     case nextButton = "다음"
+    case birthDescription = "생년월일을 알려주세요"
+    case emailMainDescription = "이메일을 입력해 주세요"
+    case emailSubDescription = "휴대폰 번호 변경 시 인증을 위해 사용해요"
+    case genderMainDescription = "성별을 선택해 주세요"
+    case genderSubSDescription = "새싹 찾기 기능을 이용하기 위해서 필요해요!"
 }
