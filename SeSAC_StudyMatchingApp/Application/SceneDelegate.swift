@@ -20,29 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         if UserManager.first {
-//            window?.rootViewController = setCurrentSignupPage()
-            window?.rootViewController = NicknameViewController()
+            let vc = CertificationRequestViewController()
+            window?.rootViewController = UINavigationController(rootViewController: vc)
         } else {
             window?.rootViewController = OnboardingViewController()
         }
         
         window?.makeKeyAndVisible()
-    }
-    
-    func setCurrentSignupPage() -> UINavigationController {
-        let certificationVC = CertificationRequestViewController()
-        let naviVC = UINavigationController(rootViewController: certificationVC)
-        
-        if UserManager.authVerificationToken != nil {
-            let nicknameVC = NicknameViewController()
-            naviVC.transViewController(ViewController: nicknameVC, type: .pushWithoutAni)
-        }
-        
-        if UserManager.nickname != nil {
-            
-        }
-        
-        return naviVC
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

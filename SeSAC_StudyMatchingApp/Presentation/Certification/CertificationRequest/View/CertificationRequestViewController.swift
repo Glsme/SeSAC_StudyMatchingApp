@@ -23,6 +23,8 @@ class CertificationRequestViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        goToSaveLastViewController()
     }
     
     override func bindData() {
@@ -96,5 +98,14 @@ class CertificationRequestViewController: BaseViewController {
                 
             }
             .disposed(by: disposeBag)
+    }
+}
+
+extension CertificationRequestViewController {
+    func goToSaveLastViewController() {
+        if UserManager.certificationCode == LoginError.unregisteredUser.rawValue {
+            let nicknameVC = NicknameViewController()
+            self.transViewController(ViewController: nicknameVC, type: .pushWithoutAni)
+        }
     }
 }

@@ -43,4 +43,7 @@ class UserManager {
     
     @UserDefault(key: "birth", defaultValue: nil)
     static var birth: Date?
+    
+    @UserDefault(key: "certificationCode", defaultValue: nil)
+    static var certificationCode: Int?
 }

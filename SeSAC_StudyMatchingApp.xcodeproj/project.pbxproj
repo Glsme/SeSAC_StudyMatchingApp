@@ -56,6 +56,10 @@
 		8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992209291CB0A7007F96A6 /* NicknameViewController.swift */; };
 		8599220D291CB1FA007F96A6 /* BlackHighlightTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599220C291CB1FA007F96A6 /* BlackHighlightTextField.swift */; };
 		85992210291CCCD3007F96A6 /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599220F291CCCD3007F96A6 /* NicknameViewModel.swift */; };
+		85992215291CD686007F96A6 /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992214291CD686007F96A6 /* BirthViewModel.swift */; };
+		85992217291CD6B0007F96A6 /* BirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992216291CD6B0007F96A6 /* BirthView.swift */; };
+		85992219291CD6B8007F96A6 /* BirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85992218291CD6B8007F96A6 /* BirthViewController.swift */; };
+		8599221B291D1BBA007F96A6 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599221A291D1BBA007F96A6 /* Date+Extension.swift */; };
 		85D341B229195E8800F27A78 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B129195E8800F27A78 /* FirebaseAnalytics */; };
 		85D341B429195E8800F27A78 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341B329195E8800F27A78 /* FirebaseAuth */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
@@ -110,6 +114,10 @@
 		85992209291CB0A7007F96A6 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		8599220C291CB1FA007F96A6 /* BlackHighlightTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackHighlightTextField.swift; sourceTree = "<group>"; };
 		8599220F291CCCD3007F96A6 /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
+		85992214291CD686007F96A6 /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
+		85992216291CD6B0007F96A6 /* BirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthView.swift; sourceTree = "<group>"; };
+		85992218291CD6B8007F96A6 /* BirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewController.swift; sourceTree = "<group>"; };
+		8599221A291D1BBA007F96A6 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
 		85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewModel.swift; sourceTree = "<group>"; };
@@ -319,6 +327,7 @@
 			children = (
 				85350A852918F70500C70515 /* UIColor+Extension.swift */,
 				859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */,
+				8599221A291D1BBA007F96A6 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -477,6 +486,7 @@
 		85992203291CAFA3007F96A6 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
+				85992211291CD5FE007F96A6 /* Birth */,
 				85992206291CAFDD007F96A6 /* Nickname */,
 			);
 			path = Signup;
@@ -514,6 +524,32 @@
 				8599220C291CB1FA007F96A6 /* BlackHighlightTextField.swift */,
 			);
 			path = TextFieldStyle;
+			sourceTree = "<group>";
+		};
+		85992211291CD5FE007F96A6 /* Birth */ = {
+			isa = PBXGroup;
+			children = (
+				85992212291CD667007F96A6 /* ViewModel */,
+				85992213291CD676007F96A6 /* View */,
+			);
+			path = Birth;
+			sourceTree = "<group>";
+		};
+		85992212291CD667007F96A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				85992214291CD686007F96A6 /* BirthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		85992213291CD676007F96A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85992216291CD6B0007F96A6 /* BirthView.swift */,
+				85992218291CD6B8007F96A6 /* BirthViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		85D341C2291A33CF00F27A78 /* Utils */ = {
@@ -630,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85D341BE291A2A8C00F27A78 /* CertificationReceivingViewModel.swift in Sources */,
+				8599221B291D1BBA007F96A6 /* Date+Extension.swift in Sources */,
 				859921E4291A788F007F96A6 /* Userdefault.swift in Sources */,
 				85350A802918F24D00C70515 /* Fonts.swift in Sources */,
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
@@ -657,6 +694,7 @@
 				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
 				85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */,
+				85992219291CD6B8007F96A6 /* BirthViewController.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85350A8B2918FCCC00C70515 /* Ments.swift in Sources */,
 				85992202291C0B03007F96A6 /* LoginError.swift in Sources */,
@@ -666,6 +704,8 @@
 				859921F8291C0086007F96A6 /* UserData.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
+				85992215291CD686007F96A6 /* BirthViewModel.swift in Sources */,
+				85992217291CD6B0007F96A6 /* BirthView.swift in Sources */,
 				859921EB291AB490007F96A6 /* FirebaseAPIService.swift in Sources */,
 				85350AA329192A9300C70515 /* TextFieldHighlightLine.swift in Sources */,
 				85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */,

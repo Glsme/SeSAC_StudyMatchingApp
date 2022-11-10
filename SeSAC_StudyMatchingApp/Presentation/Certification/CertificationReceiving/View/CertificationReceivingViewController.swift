@@ -151,6 +151,7 @@ final class CertificationReceivingViewController: BaseViewController {
                         guard let error = error as? LoginError else { return }
                         if error.rawValue == LoginError.unregisteredUser.rawValue {
                             print("미가입 유저!!!!")
+                            UserManager.certificationCode = error.rawValue
                             let nextVC = NicknameViewController()
                             self.transViewController(ViewController: nextVC, type: .push)
                         }

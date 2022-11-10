@@ -45,4 +45,5 @@ enum SignupMents: String {
     case emailSubDescription = "휴대폰 번호 변경 시 인증을 위해 사용해요"
     case genderMainDescription = "성별을 선택해 주세요"
     case genderSubSDescription = "새싹 찾기 기능을 이용하기 위해서 필요해요!"
+    case ageError = "새싹스터디는 만 17세 이상만 사용할 수 있습니다."
 }

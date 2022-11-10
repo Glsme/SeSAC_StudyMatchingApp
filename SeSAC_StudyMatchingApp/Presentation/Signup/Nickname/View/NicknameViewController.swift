@@ -24,6 +24,12 @@ final class NicknameViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    override func configureUI() {
+        guard let text = UserManager.nickname else { return }
+        mainView.nicknameTextField.textField.text = text
+        mainView.requestButton.setEnabledButton(true)
+    }
+    
     override func bindData() {
         let input = NicknameViewModel.Input(nicknameText: mainView.nicknameTextField.textField.rx.text, nextButtonTapped: mainView.requestButton.rx.tap)
         let output = viewModel.transform(input: input)
@@ -71,6 +77,8 @@ final class NicknameViewController: BaseViewController {
                     vc.mainView.makeToast("닉네임을 입력해주세요", position: .center)
                 } else {
                     UserManager.nickname = text
+                    let nextVC = BirthViewController()
+                    vc.transViewController(ViewController: nextVC, type: .push)
                 }
             }
             .disposed(by: disposeBag)
