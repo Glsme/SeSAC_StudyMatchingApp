@@ -7,16 +7,26 @@
 
 import Foundation
 
+import RxCocoa
+
 class GenderViewModel: CommonViewModel {
     struct Input {
-        
+        let womanButtonTapped: ControlEvent<Void>
+        let manButtonTapped: ControlEvent<Void>
+        let nextButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
-        
+        let womanButtonTapped: ControlEvent<Void>
+        let manButtonTapped: ControlEvent<Void>
+        let nextButtonTapped: ControlEvent<Void>
     }
     
     func transform(input: Input) -> Output {
-        return Output()
+        let womanButon = input.womanButtonTapped
+        let manButton = input.manButtonTapped
+        let nextButton = input.nextButtonTapped
+        
+        return Output(womanButtonTapped: womanButon, manButtonTapped: manButton, nextButtonTapped: nextButton)
     }
 }

@@ -26,10 +26,10 @@ class GenderViewController: BaseViewController {
     }
     
     override func bindData() {
-        let input = GenderViewModel.Input()
+        let input = GenderViewModel.Input(womanButtonTapped: mainView.womanButton.rx.tap, manButtonTapped: mainView.manButton.rx.tap, nextButtonTapped: mainView.requestButton.rx.tap)
         let output = viewModel.transform(input: input)
         
-        mainView.manButton.rx.tap
+        output.manButtonTapped
             .withUnretained(self)
             .bind { (vc, _) in
                 if vc.mainView.manButton.backgroundColor == .sesacWhiteGreen {
@@ -47,7 +47,7 @@ class GenderViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.womanButton.rx.tap
+        output.womanButtonTapped
             .withUnretained(self)
             .bind { (vc, _) in
                 if vc.mainView.womanButton.backgroundColor == .sesacWhiteGreen {
@@ -61,6 +61,17 @@ class GenderViewController: BaseViewController {
                     vc.mainView.womanButton.layer.borderColor = UIColor.sesacWhiteGreen.cgColor
                     vc.mainView.manButton.backgroundColor = .white
                     vc.mainView.manButton.layer.borderColor = UIColor.sesacGray4.cgColor
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.nextButtonTapped
+            .withUnretained(self)
+            .bind { (vc, _) in
+                if vc.mainView.manButton.backgroundColor == .sesacWhiteGreen {
+                    UserManager.gender = 1
+                } else if vc.mainView.womanButton.backgroundColor == .white {
+                    UserManager.gender = 0
                 }
             }
             .disposed(by: disposeBag)

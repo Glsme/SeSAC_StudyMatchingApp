@@ -43,7 +43,7 @@ final class BirthViewModel: CommonViewModel {
     
     func formatDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date) + "T00:00:00.000Z"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        return dateFormatter.string(from: date)
     }
 }

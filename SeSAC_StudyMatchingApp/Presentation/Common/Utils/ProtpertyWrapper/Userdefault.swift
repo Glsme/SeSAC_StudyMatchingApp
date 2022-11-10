@@ -50,5 +50,6 @@ class UserManager {
     @UserDefault(key: "email", defaultValue: nil)
     static var email: String?
     
-    
+    @UserDefault(key: "gender", defaultValue: nil)
+    static var gender: Int?
 }
