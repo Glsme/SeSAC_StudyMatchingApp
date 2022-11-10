@@ -11,7 +11,7 @@ class EmailView: UserConfigureView {
     lazy var emailTextField: BlackHighlightTextField = {
         let view = BlackHighlightTextField()
         view.setPlaceHolder(SignupMents.emailPlaceHolder.rawValue)
-        view.setStyle(font: UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14), keyboardType: .default)
+        view.setStyle(font: UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14), keyboardType: .emailAddress)
         return view
     }()
     

@@ -38,12 +38,17 @@ class UserManager {
     @UserDefault(key: "authVerificationToken", defaultValue: nil)
     static var authVerificationToken: String?
     
+    @UserDefault(key: "certificationCode", defaultValue: nil)
+    static var certificationCode: Int?
+    
     @UserDefault(key: "nickname", defaultValue: nil)
     static var nickname: String?
     
     @UserDefault(key: "birth", defaultValue: nil)
     static var birth: Date?
     
-    @UserDefault(key: "certificationCode", defaultValue: nil)
-    static var certificationCode: Int?
+    @UserDefault(key: "email", defaultValue: nil)
+    static var email: String?
+    
+    
 }

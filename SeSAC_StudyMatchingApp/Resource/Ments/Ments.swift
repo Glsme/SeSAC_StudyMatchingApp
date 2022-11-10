@@ -51,6 +51,7 @@ enum SignupMents: String {
     case emailMainDescription = "이메일을 입력해 주세요"
     case emailSubDescription = "휴대폰 번호 변경 시 인증을 위해 사용해요"
     case emailPlaceHolder = "SeSAC@email.com"
+    case InvalidEmailForm = "이메일 형식이 올바르지 않습니다."
     
     case genderMainDescription = "성별을 선택해 주세요"
     case genderSubSDescription = "새싹 찾기 기능을 이용하기 위해서 필요해요!"

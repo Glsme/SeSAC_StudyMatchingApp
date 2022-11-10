@@ -19,4 +19,9 @@ class EmailViewModel: CommonViewModel {
     func transform(input: Input) -> Output {
         return Output()
     }
+    
+    public func vaildEmail(_ email: String) -> Bool {
+        let regex = RegexValidation.email.rawValue
+        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: email)
+    }
 }
