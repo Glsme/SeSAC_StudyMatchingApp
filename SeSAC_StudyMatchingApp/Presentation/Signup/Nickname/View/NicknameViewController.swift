@@ -28,6 +28,7 @@ final class NicknameViewController: BaseViewController {
         guard let text = UserManager.nickname else { return }
         mainView.nicknameTextField.textField.text = text
         mainView.requestButton.setEnabledButton(true)
+        mainView.nicknameTextField.textField.becomeFirstResponder()
     }
     
     override func bindData() {

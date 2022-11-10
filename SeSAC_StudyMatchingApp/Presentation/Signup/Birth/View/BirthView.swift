@@ -63,7 +63,6 @@ final class BirthView: UserConfigureView {
     
     let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
-        datePicker.backgroundColor = .sesacGray4
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.locale = Locale(identifier: "ko_KR")
@@ -99,6 +98,7 @@ final class BirthView: UserConfigureView {
         descriptionLabel.text = SignupMents.birthDescription.rawValue
         requestButton.setTitle(SignupMents.nextButton.rawValue, for: .normal)
         datePicker.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
+        datePicker.backgroundColor = .sesacGray4
     }
     
     override func setConstraints() {
