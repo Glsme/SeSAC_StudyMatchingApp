@@ -65,8 +65,6 @@ final class NicknameViewController: BaseViewController {
                 } else {
                     vc.mainView.requestButton.setEnabledButton(false)
                 }
-                
-                vc.trimId(value)
             }
             .disposed(by: disposeBag)
         
@@ -74,8 +72,8 @@ final class NicknameViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let text = vc.mainView.nicknameTextField.textField.text else { return }
-                if text.isEmpty {
-                    vc.mainView.makeToast("닉네임을 입력해주세요", position: .center)
+                if text.isEmpty || text.count > 10 {
+                    vc.mainView.makeToast(SignupMents.nicknameError.rawValue, position: .center)
                 } else {
                     UserManager.nickname = text
                     let nextVC = BirthViewController()
@@ -83,12 +81,5 @@ final class NicknameViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-    }
-    
-    private func trimId(_ text: String) {
-      if text.count > 10 {
-        let index = text.index(text.startIndex, offsetBy: 10)
-          mainView.nicknameTextField.textField.text = String(text[..<index])
-      }
     }
 }
