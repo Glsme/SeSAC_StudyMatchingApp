@@ -36,19 +36,27 @@ enum SesacAPIRouter: URLRequestConvertible {
             guard let idToken = UserManager.authVerificationToken else { return ["idtoken": ""] }
             return ["idtoken": idToken,
                     "Content-Type": "application/x-www-form-urlencoded",
-                    "Accept": "application/json"]
+                    "accept": "application/json"]
         case .signupPost:
             guard let idToken = UserManager.authVerificationToken else { return ["": ""] }
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "accept": "*/*",
+                    "idtoken": idToken]
+        }
+    }
+    
+    var parameters: [String: String] {
+        switch self {
+        case .loginGet:
+            return ["": ""]
+        case .signupPost:
             guard let phoneNumber = UserManager.phoneNumber else { return ["": ""] }
             guard let fcmToken = UserManager.fcmToken else { return ["": ""] }
             guard let nick = UserManager.nickname else { return ["": ""] }
             guard let birth = UserManager.birth else { return ["": ""] }
             guard let email = UserManager.email else { return ["": ""] }
             guard let gender = UserManager.gender else { return ["": ""] }
-            return ["Content-Type": "application/x-www-form-urlencoded",
-                    "Accept": "application/json",
-                    "idtoken": idToken,
-                    "phoneNumber": phoneNumber,
+            return ["phoneNumber": phoneNumber,
                     "FCMtoken": fcmToken,
                     "nick": nick,
                     "birth": birth,
@@ -63,6 +71,7 @@ enum SesacAPIRouter: URLRequestConvertible {
         request.method = method
         request.headers = headers
         
-        return request
+        return try URLEncoding.default.encode(request, with: parameters)
+//        return request
     }
 }

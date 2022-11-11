@@ -41,6 +41,8 @@
 		85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AB3291944DD00C70515 /* CertificationReceivingView.swift */; };
 		85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350AB52919470300C70515 /* CertificationReceivingViewController.swift */; };
 		85350AB92919578200C70515 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 85350AB82919578200C70515 /* IQKeyboardManagerSwift */; };
+		8542BE0B291E730900CF799A /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542BE0A291E730900CF799A /* SplashController.swift */; };
+		8542BE0E291E737C00CF799A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542BE0D291E737C00CF799A /* SplashView.swift */; };
 		859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */; };
 		859921E4291A788F007F96A6 /* Userdefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E3291A788F007F96A6 /* Userdefault.swift */; };
 		859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E6291A7D7B007F96A6 /* RegexVaidation.swift */; };
@@ -110,6 +112,8 @@
 		85350AAA29193B8700C70515 /* UserConfigureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigureView.swift; sourceTree = "<group>"; };
 		85350AB3291944DD00C70515 /* CertificationReceivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingView.swift; sourceTree = "<group>"; };
 		85350AB52919470300C70515 /* CertificationReceivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewController.swift; sourceTree = "<group>"; };
+		8542BE0A291E730900CF799A /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
+		8542BE0D291E737C00CF799A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		859921E3291A788F007F96A6 /* Userdefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefault.swift; sourceTree = "<group>"; };
 		859921E6291A7D7B007F96A6 /* RegexVaidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexVaidation.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 		85350A532918C60000C70515 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8542BE09291E72C900CF799A /* Splash */,
 				85350A5D2918CA9E00C70515 /* Common */,
 				85992237291D680D007F96A6 /* Main */,
 				85992203291CAFA3007F96A6 /* Signup */,
@@ -442,6 +447,23 @@
 			children = (
 				85350AB3291944DD00C70515 /* CertificationReceivingView.swift */,
 				85350AB52919470300C70515 /* CertificationReceivingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8542BE09291E72C900CF799A /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				8542BE0C291E735C00CF799A /* View */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		8542BE0C291E735C00CF799A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8542BE0A291E730900CF799A /* SplashController.swift */,
+				8542BE0D291E737C00CF799A /* SplashView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -787,6 +809,7 @@
 				85992222291D1EDB007F96A6 /* EmailView.swift in Sources */,
 				859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */,
 				8599222D291D2D0E007F96A6 /* GenderViewController.swift in Sources */,
+				8542BE0E291E737C00CF799A /* SplashView.swift in Sources */,
 				85350AA8291937EF00C70515 /* CertificationRequestViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
 				859921FE291C0459007F96A6 /* SesacAPIRouter.swift in Sources */,
@@ -801,6 +824,7 @@
 				85992224291D1EE7007F96A6 /* EmailViewController.swift in Sources */,
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,
 				85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */,
+				8542BE0B291E730900CF799A /* SplashController.swift in Sources */,
 				859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */,
 				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
 				85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */,

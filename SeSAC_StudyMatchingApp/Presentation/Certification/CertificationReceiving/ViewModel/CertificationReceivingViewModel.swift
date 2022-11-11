@@ -40,6 +40,7 @@ final class CertificationReceivingViewModel: CommonViewModel {
             case .success(let result):
                 result.user.getIDToken { token, error in
                     if let token = token {
+                        print(token)
                         UserManager.authVerificationToken = token
                         completion(token)
                     } else {

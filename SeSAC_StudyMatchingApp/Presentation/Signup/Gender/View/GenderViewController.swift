@@ -79,7 +79,20 @@ class GenderViewController: BaseViewController {
                     UserManager.gender = 0
                 }
                 
-                vc.viewModel.requsetSignup()
+                vc.viewModel.requsetSignup { result in
+                    switch result {
+                    case .success(let userData):
+                        let homeVC = HomeViewController()
+                        vc.transViewController(ViewController: homeVC, type: .presentFullscreen)
+                    case .failure(let error):
+                        switch error.rawValue {
+                        case 202:
+                            print(error.rawValue, "!!!!!!!!")
+                        default:
+                            break
+                        }
+                    }
+                }
             }
             .disposed(by: disposeBag)
     }

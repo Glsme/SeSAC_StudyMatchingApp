@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         if UserManager.first {
-            let vc = NicknameViewController()
+            let vc = CertificationRequestViewController()
             window?.rootViewController = UINavigationController(rootViewController: vc)
         } else {
             window?.rootViewController = OnboardingViewController()
