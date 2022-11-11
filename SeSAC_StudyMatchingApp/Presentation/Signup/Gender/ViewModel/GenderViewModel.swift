@@ -7,6 +7,7 @@
 
 import Foundation
 
+import FirebaseAuth
 import RxCocoa
 
 class GenderViewModel: CommonViewModel {
@@ -41,6 +42,31 @@ class GenderViewModel: CommonViewModel {
                 guard let error = error as? LoginError else { return }
                 completion(.failure(error))
             }
+        }
+    }
+    
+    func refreshAndRetryLogin(completion: @escaping (Result<UserData, LoginError>) -> Void) {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+            if let error = error {
+                print("Refresh Error")
+                return;
+            }
+            
+            UserManager.authVerificationToken = idToken
+            let api = SesacAPIRouter.loginGet
+            
+            SesacSignupAPIService.shared.requsetSesacLogin(router: api) { response in
+                switch response {
+                case .success(let success):
+                    completion(.success(success))
+                case .failure(let error):
+                    guard let error = error as? LoginError else { return }
+                    completion(.failure(error))
+                }
+            }
+            
+            
         }
     }
 }

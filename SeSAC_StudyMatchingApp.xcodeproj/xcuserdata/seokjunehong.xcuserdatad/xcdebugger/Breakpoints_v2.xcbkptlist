@@ -3,4 +3,70 @@
    uuid = "B6A7F528-CEA7-4959-8EB6-70DC2C17FEE9"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5AF1A29-8474-49C3-ACA0-408231228C4C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Splash/View/SplashController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "checkAppFirstRunning()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0BF25EF-EF8F-4E7F-A4F0-404CA0667331"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Splash/View/SplashController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "checkIDToken()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C0BF25EF-EF8F-4E7F-A4F0-404CA0667331 - 97accab77ccb5dba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;SeSAC_StudyMatchingApp.UserData, SeSAC_StudyMatchingApp.LoginError&gt;) -&gt; () in SeSAC_StudyMatchingApp.SplashController.checkIDToken() -&gt; ()"
+                  moduleName = "SeSAC_StudyMatchingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seokjunehong/Desktop/iOS/seSAC/SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp/Presentation/Splash/View/SplashController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  uuid = "C0BF25EF-EF8F-4E7F-A4F0-404CA0667331 - 97accab77ccb5dba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;SeSAC_StudyMatchingApp.UserData, SeSAC_StudyMatchingApp.LoginError&gt;) -&gt; () in SeSAC_StudyMatchingApp.SplashController.checkIDToken() -&gt; ()"
+                  moduleName = "SeSAC_StudyMatchingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seokjunehong/Desktop/iOS/seSAC/SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp/Presentation/Splash/View/SplashController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

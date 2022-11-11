@@ -85,15 +85,43 @@ class GenderViewController: BaseViewController {
                         let homeVC = HomeViewController()
                         vc.transViewController(ViewController: homeVC, type: .presentFullscreen)
                     case .failure(let error):
-                        switch error.rawValue {
-                        case 202:
-                            print(error.rawValue, "!!!!!!!!")
-                        default:
-                            break
-                        }
+                        vc.responseError(error)
                     }
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    func responseError(_ errorCode: LoginError) {
+        switch errorCode {
+        case .cantUseNickname:
+            guard let vcs = navigationController?.viewControllers else { return }
+            
+            for vc in vcs {
+                if let rootVC = vc as? NicknameViewController {
+                    navigationController?.popToViewController(rootVC, animated: false)
+                    rootVC.view.makeToast(SignupMents.cantuseNickname.rawValue)
+                }
+            }
+        case .firbaseTokenError:
+            viewModel.refreshAndRetryLogin { [weak self] response in
+                guard let self = self else { return }
+                switch response {
+                case .success(let success):
+                    let vc = HomeViewController()
+                    self.transViewController(ViewController: vc, type: .presentFullscreen)
+                case .failure(let error):
+                    print(#function, error)
+                }
+            }
+        case .alreadySignup:
+            self.view.makeToast("이미 가입한 유저입니다.")
+        case .unregisteredUser:
+            print("unregisteredUser")
+        case .serverError:
+            print("serverError")
+        case .clientError:
+            print("clientError")
+        }
     }
 }

@@ -42,6 +42,7 @@ enum SignupMents: String {
     //MARK: - Nickname
     case nicknameDescription = "닉네임을 입력해 주세요"
     case nicknamePlaceholder = "10자 이내로 입력"
+    case cantuseNickname = "해당 닉네임은 사용할 수 없습니다."
     
     //MARK: - Birth
     case birthDescription = "생년월일을 알려주세요"
