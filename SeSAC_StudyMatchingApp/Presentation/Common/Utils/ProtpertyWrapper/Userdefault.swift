@@ -32,7 +32,7 @@ class UserManager {
     @UserDefault(key: "authVerificationID", defaultValue: nil)
     static var authVerificationID: String?
     
-    @UserDefault(key: "first", defaultValue: false)
+    @UserDefault(key: "first", defaultValue: true)
     static var first: Bool
     
     @UserDefault(key: "phoneNumber", defaultValue: nil)

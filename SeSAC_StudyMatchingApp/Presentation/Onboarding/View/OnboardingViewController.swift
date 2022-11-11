@@ -41,11 +41,11 @@ final class OnboardingViewController: BaseViewController {
         mainView.startButton.rx.tap
             .withUnretained(self)
             .subscribe { (vc, _) in
-                UserManager.first = true
+                UserManager.first = false
                 let certificationVC = CertificationRequestViewController()
                 let naviVC = UINavigationController(rootViewController: certificationVC)
                 naviVC.modalTransitionStyle = .crossDissolve
-                vc.dismiss(animated: false)
+//                vc.dismiss(animated: false)
                 vc.transViewController(ViewController: naviVC, type: .presentFullscreen)
             }
             .disposed(by: disposeBag)

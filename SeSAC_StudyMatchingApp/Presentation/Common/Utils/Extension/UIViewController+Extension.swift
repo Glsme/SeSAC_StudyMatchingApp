@@ -15,6 +15,7 @@ extension UIViewController {
         case presentFullScreenNavigation
         case present
         case presentFullscreen
+        case presentFullScreenWithoutAni
     }
     
     func transViewController<T: UIViewController>(ViewController vc: T, type: Transition) {
@@ -35,6 +36,9 @@ extension UIViewController {
         case .presentFullscreen:
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
+        case .presentFullScreenWithoutAni:
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
         }
     }
 }
