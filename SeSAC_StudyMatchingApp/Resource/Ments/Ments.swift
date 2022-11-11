@@ -22,6 +22,7 @@ enum CertificationRequestMents: String {
     case placeholder = "휴대폰 번호(-없이 숫자만 입력)"
     case buttonText = "인증 문자 받기"
     case validFormat = "전화 번호 인증 시작"
+    case alreadySignup = "이미 가입한 유저입니다."
 }
 
 //MARK: - Certification Receiving

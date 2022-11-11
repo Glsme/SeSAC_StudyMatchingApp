@@ -7,23 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D5AF1A29-8474-49C3-ACA0-408231228C4C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SeSAC_StudyMatchingApp/Presentation/Splash/View/SplashController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "checkAppFirstRunning()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C0BF25EF-EF8F-4E7F-A4F0-404CA0667331"
+            uuid = "5AA349E6-0472-4B18-AC44-2E4E49F137D4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -36,7 +20,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "C0BF25EF-EF8F-4E7F-A4F0-404CA0667331 - 97accab77ccb5dba"
+                  uuid = "5AA349E6-0472-4B18-AC44-2E4E49F137D4 - 97accab77ccb5dba"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -51,7 +35,7 @@
                   offsetFromSymbolStart = "156">
                </Location>
                <Location
-                  uuid = "C0BF25EF-EF8F-4E7F-A4F0-404CA0667331 - 97accab77ccb5dba"
+                  uuid = "5AA349E6-0472-4B18-AC44-2E4E49F137D4 - 97accab77ccb5dba"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"

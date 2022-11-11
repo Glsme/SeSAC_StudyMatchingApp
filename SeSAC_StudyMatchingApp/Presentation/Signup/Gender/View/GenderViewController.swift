@@ -85,7 +85,7 @@ class GenderViewController: BaseViewController {
                         let homeVC = HomeViewController()
                         vc.transViewController(ViewController: homeVC, type: .presentFullscreen)
                     case .failure(let error):
-                        vc.responseError(error)
+                        vc.responseError(LoginError.alreadySignup)
                     }
                 }
             }
@@ -115,7 +115,14 @@ class GenderViewController: BaseViewController {
                 }
             }
         case .alreadySignup:
-            self.view.makeToast("이미 가입한 유저입니다.")
+            guard let vcs = navigationController?.viewControllers else { return }
+            
+            for vc in vcs {
+                if let rootVC = vc as? CertificationRequestViewController {
+                    navigationController?.popToViewController(rootVC, animated: false)
+                    rootVC.view.makeToast(CertificationRequestMents.alreadySignup.rawValue)
+                }
+            }
         case .unregisteredUser:
             print("unregisteredUser")
         case .serverError:
