@@ -29,7 +29,7 @@ final class NetworkCheck {
     }
 
     // Network Monitoring 시작
-    public func startMonitoring() -> Bool {
+    public func startMonitoring() {
         var isConnected: Bool = false
         monitor.start(queue: queue)
         monitor.pathUpdateHandler = { [weak self] path in
@@ -44,9 +44,7 @@ final class NetworkCheck {
                 print("연결안됨!")
                 isConnected = false
             }
-        }
-        
-        return isConnected
+        }        
     }
 
     // Network Monitoring 종료

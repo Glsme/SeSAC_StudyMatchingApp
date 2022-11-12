@@ -10,6 +10,7 @@ import UIKit
 final class SplashController: BaseViewController {
     let mainView = SplashView()
     let viewMdoel = SplashViewModel()
+    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
     
     override func loadView() {
         self.view = mainView
@@ -62,8 +63,10 @@ final class SplashController: BaseViewController {
                 switch response {
                 case .success(let success):
                     // 로그인 성공!
-                    let vc = HomeViewController()
-                    self.transViewController(ViewController: vc, type: .presentFullScreenWithoutAni)
+                    guard let delegate = self.sceneDelegate else { return }
+                    delegate.window?.rootViewController = MainTabBarController()
+//                    let vc = HomeViewController()
+//                    self.transViewController(ViewController: vc, type: .presentFullScreenWithoutAni)
                 case .failure(let error):
                     self.responseError(error.rawValue)
                 }
@@ -80,6 +83,16 @@ final class SplashController: BaseViewController {
         switch errorCode {
         case 401:
             print("파이어베이스 토큰 에러")
+            viewMdoel.refreshAndRetryLogin { [weak self] response in
+                guard let self = self else { return }
+                switch response {
+                case .success(let success):
+                    guard let delegate = self.sceneDelegate else { return }
+                    delegate.window?.rootViewController = MainTabBarController()
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
         case 406:
             print("미가입 유저!!!!!")
             let vc = CertificationRequestViewController()

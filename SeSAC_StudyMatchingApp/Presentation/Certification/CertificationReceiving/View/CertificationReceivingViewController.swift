@@ -17,6 +17,7 @@ final class CertificationReceivingViewController: BaseViewController {
     let mainView = CertificationReceivingView()
     let viewModel = CertificationReceivingViewModel()
     let disposeBag = DisposeBag()
+    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
     
     var timerDisposable: Disposable?
     
@@ -143,12 +144,15 @@ final class CertificationReceivingViewController: BaseViewController {
             if UserManager.authVerificationID == nil {
                 self.view.makeToast(result, position: .center)
             } else {
-                self.viewModel.requsetLogin { result in
+                self.viewModel.requsetLogin { [weak self] result in
+                    guard let self = self else { return }
                     switch result {
                     case .success(let success):
                         
-                        let nextVC = HomeViewController()
-                        self.transViewController(ViewController: nextVC, type: .presentFullscreen)
+                        guard let delegate = self.sceneDelegate else { return }
+                        delegate.window?.rootViewController = MainTabBarController()
+//                        let nextVC = HomeViewController()
+//                        self.transViewController(ViewController: nextVC, type: .presentFullscreen)
                     case .failure(let error):
                         guard let error = error as? LoginError else { return }
                         if error.rawValue == LoginError.unregisteredUser.rawValue {

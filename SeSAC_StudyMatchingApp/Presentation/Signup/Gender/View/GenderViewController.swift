@@ -14,6 +14,7 @@ class GenderViewController: BaseViewController {
     let mainView = GenderView()
     let viewModel = GenderViewModel()
     let disposeBag = DisposeBag()
+    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
     
     override func loadView() {
         self.view = mainView
@@ -82,8 +83,10 @@ class GenderViewController: BaseViewController {
                 vc.viewModel.requsetSignup { result in
                     switch result {
                     case .success(let userData):
-                        let homeVC = HomeViewController()
-                        vc.transViewController(ViewController: homeVC, type: .presentFullscreen)
+                        guard let delegate = vc.sceneDelegate else { return }
+                        delegate.window?.rootViewController = MainTabBarController()
+//                        let homeVC = HomeViewController()
+//                        vc.transViewController(ViewController: homeVC, type: .presentFullscreen)
                     case .failure(let error):
                         vc.responseError(LoginError.alreadySignup)
                     }
@@ -108,8 +111,10 @@ class GenderViewController: BaseViewController {
                 guard let self = self else { return }
                 switch response {
                 case .success(let success):
-                    let vc = HomeViewController()
-                    self.transViewController(ViewController: vc, type: .presentFullscreen)
+                    guard let delegate = self.sceneDelegate else { return }
+                    delegate.window?.rootViewController = MainTabBarController()
+//                    let vc = HomeViewController()
+//                    self.transViewController(ViewController: vc, type: .presentFullscreen)
                 case .failure(let error):
                     print(#function, error)
                 }
