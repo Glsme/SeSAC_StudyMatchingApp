@@ -44,6 +44,7 @@
 		8542BE0B291E730900CF799A /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542BE0A291E730900CF799A /* SplashController.swift */; };
 		8542BE0E291E737C00CF799A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542BE0D291E737C00CF799A /* SplashView.swift */; };
 		8542BE12291E7BD500CF799A /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542BE11291E7BD500CF799A /* SplashViewModel.swift */; };
+		8542BE15291F67F800CF799A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542BE14291F67F800CF799A /* NetworkMonitor.swift */; };
 		859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */; };
 		859921E4291A788F007F96A6 /* Userdefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E3291A788F007F96A6 /* Userdefault.swift */; };
 		859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E6291A7D7B007F96A6 /* RegexVaidation.swift */; };
@@ -116,6 +117,7 @@
 		8542BE0A291E730900CF799A /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		8542BE0D291E737C00CF799A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		8542BE11291E7BD500CF799A /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		8542BE14291F67F800CF799A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		859921E3291A788F007F96A6 /* Userdefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefault.swift; sourceTree = "<group>"; };
 		859921E6291A7D7B007F96A6 /* RegexVaidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexVaidation.swift; sourceTree = "<group>"; };
@@ -212,8 +214,7 @@
 		85350A522918C5FA00C70515 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				859921FA291C0122007F96A6 /* DefaultSesacAPIService */,
-				859921F9291C00CE007F96A6 /* DefaultFirebaseAPIService */,
+				8542BE13291F67D400CF799A /* Utils */,
 				859921F6291BFE40007F96A6 /* Model */,
 			);
 			path = Network;
@@ -479,6 +480,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		8542BE13291F67D400CF799A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				859921F9291C00CE007F96A6 /* DefaultFirebaseAPIService */,
+				859921FA291C0122007F96A6 /* DefaultSesacAPIService */,
+				8542BE14291F67F800CF799A /* NetworkMonitor.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		859921E2291A787D007F96A6 /* ProtpertyWrapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +529,7 @@
 				859921FB291C01D1007F96A6 /* SesacAPIService.swift */,
 			);
 			name = DefaultSesacAPIService;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		859921FF291C0AE7007F96A6 /* Error */ = {
@@ -824,6 +836,7 @@
 				85350AA8291937EF00C70515 /* CertificationRequestViewModel.swift in Sources */,
 				85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */,
 				859921FE291C0459007F96A6 /* SesacAPIRouter.swift in Sources */,
+				8542BE15291F67F800CF799A /* NetworkMonitor.swift in Sources */,
 				85992210291CCCD3007F96A6 /* NicknameViewModel.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */,

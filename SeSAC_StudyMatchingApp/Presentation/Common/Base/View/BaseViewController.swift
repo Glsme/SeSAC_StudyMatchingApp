@@ -20,4 +20,12 @@ public class BaseViewController: UIViewController, BaseViewProtocol, RxSwiftProt
     public func configureUI() { }
     public func setConstraints() { }
     public func bindData() { }
+    
+    public func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
+    }
 }

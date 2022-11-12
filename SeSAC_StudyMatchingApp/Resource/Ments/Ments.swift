@@ -7,6 +7,11 @@
 
 import Foundation
 
+//MARK: - Common
+enum CommonMents: String {
+    case networkError = "네트워크 상태를 확인해주세요."
+}
+
 //MARK: - Onboarding
 enum OnboardingMents: String {
     case firstOnboardingMent = "위치 기반으로 빠르게\n주위 친구를 확인"

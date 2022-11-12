@@ -24,7 +24,14 @@ class CertificationRequestViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkNetworkIsConnected()
         goToSaveLastViewController()
+    }
+    
+    func checkNetworkIsConnected() {
+        if !NetworkCheck.shared.startMonitoring() {
+            showAlert(message: CommonMents.networkError.rawValue)
+        }
     }
     
     override func bindData() {
