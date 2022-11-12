@@ -54,7 +54,7 @@ class GenderViewModel: CommonViewModel {
             }
             
             UserManager.authVerificationToken = idToken
-            let api = SesacAPIRouter.loginGet
+            let api = SesacAPIRouter.signupPost
             
             SesacSignupAPIService.shared.requsetSesacLogin(router: api) { response in
                 switch response {
