@@ -38,13 +38,13 @@ final class NetworkCheck {
             self?.getConnectionType(path)
 
             if self?.isConnected == true {
-                print("연결됨!")
+//                print("연결됨!")
                 isConnected = true
             } else {
-                print("연결안됨!")
+//                print("연결안됨!")
                 isConnected = false
             }
-        }        
+        }
     }
 
     // Network Monitoring 종료
