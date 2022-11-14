@@ -19,4 +19,5 @@ final class ManagementViewModel: CommonViewModel {
     func transform(input: Input) -> Output {
         return Output()
     }
+    
 }

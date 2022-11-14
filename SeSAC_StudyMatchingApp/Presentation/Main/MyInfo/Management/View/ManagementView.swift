@@ -26,9 +26,10 @@ class ManagementView: BaseView {
     
     override func setConstraints() {
         managementTableView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).offset(-10)
-            make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(10)
+            make.top.equalToSuperview().offset(16)
+            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).offset(-16)
+            make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(16)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-16)
         }
     }
 }

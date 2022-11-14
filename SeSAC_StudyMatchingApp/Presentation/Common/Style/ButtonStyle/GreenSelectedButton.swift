@@ -22,6 +22,7 @@ class GreenSlectedButton: UIButton {
     private func configureUI() {
         layer.cornerRadius = 8
         layer.borderWidth = 1
+        titleLabel?.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
         setSelectedStyle(false)
     }
     
@@ -31,7 +32,7 @@ class GreenSlectedButton: UIButton {
             backgroundColor = .sesacGreen
             layer.borderColor = UIColor.sesacGreen.cgColor
         } else {
-            setTitleColor(.white, for: .normal)
+            setTitleColor(.black, for: .normal)
             backgroundColor = .white
             layer.borderColor = UIColor.sesacGray4.cgColor
         }

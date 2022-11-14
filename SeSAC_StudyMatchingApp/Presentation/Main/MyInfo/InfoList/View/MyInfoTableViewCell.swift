@@ -43,6 +43,7 @@ final class MyInfoTableViewCell: UITableViewCell {
     }
     
     func configureUI() {
+        selectionStyle = .none
         [iconView, titleLabel, detailLabel].forEach {
             self.addSubview($0)
         }

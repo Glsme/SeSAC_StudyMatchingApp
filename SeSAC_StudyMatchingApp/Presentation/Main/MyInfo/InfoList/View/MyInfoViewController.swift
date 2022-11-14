@@ -76,6 +76,6 @@ final class MyInfoViewController: BaseViewController {
 
 extension MyInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.item == 0 ? 96 : 74
+        return indexPath.item == 0 ? 96 : 75
     }
 }
