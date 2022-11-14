@@ -23,3 +23,10 @@ enum SignupAssets: String {
     case manLogo = "man"
     case womanLogo = "woman"
 }
+
+enum TabBarAssets: String {
+    case shopIcon = "ShopIcon"
+    case myInfoIcon = "MyInfoIcon"
+    case homeIcon = "HomeIcon"
+    case friendIcon = "FriendIcon"
+}
