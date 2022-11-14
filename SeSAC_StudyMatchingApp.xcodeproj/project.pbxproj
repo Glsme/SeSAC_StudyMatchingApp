@@ -85,6 +85,9 @@
 		85D341BE291A2A8C00F27A78 /* CertificationReceivingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */; };
 		85D341C1291A2C4A00F27A78 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 85D341C0291A2C4A00F27A78 /* Toast */; };
 		85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341C4291A33E600F27A78 /* CertificationError.swift */; };
+		85E3ABB02922166400F890AF /* ManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E3ABAF2922166400F890AF /* ManagementViewController.swift */; };
+		85E3ABB22922168400F890AF /* ManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E3ABB12922168400F890AF /* ManagementView.swift */; };
+		85E3ABB4292216FE00F890AF /* ManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E3ABB3292216FE00F890AF /* ManagementViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +162,9 @@
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
 		85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationReceivingViewModel.swift; sourceTree = "<group>"; };
 		85D341C4291A33E600F27A78 /* CertificationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationError.swift; sourceTree = "<group>"; };
+		85E3ABAF2922166400F890AF /* ManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementViewController.swift; sourceTree = "<group>"; };
+		85E3ABB12922168400F890AF /* ManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementView.swift; sourceTree = "<group>"; };
+		85E3ABB3292216FE00F890AF /* ManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -775,6 +781,8 @@
 		85E3ABAB2922159500F890AF /* Management */ = {
 			isa = PBXGroup;
 			children = (
+				85E3ABAD2922164A00F890AF /* ViewModel */,
+				85E3ABAE2922165100F890AF /* View */,
 			);
 			path = Management;
 			sourceTree = "<group>";
@@ -786,6 +794,23 @@
 				8542BE1D2921F07A00CF799A /* View */,
 			);
 			path = InfoList;
+			sourceTree = "<group>";
+		};
+		85E3ABAD2922164A00F890AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				85E3ABB3292216FE00F890AF /* ManagementViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		85E3ABAE2922165100F890AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85E3ABB12922168400F890AF /* ManagementView.swift */,
+				85E3ABAF2922166400F890AF /* ManagementViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -890,6 +915,7 @@
 				859921E4291A788F007F96A6 /* Userdefault.swift in Sources */,
 				85350A802918F24D00C70515 /* Fonts.swift in Sources */,
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
+				85E3ABB22922168400F890AF /* ManagementView.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
 				859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */,
 				8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */,
@@ -904,6 +930,7 @@
 				859921FE291C0459007F96A6 /* SesacAPIRouter.swift in Sources */,
 				8542BE15291F67F800CF799A /* NetworkMonitor.swift in Sources */,
 				85992210291CCCD3007F96A6 /* NicknameViewModel.swift in Sources */,
+				85E3ABB4292216FE00F890AF /* ManagementViewModel.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */,
 				8542BE222921F1CF00CF799A /* MyInfoViewController.swift in Sources */,
@@ -911,6 +938,7 @@
 				85350AA0291924FA00C70515 /* BaseButton.swift in Sources */,
 				8599223C291D6A8E007F96A6 /* HomeViewController.swift in Sources */,
 				85350A9E291924B500C70515 /* GreenBgButton.swift in Sources */,
+				85E3ABB02922166400F890AF /* ManagementViewController.swift in Sources */,
 				85350A622918CB0600C70515 /* BaseView.swift in Sources */,
 				85992224291D1EE7007F96A6 /* EmailViewController.swift in Sources */,
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,

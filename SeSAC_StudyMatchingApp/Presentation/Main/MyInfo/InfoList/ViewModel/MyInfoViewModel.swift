@@ -33,24 +33,11 @@ extension SectionOfMyInfoCell: SectionModelType {
     }
 }
 
-class MyInfoViewModel: CommonViewModel {
+class MyInfoViewModel {
     let cellDatas: [MyInfoCell] = [MyInfoCell(image: "", title: "김새싹"),
                                    MyInfoCell(image: MyInfoAssets.notice.rawValue, title: MyInfoMents.notice.rawValue),
                                    MyInfoCell(image: MyInfoAssets.faq.rawValue, title: MyInfoMents.faq.rawValue),
                                    MyInfoCell(image: MyInfoAssets.qna.rawValue, title: MyInfoMents.qna.rawValue),
                                    MyInfoCell(image: MyInfoAssets.settingAlarm.rawValue, title: MyInfoMents.settingAlarm.rawValue),
                                    MyInfoCell(image: MyInfoAssets.permit.rawValue, title: MyInfoMents.permit.rawValue)]
-
-    
-    struct Input {
-        
-    }
-    
-    struct Output {
-        
-    }
-    
-    func transform(input: Input) -> Output {
-        return Output()
-    }
 }
