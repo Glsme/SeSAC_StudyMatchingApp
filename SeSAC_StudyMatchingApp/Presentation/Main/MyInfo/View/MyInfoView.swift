@@ -10,8 +10,9 @@ import UIKit
 import SnapKit
 
 class MyInfoView: BaseView {
-    lazy var myInfoTableView: UITableView = {
+    let myInfoTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
+        view.rowHeight = 74
         return view
     }()
     

@@ -64,3 +64,14 @@ enum SignupMents: String {
     case genderMainDescription = "성별을 선택해 주세요"
     case genderSubSDescription = "새싹 찾기 기능을 이용하기 위해서 필요해요!"
 }
+
+//MARK: - Main
+
+//MARK: - My Info
+enum MyInfoMents: String {
+    case notice = "공지사항"
+    case faq = "자주 묻는 질문"
+    case qna = "1:1 문의"
+    case settingAlarm = "알림 설정"
+    case permit = "이용약관"
+}

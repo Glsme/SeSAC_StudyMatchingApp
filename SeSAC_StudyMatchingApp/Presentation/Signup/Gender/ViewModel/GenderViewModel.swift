@@ -49,7 +49,7 @@ class GenderViewModel: CommonViewModel {
         let currentUser = Auth.auth().currentUser
         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
             if let error = error {
-                print("Refresh Error")
+                print("Refresh Error:: \(error)")
                 return;
             }
             

@@ -30,3 +30,11 @@ enum TabBarAssets: String {
     case homeIcon = "HomeIcon"
     case friendIcon = "FriendIcon"
 }
+
+enum MyInfoAssets: String {
+    case faq
+    case notice
+    case permit
+    case qna
+    case settingAlarm = "setting_alarm"
+}

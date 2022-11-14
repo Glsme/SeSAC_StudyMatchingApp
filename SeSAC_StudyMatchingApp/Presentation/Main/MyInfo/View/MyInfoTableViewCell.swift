@@ -32,7 +32,7 @@ class MyInfoTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     func configureUI() {
@@ -45,7 +45,7 @@ class MyInfoTableViewCell: UITableViewCell {
         iconView.snp.makeConstraints { make in
             make.centerY.equalTo(self.snp.centerY)
             make.width.height.equalTo(24)
-            make.leading.equalTo(self.snp.leading)
+            make.leading.equalTo(self.snp.leading).offset(15)
         }
         
         titleLabel.snp.makeConstraints { make in
