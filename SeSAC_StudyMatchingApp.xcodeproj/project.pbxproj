@@ -21,7 +21,7 @@
 		85350A6F2918D43600C70515 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 85350A6E2918D43600C70515 /* SnapKit */; };
 		85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A722918DC1200C70515 /* ReusableProtocol.swift */; };
 		85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A762918DD7E00C70515 /* ReusableProtocol+Extension.swift */; };
-		85350A7B2918E2C300C70515 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A7A2918E2C300C70515 /* Assets.swift */; };
+		85350A7B2918E2C300C70515 /* OnboardingAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A7A2918E2C300C70515 /* OnboardingAssets.swift */; };
 		85350A7E2918F23000C70515 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85350A7D2918F23000C70515 /* NotoSansKR-Medium.otf */; };
 		85350A802918F24D00C70515 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A7F2918F24D00C70515 /* Fonts.swift */; };
 		85350A822918F58800C70515 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85350A812918F58800C70515 /* NotoSansKR-Regular.otf */; };
@@ -99,7 +99,7 @@
 		85350A6B2918D08C00C70515 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		85350A722918DC1200C70515 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		85350A762918DD7E00C70515 /* ReusableProtocol+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableProtocol+Extension.swift"; sourceTree = "<group>"; };
-		85350A7A2918E2C300C70515 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		85350A7A2918E2C300C70515 /* OnboardingAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAssets.swift; sourceTree = "<group>"; };
 		85350A7D2918F23000C70515 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		85350A7F2918F24D00C70515 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		85350A812918F58800C70515 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 			children = (
 				85350A7C2918EF3C00C70515 /* Fonts */,
 				85350A462918C1D700C70515 /* Assets.xcassets */,
-				85350A7A2918E2C300C70515 /* Assets.swift */,
+				85350A7A2918E2C300C70515 /* OnboardingAssets.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -860,7 +860,7 @@
 				85992208291CB01C007F96A6 /* NicknameView.swift in Sources */,
 				85350A862918F70500C70515 /* UIColor+Extension.swift in Sources */,
 				8599223E291D6ADB007F96A6 /* MainViewModel.swift in Sources */,
-				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
+				85350A7B2918E2C300C70515 /* OnboardingAssets.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
 				85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */,
 				85992219291CD6B8007F96A6 /* BirthViewController.swift in Sources */,

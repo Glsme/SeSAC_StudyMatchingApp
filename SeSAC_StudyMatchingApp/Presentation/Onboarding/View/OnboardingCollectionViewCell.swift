@@ -25,9 +25,9 @@ final class OnboardingCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    let onboardingImageList = [UIImage(named: Assets.onboardingImg1.rawValue),
-                               UIImage(named: Assets.onboardingImg2.rawValue),
-                               UIImage(named: Assets.onboardingImg3.rawValue)]
+    let onboardingImageList = [UIImage(named: OnboardingAssets.onboardingImg1.rawValue),
+                               UIImage(named: OnboardingAssets.onboardingImg2.rawValue),
+                               UIImage(named: OnboardingAssets.onboardingImg3.rawValue)]
     
     override init(frame: CGRect) {
         super.init(frame: frame)

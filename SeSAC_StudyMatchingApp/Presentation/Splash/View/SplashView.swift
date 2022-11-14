@@ -12,13 +12,13 @@ import SnapKit
 final class SplashView: BaseView {
     let imageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "splash_logo")
+        view.image = UIImage(named: LaunchScreenAssets.logo.rawValue)
         return view
     }()
     
     let labelImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "txt")
+        view.image = UIImage(named: LaunchScreenAssets.text.rawValue)
         return view
     }()
     

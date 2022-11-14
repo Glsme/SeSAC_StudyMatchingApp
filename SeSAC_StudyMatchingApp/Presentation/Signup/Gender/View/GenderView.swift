@@ -22,7 +22,7 @@ class GenderView: UserConfigureView {
         titleAttr.foregroundColor = .black
         config.attributedTitle = titleAttr
         
-        config.image = UIImage(named: "man")
+        config.image = UIImage(named: SignupAssets.manLogo.rawValue)
         config.imagePadding = 5
         config.imagePlacement = .top
         config.baseBackgroundColor = .white
@@ -45,7 +45,7 @@ class GenderView: UserConfigureView {
         titleAttr.foregroundColor = .black
         config.attributedTitle = titleAttr
         
-        config.image = UIImage(named: "woman")
+        config.image = UIImage(named: SignupAssets.womanLogo.rawValue)
         config.imagePadding = 5
         config.imagePlacement = .top
         config.baseBackgroundColor = .white
