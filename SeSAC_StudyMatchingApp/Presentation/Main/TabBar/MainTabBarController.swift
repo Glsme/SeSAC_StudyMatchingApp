@@ -26,10 +26,11 @@ class MainTabBarController: UITabBarController {
         let test1 = HomeViewController()
         let test2 = HomeViewController()
         let myInfoVC = MyInfoViewController()
+        let myInfoNaviVC = UINavigationController(rootViewController: myInfoVC)
         
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12)], for: .normal)
 
-        setViewControllers([homeVC, test1, test2, myInfoVC], animated: false)
+        setViewControllers([homeVC, test1, test2, myInfoNaviVC], animated: false)
         
         if let items = tabBar.items {
             items[0].image = UIImage(named: TabBarAssets.homeIcon.rawValue)

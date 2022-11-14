@@ -12,7 +12,8 @@ import SnapKit
 class MyInfoView: BaseView {
     let myInfoTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
-        view.rowHeight = 74
+        view.separatorStyle = .singleLine
+        view.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         return view
     }()
     

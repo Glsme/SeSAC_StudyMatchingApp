@@ -511,8 +511,8 @@
 		8542BE1C2921F06A00CF799A /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				8542BE1E2921F07F00CF799A /* ViewModel */,
-				8542BE1D2921F07A00CF799A /* View */,
+				85E3ABAC292215DC00F890AF /* InfoList */,
+				85E3ABAB2922159500F890AF /* Management */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -770,6 +770,22 @@
 				85D341C4291A33E600F27A78 /* CertificationError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		85E3ABAB2922159500F890AF /* Management */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Management;
+			sourceTree = "<group>";
+		};
+		85E3ABAC292215DC00F890AF /* InfoList */ = {
+			isa = PBXGroup;
+			children = (
+				8542BE1E2921F07F00CF799A /* ViewModel */,
+				8542BE1D2921F07A00CF799A /* View */,
+			);
+			path = InfoList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

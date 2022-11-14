@@ -34,7 +34,8 @@ extension SectionOfMyInfoCell: SectionModelType {
 }
 
 class MyInfoViewModel: CommonViewModel {
-    let cellDatas: [MyInfoCell] = [MyInfoCell(image: MyInfoAssets.notice.rawValue, title: MyInfoMents.notice.rawValue),
+    let cellDatas: [MyInfoCell] = [MyInfoCell(image: "", title: "김새싹"),
+                                   MyInfoCell(image: MyInfoAssets.notice.rawValue, title: MyInfoMents.notice.rawValue),
                                    MyInfoCell(image: MyInfoAssets.faq.rawValue, title: MyInfoMents.faq.rawValue),
                                    MyInfoCell(image: MyInfoAssets.qna.rawValue, title: MyInfoMents.qna.rawValue),
                                    MyInfoCell(image: MyInfoAssets.settingAlarm.rawValue, title: MyInfoMents.settingAlarm.rawValue),

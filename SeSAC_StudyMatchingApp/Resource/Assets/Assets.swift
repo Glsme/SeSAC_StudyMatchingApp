@@ -37,4 +37,5 @@ enum MyInfoAssets: String {
     case permit
     case qna
     case settingAlarm = "setting_alarm"
+    case rightArrow = "Vector 49"
 }

@@ -26,6 +26,8 @@ class MyInfoViewController: BaseViewController {
     }
     
     override func configureUI() {
+        navigationItem.title = "내정보"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
     }
     
     override func bindData() {
@@ -34,7 +36,7 @@ class MyInfoViewController: BaseViewController {
             guard let cell = self.mainView.myInfoTableView.dequeueReusableCell(withIdentifier: MyInfoTableViewCell.reuseIdentifier, for: indexPath) as? MyInfoTableViewCell else { return UITableViewCell() }
             cell.iconView.image = UIImage(named: item.image)
             cell.titleLabel.text = item.title
-
+            cell.setConstraints(index: indexPath.item)
             return cell
         }
         
@@ -43,5 +45,14 @@ class MyInfoViewController: BaseViewController {
         Observable.just(sections)
             .bind(to: mainView.myInfoTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        mainView.myInfoTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+    }
+}
+
+extension MyInfoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.item == 0 ? 96 : 74
     }
 }
