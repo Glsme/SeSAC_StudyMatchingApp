@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		850515132922237200862A2F /* ManagementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515122922237200862A2F /* ManagementTableViewCell.swift */; };
 		850515152922295800862A2F /* GreenSelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515142922295800862A2F /* GreenSelectedButton.swift */; };
+		85051518292243BB00862A2F /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 85051517292243BB00862A2F /* MultiSlider */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
@@ -183,6 +184,7 @@
 				85992230291D50A8007F96A6 /* FirebaseAnalytics in Frameworks */,
 				85992232291D50A8007F96A6 /* FirebaseAuth in Frameworks */,
 				85350A902919083200C70515 /* RxSwift in Frameworks */,
+				85051518292243BB00862A2F /* MultiSlider in Frameworks */,
 				85350A8E2919083200C70515 /* RxCocoa in Frameworks */,
 				85350AA6291931BC00C70515 /* RxGesture in Frameworks */,
 				85350A6F2918D43600C70515 /* SnapKit in Frameworks */,
@@ -846,6 +848,7 @@
 				85992231291D50A8007F96A6 /* FirebaseAuth */,
 				85992233291D50A8007F96A6 /* FirebaseMessaging */,
 				8542BE262921F65800CF799A /* RxDataSources */,
+				85051517292243BB00862A2F /* MultiSlider */,
 			);
 			productName = SeSAC_StudyMatchingApp;
 			productReference = 85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */;
@@ -883,6 +886,7 @@
 				859921F3291BFE11007F96A6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8599222E291D50A8007F96A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8542BE252921F65800CF799A /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				85051516292243BB00862A2F /* XCRemoteSwiftPackageReference "MultiSlider" */,
 			);
 			productRefGroup = 85350A3B2918C1D600C70515 /* Products */;
 			projectDirPath = "";
@@ -1204,6 +1208,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		85051516292243BB00862A2F /* XCRemoteSwiftPackageReference "MultiSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yonat/MultiSlider.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		85350A6D2918D43600C70515 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1263,6 +1275,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		85051517292243BB00862A2F /* MultiSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85051516292243BB00862A2F /* XCRemoteSwiftPackageReference "MultiSlider" */;
+			productName = MultiSlider;
+		};
 		85350A6E2918D43600C70515 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 85350A6D2918D43600C70515 /* XCRemoteSwiftPackageReference "SnapKit" */;

@@ -52,7 +52,7 @@ extension ManagementViewController: UITableViewDelegate {
         case 1, 2, 3, 5:
             return 75
         case 4:
-            return 130
+            return 110
         default:
             return 0
         }

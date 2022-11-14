@@ -7,6 +7,8 @@
 
 import UIKit
 
+import MultiSlider
+
 class ManagementTableViewCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let view = UILabel()
@@ -39,8 +41,18 @@ class ManagementTableViewCell: UITableViewCell {
         return view
     }()
     
-    let ageSlider: UISlider = {
-        let view = UISlider()
+    let ageSlider: MultiSlider = {
+        let view = MultiSlider()
+        view.thumbCount = 2
+        view.minimumValue = 18
+        view.maximumValue = 65
+        view.outerTrackColor = .sesacGray2
+        view.orientation = .horizontal
+        view.tintColor = .sesacGreen
+        view.showsThumbImageShadow = true
+//        view.thumbTintColor = .sesacGreen
+        view.thumbImage = UIImage(named: ManagementAssets.sliderImage.rawValue)
+
         return view
     }()
     
@@ -62,7 +74,7 @@ class ManagementTableViewCell: UITableViewCell {
     }
     
     func configureUI() {
-//        selectionStyle = .none
+        selectionStyle = .none
         [titleLabel, manButton, womanButton, studyTextField, permitSwitch, ageSlider, ageLabel].forEach {
             contentView.addSubview($0)
         }
@@ -143,13 +155,14 @@ class ManagementTableViewCell: UITableViewCell {
         ageSlider.isHidden = false
         
         ageSlider.snp.makeConstraints { make in
-            make.center.equalTo(self.snp.center)
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).multipliedBy(1.3)
             make.width.equalTo(self.snp.width).multipliedBy(0.9)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(self.snp.leading)
-            make.bottom.equalTo(ageSlider.snp.top).offset(-20)
+            make.bottom.equalTo(ageSlider.snp.top)
         }
         
         ageLabel.snp.makeConstraints { make in

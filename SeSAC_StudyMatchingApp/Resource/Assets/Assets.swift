@@ -39,3 +39,7 @@ enum MyInfoAssets: String {
     case settingAlarm = "setting_alarm"
     case rightArrow = "Vector 49"
 }
+
+enum ManagementAssets: String {
+    case sliderImage
+}
