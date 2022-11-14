@@ -48,6 +48,29 @@ class MyInfoViewController: BaseViewController {
         
         mainView.myInfoTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        mainView.myInfoTableView.rx.itemSelected
+            .withUnretained(self)
+            .bind(onNext: { (vc, indexPath) in
+                switch indexPath.row {
+                case 0:
+                    let nextVC = ManagementViewController()
+                    vc.transViewController(ViewController: nextVC, type: .push)
+                case 1:
+                    break
+                case 2:
+                    break
+                case 3:
+                    break
+                case 4:
+                    break
+                case 5:
+                    break
+                default:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
