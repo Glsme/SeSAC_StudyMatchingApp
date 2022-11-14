@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class MyInfoView: BaseView {
+final class MyInfoView: BaseView {
     let myInfoTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.separatorStyle = .singleLine

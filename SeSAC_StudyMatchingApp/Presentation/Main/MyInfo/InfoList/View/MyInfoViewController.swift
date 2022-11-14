@@ -10,7 +10,7 @@ import UIKit
 import RxDataSources
 import RxSwift
 
-class MyInfoViewController: BaseViewController {
+final class MyInfoViewController: BaseViewController {
     let mainView = MyInfoView()
     let viewModel = MyInfoViewModel()
     let disposeBag = DisposeBag()

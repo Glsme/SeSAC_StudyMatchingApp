@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class MyInfoTableViewCell: UITableViewCell {
+final class MyInfoTableViewCell: UITableViewCell {
     lazy var iconView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
