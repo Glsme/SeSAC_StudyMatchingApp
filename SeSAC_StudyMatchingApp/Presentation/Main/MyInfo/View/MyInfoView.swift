@@ -7,8 +7,25 @@
 
 import UIKit
 
+import SnapKit
+
 class MyInfoView: BaseView {
+    lazy var myInfoTableView: UITableView = {
+        let view = UITableView(frame: .zero, style: .plain)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    override func configureUI() {
+        self.addSubview(myInfoTableView)
+    }
+    
+    override func setConstraints() {
+        myInfoTableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }

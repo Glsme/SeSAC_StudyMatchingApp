@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct Cell {
+    let image: String
+    let title: String
+}
+
 class MyInfoViewModel: CommonViewModel {
     struct Input {
         
