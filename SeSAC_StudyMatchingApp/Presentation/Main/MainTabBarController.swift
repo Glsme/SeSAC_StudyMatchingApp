@@ -38,10 +38,6 @@ class MainTabBarController: UITabBarController {
             items[3].selectedImage = UIImage (systemName: "star.fill")
             items[3].image = UIImage (systemName: "star")
             items[3].title="즐겨찾기"
-            
-            items[4].selectedImage = UIImage (systemName: "star.fill")
-            items[4].image = UIImage (systemName: "star")
-            items[4].title="즐겨찾기"
         }
     }
 }

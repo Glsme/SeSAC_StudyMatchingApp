@@ -27,12 +27,12 @@ final class SplashViewModel {
         let currentUser = Auth.auth().currentUser
         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
             if let error = error {
-                print("Refresh Error")
+                print("Refresh Error:: \(error)")
                 return;
             }
             
             UserManager.authVerificationToken = idToken
-            let api = SesacAPIRouter.signupPost
+            let api = SesacAPIRouter.loginGet
             
             SesacSignupAPIService.shared.requsetSesacLogin(router: api) { response in
                 switch response {
