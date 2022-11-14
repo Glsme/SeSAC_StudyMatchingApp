@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum TabBarName: String {
+    case home = "홈"
+    case sesacShop = "새싹샵"
+    case sesacFriend = "새싹친구"
+    case myInfo = "내정보"
+}
+
 class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
@@ -26,16 +33,16 @@ class MainTabBarController: UITabBarController {
         
         if let items = tabBar.items {
             items[0].image = UIImage(named: TabBarAssets.homeIcon.rawValue)
-            items[0].title = "홈"
+            items[0].title = TabBarName.home.rawValue
             
             items[1].image = UIImage(named: TabBarAssets.shopIcon.rawValue)
-            items[1].title = "새싹샵"
+            items[1].title = TabBarName.sesacShop.rawValue
             
             items[2].image = UIImage(named: TabBarAssets.friendIcon.rawValue)
-            items[2].title = "새싹친구"
+            items[2].title = TabBarName.sesacFriend.rawValue
             
             items[3].image = UIImage(named: TabBarAssets.myInfoIcon.rawValue)
-            items[3].title = "내정보"
+            items[3].title = TabBarName.myInfo.rawValue
         }
     }
 }
