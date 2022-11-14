@@ -43,3 +43,23 @@ enum MyInfoAssets: String {
 enum ManagementAssets: String {
     case sliderImage
 }
+
+enum SesacCharaterAssets: String {
+    case sesacFace1 = "sesac_face_1"
+    case sesacFace2 = "sesac_face_2"
+    case sesacFace3 = "sesac_face_3"
+    case sesacFace4 = "sesac_face_4"
+    case sesacFace5 = "sesac_face_5"
+}
+
+enum SesacBGAssets: String {
+    case sesacBG1 = "sesac_background_1"
+    case sesacBG2 = "sesac_background_2"
+    case sesacBG3 = "sesac_background_3"
+    case sesacBG4 = "sesac_background_4"
+    case sesacBG5 = "sesac_background_5"
+    case sesacBG6 = "sesac_background_6"
+    case sesacBG7 = "sesac_background_7"
+    case sesacBG8 = "sesac_background_8"
+    case sesacBG9 = "sesac_background_9"
+}

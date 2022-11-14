@@ -8,8 +8,11 @@
 import UIKit
 
 import MultiSlider
+import RxSwift
 
 class ManagementTableViewCell: UITableViewCell {
+    let disposeBag = DisposeBag()
+    
     lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
@@ -63,6 +66,41 @@ class ManagementTableViewCell: UITableViewCell {
         return view
     }()
     
+    let backgroundImageView: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .brown
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let profileImageView: UIImageView = {
+        let view = UIImageView()
+        return view
+    }()
+    
+    let cardView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        view.layer.borderColor = UIColor.sesacGray2.cgColor
+        view.layer.borderWidth = 1
+        return view
+    }()
+    
+    let nicknameLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 16)
+        view.textAlignment = .left
+        return view
+    }()
+    
+    let moreButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -75,7 +113,10 @@ class ManagementTableViewCell: UITableViewCell {
     
     func configureUI() {
         selectionStyle = .none
-        [titleLabel, manButton, womanButton, studyTextField, permitSwitch, ageSlider, ageLabel].forEach {
+        [nicknameLabel, moreButton].forEach {
+            contentView.addSubview($0)
+        }
+        [titleLabel, manButton, womanButton, studyTextField, permitSwitch, ageSlider, ageLabel, backgroundImageView, profileImageView, cardView].forEach {
             contentView.addSubview($0)
         }
     }
@@ -83,16 +124,48 @@ class ManagementTableViewCell: UITableViewCell {
     func setConstraints(index: Int) {
         switch index {
         case 0:
-            print("hihi")
+            permitSwitch.isHidden = true
+            ageSlider.isHidden = true
+            
+            profileImageView.image = UIImage(named: SesacCharaterAssets.sesacFace5.rawValue)
+            backgroundImageView.image = UIImage(named: SesacBGAssets.sesacBG4.rawValue)
+            
+            backgroundImageView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            
+            profileImageView.snp.makeConstraints { make in
+                make.centerX.equalTo(self.snp.centerX)
+                make.bottom.equalTo(self.snp.bottom)
+                make.width.height.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.45)
+            }
         case 1:
-            setGenderConstraints()
+            permitSwitch.isHidden = true
+            ageSlider.isHidden = true
+            
+            cardView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            
+            nicknameLabel.snp.makeConstraints { make in
+                make.centerY.equalTo(self.snp.centerY)
+                make.leading.equalTo(self.snp.leading).offset(10)
+            }
+            
+            moreButton.snp.makeConstraints { make in
+                make.centerY.equalTo(self.snp.centerY)
+                make.trailing.equalTo(self.snp.trailing).offset(-10)
+                make.width.height.equalTo(20)
+            }
         case 2:
-            setUsuallyStudyConstraints()
+            setGenderConstraints()
         case 3:
-            setPhonePermitConstraints()
+            setUsuallyStudyConstraints()
         case 4:
-            setAgeGroupConstraints()
+            setPhonePermitConstraints()
         case 5:
+            setAgeGroupConstraints()
+        case 6:
             setDefaultConstraints()
         default:
             break
@@ -169,5 +242,27 @@ class ManagementTableViewCell: UITableViewCell {
             make.trailing.equalTo(self.snp.trailing)
             make.centerY.equalTo(titleLabel.snp.centerY)
         }
+    }
+    
+    func bindData() {
+        manButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                if vc.womanButton.backgroundColor == .sesacGreen {
+                    vc.manButton.setSelectedStyle(true)
+                    vc.womanButton.setSelectedStyle(false)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        womanButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                if vc.manButton.backgroundColor == .sesacGreen {
+                    vc.womanButton.setSelectedStyle(true)
+                    vc.manButton.setSelectedStyle(false)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

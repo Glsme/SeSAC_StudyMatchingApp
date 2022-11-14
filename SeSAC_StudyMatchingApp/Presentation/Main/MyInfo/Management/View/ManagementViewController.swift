@@ -28,19 +28,23 @@ class ManagementViewController: BaseViewController {
     }
     
     override func bindData() {
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, String>>(configureCell: { dataSource, tableView, indexPath, item in
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfManagementCell>(configureCell: { dataSource, tableView, indexPath, item in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ManagementTableViewCell.reuseIdentifier, for: indexPath) as? ManagementTableViewCell else { return UITableViewCell() }
             cell.setConstraints(index: indexPath.row)
-            cell.titleLabel.text = item
+            cell.titleLabel.text = item.title
             return cell
         })
         
-        Observable.just([SectionModel(model: "first Section", items: ["", "내 성별", "자주하는 스터디", "내 번호 검색 허용", "상대방 연령대", "회원 탈퇴"])])
+        let sections = [SectionOfManagementCell(header: "first Section", items: viewModel.titles)]
+        
+        Observable.just(sections)
             .bind(to: mainView.managementTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
         mainView.managementTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        
     }
 }
 
@@ -49,9 +53,11 @@ extension ManagementViewController: UITableViewDelegate {
         switch indexPath.row {
         case 0:
             return 200
-        case 1, 2, 3, 5:
+        case 1:
+            return 60
+        case 2, 3, 4, 6:
             return 75
-        case 4:
+        case 5:
             return 110
         default:
             return 0
