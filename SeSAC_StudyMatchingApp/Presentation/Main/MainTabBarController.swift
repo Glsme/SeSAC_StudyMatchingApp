@@ -13,12 +13,15 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         tabBar.backgroundColor = .white
-        
+        tabBar.tintColor = .sesacGreen
+
         let homeVC = HomeViewController()
         let test1 = HomeViewController()
         let test2 = HomeViewController()
         let test3 = HomeViewController()
         
+        tabBarItem.setTitleTextAttributes([NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12)], for: .normal)
+
         setViewControllers([homeVC, test1, test2, test3], animated: false)
         
         if let items = tabBar.items {
