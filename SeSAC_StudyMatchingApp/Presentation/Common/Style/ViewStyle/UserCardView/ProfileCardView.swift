@@ -22,15 +22,22 @@ class ProfileCardView: BaseView {
     lazy var nicknameView = ProfileNicknameView()
     lazy var titleView = ProfileTitleView()
     
+    lazy var coverStackView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 8
+        view.layer.borderColor = UIColor.sesacGray2.cgColor
+        view.layer.borderWidth = 1
+//        view.backgroundColor = .sesacGreen
+        view.clipsToBounds = true
+        return view
+    }()
+    
     lazy var stackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [nicknameView, titleView])
         view.axis = .vertical
         view.alignment = .fill
         view.distribution = .fill
-        view.backgroundColor = .brown
-        view.layer.cornerRadius = 8
-        view.layer.borderColor = UIColor.sesacGray2.cgColor
-        view.layer.borderWidth = 1
+//        view.backgroundColor = .brown
         view.clipsToBounds = true
         return view
     }()
@@ -49,9 +56,11 @@ class ProfileCardView: BaseView {
     override func configureUI() {
         nicknameView.backgroundColor = .white
         
-        [backgroundImageView, profileImageView, stackView].forEach {
+        [backgroundImageView, profileImageView, coverStackView].forEach {
             self.addSubview($0)
         }
+        
+        coverStackView.addSubview(stackView)
     }
     
     override func setConstraints() {
@@ -68,9 +77,15 @@ class ProfileCardView: BaseView {
             make.bottom.equalTo(backgroundImageView.snp.bottom)
         }
         
-        stackView.snp.makeConstraints { make in
+        coverStackView.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom)
             make.trailing.leading.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.trailing.leading.equalToSuperview().inset(16)
             make.bottom.equalToSuperview()
         }
         

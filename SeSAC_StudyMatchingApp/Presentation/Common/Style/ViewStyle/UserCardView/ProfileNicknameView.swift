@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 
 class ProfileNicknameView: BaseView {
-    let nameLabel: UILabel = {
+    lazy var nameLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 16)
         view.text = "닉네임"
         return view
     }()
     
-    let moreButton: UIButton = {
+    lazy var moreButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         view.tintColor = .sesacGray7

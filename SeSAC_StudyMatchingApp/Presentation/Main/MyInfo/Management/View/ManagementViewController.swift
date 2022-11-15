@@ -31,13 +31,13 @@ class ManagementViewController: BaseViewController {
     }
     
     override func bindData() {
-        mainView.withdrawView.titleButton.rx.tap
+        mainView.cardView.nicknameView.moreButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.cardToggle.toggle()
                 print("tap")
-                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
-//                    vc.mainView.test1.isHidden = vc.cardToggle
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut) {
+                    vc.mainView.cardView.titleView.isHidden = vc.cardToggle
                 }
             }
             .disposed(by: disposeBag)
