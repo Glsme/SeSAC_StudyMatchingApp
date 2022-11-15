@@ -43,8 +43,6 @@ final class SplashViewModel {
                     completion(.failure(error))
                 }
             }
-            
-            
         }
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+import FirebaseAuth
 import RxDataSources
 
 struct MyInfoCell {
@@ -63,5 +64,41 @@ class MyInfoViewModel {
         
         cellDatas[0].image = sesacString
         cellDatas[0].title = nickname
+    }
+    
+    func loginSesacServer(completion: @escaping (Result<UserData, LoginError>) -> Void) {
+        let api = SesacAPIRouter.loginGet
+        SesacSignupAPIService.shared.requsetSesacLogin(router: api) { response in
+            switch response {
+            case .success(let success):
+                completion(.success(success))
+            case .failure(let error):
+                guard let error = error as? LoginError else { return }
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func refreshAndRetryLogin(completion: @escaping (Result<UserData, LoginError>) -> Void) {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+            if let error = error {
+                print("Refresh Error:: \(error)")
+                return;
+            }
+            
+            UserManager.authVerificationToken = idToken
+            let api = SesacAPIRouter.loginGet
+            
+            SesacSignupAPIService.shared.requsetSesacLogin(router: api) { response in
+                switch response {
+                case .success(let success):
+                    completion(.success(success))
+                case .failure(let error):
+                    guard let error = error as? LoginError else { return }
+                    completion(.failure(error))
+                }
+            }
+        }
     }
 }

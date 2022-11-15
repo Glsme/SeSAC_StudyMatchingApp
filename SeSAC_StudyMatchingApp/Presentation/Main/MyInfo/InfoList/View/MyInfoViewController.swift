@@ -55,8 +55,7 @@ final class MyInfoViewController: BaseViewController {
             .bind(onNext: { (vc, indexPath) in
                 switch indexPath.row {
                 case 0:
-                    let nextVC = ManagementViewController()
-                    vc.transViewController(ViewController: nextVC, type: .push)
+                    vc.checkIDToken()
                 case 1:
                     break
                 case 2:
@@ -72,6 +71,54 @@ final class MyInfoViewController: BaseViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    func checkIDToken() {
+        viewModel.loginSesacServer { [weak self] response in
+            guard let self = self else { return }
+            switch response {
+            case .success(let success):
+                // 로그인 성공!
+                let result = success.toDomain()
+                UserManager.sesac = result.sesac
+                UserManager.nickname = result.nick
+                let nextVC = ManagementViewController()
+                nextVC.viewModel.userInfo.onNext(result)
+                self.transViewController(ViewController: nextVC, type: .push)
+            case .failure(let error):
+                self.responseError(error.rawValue)
+            }
+        }
+    }
+    
+    func responseError(_ errorCode: Int) {
+        switch errorCode {
+        case 401:
+            print("파이어베이스 토큰 에러")
+            viewModel.refreshAndRetryLogin { [weak self] response in
+                guard let self = self else { return }
+                switch response {
+                case .success(let success):
+                    let result = success.toDomain()
+                    UserManager.sesac = result.sesac
+                    UserManager.nickname = result.nick
+                    
+                    let nextVC = ManagementViewController()
+                    nextVC.viewModel.userInfo.onNext(result)
+                    self.transViewController(ViewController: nextVC, type: .push)
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+        case 406:
+            print("미가입 유저!!!!!")
+        case 500:
+            print("서버 에러")
+        case 501:
+            print("클라이언트 에러다~")
+        default:
+            print("대체 무엇을 잘못한거냐")
+        }
     }
 }
 

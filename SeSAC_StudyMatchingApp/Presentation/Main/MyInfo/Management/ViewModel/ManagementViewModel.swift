@@ -8,6 +8,7 @@
 import Foundation
 
 import RxDataSources
+import RxSwift
 
 struct ManagementCell {
     let title: String?
@@ -31,7 +32,8 @@ extension SectionOfManagementCell: SectionModelType {
     }
 }
 
-final class ManagementViewModel: CommonViewModel {
+final class ManagementViewModel {
+    var userInfo = BehaviorSubject<SeSACInfo>(value: SeSACInfo())
     let titles: [ManagementCell] = [ManagementCell(title: nil),
                                     ManagementCell(title: nil),
                                    ManagementCell(title: "내 성별"),
@@ -39,17 +41,4 @@ final class ManagementViewModel: CommonViewModel {
                                    ManagementCell(title: "내 번호 검색 허용"),
                                    ManagementCell(title: "상대방 연령대"),
                                    ManagementCell(title: "회원 탈퇴"),]
-    
-    struct Input {
-        
-    }
-    
-    struct Output {
-        
-    }
-    
-    func transform(input: Input) -> Output {
-        return Output()
-    }
-    
 }
