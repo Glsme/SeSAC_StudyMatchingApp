@@ -28,6 +28,8 @@ class ManagementViewController: BaseViewController {
     override func configureUI() {
         mainView.cardView.backgroundImageView.image = UIImage(named: SesacBGAssets.sesacBG7.rawValue)
         mainView.cardView.profileImageView.image = UIImage(named: SesacCharaterAssets.sesacFace5.rawValue)
+        navigationItem.title = "정보 관리"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
     }
     
     override func bindData() {
