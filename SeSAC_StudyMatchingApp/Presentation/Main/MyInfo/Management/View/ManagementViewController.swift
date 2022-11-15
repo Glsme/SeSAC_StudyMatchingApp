@@ -34,8 +34,9 @@ class ManagementViewController: BaseViewController {
         navigationItem.title = "정보 관리"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
         
-        guard let ageGroup = try? viewModel.userInfo.value() else { return }
-        mainView.ageView.ageSlider.value = [CGFloat(ageGroup.ageMin), CGFloat(ageGroup.ageMax)]
+        guard let userInfo = try? viewModel.userInfo.value() else { return }
+        mainView.cardView.nicknameView.nameLabel.text = userInfo.nick
+        mainView.ageView.ageSlider.value = [CGFloat(userInfo.ageMin), CGFloat(userInfo.ageMax)]
     }
     
     override func bindData() {
