@@ -18,6 +18,7 @@
 		85051529292367BC00862A2F /* CustomStudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85051528292367BC00862A2F /* CustomStudyView.swift */; };
 		8505152B292368AA00862A2F /* CustomPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505152A292368AA00862A2F /* CustomPhoneView.swift */; };
 		8505152D2923693E00862A2F /* CustomAgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505152C2923693E00862A2F /* CustomAgeView.swift */; };
+		8505152F29236A1C00862A2F /* CustomwithdarwView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505152E29236A1C00862A2F /* CustomwithdarwView.swift */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
@@ -112,6 +113,7 @@
 		85051528292367BC00862A2F /* CustomStudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStudyView.swift; sourceTree = "<group>"; };
 		8505152A292368AA00862A2F /* CustomPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPhoneView.swift; sourceTree = "<group>"; };
 		8505152C2923693E00862A2F /* CustomAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAgeView.swift; sourceTree = "<group>"; };
+		8505152E29236A1C00862A2F /* CustomwithdarwView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomwithdarwView.swift; sourceTree = "<group>"; };
 		85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_StudyMatchingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85350A3D2918C1D600C70515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85350A3F2918C1D600C70515 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				85051526292364EB00862A2F /* CustomGenderView.swift */,
 				8505152A292368AA00862A2F /* CustomPhoneView.swift */,
 				8505152C2923693E00862A2F /* CustomAgeView.swift */,
+				8505152E29236A1C00862A2F /* CustomwithdarwView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -957,6 +960,7 @@
 				859921E4291A788F007F96A6 /* Userdefault.swift in Sources */,
 				85350A802918F24D00C70515 /* Fonts.swift in Sources */,
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
+				8505152F29236A1C00862A2F /* CustomwithdarwView.swift in Sources */,
 				85E3ABB22922168400F890AF /* ManagementView.swift in Sources */,
 				850515132922237200862A2F /* TestManagementTableViewCell.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
