@@ -37,6 +37,7 @@ class ManagementViewController: BaseViewController {
         guard let userInfo = try? viewModel.userInfo.value() else { return }
         mainView.cardView.nicknameView.nameLabel.text = userInfo.nick
         mainView.ageView.ageSlider.value = [CGFloat(userInfo.ageMin), CGFloat(userInfo.ageMax)]
+        setSesacTitleColor(userInfo: userInfo)
     }
     
     override func bindData() {
@@ -58,5 +59,19 @@ class ManagementViewController: BaseViewController {
                 vc.mainView.ageView.ageLabel.text = "\(Int(value[0])) - \(Int(value[1]))"
             }
             .disposed(by: disposeBag)
+    }
+    
+    func setSesacTitleColor(userInfo: SeSACInfo) {
+        let buttons = mainView.cardView.titleView
+        let buttonArray = [buttons.firstButton, buttons.secondButton, buttons.thirdButton, buttons.fourthButton, buttons.fifthButton, buttons.sixthButton]
+        
+        for index in 0..<buttonArray.count {
+            if userInfo.reputation[index] > 0 {
+                buttonArray[index].setSelectedStyle(true)
+            } else {
+                buttonArray[index].setSelectedStyle(false)
+            }
+        }
+        
     }
 }
