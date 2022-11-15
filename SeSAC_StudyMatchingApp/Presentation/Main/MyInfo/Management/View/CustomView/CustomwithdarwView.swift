@@ -11,6 +11,7 @@ class CustomWithdrawView: BaseView {
     lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+        view.text = "회원 탈퇴"
         return view
     }()
     

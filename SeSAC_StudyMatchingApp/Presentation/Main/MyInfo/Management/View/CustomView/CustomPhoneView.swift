@@ -11,6 +11,7 @@ class CustomPhoneView: BaseView {
     lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+        view.text = "내 번호 검색 허용"
         return view
     }()
     

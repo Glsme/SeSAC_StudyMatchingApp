@@ -18,6 +18,7 @@
 		8505152B292368AA00862A2F /* CustomPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505152A292368AA00862A2F /* CustomPhoneView.swift */; };
 		8505152D2923693E00862A2F /* CustomAgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505152C2923693E00862A2F /* CustomAgeView.swift */; };
 		8505152F29236A1C00862A2F /* CustomwithdarwView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505152E29236A1C00862A2F /* CustomwithdarwView.swift */; };
+		8505153429236FF600862A2F /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505153329236FF600862A2F /* ProfileTableViewCell.swift */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
@@ -112,6 +113,7 @@
 		8505152A292368AA00862A2F /* CustomPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPhoneView.swift; sourceTree = "<group>"; };
 		8505152C2923693E00862A2F /* CustomAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAgeView.swift; sourceTree = "<group>"; };
 		8505152E29236A1C00862A2F /* CustomwithdarwView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomwithdarwView.swift; sourceTree = "<group>"; };
+		8505153329236FF600862A2F /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_StudyMatchingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85350A3D2918C1D600C70515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85350A3F2918C1D600C70515 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -220,6 +222,16 @@
 				8505152E29236A1C00862A2F /* CustomwithdarwView.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		8505153229236E0400862A2F /* UserCardView */ = {
+			isa = PBXGroup;
+			children = (
+				8505151D29228FF200862A2F /* ProfileCardView.swift */,
+				8505151F2922949400862A2F /* ProfileTitleView.swift */,
+				850515212922B51B00862A2F /* ProfileNicknameView.swift */,
+			);
+			path = UserCardView;
 			sourceTree = "<group>";
 		};
 		85350A312918C1D600C70515 = {
@@ -465,10 +477,8 @@
 		85350AA929193B7B00C70515 /* ViewStyle */ = {
 			isa = PBXGroup;
 			children = (
+				8505153229236E0400862A2F /* UserCardView */,
 				85350AAA29193B8700C70515 /* UserConfigureView.swift */,
-				8505151D29228FF200862A2F /* ProfileCardView.swift */,
-				8505151F2922949400862A2F /* ProfileTitleView.swift */,
-				850515212922B51B00862A2F /* ProfileNicknameView.swift */,
 			);
 			path = ViewStyle;
 			sourceTree = "<group>";
@@ -849,6 +859,7 @@
 				85E3ABB12922168400F890AF /* ManagementView.swift */,
 				85E3ABAF2922166400F890AF /* ManagementViewController.swift */,
 				850515232923633300862A2F /* ManagementTableViewCell.swift */,
+				8505153329236FF600862A2F /* ProfileTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -995,6 +1006,7 @@
 				8542BE2A2921F77F00CF799A /* MyInfoTableViewCell.swift in Sources */,
 				859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */,
 				8505152B292368AA00862A2F /* CustomPhoneView.swift in Sources */,
+				8505153429236FF600862A2F /* ProfileTableViewCell.swift in Sources */,
 				850515222922B51B00862A2F /* ProfileNicknameView.swift in Sources */,
 				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
 				85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */,

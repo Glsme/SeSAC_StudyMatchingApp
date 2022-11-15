@@ -11,6 +11,7 @@ class CustomStudyView: BaseView {
     lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+        view.text = "자주 하는 스터디"
         return view
     }()
     

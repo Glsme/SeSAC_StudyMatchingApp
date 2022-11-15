@@ -13,6 +13,7 @@ class CustomAgeView: BaseView {
     lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+        view.text = "상대방 연령대"
         return view
     }()
     

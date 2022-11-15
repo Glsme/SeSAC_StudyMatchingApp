@@ -28,6 +28,7 @@ class ManagementTableViewCell: UITableViewCell {
     }
     
     func configureUI() {
+        selectionStyle = .none
         [genderView, studyView, phoneView, ageView, withdrawView].forEach {
             self.contentView.addSubview($0)
         }

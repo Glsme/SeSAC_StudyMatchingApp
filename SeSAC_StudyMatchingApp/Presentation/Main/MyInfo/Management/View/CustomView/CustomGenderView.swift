@@ -11,6 +11,7 @@ class CustomGenderView: BaseView {
     lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+        view.text = "내 성별"
         return view
     }()
     

@@ -26,7 +26,8 @@ final class MyInfoTableViewCell: UITableViewCell {
     
     lazy var detailLabel: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: MyInfoAssets.rightArrow.rawValue)
+        view.image = UIImage(systemName: "chevron.right")
+        view.tintColor = .sesacGray7
         view.contentMode = .scaleAspectFit
         view.clipsToBounds = true
         return view
