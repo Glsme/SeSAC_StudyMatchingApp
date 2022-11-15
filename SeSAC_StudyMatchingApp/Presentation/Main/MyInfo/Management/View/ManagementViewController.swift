@@ -38,6 +38,7 @@ class ManagementViewController: BaseViewController {
         mainView.cardView.nicknameView.nameLabel.text = userInfo.nick
         mainView.ageView.ageSlider.value = [CGFloat(userInfo.ageMin), CGFloat(userInfo.ageMax)]
         setSesacTitleColor(userInfo: userInfo)
+        setGenderColor(userInfo: userInfo)
     }
     
     override func bindData() {
@@ -73,5 +74,15 @@ class ManagementViewController: BaseViewController {
             }
         }
         
+    }
+    
+    func setGenderColor(userInfo: SeSACInfo) {
+        if userInfo.gender == 0 {
+            mainView.genderView.womanButton.setSelectedStyle(true)
+            mainView.genderView.manButton.setSelectedStyle(false)
+        } else if userInfo.gender == 1 {
+            mainView.genderView.womanButton.setSelectedStyle(false)
+            mainView.genderView.manButton.setSelectedStyle(true)
+        }
     }
 }
