@@ -37,4 +37,17 @@ struct UserData: Codable {
         case transactionID = "transactionId"
         case reviewedBefore, reportedNum, reportedUser, dodgepenalty, dodgeNum, ageMin, ageMax, searchable, createdAt
     }
+    
+    func toDomain() -> SeSACInfo {
+        return SeSACInfo(background: background,
+                         sesac: sesac,
+                         nick: nick,
+                         reputation: reputation,
+                         comment: comment,
+                         gender: gender,
+                         study: study,
+                         searchable: sesac,
+                         ageMin: ageMin,
+                         ageMax: ageMax)
+    }
 }

@@ -63,10 +63,11 @@ final class SplashController: BaseViewController {
                 switch response {
                 case .success(let success):
                     // 로그인 성공!
+                    let result = success.toDomain()
+                    UserManager.sesac = result.sesac
+                    UserManager.nickname = result.nick
                     guard let delegate = self.sceneDelegate else { return }
                     delegate.window?.rootViewController = MainTabBarController()
-//                    let vc = HomeViewController()
-//                    self.transViewController(ViewController: vc, type: .presentFullScreenWithoutAni)
                 case .failure(let error):
                     self.responseError(error.rawValue)
                 }
@@ -87,6 +88,9 @@ final class SplashController: BaseViewController {
                 guard let self = self else { return }
                 switch response {
                 case .success(let success):
+                    let result = success.toDomain()
+                    UserManager.sesac = result.sesac
+                    UserManager.nickname = result.nick
                     guard let delegate = self.sceneDelegate else { return }
                     delegate.window?.rootViewController = MainTabBarController()
                 case .failure(let failure):

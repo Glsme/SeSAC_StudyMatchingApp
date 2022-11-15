@@ -14,8 +14,7 @@ enum TabBarName: String {
     case myInfo = "내정보"
 }
 
-class MainTabBarController: UITabBarController {
-    
+class MainTabBarController: UITabBarController {    
     override func viewDidLoad() {
         super.viewDidLoad()
         

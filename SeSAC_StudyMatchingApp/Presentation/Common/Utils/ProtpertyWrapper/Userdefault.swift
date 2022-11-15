@@ -55,4 +55,7 @@ class UserManager {
     
     @UserDefault(key: "gender", defaultValue: nil)
     static var gender: Int?
+    
+    @UserDefault(key: "sesac", defaultValue: nil)
+    static var sesac: Int?
 }

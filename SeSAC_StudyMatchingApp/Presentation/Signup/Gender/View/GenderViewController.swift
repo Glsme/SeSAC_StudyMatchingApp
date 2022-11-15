@@ -82,7 +82,10 @@ class GenderViewController: BaseViewController {
                 
                 vc.viewModel.requsetSignup { result in
                     switch result {
-                    case .success(let userData):
+                    case .success(let success):
+                        let result = success.toDomain()
+                        UserManager.sesac = result.sesac
+                        UserManager.nickname = result.nick
                         guard let delegate = vc.sceneDelegate else { return }
                         delegate.window?.rootViewController = MainTabBarController()
 //                        let homeVC = HomeViewController()
@@ -111,6 +114,9 @@ class GenderViewController: BaseViewController {
                 guard let self = self else { return }
                 switch response {
                 case .success(let success):
+                    let result = success.toDomain()
+                    UserManager.sesac = result.sesac
+                    UserManager.nickname = result.nick
                     guard let delegate = self.sceneDelegate else { return }
                     delegate.window?.rootViewController = MainTabBarController()
 //                    let vc = HomeViewController()
