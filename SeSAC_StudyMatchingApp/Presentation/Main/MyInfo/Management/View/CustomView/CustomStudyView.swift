@@ -34,6 +34,11 @@ class CustomStudyView: BaseView {
     }
     
     override func setConstraints() {
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(self.snp.centerY)
+            make.leading.equalTo(self.snp.leading)
+        }
+        
         studyTextField.snp.makeConstraints { make in
             make.centerY.equalTo(self.snp.centerY)
             make.trailing.equalTo(self.snp.trailing)

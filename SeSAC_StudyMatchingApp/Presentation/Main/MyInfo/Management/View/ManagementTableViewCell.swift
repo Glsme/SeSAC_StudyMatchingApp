@@ -37,8 +37,8 @@ class ManagementTableViewCell: UITableViewCell {
     func setConstraints() {
         genderView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
-            make.leading.equalTo(self.snp.leading)
-            make.trailing.equalTo(self.snp.trailing)
+            make.leading.equalTo(self.snp.leading).offset(16)
+            make.trailing.equalTo(self.snp.trailing).offset(-16)
             make.height.equalTo(75)
         }
         
