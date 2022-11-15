@@ -33,7 +33,7 @@ extension SectionOfManagementCell: SectionModelType {
 
 final class ManagementViewModel: CommonViewModel {
     let titles: [ManagementCell] = [ManagementCell(title: nil),
-                                   ManagementCell(title: nil),
+                                    ManagementCell(title: nil),
                                    ManagementCell(title: "내 성별"),
                                    ManagementCell(title: "자주 하는 스터디"),
                                    ManagementCell(title: "내 번호 검색 허용"),
