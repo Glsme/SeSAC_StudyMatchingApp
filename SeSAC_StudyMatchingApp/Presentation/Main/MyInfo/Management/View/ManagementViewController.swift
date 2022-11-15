@@ -26,7 +26,8 @@ class ManagementViewController: BaseViewController {
     }
     
     override func configureUI() {
-        mainView.cardView.backgroundImageView.image = UIImage(named: SesacBGAssets.sesacBG1.rawValue)
+        mainView.cardView.backgroundImageView.image = UIImage(named: SesacBGAssets.sesacBG7.rawValue)
+        mainView.cardView.profileImageView.image = UIImage(named: SesacCharaterAssets.sesacFace5.rawValue)
     }
     
     override func bindData() {

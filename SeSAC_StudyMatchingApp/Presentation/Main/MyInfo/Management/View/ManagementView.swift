@@ -20,12 +20,6 @@ class ManagementView: UIScrollView {
     
     let contentView = UIView()
     
-    let test1: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
-    }()
-    
     let test2: UIView = {
         let view = UIView()
         view.backgroundColor = .blue
@@ -37,7 +31,6 @@ class ManagementView: UIScrollView {
         view.axis = .vertical
         view.alignment = .fill
         view.distribution = .fill
-        view.backgroundColor = .sesacGray3
         return view
     }()
     
@@ -57,7 +50,7 @@ class ManagementView: UIScrollView {
         
         contentView.addSubview(stackView)
         
-        withdrawView.backgroundColor = .sesacGray7
+        cardView.backgroundColor = .sesacGreen
     }
     
     func setConstraints() {
