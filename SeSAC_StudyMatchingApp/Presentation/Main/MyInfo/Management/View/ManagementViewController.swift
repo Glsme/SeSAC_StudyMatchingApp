@@ -15,6 +15,7 @@ class ManagementViewController: BaseViewController {
     let mainView = ManagementView()
     let viewModel = ManagementViewModel()
     let disposeBag = DisposeBag()
+    var cardToggle: Bool = false
         
     override func loadView() {
         self.view = mainView
@@ -25,10 +26,19 @@ class ManagementViewController: BaseViewController {
     }
     
     override func configureUI() {
-    
+        mainView.cardView.backgroundImageView.image = UIImage(named: SesacBGAssets.sesacBG1.rawValue)
     }
     
     override func bindData() {
-        
+        mainView.withdrawView.titleButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.cardToggle.toggle()
+                print("tap")
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
+//                    vc.mainView.test1.isHidden = vc.cardToggle
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

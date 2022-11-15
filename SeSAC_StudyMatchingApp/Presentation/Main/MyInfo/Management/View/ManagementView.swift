@@ -16,6 +16,7 @@ class ManagementView: UIScrollView {
     lazy var phoneView = CustomPhoneView()
     lazy var ageView = CustomAgeView()
     lazy var withdrawView = CustomWithdrawView()
+    lazy var cardView = ProfileCardView()
     
     let contentView = UIView()
     
@@ -27,20 +28,21 @@ class ManagementView: UIScrollView {
     
     let test2: UIView = {
         let view = UIView()
-        view.backgroundColor = .sesacGray2
+        view.backgroundColor = .blue
         return view
     }()
     
-    let test3: UIView = {
-        let view = UIView()
-        view.backgroundColor = .sesacFocus
+    lazy var stackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [cardView, genderView, studyView, phoneView, ageView, withdrawView])
+        view.axis = .vertical
+        view.alignment = .fill
+        view.distribution = .fill
+        view.backgroundColor = .sesacGray3
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .red
         
         configureUI()
         setConstraints()
@@ -52,10 +54,10 @@ class ManagementView: UIScrollView {
     
     func configureUI() {
         self.addSubview(contentView)
-                
-        [test1, test2, genderView, studyView, phoneView, ageView, withdrawView].forEach {
-            contentView.addSubview($0)
-        }
+        
+        contentView.addSubview(stackView)
+        
+        withdrawView.backgroundColor = .sesacGray7
     }
     
     func setConstraints() {
@@ -64,39 +66,44 @@ class ManagementView: UIScrollView {
             make.centerX.top.bottom.equalToSuperview()
         }
         
-        test1.snp.makeConstraints { make in
-            make.leading.top.trailing.equalToSuperview()
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        cardView.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.top)
             make.height.equalTo(300)
+            make.trailing.leading.equalToSuperview()
         }
         
         genderView.snp.makeConstraints { make in
-            make.top.equalTo(test1.snp.bottom)
-            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(cardView.snp.bottom)
             make.height.equalTo(75)
+            make.trailing.leading.equalToSuperview()
         }
         
         studyView.snp.makeConstraints { make in
             make.top.equalTo(genderView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(genderView.snp.height)
+            make.height.equalTo(75)
+            make.trailing.leading.equalToSuperview()
         }
         
         phoneView.snp.makeConstraints { make in
             make.top.equalTo(studyView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(genderView.snp.height)
+            make.height.equalTo(75)
+            make.trailing.leading.equalToSuperview()
         }
         
         ageView.snp.makeConstraints { make in
             make.top.equalTo(phoneView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
             make.height.equalTo(100)
+            make.trailing.leading.equalToSuperview()
         }
         
         withdrawView.snp.makeConstraints { make in
             make.top.equalTo(ageView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(genderView.snp.height)
+            make.height.equalTo(75)
+            make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
         }
     }

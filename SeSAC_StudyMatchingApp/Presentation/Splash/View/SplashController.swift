@@ -29,7 +29,7 @@ final class SplashController: BaseViewController {
         mainView.labelImageView.alpha = 0
         mainView.imageView.alpha = 0
         
-        UIView.animate(withDuration: 1.0, delay: 1.5, options: .curveEaseOut, animations: { [weak self] in
+        UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseOut, animations: { [weak self] in
             guard let self = self else { return }
             
             self.mainView.labelImageView.alpha = 1

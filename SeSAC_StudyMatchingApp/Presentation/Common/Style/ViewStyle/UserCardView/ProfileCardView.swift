@@ -10,15 +10,15 @@ import UIKit
 import SnapKit
 
 class ProfileCardView: BaseView {
-//    lazy var backgroundImageView: UIImageView = {
-//            let view = UIImageView()
-//            view.backgroundColor = .brown
-//            view.layer.cornerRadius = 8
-//            view.clipsToBounds = true
-//            return view
-//        }()
-//
-//    lazy var profileImageView = UIImageView()
+    lazy var backgroundImageView: UIImageView = {
+            let view = UIImageView()
+            view.backgroundColor = .brown
+            view.layer.cornerRadius = 8
+            view.clipsToBounds = true
+            return view
+        }()
+
+    lazy var profileImageView = UIImageView()
     
     lazy var nicknameView = ProfileNicknameView()
     
@@ -45,13 +45,6 @@ class ProfileCardView: BaseView {
         return view
     }()
     
-    //MARK: - Test Code
-    lazy var redView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -61,10 +54,7 @@ class ProfileCardView: BaseView {
 //            cardView.addSubview($0)
 //        }
         
-        //MARK: - Test Code
-        cardView.addSubview(redView)
-        
-        [cardView].forEach {
+        [backgroundImageView].forEach {
             self.addSubview($0)
         }
     }
@@ -83,25 +73,19 @@ class ProfileCardView: BaseView {
 //            make.leading.equalTo(nicknameView.snp.leading)
 //        }
         
-//        backgroundImageView.snp.makeConstraints { make in
-//            make.width.equalTo(self.snp.width)
-//            make.height.equalTo(194)
-//            make.centerX.equalTo(self.snp.centerX)
-//            make.top.equalTo(self.snp.top)
-//        }
-        
-        redView.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.top)
-            make.width.equalTo(30)
-            make.height.equalTo(200)
+        backgroundImageView.snp.makeConstraints { make in
+            make.width.equalTo(self.snp.width)
+            make.height.equalTo(194)
             make.centerX.equalTo(self.snp.centerX)
+            make.top.equalTo(self.snp.top)
+//            make.bottom.equalTo(self.snp.bottom)
         }
         
-        cardView.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.top)
-            make.trailing.equalTo(self.snp.trailing)
-            make.leading.equalTo(self.snp.leading)
-            make.height.equalTo(redView.snp.height)
-        }
+//        cardView.snp.makeConstraints { make in
+//            make.top.equalTo(self.snp.top)
+//            make.trailing.equalTo(self.snp.trailing)
+//            make.leading.equalTo(self.snp.leading)
+//            make.height.equalTo(redView.snp.height)
+//        }
     }
 }

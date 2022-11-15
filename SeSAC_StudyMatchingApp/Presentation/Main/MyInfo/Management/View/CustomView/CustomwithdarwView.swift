@@ -8,6 +8,12 @@
 import UIKit
 
 class CustomWithdrawView: BaseView {
+    lazy var titleButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
     lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
@@ -20,10 +26,16 @@ class CustomWithdrawView: BaseView {
     }
     
     override func configureUI() {
-        self.addSubview(titleLabel)
+        [titleLabel, titleButton].forEach {
+            self.addSubview($0)
+        }
     }
     
     override func setConstraints() {
+        titleButton.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(self.snp.centerY)
             make.leading.equalTo(self.snp.leading)
