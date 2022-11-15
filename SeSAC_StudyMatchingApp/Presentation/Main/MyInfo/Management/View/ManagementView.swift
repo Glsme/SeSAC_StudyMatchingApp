@@ -52,18 +52,15 @@ class ManagementView: UIScrollView {
     
     func configureUI() {
         self.addSubview(contentView)
-        
-        contentView.backgroundColor = .sesacGreen
-        
-        [test1, test2, test3].forEach {
+                
+        [test1, test2, genderView, studyView, phoneView, ageView, withdrawView].forEach {
             contentView.addSubview($0)
         }
     }
     
     func setConstraints() {
-        
         contentView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
+            make.width.equalToSuperview().inset(16)
             make.centerX.top.bottom.equalToSuperview()
         }
         
@@ -72,16 +69,34 @@ class ManagementView: UIScrollView {
             make.height.equalTo(300)
         }
         
-        test2.snp.makeConstraints { make in
+        genderView.snp.makeConstraints { make in
             make.top.equalTo(test1.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(300)
+            make.height.equalTo(75)
         }
         
-        test3.snp.makeConstraints { make in
-            make.top.equalTo(test2.snp.bottom)
+        studyView.snp.makeConstraints { make in
+            make.top.equalTo(genderView.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(300)
+            make.height.equalTo(genderView.snp.height)
+        }
+        
+        phoneView.snp.makeConstraints { make in
+            make.top.equalTo(studyView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(genderView.snp.height)
+        }
+        
+        ageView.snp.makeConstraints { make in
+            make.top.equalTo(phoneView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(100)
+        }
+        
+        withdrawView.snp.makeConstraints { make in
+            make.top.equalTo(ageView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(genderView.snp.height)
             make.bottom.equalToSuperview()
         }
     }
