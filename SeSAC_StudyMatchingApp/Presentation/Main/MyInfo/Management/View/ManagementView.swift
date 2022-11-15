@@ -49,8 +49,6 @@ class ManagementView: UIScrollView {
         self.addSubview(contentView)
         
         contentView.addSubview(stackView)
-        
-        cardView.backgroundColor = .sesacGreen
     }
     
     func setConstraints() {
@@ -65,7 +63,6 @@ class ManagementView: UIScrollView {
         
         cardView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
-            make.height.equalTo(300)
             make.trailing.leading.equalToSuperview()
         }
         

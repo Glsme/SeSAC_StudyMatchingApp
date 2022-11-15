@@ -20,22 +20,20 @@ class ProfileCardView: BaseView {
 
     lazy var profileImageView = UIImageView()
     lazy var nicknameView = ProfileNicknameView()
+    lazy var titleView = ProfileTitleView()
     
-    lazy var titleView: ProfileTitleView = {
-        let view = ProfileTitleView()
+    lazy var stackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [nicknameView, titleView])
+        view.axis = .vertical
+        view.alignment = .fill
+        view.distribution = .fill
         view.backgroundColor = .brown
+        view.layer.cornerRadius = 8
+        view.layer.borderColor = UIColor.sesacGray2.cgColor
+        view.layer.borderWidth = 1
+        view.clipsToBounds = true
         return view
     }()
-    
-//    lazy var cardView: UIStackView = {
-//        let view = UIStackView(arrangedSubviews: [nicknameView, titleView])
-//        view.axis = .vertical
-//        view.alignment = .fill
-//        view.distribution = .fill
-//        view.spacing = 12
-//        view.backgroundColor = .red
-//        return view
-//    }()
     
     lazy var cardView: UIView = {
         let view = UIView()
@@ -49,7 +47,9 @@ class ProfileCardView: BaseView {
     }
     
     override func configureUI() {
-        [backgroundImageView, profileImageView].forEach {
+        nicknameView.backgroundColor = .white
+        
+        [backgroundImageView, profileImageView, stackView].forEach {
             self.addSubview($0)
         }
     }
@@ -66,6 +66,25 @@ class ProfileCardView: BaseView {
             make.centerX.equalTo(self.snp.centerX)
             make.height.width.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.49)
             make.bottom.equalTo(backgroundImageView.snp.bottom)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(profileImageView.snp.bottom)
+            make.trailing.leading.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        nicknameView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.height.equalTo(60)
+            make.trailing.leading.equalToSuperview()
+        }
+        
+        titleView.snp.makeConstraints { make in
+            make.top.equalTo(nicknameView.snp.bottom)
+            make.centerX.equalToSuperview()
+            make.trailing.leading.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 }
