@@ -11,6 +11,8 @@ import SnapKit
 
 class ManagementTableViewCell: UITableViewCell {
     lazy var genderView = CustomGenderView()
+    lazy var studyView = CustomStudyView()
+    lazy var phoneView = CustomPhoneView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,7 +26,7 @@ class ManagementTableViewCell: UITableViewCell {
     }
     
     func configureUI() {
-        [genderView].forEach {
+        [genderView, studyView, phoneView].forEach {
             self.contentView.addSubview($0)
         }
     }
