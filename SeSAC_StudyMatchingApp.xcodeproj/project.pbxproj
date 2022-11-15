@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		850515132922237200862A2F /* TestManagementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515122922237200862A2F /* TestManagementTableViewCell.swift */; };
 		850515152922295800862A2F /* GreenSelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515142922295800862A2F /* GreenSelectedButton.swift */; };
 		85051518292243BB00862A2F /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 85051517292243BB00862A2F /* MultiSlider */; };
 		8505151E29228FF200862A2F /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505151D29228FF200862A2F /* ProfileCardView.swift */; };
@@ -103,7 +102,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		850515122922237200862A2F /* TestManagementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestManagementTableViewCell.swift; sourceTree = "<group>"; };
 		850515142922295800862A2F /* GreenSelectedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenSelectedButton.swift; sourceTree = "<group>"; };
 		8505151D29228FF200862A2F /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		8505151F2922949400862A2F /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
@@ -850,7 +848,6 @@
 				850515252923633800862A2F /* CustomView */,
 				85E3ABB12922168400F890AF /* ManagementView.swift */,
 				85E3ABAF2922166400F890AF /* ManagementViewController.swift */,
-				850515122922237200862A2F /* TestManagementTableViewCell.swift */,
 				850515232923633300862A2F /* ManagementTableViewCell.swift */,
 			);
 			path = View;
@@ -962,7 +959,6 @@
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
 				8505152F29236A1C00862A2F /* CustomwithdarwView.swift in Sources */,
 				85E3ABB22922168400F890AF /* ManagementView.swift in Sources */,
-				850515132922237200862A2F /* TestManagementTableViewCell.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
 				859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */,
 				8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */,
