@@ -85,10 +85,14 @@ final class HomeViewController: BaseViewController {
         mainView.gpsButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                vc.locationManager.startUpdatingLocation()
-                guard let coordinate = vc.locationManager.location?.coordinate else { return }
-                vc.setUserRegionAndAnnotation(center: coordinate)
-                vc.locationManager.stopUpdatingLocation()
+                if vc.locationStatus {
+                    vc.locationManager.startUpdatingLocation()
+                    guard let coordinate = vc.locationManager.location?.coordinate else { return }
+                    vc.setUserRegionAndAnnotation(center: coordinate)
+                    vc.locationManager.stopUpdatingLocation()
+                } else {
+                    vc.showAlert(message: "위치 권한을 허용해 주세요.")
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -111,6 +115,7 @@ extension HomeViewController {
             locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
             print("DENIED, 아이폰 설정으로 유도합니다.")
+            setUserRegionAndAnnotation(center: defaultCoordinate)
         case .authorizedWhenInUse:
             print("WHEN IN USE")
             locationManager.startUpdatingLocation()
