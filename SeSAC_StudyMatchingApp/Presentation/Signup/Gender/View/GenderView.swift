@@ -27,6 +27,7 @@ class GenderView: UserConfigureView {
         config.imagePlacement = .top
         config.baseBackgroundColor = .white
         
+        view.tintColor = .black
         view.configuration = config
         view.backgroundColor = .white
         
@@ -50,6 +51,7 @@ class GenderView: UserConfigureView {
         config.imagePlacement = .top
         config.baseBackgroundColor = .white
         
+        view.tintColor = .black
         view.configuration = config
         view.backgroundColor = .white
         

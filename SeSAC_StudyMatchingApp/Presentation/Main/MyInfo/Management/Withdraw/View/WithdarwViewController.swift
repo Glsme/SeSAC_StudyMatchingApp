@@ -14,6 +14,7 @@ class WithdarwViewController: BaseViewController {
     let mainView = WithdrawPopupView()
     let viewModel = WithdrawViewModel()
     let disposeBag = DisposeBag()
+    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
     
     override func loadView() {
         self.view = mainView
@@ -30,6 +31,23 @@ class WithdarwViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.dismiss(animated: false)
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.okButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.requsetWithdarw { response in
+                    switch response {
+                    case .success(_):
+                        vc.viewModel.removeAllUserDefaultsData()
+                        
+                        guard let delegate = self.sceneDelegate else { return }
+                        delegate.window?.rootViewController = OnboardingViewController()
+                    case .failure(_):
+                        vc.dismiss(animated: false)
+                    }
+                }
             }
             .disposed(by: disposeBag)
         
