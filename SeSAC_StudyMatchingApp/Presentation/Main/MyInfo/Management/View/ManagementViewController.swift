@@ -43,6 +43,7 @@ class ManagementViewController: BaseViewController {
         setSesacTitleColor(userInfo: userInfo)
         setGenderColor(userInfo: userInfo)
         mainView.studyView.studyTextField.textField.text = userInfo.study
+        setPermitPhoneSearching(userInfo: userInfo)
     }
     
     override func bindData() {
@@ -121,6 +122,15 @@ class ManagementViewController: BaseViewController {
         } else if userInfo.gender == 1 {
             mainView.genderView.womanButton.setSelectedStyle(false)
             mainView.genderView.manButton.setSelectedStyle(true)
+        }
+    }
+    
+    func setPermitPhoneSearching(userInfo: SeSACInfo) {
+        print(userInfo.searchable)
+        if userInfo.searchable == 1 {
+            mainView.phoneView.permitSwitch.isOn = true
+        } else if userInfo.searchable == 0 {
+            mainView.phoneView.permitSwitch.isOn = false
         }
     }
 }
