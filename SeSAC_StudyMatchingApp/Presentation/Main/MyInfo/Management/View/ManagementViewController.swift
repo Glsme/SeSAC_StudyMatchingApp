@@ -68,6 +68,26 @@ class ManagementViewController: BaseViewController {
                 vc.mainView.ageView.ageLabel.text = "\(Int(value[0])) - \(Int(value[1]))"
             }
             .disposed(by: disposeBag)
+        
+        mainView.genderView.manButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                if vc.mainView.genderView.manButton.backgroundColor == .white {
+                    vc.mainView.genderView.manButton.setSelectedStyle(true)
+                    vc.mainView.genderView.womanButton.setSelectedStyle(false)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.genderView.womanButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                if vc.mainView.genderView.womanButton.backgroundColor == .white {
+                    vc.mainView.genderView.manButton.setSelectedStyle(false)
+                    vc.mainView.genderView.womanButton.setSelectedStyle(true)
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     func setSesacTitleColor(userInfo: SeSACInfo) {
