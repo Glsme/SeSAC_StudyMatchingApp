@@ -91,7 +91,7 @@ class GenderViewController: BaseViewController {
 //                        let homeVC = HomeViewController()
 //                        vc.transViewController(ViewController: homeVC, type: .presentFullscreen)
                     case .failure(let error):
-                        vc.responseError(LoginError.alreadySignup)
+                        vc.responseError(error)
                     }
                 }
             }
