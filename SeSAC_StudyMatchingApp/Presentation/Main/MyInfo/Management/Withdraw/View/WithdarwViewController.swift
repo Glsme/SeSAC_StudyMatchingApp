@@ -44,7 +44,14 @@ class WithdarwViewController: BaseViewController {
                         
                         guard let delegate = self.sceneDelegate else { return }
                         delegate.window?.rootViewController = OnboardingViewController()
-                    case .failure(_):
+                    case .failure(let error):
+                        switch error {
+                        case .unregisteredUser:
+                            guard let delegate = self.sceneDelegate else { return }
+                            delegate.window?.rootViewController = OnboardingViewController()
+                        default:
+                            break
+                        }
                         vc.dismiss(animated: false)
                     }
                 }
