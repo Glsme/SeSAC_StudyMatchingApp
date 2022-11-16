@@ -45,8 +45,6 @@ class ManagementViewController: BaseViewController {
         mainView.cardView.titleView.isHidden = cardToggle
         
         guard let userInfo = try? viewModel.userInfo.value() else { return }
-        dump(userInfo)
-        print(userInfo.searchable, "!!!!!!!!")
 
         mainView.cardView.nicknameView.nameLabel.text = userInfo.nick
         mainView.ageView.ageSlider.value = [CGFloat(userInfo.ageMin), CGFloat(userInfo.ageMax)]
