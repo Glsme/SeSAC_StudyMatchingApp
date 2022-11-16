@@ -63,3 +63,7 @@ enum SesacBGAssets: String {
     case sesacBG8 = "sesac_background_8"
     case sesacBG9 = "sesac_background_9"
 }
+
+enum HomeAssets: String {
+    case search, antenna, mail, place
+}

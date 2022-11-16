@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController {
     let mainView = HomeView()
     let viewModel = MainViewModel()
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MainViewModel: CommonViewModel {
+final class MainViewModel: CommonViewModel {
     
     struct Input {
         
