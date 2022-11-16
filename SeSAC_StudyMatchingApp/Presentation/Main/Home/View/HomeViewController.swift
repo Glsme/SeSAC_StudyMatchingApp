@@ -9,9 +9,13 @@ import CoreLocation
 import MapKit
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 final class HomeViewController: BaseViewController {
     let mainView = HomeView()
     let viewModel = MainViewModel()
+    let disposeBag = DisposeBag()
     
     let locationManager = CLLocationManager()
     var locationStatus = false
@@ -42,6 +46,41 @@ final class HomeViewController: BaseViewController {
         annotation.title = "현재 위치"
         
         mainView.mapView.addAnnotation(annotation)
+    }
+    
+    override func bindData() {
+        mainView.allButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                if vc.mainView.allButton.backgroundColor != .sesacGreen {
+                    vc.mainView.setManButtonSelectedStyle(false)
+                    vc.mainView.setWomanButtonSelectedStyle(false)
+                    vc.mainView.setAllButtonSelectedStyle(true)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.manButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                if vc.mainView.manButton.backgroundColor != .sesacGreen {
+                    vc.mainView.setManButtonSelectedStyle(true)
+                    vc.mainView.setWomanButtonSelectedStyle(false)
+                    vc.mainView.setAllButtonSelectedStyle(false)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.womanButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                if vc.mainView.womanButton.backgroundColor != .sesacGreen {
+                    vc.mainView.setAllButtonSelectedStyle(false)
+                    vc.mainView.setManButtonSelectedStyle(false)
+                    vc.mainView.setWomanButtonSelectedStyle(true)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
 
