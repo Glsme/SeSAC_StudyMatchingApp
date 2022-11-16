@@ -10,13 +10,14 @@ import UIKit
 import SnapKit
 import RxDataSources
 import RxSwift
+import RxGesture
 
 class ManagementViewController: BaseViewController {
     let mainView = ManagementView()
     let viewModel = ManagementViewModel()
     let disposeBag = DisposeBag()
     var cardToggle: Bool = true
-        
+    
     override func loadView() {
         self.view = mainView
     }
@@ -41,9 +42,18 @@ class ManagementViewController: BaseViewController {
         mainView.ageView.ageSlider.value = [CGFloat(userInfo.ageMin), CGFloat(userInfo.ageMax)]
         setSesacTitleColor(userInfo: userInfo)
         setGenderColor(userInfo: userInfo)
+        mainView.studyView.studyTextField.textField.text = userInfo.study
     }
     
     override func bindData() {
+        view.rx.tapGesture()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe { (vc, _) in
+                vc.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+        
         mainView.cardView.nicknameView.moreButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
