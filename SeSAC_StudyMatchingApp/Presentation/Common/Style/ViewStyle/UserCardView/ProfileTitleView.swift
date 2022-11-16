@@ -62,6 +62,7 @@ class ProfileTitleView: BaseView {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
         view.text = "첫 리뷰를 기다리는 중이에요"
+        view.textColor = .sesacGray6
         view.numberOfLines = 0
         return view
     }()

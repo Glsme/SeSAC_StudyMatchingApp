@@ -15,7 +15,7 @@ class ManagementViewController: BaseViewController {
     let mainView = ManagementView()
     let viewModel = ManagementViewModel()
     let disposeBag = DisposeBag()
-    var cardToggle: Bool = false
+    var cardToggle: Bool = true
         
     override func loadView() {
         self.view = mainView
@@ -34,6 +34,8 @@ class ManagementViewController: BaseViewController {
         navigationItem.title = "정보 관리"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
         
+        mainView.cardView.titleView.isHidden = cardToggle
+        
         guard let userInfo = try? viewModel.userInfo.value() else { return }
         mainView.cardView.nicknameView.nameLabel.text = userInfo.nick
         mainView.ageView.ageSlider.value = [CGFloat(userInfo.ageMin), CGFloat(userInfo.ageMax)]
@@ -49,6 +51,12 @@ class ManagementViewController: BaseViewController {
                 print("tap")
                 UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut) {
                     vc.mainView.cardView.titleView.isHidden = vc.cardToggle
+                }
+                
+                if vc.cardToggle {
+                    vc.mainView.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+                } else {
+                    vc.mainView.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.up"), for: .normal)
                 }
             }
             .disposed(by: disposeBag)
