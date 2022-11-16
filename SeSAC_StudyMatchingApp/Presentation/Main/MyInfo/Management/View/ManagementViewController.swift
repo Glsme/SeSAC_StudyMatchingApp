@@ -18,6 +18,8 @@ class ManagementViewController: BaseViewController {
     let disposeBag = DisposeBag()
     var cardToggle: Bool = true
     
+    let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: ManagementViewController.self, action: nil)
+    
     override func loadView() {
         self.view = mainView
     }
@@ -34,6 +36,9 @@ class ManagementViewController: BaseViewController {
         
         navigationItem.title = "정보 관리"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
+        navigationItem.rightBarButtonItem = saveButton
+        saveButton.tintColor = .black
+        
         
         mainView.cardView.titleView.isHidden = cardToggle
         
