@@ -16,7 +16,9 @@ class ManagementViewController: BaseViewController {
     let mainView = ManagementView()
     let viewModel = ManagementViewModel()
     let disposeBag = DisposeBag()
+    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
     var cardToggle: Bool = true
+    
     
     let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: ManagementViewController.self, action: nil)
     
@@ -124,7 +126,9 @@ class ManagementViewController: BaseViewController {
             .bind { (vc, _) in
                 let popupVC = WithdarwViewController()
                 popupVC.modalPresentationStyle = .overCurrentContext
-                vc.present(popupVC, animated: false)
+                
+                guard let delegate = self.sceneDelegate else { return }
+                delegate.window?.rootViewController?.present(popupVC, animated: false)
             }
             .disposed(by: disposeBag)
     }
