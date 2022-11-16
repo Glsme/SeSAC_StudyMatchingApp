@@ -67,13 +67,20 @@ final class HomeView: BaseView {
         return view
     }()
     
+    lazy var pinImageView: UIImageView = {
+        let view = UIImageView()
+        view.clipsToBounds = true
+        view.image = UIImage(named: HomeAssets.mapMarker.rawValue)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
     }
     
     override func configureUI() {
-        [mapView, searchButton, stackView, gpsButton].forEach {
+        [mapView, searchButton, stackView, gpsButton, pinImageView].forEach {
             self.addSubview($0)
         }
     }
@@ -85,7 +92,7 @@ final class HomeView: BaseView {
         
         searchButton.snp.makeConstraints { make in
             make.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(16)
-            make.height.width.equalTo(64)
+            make.height.width.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.17)
         }
         
         stackView.snp.makeConstraints { make in
@@ -112,6 +119,11 @@ final class HomeView: BaseView {
             make.leading.equalTo(stackView.snp.leading)
             make.top.equalTo(stackView.snp.bottom).offset(16)
             make.height.width.equalTo(48)
+        }
+        
+        pinImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.128)
+            make.center.equalTo(safeAreaLayoutGuide.snp.center)
         }
     }
     

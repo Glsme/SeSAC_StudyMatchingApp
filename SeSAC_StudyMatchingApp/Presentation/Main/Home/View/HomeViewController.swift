@@ -25,6 +25,7 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         locationManager.delegate = self
+        mainView.mapView.delegate = self
         checkUserDeviceLocationServiceAuthorization()
     }
     
@@ -87,5 +88,11 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkUserDeviceLocationServiceAuthorization()
+    }
+}
+
+extension HomeViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        return MKAnnotationView()
     }
 }

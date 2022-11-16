@@ -66,4 +66,5 @@ enum SesacBGAssets: String {
 
 enum HomeAssets: String {
     case search, antenna, mail, place
+    case mapMarker = "map_marker"
 }
