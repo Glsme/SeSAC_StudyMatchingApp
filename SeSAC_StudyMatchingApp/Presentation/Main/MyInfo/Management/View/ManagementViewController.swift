@@ -113,7 +113,9 @@ class ManagementViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.readyToSaveData()
-                vc.viewModel.requsetUpdateMyPage()
+                vc.viewModel.requsetUpdateMyPage {
+                    vc.navigationController?.popViewController(animated: true)
+                }
             }
             .disposed(by: disposeBag)
     }

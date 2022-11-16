@@ -34,7 +34,12 @@ final class SesacSignupAPIService {
                 completionHandler(.success(success))
             case .failure(_):
                 guard let statusCode = response.response?.statusCode else { return }
-                guard let error = LoginError(rawValue: statusCode) else { return }
+                guard let error = LoginError(rawValue: statusCode) else {
+                    if statusCode == 200 {
+                        completionHandler(.success("success"))
+                    }
+                    return
+                }
                 completionHandler(.failure(error))
                 
             }

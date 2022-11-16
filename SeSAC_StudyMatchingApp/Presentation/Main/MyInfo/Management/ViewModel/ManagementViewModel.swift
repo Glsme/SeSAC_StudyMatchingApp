@@ -90,7 +90,7 @@ final class ManagementViewModel {
         return [background, profile]
     }
     
-    func requsetUpdateMyPage() {
+    func requsetUpdateMyPage(completion: @escaping () -> Void) {
         guard let mypageUpdate = mypageUpdate else { return }
         let api = SesacAPIRouter.updatePut(mypage: mypageUpdate)
         
@@ -98,6 +98,7 @@ final class ManagementViewModel {
             switch response {
             case .success(let success):
                 print(success)
+                completion()
             case .failure(let error):
                 guard let error = error as? LoginError else { return }
                 print(error.rawValue)
