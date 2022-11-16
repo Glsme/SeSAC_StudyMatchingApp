@@ -82,6 +82,7 @@ final class MyInfoViewController: BaseViewController {
                 let result = success.toDomain()
                 UserManager.sesac = result.sesac
                 UserManager.nickname = result.nick
+                
                 let nextVC = ManagementViewController()
                 nextVC.viewModel.userInfo.onNext(result)
                 self.transViewController(ViewController: nextVC, type: .push)

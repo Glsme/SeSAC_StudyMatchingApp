@@ -34,6 +34,8 @@ extension SectionOfManagementCell: SectionModelType {
 
 final class ManagementViewModel {
     var userInfo = BehaviorSubject<SeSACInfo>(value: SeSACInfo())
+    var mypageUpdate: MypageUpdate?
+    
     let titles: [ManagementCell] = [ManagementCell(title: nil),
                                     ManagementCell(title: nil),
                                    ManagementCell(title: "내 성별"),
@@ -86,5 +88,20 @@ final class ManagementViewModel {
         }
         
         return [background, profile]
+    }
+    
+    func requsetUpdateMyPage() {
+        guard let mypageUpdate = mypageUpdate else { return }
+        let api = SesacAPIRouter.updatePut(mypage: mypageUpdate)
+        
+        SesacSignupAPIService.shared.requsetSesacUpdate(router: api) { response in
+            switch response {
+            case .success(let success):
+                print(success)
+            case .failure(let error):
+                guard let error = error as? LoginError else { return }
+                print(error.rawValue)
+            }
+        }
     }
 }

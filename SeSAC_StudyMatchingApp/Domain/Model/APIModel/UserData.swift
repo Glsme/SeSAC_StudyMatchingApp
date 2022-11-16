@@ -46,7 +46,7 @@ struct UserData: Codable {
                          comment: comment,
                          gender: gender,
                          study: study,
-                         searchable: sesac,
+                         searchable: searchable,
                          ageMin: ageMin,
                          ageMax: ageMax)
     }

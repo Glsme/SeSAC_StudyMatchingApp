@@ -19,8 +19,7 @@ struct SeSACInfo {
     let ageMin: Int
     let ageMax: Int
     
-    init(
-        background: Int = 0,
+    init(background: Int = 0,
         sesac: Int = 0,
         nick: String = "",
         reputation: [Int] = [],
@@ -29,8 +28,7 @@ struct SeSACInfo {
         study: String = "",
         searchable: Int = 0,
         ageMin: Int = 0,
-        ageMax: Int = 0
-    ){
+        ageMax: Int = 0){
         self.background = background
         self.sesac = sesac
         self.nick = nick

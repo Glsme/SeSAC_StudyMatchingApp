@@ -10,16 +10,26 @@ import Foundation
 import Alamofire
 
 enum SesacAPIRouter: URLRequestConvertible {
-    case loginGet, signupPost
+    case loginGet
+    case signupPost
+    case updatePut(mypage: MypageUpdate)
     
     var baseURL: URL {
-        return URL(string: "http://api.sesac.co.kr:1207/v1/user")!
+        switch self {
+        case .loginGet:
+            return URL(string: "http://api.sesac.co.kr:1207/v1/user")!
+        case .signupPost:
+            return URL(string: "http://api.sesac.co.kr:1207/v1/user")!
+        case .updatePut(mypage: _):
+            return URL(string: "http://api.sesac.co.kr:1207/v1/user/mypage")!
+        }
     }
     
     var method: HTTPMethod {
         switch self {
         case .loginGet: return .get
         case .signupPost: return .post
+        case .updatePut: return .put
         }
     }
     
@@ -38,6 +48,11 @@ enum SesacAPIRouter: URLRequestConvertible {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "accept": "application/json"]
         case .signupPost:
+            guard let idToken = UserManager.authVerificationToken else { return ["": ""] }
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "accept": "*/*",
+                    "idtoken": idToken]
+        case .updatePut:
             guard let idToken = UserManager.authVerificationToken else { return ["": ""] }
             return ["Content-Type": "application/x-www-form-urlencoded",
                     "accept": "*/*",
@@ -62,6 +77,12 @@ enum SesacAPIRouter: URLRequestConvertible {
                     "birth": birth,
                     "email": email,
                     "gender": "\(gender)"]
+        case .updatePut(let myPage):
+            return ["searchable": String(myPage.searchable),
+                    "ageMin": String(myPage.ageMin),
+                    "ageMax": String(myPage.ageMax),
+                    "gender": String(myPage.gender),
+                    "study": myPage.study]
         }
     }
     

@@ -43,8 +43,12 @@ class ManagementViewController: BaseViewController {
         mainView.cardView.titleView.isHidden = cardToggle
         
         guard let userInfo = try? viewModel.userInfo.value() else { return }
+        dump(userInfo)
+        print(userInfo.searchable, "!!!!!!!!")
+
         mainView.cardView.nicknameView.nameLabel.text = userInfo.nick
         mainView.ageView.ageSlider.value = [CGFloat(userInfo.ageMin), CGFloat(userInfo.ageMax)]
+        mainView.ageView.ageLabel.text = "\(userInfo.ageMin) - \(userInfo.ageMax)"
         setSesacTitleColor(userInfo: userInfo)
         setGenderColor(userInfo: userInfo)
         mainView.studyView.studyTextField.textField.text = userInfo.study
@@ -104,6 +108,27 @@ class ManagementViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        saveButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.readyToSaveData()
+                vc.viewModel.requsetUpdateMyPage()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func readyToSaveData() {
+        let searchable: Int = mainView.phoneView.permitSwitch.isOn ? 1 : 0
+        let ageGroup: [CGFloat] = mainView.ageView.ageSlider.value
+        let gender: Int =  mainView.genderView.manButton.backgroundColor == .sesacGreen ? 1 : 0
+        let study = mainView.studyView.studyTextField.textField.text ?? ""
+        
+        viewModel.mypageUpdate = MypageUpdate(searchable: searchable,
+                                              ageMin: Int(ageGroup[0]),
+                                              ageMax: Int(ageGroup[1]),
+                                              gender: gender,
+                                              study: study)
     }
     
     func setSesacTitleColor(userInfo: SeSACInfo) {
@@ -131,7 +156,6 @@ class ManagementViewController: BaseViewController {
     }
     
     func setPermitPhoneSearching(userInfo: SeSACInfo) {
-        print(userInfo.searchable)
         if userInfo.searchable == 1 {
             mainView.phoneView.permitSwitch.isOn = true
         } else if userInfo.searchable == 0 {
