@@ -41,11 +41,11 @@ final class HomeViewController: BaseViewController {
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 700, longitudinalMeters: 700)
         mainView.mapView.setRegion(region, animated: true)
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = center
-        annotation.title = "현재 위치"
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = center
+//        annotation.title = "현재 위치"
         
-        mainView.mapView.addAnnotation(annotation)
+//        mainView.mapView.addAnnotation(annotation)
     }
     
     override func bindData() {
@@ -81,6 +81,16 @@ final class HomeViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        mainView.gpsButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.locationManager.startUpdatingLocation()
+                guard let coordinate = vc.locationManager.location?.coordinate else { return }
+                vc.setUserRegionAndAnnotation(center: coordinate)
+                vc.locationManager.stopUpdatingLocation()
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -114,7 +124,6 @@ extension HomeViewController {
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coordinate = locations.first {
-            print(coordinate.coordinate, "!!!!!!!!")
             setUserRegionAndAnnotation(center: coordinate.coordinate)
         }
         
@@ -131,7 +140,5 @@ extension HomeViewController: CLLocationManagerDelegate {
 }
 
 extension HomeViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        return MKAnnotationView()
-    }
+    
 }
