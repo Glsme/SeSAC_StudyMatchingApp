@@ -34,7 +34,7 @@ final class HomeViewController: BaseViewController {
     }
     
     func setUserRegionAndAnnotation(center: CLLocationCoordinate2D) {
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: 10000, longitudinalMeters: 10000)
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: 700, longitudinalMeters: 700)
         mainView.mapView.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()
