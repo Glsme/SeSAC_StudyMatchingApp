@@ -36,16 +36,22 @@ class WithdrawPopupView: BaseView {
     lazy var cancelButton: UIButton = {
         let view = UIButton()
         view.setTitle("취소", for: .normal)
+        view.setTitleColor(.black, for: .normal)
         view.titleLabel?.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
         view.backgroundColor = .sesacGray2
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
         return view
     }()
     
     lazy var okButton: UIButton = {
         let view = UIButton()
         view.setTitle("확인", for: .normal)
+        view.setTitleColor(.white, for: .normal)
         view.titleLabel?.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
         view.backgroundColor = .sesacGreen
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
         return view
     }()
     
@@ -70,14 +76,24 @@ class WithdrawPopupView: BaseView {
         
         okButton.snp.makeConstraints { make in
             make.trailing.bottom.equalToSuperview().inset(16)
-            make.width.equalToSuperview().multipliedBy(0.4)
+            make.width.equalToSuperview().multipliedBy(0.43)
             make.height.equalToSuperview().multipliedBy(0.3)
         }
         
         cancelButton.snp.makeConstraints { make in
             make.leading.bottom.equalToSuperview().inset(16)
-            make.width.equalToSuperview().multipliedBy(0.4)
-            make.height.equalToSuperview().multipliedBy(0.3)
+            make.width.equalTo(okButton.snp.width)
+            make.height.equalTo(okButton.snp.height)
+        }
+        
+        subtitleLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().multipliedBy(0.8)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(16)
+            make.centerX.leading.trailing.equalToSuperview()
         }
     }
 }

@@ -122,7 +122,9 @@ class ManagementViewController: BaseViewController {
         mainView.withdrawView.titleButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                print("hi")
+                let popupVC = WithdarwViewController()
+                popupVC.modalPresentationStyle = .overCurrentContext
+                vc.present(popupVC, animated: false)
             }
             .disposed(by: disposeBag)
     }
