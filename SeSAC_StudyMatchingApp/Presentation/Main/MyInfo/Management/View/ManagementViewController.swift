@@ -118,6 +118,13 @@ class ManagementViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        mainView.withdrawView.titleButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("hi")
+            }
+            .disposed(by: disposeBag)
     }
     
     func readyToSaveData() {

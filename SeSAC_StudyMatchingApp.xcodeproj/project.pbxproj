@@ -19,6 +19,9 @@
 		8505152F29236A1C00862A2F /* CustomwithdarwView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505152E29236A1C00862A2F /* CustomwithdarwView.swift */; };
 		850515392924066C00862A2F /* SeSACInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515382924066C00862A2F /* SeSACInfo.swift */; };
 		850515402924994600862A2F /* MypageUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505153F2924994600862A2F /* MypageUpdate.swift */; };
+		850515422924B3A600862A2F /* WithdrawPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515412924B3A600862A2F /* WithdrawPopupView.swift */; };
+		850515482924B73400862A2F /* WithdarwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515472924B73400862A2F /* WithdarwViewController.swift */; };
+		8505154B2924B78700862A2F /* WithdarwViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505154A2924B78700862A2F /* WithdarwViewModel.swift */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
@@ -114,6 +117,9 @@
 		8505152E29236A1C00862A2F /* CustomwithdarwView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomwithdarwView.swift; sourceTree = "<group>"; };
 		850515382924066C00862A2F /* SeSACInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACInfo.swift; sourceTree = "<group>"; };
 		8505153F2924994600862A2F /* MypageUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageUpdate.swift; sourceTree = "<group>"; };
+		850515412924B3A600862A2F /* WithdrawPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawPopupView.swift; sourceTree = "<group>"; };
+		850515472924B73400862A2F /* WithdarwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdarwViewController.swift; sourceTree = "<group>"; };
+		8505154A2924B78700862A2F /* WithdarwViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdarwViewModel.swift; sourceTree = "<group>"; };
 		85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_StudyMatchingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85350A3D2918C1D600C70515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85350A3F2918C1D600C70515 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +256,32 @@
 				8505153F2924994600862A2F /* MypageUpdate.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		850515432924B71100862A2F /* Withdraw */ = {
+			isa = PBXGroup;
+			children = (
+				850515492924B77C00862A2F /* ViewModel */,
+				850515462924B72400862A2F /* View */,
+			);
+			path = Withdraw;
+			sourceTree = "<group>";
+		};
+		850515462924B72400862A2F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				850515412924B3A600862A2F /* WithdrawPopupView.swift */,
+				850515472924B73400862A2F /* WithdarwViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		850515492924B77C00862A2F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8505154A2924B78700862A2F /* WithdarwViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		85350A312918C1D600C70515 = {
@@ -847,6 +879,7 @@
 		85E3ABAB2922159500F890AF /* Management */ = {
 			isa = PBXGroup;
 			children = (
+				850515432924B71100862A2F /* Withdraw */,
 				85E3ABAD2922164A00F890AF /* ViewModel */,
 				85E3ABAE2922165100F890AF /* View */,
 			);
@@ -1006,6 +1039,7 @@
 				85E3ABB4292216FE00F890AF /* ManagementViewModel.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */,
+				850515422924B3A600862A2F /* WithdrawPopupView.swift in Sources */,
 				850515392924066C00862A2F /* SeSACInfo.swift in Sources */,
 				8542BE222921F1CF00CF799A /* MyInfoViewController.swift in Sources */,
 				85992229291D2CFF007F96A6 /* GenderViewModel.swift in Sources */,
@@ -1034,12 +1068,14 @@
 				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
 				85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */,
+				8505154B2924B78700862A2F /* WithdarwViewModel.swift in Sources */,
 				85992219291CD6B8007F96A6 /* BirthViewController.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85992220291D1ED1007F96A6 /* EmailViewModel.swift in Sources */,
 				8505152D2923693E00862A2F /* CustomAgeView.swift in Sources */,
 				85350A8B2918FCCC00C70515 /* Ments.swift in Sources */,
 				85992202291C0B03007F96A6 /* LoginError.swift in Sources */,
+				850515482924B73400862A2F /* WithdarwViewController.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
 				859921FC291C01D1007F96A6 /* SesacAPIService.swift in Sources */,
 				85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */,
