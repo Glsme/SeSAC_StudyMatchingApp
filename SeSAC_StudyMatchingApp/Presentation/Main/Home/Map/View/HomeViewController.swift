@@ -33,6 +33,11 @@ final class HomeViewController: BaseViewController {
         checkUserDeviceLocationServiceAuthorization()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func configureUI() {
         
     }
@@ -95,6 +100,13 @@ final class HomeViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        mainView.searchButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                let nextVC = SearchViewController()
+                vc.transViewController(ViewController: nextVC, type: .push)
+            }
     }
 }
 

@@ -22,6 +22,7 @@ class MainTabBarController: UITabBarController {
         tabBar.tintColor = .sesacGreen
 
         let homeVC = HomeViewController()
+        let homeNaviVC = UINavigationController(rootViewController: homeVC)
         let test1 = HomeViewController()
         let test2 = HomeViewController()
         let myInfoVC = MyInfoViewController()
@@ -29,7 +30,7 @@ class MainTabBarController: UITabBarController {
         
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12)], for: .normal)
 
-        setViewControllers([homeVC, test1, test2, myInfoNaviVC], animated: false)
+        setViewControllers([homeNaviVC, test1, test2, myInfoNaviVC], animated: false)
         
         if let items = tabBar.items {
             items[0].image = UIImage(named: TabBarAssets.homeIcon.rawValue)
