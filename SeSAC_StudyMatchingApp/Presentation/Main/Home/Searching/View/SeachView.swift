@@ -12,6 +12,7 @@ class SearchView: BaseView {
         let view = UICollectionView(frame: .zero, collectionViewLayout: createTagLayout())
         view.showsVerticalScrollIndicator = false
         view.register(TagCell.self, forCellWithReuseIdentifier: TagCell.reuseIdentifier)
+        view.register(RecommandCell.self, forCellWithReuseIdentifier: RecommandCell.reuseIdentifier)
         view.showsHorizontalScrollIndicator = false
         view.showsVerticalScrollIndicator = false
         return view

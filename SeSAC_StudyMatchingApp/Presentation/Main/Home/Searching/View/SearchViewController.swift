@@ -111,6 +111,12 @@ class SearchViewController: BaseViewController {
 extension SearchViewController {
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<TagCell, String> { cell, indexPath, itemIdentifier in
+            if indexPath.section == 0 {
+                cell.deleteImageView.isHidden = true
+            } else {
+                cell.deleteImageView.isHidden = false
+            }
+            
             cell.titleLabel.text = itemIdentifier
         }
         
