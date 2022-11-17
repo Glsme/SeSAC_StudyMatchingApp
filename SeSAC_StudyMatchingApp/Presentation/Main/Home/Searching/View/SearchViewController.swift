@@ -116,7 +116,7 @@ extension SearchViewController {
         }
         
         let recommandCellRegistration = UICollectionView.CellRegistration<RecommandCell, String> { cell, indexPath, itemIdentifier in
-            if indexPath.item < self.viewModel.recommandData.count - 1 {
+            if indexPath.item <= self.viewModel.recommandData.count - 1 {
                 cell.setMostStyle()
             }
             cell.titleLabel.text = itemIdentifier
