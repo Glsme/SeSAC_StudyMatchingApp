@@ -49,7 +49,7 @@ class SearchView: BaseView {
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
-            subitems: [item]
+            subitems: [item, item]
         )
         
         group.interItemSpacing = .fixed(8)

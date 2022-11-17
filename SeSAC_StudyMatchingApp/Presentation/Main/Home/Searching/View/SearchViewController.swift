@@ -85,7 +85,7 @@ class SearchViewController: BaseViewController {
                 
                 var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
                 snapshot.appendSections([0, 1])
-        //        snapshot.appendItems(viewModel.tagTitle, toSection: 0)
+                snapshot.appendItems(vc.viewModel.recommandData, toSection: 0)
                 snapshot.appendItems(vc.viewModel.myHopeStudies, toSection: 1)
                 vc.dataSource.apply(snapshot, animatingDifferences: false)
             }
@@ -100,6 +100,7 @@ class SearchViewController: BaseViewController {
                     var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
                     snapshot.appendSections([0, 1])
                     vc.viewModel.myHopeStudies.remove(at: value.item)
+                    snapshot.appendItems(vc.viewModel.recommandData, toSection: 0)
                     snapshot.appendItems(vc.viewModel.myHopeStudies, toSection: 1)
                     vc.dataSource.apply(snapshot, animatingDifferences: false)
                 }
