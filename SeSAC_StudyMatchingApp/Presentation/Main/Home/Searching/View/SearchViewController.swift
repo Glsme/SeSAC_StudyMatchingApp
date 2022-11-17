@@ -51,7 +51,7 @@ class SearchViewController: BaseViewController {
                     return
                 }
                 
-                guard text == " ", text.contains("  ") else {
+                if text == " " || text.contains("  ") {
                     vc.mainView.makeToast("띄어쓰기를 주의해서 입력해주세요", position: .center)
                     return
                 }
