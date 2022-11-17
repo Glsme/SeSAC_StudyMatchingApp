@@ -15,8 +15,15 @@ class SearchViewController: BaseViewController {
     let mainView = SearchView()
     let viewModel = SearchViewModel()
     let disposeBag = DisposeBag()
-    
+
     private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    
+    lazy var searchBar: UISearchBar = {
+        let width = UIScreen.main.bounds.width
+        let view = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - 20, height: 0))
+        view.placeholder = "띄어쓰기로 복수 입력이 가능해요"
+        return view
+    }()
     
     override func loadView() {
         self.view = mainView
@@ -30,36 +37,49 @@ class SearchViewController: BaseViewController {
     }
     
     override func configureUI() {
-        setupSearchController()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
 //        mainView.collectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchHeaderView")
         mainView.collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.reuseIdentifier)
     }
     
-    func setupSearchController() {
-        let screen = UIScreen.main.bounds
-        let width = screen.width
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - 20, height: 0))
-        searchBar.placeholder = "띄어쓰기로 복수 입력이 가능해요"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
-    }
-    
     override func bindData() {
-        
+        searchBar.rx.searchButtonClicked
+            .withUnretained(self)
+            .bind { (vc, _) in
+                guard let text = vc.searchBar.text else { return }
+                
+                guard vc.viewModel.checkOverlappingStudyName(text) else {
+                    vc.view.makeToast("이미 하고 싶은 스터디에 '\(text)'이(가) 있습니다.", position: .center)
+                    return
+                }
+                
+                guard vc.viewModel.myHopeStudies.count <= 7 else {
+                    vc.view.makeToast("스터디를 더 이상 추가할 수 없습니다", position: .center)
+                    return
+                }
+                
+                var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+                snapshot.appendSections([0, 1])
+        //        snapshot.appendItems(viewModel.tagTitle, toSection: 0)
+                vc.viewModel.myHopeStudies.append(text)
+                snapshot.appendItems(vc.viewModel.myHopeStudies, toSection: 1)
+                vc.dataSource.apply(snapshot, animatingDifferences: false)
+            }
+            .disposed(by: disposeBag)
     }
-    
 }
 
 extension SearchViewController {
     private func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<TagCell, String> { cell, indexPath, itemIdentifier in
-            cell.tagButton.setTitle("셀안에 들어갈꺼~!", for: .normal)
-            cell.tagButton.titleLabel?.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+            cell.titleLabel.text = itemIdentifier
         }
         
-        let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { headerView, elementKind, indexPath in
+        let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] headerView, elementKind, indexPath in
+            guard let self = self else { return }
             
             var configuration = headerView.defaultContentConfiguration()
-            configuration.text = "지금 주변에는"
+            configuration.text = self.viewModel.titleArray[indexPath.section]
             configuration.textProperties.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12)
             configuration.textProperties.color = .black
             headerView.contentConfiguration = configuration
@@ -75,8 +95,9 @@ extension SearchViewController {
         }
         
         var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(viewModel.tagTitle)
+        snapshot.appendSections([0, 1])
+//        snapshot.appendItems(viewModel.tagTitle, toSection: 0)
+        snapshot.appendItems(viewModel.myHopeStudies, toSection: 1)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
