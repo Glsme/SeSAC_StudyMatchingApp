@@ -108,7 +108,8 @@ final class HomeViewController: BaseViewController {
                 let nextVC = SearchViewController()
                 nextVC.viewModel.requsetSearchData(lat: coordinate.latitude, long: coordinate.longitude) { response in
                     switch response {
-                    case .success(_):
+                    case .success(let success):
+                        nextVC.viewModel.recommandData.append(contentsOf: success.fromRecommend)
                         vc.transViewController(ViewController: nextVC, type: .push)
                     case .failure(let error):
                         print(error)

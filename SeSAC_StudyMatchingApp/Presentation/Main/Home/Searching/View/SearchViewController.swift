@@ -109,7 +109,7 @@ class SearchViewController: BaseViewController {
 }
 
 extension SearchViewController {
-    private func configureDataSource() {
+    func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<TagCell, String> { cell, indexPath, itemIdentifier in
             cell.titleLabel.text = itemIdentifier
         }
@@ -135,7 +135,7 @@ extension SearchViewController {
         
         var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
         snapshot.appendSections([0, 1])
-//        snapshot.appendItems(viewModel.tagTitle, toSection: 0)
+        snapshot.appendItems(viewModel.recommandData, toSection: 0)
         snapshot.appendItems(viewModel.myHopeStudies, toSection: 1)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
