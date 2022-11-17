@@ -50,25 +50,37 @@ class SearchViewController: BaseViewController {
                     vc.mainView.makeToast("스터디를 입력해주세요", position: .center)
                     return
                 }
-                guard text.count < 8 else {
-                    vc.view.makeToast("8자 이내로 입력해주세요", position: .center)
-                    return
-                }
                 
                 guard vc.viewModel.checkOverlappingStudyName(text) else {
                     vc.view.makeToast("이미 하고 싶은 스터디에 '\(text)'이(가) 있습니다.", position: .center)
                     return
                 }
                 
-                guard vc.viewModel.myHopeStudies.count <= 7 else {
+                let input = text.components(separatedBy: " ")
+                let studyCount = vc.viewModel.myHopeStudies.count
+                
+                guard studyCount <= 7, studyCount + input.count <= 7 else {
                     vc.view.makeToast("스터디를 더 이상 추가할 수 없습니다", position: .center)
                     return
+                }
+                
+                guard input.count == Set(input).count else {
+                    vc.view.makeToast("입력한 스터디 중 중복된 이름이 있습니다.", position: .center)
+                    return
+                }
+                
+                guard input.count == input.filter({ $0.count <= 8 }).count else {
+                    vc.view.makeToast("8자 이내로 입력해주세요", position: .center)
+                    return
+                }
+                
+                input.forEach {
+                    vc.viewModel.myHopeStudies.append($0)
                 }
                 
                 var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
                 snapshot.appendSections([0, 1])
         //        snapshot.appendItems(viewModel.tagTitle, toSection: 0)
-                vc.viewModel.myHopeStudies.append(text)
                 snapshot.appendItems(vc.viewModel.myHopeStudies, toSection: 1)
                 vc.dataSource.apply(snapshot, animatingDifferences: false)
             }
