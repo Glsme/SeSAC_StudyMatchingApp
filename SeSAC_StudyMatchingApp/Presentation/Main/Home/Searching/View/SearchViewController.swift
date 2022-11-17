@@ -52,7 +52,7 @@ class SearchViewController: BaseViewController {
                 }
                 
                 guard vc.viewModel.checkOverlappingStudyName(text) else {
-                    vc.view.makeToast("이미 하고 싶은 스터디에 '\(text)'이(가) 있습니다.", position: .center)
+                    vc.view.makeToast("이미 등록된 스터디입니다.", position: .center)
                     return
                 }
                 

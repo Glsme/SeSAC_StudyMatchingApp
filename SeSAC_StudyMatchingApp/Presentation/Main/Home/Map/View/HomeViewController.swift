@@ -104,8 +104,17 @@ final class HomeViewController: BaseViewController {
         mainView.searchButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
+                guard let coordinate = vc.locationManager.location?.coordinate else { return }
                 let nextVC = SearchViewController()
-                vc.transViewController(ViewController: nextVC, type: .push)
+                nextVC.viewModel.requsetSearchData(lat: coordinate.latitude, long: coordinate.longitude) { response in
+                    switch response {
+                    case .success(_):
+                        vc.transViewController(ViewController: nextVC, type: .push)
+                    case .failure(let error):
+                        print(error)
+                        vc.view.makeToast("검색 에러가 발생하였습니다. \n잠시 후 다시 시도해주세요", position: .center)
+                    }
+                }
             }
             .disposed(by: disposeBag)
     }

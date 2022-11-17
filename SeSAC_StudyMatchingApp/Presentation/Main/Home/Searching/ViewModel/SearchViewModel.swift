@@ -15,4 +15,17 @@ class SearchViewModel {
     func checkOverlappingStudyName(_ text: String) -> Bool {
         return myHopeStudies.filter { $0 == text }.count > 0 ? false : true
     }
+    
+    func requsetSearchData(lat: Double, long: Double, completion: @escaping (Result<String, Error>) -> Void) {
+        let api = SesacAPIRouter.searchPost(lat: String(lat), long: String(long))
+        SesacSignupAPIService.shared.requestSesacSearch(router: api) { response in
+            switch response {
+            case .success(let success):
+                completion(.success(success))
+            case .failure(let error):
+                print("Error", error)
+                completion(.failure(error))
+            }
+        }
+    }
 }

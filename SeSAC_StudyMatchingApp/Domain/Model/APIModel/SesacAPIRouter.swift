@@ -14,6 +14,7 @@ enum SesacAPIRouter: URLRequestConvertible {
     case signupPost
     case updatePut(mypage: MypageUpdate)
     case withdraw
+    case searchPost(lat: String, long: String)
     
     var baseURL: URL {
         switch self {
@@ -25,6 +26,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             return URL(string: "http://api.sesac.co.kr:1207/v1/user/mypage")!
         case .withdraw:
             return URL(string: "http://api.sesac.co.kr:1207/v1/user/withdraw")!
+        case .searchPost:
+            return URL(string: "http://api.sesac.co.kr:1207/v1/queue/search")!
         }
     }
     
@@ -34,6 +37,7 @@ enum SesacAPIRouter: URLRequestConvertible {
         case .signupPost: return .post
         case .updatePut: return .put
         case .withdraw: return .post
+        case .searchPost: return .post
         }
     }
     
@@ -66,6 +70,11 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["Content-Type": "application/x-www-form-urlencoded",
                     "accept": "*/*",
                     "idtoken": idToken]
+        case .searchPost:
+            guard let idToken = UserManager.authVerificationToken else { return ["": ""] }
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "accept": "*/*",
+                    "idtoken": idToken]
         }
     }
     
@@ -94,6 +103,8 @@ enum SesacAPIRouter: URLRequestConvertible {
                     "study": myPage.study]
         case .withdraw:
             return ["": ""]
+        case .searchPost(let lat, let long):
+            return ["lat": lat, "long": long]
         }
     }
     
