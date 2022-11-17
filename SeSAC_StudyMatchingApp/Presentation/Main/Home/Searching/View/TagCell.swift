@@ -24,6 +24,7 @@ class TagCell: UICollectionViewCell {
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
         view.textColor = .sesacGreen
         view.backgroundColor = .clear
+        view.numberOfLines = 0
         return view
     }()
     
@@ -31,6 +32,7 @@ class TagCell: UICollectionViewCell {
         let view = UIImageView()
         view.image = UIImage(systemName: "xmark")
         view.tintColor = .sesacGreen
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
@@ -61,13 +63,14 @@ class TagCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
+//            make.top.bottom.lessThanOrEqualToSuperview()
             make.trailing.equalTo(deleteImageView.snp.leading).offset(-4)
         }
         
         deleteImageView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(16)
             make.width.equalTo(16)
-            make.height.equalTo(titleLabel.snp.height)
+            make.height.equalTo(16)
             make.centerY.equalToSuperview()
         }
     }

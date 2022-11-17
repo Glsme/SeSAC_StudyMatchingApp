@@ -47,6 +47,10 @@ class SearchViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let text = vc.searchBar.text else { return }
+                guard text.count < 15 else {
+                    vc.view.makeToast("15자 이내로 입력해주세요", position: .center)
+                    return
+                }
                 
                 guard vc.viewModel.checkOverlappingStudyName(text) else {
                     vc.view.makeToast("이미 하고 싶은 스터디에 '\(text)'이(가) 있습니다.", position: .center)
