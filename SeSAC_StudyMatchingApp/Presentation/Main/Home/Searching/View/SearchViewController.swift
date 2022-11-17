@@ -66,6 +66,21 @@ class SearchViewController: BaseViewController {
                 vc.dataSource.apply(snapshot, animatingDifferences: false)
             }
             .disposed(by: disposeBag)
+        
+        mainView.collectionView.rx.itemSelected
+            .withUnretained(self)
+            .bind { (vc, value) in
+                if value.section == 0 {
+                    
+                } else if value.section == 1 {
+                    var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+                    snapshot.appendSections([0, 1])
+                    vc.viewModel.myHopeStudies.remove(at: value.item)
+                    snapshot.appendItems(vc.viewModel.myHopeStudies, toSection: 1)
+                    vc.dataSource.apply(snapshot, animatingDifferences: false)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
 
