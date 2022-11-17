@@ -16,6 +16,8 @@ class SearchViewController: BaseViewController {
     let viewModel = SearchViewModel()
     let disposeBag = DisposeBag()
     
+    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    
     override func loadView() {
         self.view = mainView
     }
@@ -24,14 +26,13 @@ class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = false
+        configureDataSource()
     }
     
     override func configureUI() {
         setupSearchController()
-        
-        mainView.collectionView.delegate = self
-        mainView.collectionView.dataSource = self
-        mainView.collectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchHeaderView")
+//        mainView.collectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchHeaderView")
+        mainView.collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.reuseIdentifier)
     }
     
     func setupSearchController() {
@@ -48,35 +49,34 @@ class SearchViewController: BaseViewController {
     
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchHeaderView", for: indexPath) as! SearchHeaderView
+extension SearchViewController {
+    private func configureDataSource() {
+        let cellRegistration = UICollectionView.CellRegistration<TagCell, String> { cell, indexPath, itemIdentifier in
+            cell.tagButton.setTitle("셀안에 들어갈꺼~!", for: .normal)
+            cell.tagButton.titleLabel?.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+        }
+        
+        let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { headerView, elementKind, indexPath in
             
-            return headerView
-        default:
-            assert(false, "헤더만 가능~")
+            var configuration = headerView.defaultContentConfiguration()
+            configuration.text = "지금 주변에는"
+            configuration.textProperties.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12)
+            configuration.textProperties.color = .black
+            headerView.contentConfiguration = configuration
         }
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.reuseIdentifier, for: indexPath) as? TagCell else { return UICollectionViewCell() }
-        if indexPath.item % 2 == 0 {
-            cell.tagButton.setTitle("\(Int.random(in: 1...10000000000) * indexPath.item)", for: .normal)
-        } else {
-            cell.tagButton.setTitle("서재훈", for: .normal)
+        
+        dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        })
+        
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
+            return self?.mainView.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         }
-        return cell
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(viewModel.tagTitle)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
-    
 }

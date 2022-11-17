@@ -107,6 +107,7 @@ final class HomeViewController: BaseViewController {
                 let nextVC = SearchViewController()
                 vc.transViewController(ViewController: nextVC, type: .push)
             }
+            .disposed(by: disposeBag)
     }
 }
 

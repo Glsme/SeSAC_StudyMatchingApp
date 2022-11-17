@@ -18,6 +18,15 @@ class TagCell: UICollectionViewCell {
         view.layer.masksToBounds = true
         view.layer.cornerRadius = 8
         view.setTitleColor(.black, for: .normal)
+        
+        var config = UIButton.Configuration.tinted()
+        var titleAttr = AttributedString.init("gd")
+//        titleAttr.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+//        titleAttr.foregroundColor = .black
+        config.attributedTitle = titleAttr
+        config.titlePadding = 16
+        config.baseBackgroundColor = .white
+        view.configuration = config
         return view
     }()
     

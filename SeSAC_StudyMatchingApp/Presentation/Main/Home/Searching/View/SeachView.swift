@@ -35,14 +35,14 @@ class SearchView: BaseView {
     
     private func createTagLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(60),
+            widthDimension: .estimated(80),
             heightDimension: .absolute(32)
         )
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
+            widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(32)
         )
         
@@ -50,11 +50,12 @@ class SearchView: BaseView {
             layoutSize: groupSize,
             subitems: [item]
         )
+        
         group.interItemSpacing = .fixed(8)
         
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 12
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 76, trailing: 16)
+        section.interGroupSpacing = 8
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 30, trailing: 16)
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(40))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)

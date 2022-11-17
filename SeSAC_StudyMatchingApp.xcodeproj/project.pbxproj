@@ -26,7 +26,6 @@
 		8505155C2925149D00862A2F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505155B2925149D00862A2F /* SearchViewController.swift */; };
 		8505155E29251B0D00862A2F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505155D29251B0D00862A2F /* SearchViewModel.swift */; };
 		8505156029251FF100862A2F /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505155F29251FF100862A2F /* TagCell.swift */; };
-		8505156229252A2E00862A2F /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505156129252A2E00862A2F /* SearchHeaderView.swift */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
@@ -129,7 +128,6 @@
 		8505155B2925149D00862A2F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8505155D29251B0D00862A2F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		8505155F29251FF100862A2F /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
-		8505156129252A2E00862A2F /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_StudyMatchingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85350A3D2918C1D600C70515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85350A3F2918C1D600C70515 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -318,7 +316,6 @@
 				850515592925149300862A2F /* SeachView.swift */,
 				8505155B2925149D00862A2F /* SearchViewController.swift */,
 				8505155F29251FF100862A2F /* TagCell.swift */,
-				8505156129252A2E00862A2F /* SearchHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1112,7 +1109,6 @@
 				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
 				8505155E29251B0D00862A2F /* SearchViewModel.swift in Sources */,
 				85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */,
-				8505156229252A2E00862A2F /* SearchHeaderView.swift in Sources */,
 				8542BE12291E7BD500CF799A /* SplashViewModel.swift in Sources */,
 				85992208291CB01C007F96A6 /* NicknameView.swift in Sources */,
 				85350A862918F70500C70515 /* UIColor+Extension.swift in Sources */,
