@@ -13,7 +13,7 @@ class RecommandCell: UICollectionViewCell {
     lazy var recommandView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
-        view.layer.borderColor = UIColor.sesacGreen.cgColor
+        view.layer.borderColor = UIColor.sesacGray4.cgColor
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 8
         return view
@@ -22,7 +22,7 @@ class RecommandCell: UICollectionViewCell {
     lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
-        view.textColor = .sesacGreen
+        view.textColor = .black
         view.backgroundColor = .clear
         view.numberOfLines = 1
         return view
@@ -54,5 +54,10 @@ class RecommandCell: UICollectionViewCell {
             make.trailing.equalTo(-16)
             make.leading.equalTo(16)
         }
+    }
+    
+    func setMostStyle() {
+        recommandView.layer.borderColor = UIColor.sesacError.cgColor
+        titleLabel.textColor = .sesacError
     }
 }

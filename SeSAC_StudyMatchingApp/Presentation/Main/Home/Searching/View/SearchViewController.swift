@@ -110,13 +110,15 @@ class SearchViewController: BaseViewController {
 
 extension SearchViewController {
     func configureDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<TagCell, String> { cell, indexPath, itemIdentifier in
-            if indexPath.section == 0 {
-                cell.deleteImageView.isHidden = true
-            } else {
-                cell.deleteImageView.isHidden = false
-            }
+        let tagCellRegistration = UICollectionView.CellRegistration<TagCell, String> { cell, indexPath, itemIdentifier in
             
+            cell.titleLabel.text = itemIdentifier
+        }
+        
+        let recommandCellRegistration = UICollectionView.CellRegistration<RecommandCell, String> { cell, indexPath, itemIdentifier in
+            if indexPath.item < self.viewModel.recommandData.count - 1 {
+                cell.setMostStyle()
+            }
             cell.titleLabel.text = itemIdentifier
         }
         
@@ -131,8 +133,15 @@ extension SearchViewController {
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
-            return cell
+            if indexPath.section == 0 {
+                let cell = collectionView.dequeueConfiguredReusableCell(using: recommandCellRegistration, for: indexPath, item: itemIdentifier)
+                
+                return cell
+            } else {
+                let cell = collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: itemIdentifier)
+                
+                return cell
+            }
         })
         
         dataSource.supplementaryViewProvider = { [weak self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
