@@ -50,34 +50,35 @@ class SearchViewController: BaseViewController {
             .drive(onNext: { height in
                 let window = UIApplication.shared.windows.first
                 let extra = window!.safeAreaInsets.bottom
-                
+
                 self.mainView.searchButton.layer.cornerRadius = 0
                 self.mainView.searchButton.snp.updateConstraints { make in
                     make.trailing.leading.equalTo(self.view.safeAreaLayoutGuide)
                     make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(height - extra)
                 }
-                
-                UIView.animate(withDuration: 0.5) {
-                    self.view.layoutIfNeeded()
-                }
-                
-            })
-            .disposed(by: disposeBag)
-        
-        mainView.collectionView.rx.didScroll
-            .withUnretained(self)
-            .bind { (vc, _) in
-                vc.searchBar.endEditing(true)
-                vc.mainView.searchButton.layer.cornerRadius = 8
-                vc.mainView.searchButton.snp.updateConstraints { make in
-                    make.trailing.leading.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
-                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
-                }
 
                 UIView.animate(withDuration: 0.5) {
                     self.view.layoutIfNeeded()
                 }
-            }
+
+            })
+            .disposed(by: disposeBag)
+        
+        mainView.collectionView.rx.didScroll
+            .observe(on: MainScheduler.asyncInstance)
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, _) in
+                    vc.searchBar.endEditing(true)
+                    vc.mainView.searchButton.layer.cornerRadius = 8
+                    vc.mainView.searchButton.snp.updateConstraints { make in
+                        make.trailing.leading.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
+                        make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
+                    }
+
+                    UIView.animate(withDuration: 0.2) {
+                        vc.view.layoutIfNeeded()
+                    }
+            })
             .disposed(by: disposeBag)
             
         
