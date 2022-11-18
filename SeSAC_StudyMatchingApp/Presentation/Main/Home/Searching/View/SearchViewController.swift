@@ -64,6 +64,22 @@ class SearchViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
+        mainView.collectionView.rx.didScroll
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.searchBar.endEditing(true)
+                vc.mainView.searchButton.layer.cornerRadius = 8
+                vc.mainView.searchButton.snp.updateConstraints { make in
+                    make.trailing.leading.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
+                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
+                }
+                
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+            .disposed(by: disposeBag)
+        
         view.rx.tapGesture()
             .when(.recognized)
             .withUnretained(self)
@@ -72,7 +88,7 @@ class SearchViewController: BaseViewController {
                 vc.mainView.searchButton.layer.cornerRadius = 8
                 vc.mainView.searchButton.snp.updateConstraints { make in
                     make.trailing.leading.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
-                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide)
+                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
                 }
                 
                 UIView.animate(withDuration: 0.5) {
