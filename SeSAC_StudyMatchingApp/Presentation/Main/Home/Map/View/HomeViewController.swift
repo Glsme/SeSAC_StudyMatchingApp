@@ -19,7 +19,7 @@ final class HomeViewController: BaseViewController {
     
     let locationManager = CLLocationManager()
     var locationStatus = false
-    let defaultCoordinate = CLLocationCoordinate2D(latitude: 37.517819364682694, longitude: 126.88647317074734)
+    let defaultCoordinate = CLLocationCoordinate2D(latitude: 37.517857, longitude: 126.887159)
     
     override func loadView() {
         self.view = mainView
@@ -37,17 +37,45 @@ final class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
+        searchData()
     }
     
-    func setUserRegionAndAnnotation(center: CLLocationCoordinate2D) {
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: 700, longitudinalMeters: 700)
+    func searchData() {
+//        locationManager.startUpdatingLocation()
+//        guard let coordinate = locationManager.location?.coordinate else { return }
+//        locationManager.stopUpdatingLocation()
+        
+        // Test Code : 영등포 캠퍼스 옆의 좌표
+        let coordinate = CLLocationCoordinate2D(latitude: defaultCoordinate.latitude, longitude: defaultCoordinate.longitude)
+        
+        viewModel.requsetSearchData(lat: coordinate.latitude, long: coordinate.longitude) { [weak self] response in
+            guard let self = self else { return }
+            switch response {
+            case .success(let success):
+                success.fromQueueDB.forEach { coordinate in
+                    let lat = Double(coordinate.lat)
+                    let long = Double(coordinate.long)
+                    self.setUserRegionAndAnnotation(lat: lat, long: long)
+                }
+                
+                dump(success)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func setUserRegionAndAnnotation(lat: Double, long: Double) {
+        let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
         mainView.mapView.setRegion(region, animated: true)
         
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = center
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+//        annotation.
 //        annotation.title = "현재 위치"
         
-//        mainView.mapView.addAnnotation(annotation)
+        mainView.mapView.addAnnotation(annotation)
     }
     
     override func bindData() {
@@ -90,7 +118,7 @@ final class HomeViewController: BaseViewController {
                 if vc.locationStatus {
                     vc.locationManager.startUpdatingLocation()
                     guard let coordinate = vc.locationManager.location?.coordinate else { return }
-                    vc.setUserRegionAndAnnotation(center: coordinate)
+                    vc.setUserRegionAndAnnotation(lat: coordinate.latitude, long: coordinate.longitude)
                     vc.locationManager.stopUpdatingLocation()
                 } else {
                     vc.showAlert(message: "위치 권한을 허용해 주세요.")
@@ -157,10 +185,10 @@ extension HomeViewController {
             locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
             print("DENIED, 아이폰 설정으로 유도합니다.")
-            setUserRegionAndAnnotation(center: defaultCoordinate)
+            setUserRegionAndAnnotation(lat: defaultCoordinate.latitude, long: defaultCoordinate.longitude)
         case .authorizedWhenInUse:
             print("WHEN IN USE")
-            locationManager.startUpdatingLocation()
+//            locationManager.startUpdatingLocation()
             locationStatus = true
         default:
             print("DEFUALT")
@@ -171,10 +199,10 @@ extension HomeViewController {
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coordinate = locations.first {
-            setUserRegionAndAnnotation(center: coordinate.coordinate)
+            setUserRegionAndAnnotation(lat: coordinate.coordinate.latitude, long: coordinate.coordinate.longitude)
         }
         
-        locationManager.stopUpdatingHeading()
+//        locationManager.stopUpdatingHeading()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

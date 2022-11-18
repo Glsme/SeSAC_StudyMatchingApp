@@ -126,7 +126,7 @@ enum SesacAPIRouter: URLRequestConvertible {
         request.method = method
         request.headers = headers
         
-        return try URLEncoding.default.encode(request, with: parameters)
+        return try URLEncoding(arrayEncoding: .noBrackets).encode(request, with: parameters)
 //        return request
     }
 }

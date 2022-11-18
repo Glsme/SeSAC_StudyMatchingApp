@@ -40,7 +40,8 @@ class SearchViewModel {
     
     func requsetSearchSesac(completion: @escaping (Int) -> Void) {
         let studylist = myHopeStudies.count == 0 ? ["Anything"] : myHopeStudies.map { $0.title }
-        let data: SearchSesacData = SearchSesacData(lat: lat, long: long, studylist: studylist.joined(separator: ","))
+        let data: SearchSesacData = SearchSesacData(lat: lat, long: long, studylist: studylist)
+        print(data)
         let api = SesacAPIRouter.searchSesacPost(data: data)
         SesacSignupAPIService.shared.requestSesacSearchSesacData(router: api) { statusCode in
             print(statusCode)

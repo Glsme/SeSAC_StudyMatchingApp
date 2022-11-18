@@ -53,6 +53,10 @@ class ManagementViewController: BaseViewController {
         setGenderColor(userInfo: userInfo)
         mainView.studyView.studyTextField.textField.text = userInfo.study
         setPermitPhoneSearching(userInfo: userInfo)
+        if userInfo.comment.count != 0 {
+            mainView.cardView.titleView.reviewLabel.text = userInfo.comment.joined(separator: "\n")
+            mainView.cardView.titleView.reviewLabel.textColor = .black
+        }
     }
     
     override func bindData() {
