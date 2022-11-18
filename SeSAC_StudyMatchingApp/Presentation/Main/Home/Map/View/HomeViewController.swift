@@ -37,7 +37,7 @@ final class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
-        searchData()
+//        searchData()
     }
     
     func searchData() {
@@ -82,6 +82,12 @@ final class HomeViewController: BaseViewController {
 //        annotation.title = "현재 위치"
         
         mainView.mapView.addAnnotation(annotation)
+    }
+    
+    func setMyRegionAndAnnotation(lat: Double, long: Double) {
+        let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
+        mainView.mapView.setRegion(region, animated: true)
     }
     
     override func bindData() {
@@ -194,7 +200,7 @@ extension HomeViewController {
             setUserRegionAndAnnotation(lat: defaultCoordinate.latitude, long: defaultCoordinate.longitude)
         case .authorizedWhenInUse:
             print("WHEN IN USE")
-//            locationManager.startUpdatingLocation()
+            locationManager.startUpdatingLocation()
             locationStatus = true
         default:
             print("DEFUALT")
@@ -205,10 +211,10 @@ extension HomeViewController {
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coordinate = locations.first {
-            setUserRegionAndAnnotation(lat: coordinate.coordinate.latitude, long: coordinate.coordinate.longitude)
+            setMyRegionAndAnnotation(lat: coordinate.coordinate.latitude, long: coordinate.coordinate.longitude)
         }
         
-//        locationManager.stopUpdatingHeading()
+        locationManager.stopUpdatingHeading()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
