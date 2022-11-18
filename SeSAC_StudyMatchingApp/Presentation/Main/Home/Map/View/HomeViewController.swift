@@ -124,8 +124,10 @@ final class HomeViewController: BaseViewController {
                             }
                         }
                         
-                        nextVC.viewModel.fromQueueDB.append(contentsOf: Array(fromQueueDBSet))
-                        nextVC.viewModel.recommandData.append(contentsOf: success.fromRecommend)
+                        let fromQueueDBStudyTags = fromQueueDBSet.map { StudyTag(title: $0) }
+                        let fromRecommendStudyTags = success.fromRecommend.map { StudyTag(title: $0) }
+                        nextVC.viewModel.fromQueueDB.append(contentsOf: fromQueueDBStudyTags)
+                        nextVC.viewModel.recommandData.append(contentsOf: fromRecommendStudyTags)
                         vc.transViewController(ViewController: nextVC, type: .push)
                     case .failure(let error):
                         print(error)

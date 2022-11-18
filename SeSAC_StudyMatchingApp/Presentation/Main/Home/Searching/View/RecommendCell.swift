@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class RecommandCell: UICollectionViewCell {
+class RecommendCell: UICollectionViewCell {
     lazy var recommandView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear

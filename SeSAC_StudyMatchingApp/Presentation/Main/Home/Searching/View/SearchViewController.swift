@@ -16,7 +16,7 @@ class SearchViewController: BaseViewController {
     let viewModel = SearchViewModel()
     let disposeBag = DisposeBag()
 
-    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, StudyTag>!
     
     lazy var searchBar: UISearchBar = {
         let width = UIScreen.main.bounds.width
@@ -79,9 +79,9 @@ class SearchViewController: BaseViewController {
                     return
                 }
                 
-                input.forEach {
-                    vc.viewModel.myHopeStudies.append($0)
-                }
+//                input.forEach {
+//                    vc.viewModel.myHopeStudies.append($0)
+//                }
                 
                 vc.updateSnapshot()
             }
@@ -91,9 +91,25 @@ class SearchViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, value) in
                 if value.section == 0 {
-                    
+                    let data = StudyTag(title: vc.viewModel.recommandData[value.item].title)
+                    if vc.viewModel.myHopeStudies.filter({ $0.title == data.title }).count > 0 {
+                        vc.view.makeToast("이미 등록된 스터디입니다.", position: .center)
+                    } else if vc.viewModel.myHopeStudies.count > 7 {
+                        vc.view.makeToast("스터디를 더 이상 추가할 수 없습니다.", position: .center)
+                    } else {
+                        vc.viewModel.myHopeStudies.append(data)
+                        vc.updateSnapshot()
+                    }
                 } else if value.section == 1 {
-                    
+                    let data = StudyTag(title: vc.viewModel.fromQueueDB[value.item].title)
+                    if vc.viewModel.myHopeStudies.filter({ $0.title == data.title }).count > 0 {
+                        vc.view.makeToast("이미 등록된 스터디입니다.", position: .center)
+                    } else if vc.viewModel.myHopeStudies.count > 7 {
+                        vc.view.makeToast("스터디를 더 이상 추가할 수 없습니다.", position: .center)
+                    } else {
+                        vc.viewModel.myHopeStudies.append(data)
+                        vc.updateSnapshot()
+                    }
                 } else if value.section == 2 {
                     vc.viewModel.myHopeStudies.remove(at: value.item)
                     
@@ -106,16 +122,16 @@ class SearchViewController: BaseViewController {
 
 extension SearchViewController {
     private func configureDataSource() {
-        let tagCellRegistration = UICollectionView.CellRegistration<TagCell, String> { cell, indexPath, itemIdentifier in
+        let tagCellRegistration = UICollectionView.CellRegistration<TagCell, StudyTag> { cell, indexPath, itemIdentifier in
             
-            cell.titleLabel.text = itemIdentifier
+            cell.titleLabel.text = itemIdentifier.title
         }
         
-        let recommandCellRegistration = UICollectionView.CellRegistration<RecommandCell, String> { cell, indexPath, itemIdentifier in
+        let recommandCellRegistration = UICollectionView.CellRegistration<RecommendCell, StudyTag> { cell, indexPath, itemIdentifier in
             if indexPath.section == 0 {
                 cell.setMostStyle()
             }
-            cell.titleLabel.text = itemIdentifier
+            cell.titleLabel.text = itemIdentifier.title
         }
         
         let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { headerView, elementKind, indexPath in
@@ -147,7 +163,7 @@ extension SearchViewController {
     }
     
     private func updateSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+        var snapshot = NSDiffableDataSourceSnapshot<Int, StudyTag>()
         snapshot.appendSections([0, 1, 2])
         snapshot.appendItems(viewModel.recommandData, toSection: 0)
         snapshot.appendItems(viewModel.fromQueueDB, toSection: 1)
