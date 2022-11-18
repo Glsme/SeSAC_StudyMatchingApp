@@ -79,9 +79,9 @@ class SearchViewController: BaseViewController {
                     return
                 }
                 
-//                input.forEach {
-//                    vc.viewModel.myHopeStudies.append($0)
-//                }
+                input.forEach {
+                    vc.viewModel.myHopeStudies.append(StudyTag(title: $0))
+                }
                 
                 vc.updateSnapshot()
             }

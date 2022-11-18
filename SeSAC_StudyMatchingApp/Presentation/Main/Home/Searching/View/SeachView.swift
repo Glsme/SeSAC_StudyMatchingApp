@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SearchView: BaseView {
+import SnapKit
+
+final class SearchView: BaseView {
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: createTagLayout())
         view.showsVerticalScrollIndicator = false
@@ -18,12 +20,21 @@ class SearchView: BaseView {
         return view
     }()
     
+    lazy var searchButton: GreenSelectedButton = {
+        let view = GreenSelectedButton()
+        view.setSelectedStyle(true)
+        view.setTitle("새싹 찾기", for: .normal)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        self.addSubview(collectionView)
+        [collectionView ,searchButton].forEach {
+            self.addSubview($0)
+        }
     }
     
     override func setConstraints() {
@@ -31,6 +42,11 @@ class SearchView: BaseView {
             make.top.equalTo(safeAreaLayoutGuide).inset(16)
             make.trailing.leading.equalTo(safeAreaLayoutGuide)
             make.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        searchButton.snp.makeConstraints { make in
+            make.bottom.trailing.leading.equalTo(safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(48)
         }
     }
     
