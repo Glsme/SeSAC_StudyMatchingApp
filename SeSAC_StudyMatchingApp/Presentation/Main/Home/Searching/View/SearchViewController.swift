@@ -73,24 +73,7 @@ class SearchViewController: BaseViewController {
                     make.trailing.leading.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
                     make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
                 }
-                
-                UIView.animate(withDuration: 0.5) {
-                    self.view.layoutIfNeeded()
-                }
-            }
-            .disposed(by: disposeBag)
-        
-        view.rx.tapGesture()
-            .when(.recognized)
-            .withUnretained(self)
-            .subscribe { (vc, _) in
-                vc.searchBar.endEditing(true)
-                vc.mainView.searchButton.layer.cornerRadius = 8
-                vc.mainView.searchButton.snp.updateConstraints { make in
-                    make.trailing.leading.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
-                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
-                }
-                
+
                 UIView.animate(withDuration: 0.5) {
                     self.view.layoutIfNeeded()
                 }
@@ -169,6 +152,35 @@ class SearchViewController: BaseViewController {
                     vc.viewModel.myHopeStudies.remove(at: value.item)
                     
                     vc.updateSnapshot()
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.searchButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("Search")
+                vc.viewModel.requsetSearchSesac { statusCode in
+                    switch statusCode {
+                    case 200:
+                        vc.view.makeToast("찾기 요청 들어간다~", position: .center)
+                    case 201:
+                        vc.view.makeToast("신고가 누적되어 이용하실 수 없습니다.", position: .center)
+                    case 203:
+                        vc.view.makeToast("스터디 취소 패널티로, 1분동안 이용하실 수 없습니다.", position: .center)
+                    case 204:
+                        vc.view.makeToast("스터디 취소 패널티로, 2분동안 이용하실 수 없습니다.", position: .center)
+                    case 205:
+                        vc.view.makeToast("스터디 취소 패널티로, 3분동안 이용하실 수 없습니다.", position: .center)
+                    case 401:
+                        print("Firebase Token Error")
+                    case 406:
+                        print("미가입 회원")
+                    case 500:
+                        print("Server Error")
+                    default:
+                        break
+                    }
                 }
             }
             .disposed(by: disposeBag)

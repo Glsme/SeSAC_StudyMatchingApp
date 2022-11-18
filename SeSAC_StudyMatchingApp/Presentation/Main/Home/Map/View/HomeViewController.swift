@@ -101,10 +101,11 @@ final class HomeViewController: BaseViewController {
         mainView.searchButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                guard let coordinate = vc.locationManager.location?.coordinate else { return }
+//                guard let coordinate = vc.locationManager.location?.coordinate else { return }
+                let coordinate = vc.defaultCoordinate
                 let nextVC = SearchViewController()
                 // Test code 추후에 바꿔야함
-                nextVC.viewModel.requsetSearchData(lat: vc.defaultCoordinate.latitude, long: vc.defaultCoordinate.longitude) { response in
+                nextVC.viewModel.requsetSearchData(lat: coordinate.latitude, long: coordinate.longitude) { response in
                     switch response {
                     case .success(let success):
                         var fromQueueDBSet = Set<String>()
@@ -123,6 +124,9 @@ final class HomeViewController: BaseViewController {
                         
                         let fromQueueDBStudyTags = fromQueueDBSet.map { StudyTag(title: $0) }
                         let fromRecommendStudyTags = success.fromRecommend.map { StudyTag(title: $0) }
+                        
+                        nextVC.viewModel.lat = coordinate.latitude
+                        nextVC.viewModel.long = coordinate.longitude
                         nextVC.viewModel.fromQueueDB.append(contentsOf: fromQueueDBStudyTags)
                         nextVC.viewModel.recommandData.append(contentsOf: fromRecommendStudyTags)
                         vc.transViewController(ViewController: nextVC, type: .push)

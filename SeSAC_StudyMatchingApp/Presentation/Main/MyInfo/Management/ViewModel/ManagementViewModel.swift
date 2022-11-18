@@ -94,7 +94,7 @@ final class ManagementViewModel {
         guard let mypageUpdate = mypageUpdate else { return }
         let api = SesacAPIRouter.updatePut(mypage: mypageUpdate)
         
-        SesacSignupAPIService.shared.requsetSesacUpdate(router: api) { response in
+        SesacSignupAPIService.shared.requestSesacUpdate(router: api) { response in
             switch response {
             case .success(let success):
                 print(success)

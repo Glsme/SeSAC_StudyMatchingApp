@@ -10,7 +10,7 @@ import Foundation
 class WithdrawViewModel {
     func requsetWithdarw(completion: @escaping (Result<String, LoginError>) -> Void) {
         let api = SesacAPIRouter.withdraw
-        SesacSignupAPIService.shared.requsetSesacUpdate(router: api) { response in
+        SesacSignupAPIService.shared.requestSesacUpdate(router: api) { response in
             switch response {
             case .success(let success):
                 completion(.success(success))

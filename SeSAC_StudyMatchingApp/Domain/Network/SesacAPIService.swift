@@ -13,7 +13,7 @@ final class SesacSignupAPIService {
     
     private init() { }
     
-    public func requsetSesacLogin(router: SesacAPIRouter, completionHandler: @escaping(Result<UserData, Error>) -> Void) {
+    public func requestSesacLogin(router: SesacAPIRouter, completionHandler: @escaping(Result<UserData, Error>) -> Void) {
         AF.request(router).responseDecodable(of: UserData.self) { response in
             switch response.result {
             case .success(let success):
@@ -27,7 +27,7 @@ final class SesacSignupAPIService {
         }
     }
     
-    public func requsetSesacUpdate(router: SesacAPIRouter, completionHandler: @escaping(Result<String, Error>) -> Void) {
+    public func requestSesacUpdate(router: SesacAPIRouter, completionHandler: @escaping(Result<String, Error>) -> Void) {
         AF.request(router).responseDecodable(of: String.self) { response in
             switch response.result {
             case .success(let success):
@@ -58,6 +58,13 @@ final class SesacSignupAPIService {
                 completionHandler(.failure(error))
                 
             }
+        }
+    }
+    
+    public func requestSesacSearchSesacData(router: SesacAPIRouter, completionHandler: @escaping (Int) -> Void) {
+        AF.request(router).responseDecodable(of: Int.self) { response in
+            guard let statusCode = response.response?.statusCode else { return }
+            completionHandler(statusCode)
         }
     }
 }

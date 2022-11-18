@@ -12,7 +12,7 @@ import FirebaseAuth
 final class SplashViewModel {
     func loginSesacServer(completion: @escaping (Result<UserData, LoginError>) -> Void) {
         let api = SesacAPIRouter.loginGet
-        SesacSignupAPIService.shared.requsetSesacLogin(router: api) { response in
+        SesacSignupAPIService.shared.requestSesacLogin(router: api) { response in
             switch response {
             case .success(let success):
                 completion(.success(success))
@@ -34,7 +34,7 @@ final class SplashViewModel {
             UserManager.authVerificationToken = idToken
             let api = SesacAPIRouter.loginGet
             
-            SesacSignupAPIService.shared.requsetSesacLogin(router: api) { response in
+            SesacSignupAPIService.shared.requestSesacLogin(router: api) { response in
                 switch response {
                 case .success(let success):
                     completion(.success(success))
