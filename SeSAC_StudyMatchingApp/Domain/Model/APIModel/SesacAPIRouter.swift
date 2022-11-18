@@ -19,15 +19,15 @@ enum SesacAPIRouter: URLRequestConvertible {
     var baseURL: URL {
         switch self {
         case .loginGet:
-            return URL(string: "http://api.sesac.co.kr:1207/v1/user")!
+            return URL(string: "http://api.sesac.co.kr:1210/v1/user")!
         case .signupPost:
-            return URL(string: "http://api.sesac.co.kr:1207/v1/user")!
+            return URL(string: "http://api.sesac.co.kr:1210/v1/user")!
         case .updatePut(mypage: _):
-            return URL(string: "http://api.sesac.co.kr:1207/v1/user/mypage")!
+            return URL(string: "http://api.sesac.co.kr:1210/v1/user/mypage")!
         case .withdraw:
-            return URL(string: "http://api.sesac.co.kr:1207/v1/user/withdraw")!
+            return URL(string: "http://api.sesac.co.kr:1210/v1/user/withdraw")!
         case .searchPost:
-            return URL(string: "http://api.sesac.co.kr:1207/v1/queue/search")!
+            return URL(string: "http://api.sesac.co.kr:1210/v1/queue/search")!
         }
     }
     
