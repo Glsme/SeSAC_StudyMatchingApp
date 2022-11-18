@@ -36,10 +36,7 @@ final class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func configureUI() {
-        
+        tabBarController?.tabBar.isHidden = false
     }
     
     func setUserRegionAndAnnotation(center: CLLocationCoordinate2D) {
