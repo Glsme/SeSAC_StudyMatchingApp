@@ -58,6 +58,12 @@ final class HomeViewController: BaseViewController {
                     self.setUserRegionAndAnnotation(lat: lat, long: long)
                 }
                 
+                success.fromQueueDBRequested.forEach { coordinate in
+                    let lat = Double(coordinate.lat)
+                    let long = Double(coordinate.long)
+                    self.setUserRegionAndAnnotation(lat: lat, long: long)
+                }
+                
                 dump(success)
             case .failure(let error):
                 print(error)
