@@ -84,7 +84,7 @@ final class HomeView: BaseView {
             self.addSubview($0)
         }
         
-        mapView.cameraZoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 50, maxCenterCoordinateDistance: 3000)
+//        mapView.cameraZoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 50, maxCenterCoordinateDistance: 3000)
     }
     
     override func setConstraints() {

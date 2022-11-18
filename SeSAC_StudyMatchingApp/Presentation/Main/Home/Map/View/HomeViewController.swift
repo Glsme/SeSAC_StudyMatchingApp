@@ -53,16 +53,16 @@ final class HomeViewController: BaseViewController {
             guard let self = self else { return }
             switch response {
             case .success(let success):
-                success.fromQueueDB.forEach { coordinate in
-                    let lat = Double(coordinate.lat)
-                    let long = Double(coordinate.long)
-                    self.setUserRegionAndAnnotation(lat: lat, long: long)
+                success.fromQueueDB.forEach { value in
+                    let lat = Double(value.lat)
+                    let long = Double(value.long)
+                    self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
                 }
                 
-                success.fromQueueDBRequested.forEach { coordinate in
-                    let lat = Double(coordinate.lat)
-                    let long = Double(coordinate.long)
-                    self.setUserRegionAndAnnotation(lat: lat, long: long)
+                success.fromQueueDBRequested.forEach { value in
+                    let lat = Double(value.lat)
+                    let long = Double(value.long)
+                    self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
                 }
                 
                 dump(success)
@@ -72,13 +72,12 @@ final class HomeViewController: BaseViewController {
         }
     }
     
-    func setUserRegionAndAnnotation(lat: Double, long: Double) {
+    func setUserRegionAndAnnotation(lat: Double, long: Double, sesac: Int) {
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
 //        let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
 //                mainView.mapView.setRegion(region, animated: true)
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
+        let annotation = CustomAnnotation(sesac_image: sesac, coordinate: location)
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -200,7 +199,7 @@ extension HomeViewController {
             locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
             print("DENIED, 아이폰 설정으로 유도합니다.")
-            setUserRegionAndAnnotation(lat: defaultCoordinate.latitude, long: defaultCoordinate.longitude)
+            setMyRegionAndAnnotation(lat: defaultCoordinate.latitude, long: defaultCoordinate.longitude)
         case .authorizedWhenInUse:
             print("WHEN IN USE")
             locationManager.startUpdatingLocation()
@@ -245,4 +244,81 @@ extension HomeViewController: MKMapViewDelegate {
             }
         }
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? CustomAnnotation else { return nil }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CustomAnnotationView.identifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: CustomAnnotationView.identifier)
+            annotationView?.canShowCallout = false
+            annotationView?.contentMode = .scaleAspectFit
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        let sesacImage: UIImage!
+        let size = CGSize(width: 83, height: 83)
+        UIGraphicsBeginImageContext(size)
+        
+        switch annotation.sesac_image {
+        case 0:
+            sesacImage = UIImage(named: SesacCharaterAssets.sesacFace1.rawValue)
+        case 1:
+            sesacImage = UIImage(named: SesacCharaterAssets.sesacFace2.rawValue)
+        case 2:
+            sesacImage = UIImage(named: SesacCharaterAssets.sesacFace3.rawValue)
+        case 3:
+            sesacImage = UIImage(named: SesacCharaterAssets.sesacFace4.rawValue)
+        case 4:
+            sesacImage = UIImage(named: SesacCharaterAssets.sesacFace5.rawValue)
+        default:
+            sesacImage = UIImage(named: SesacCharaterAssets.sesacFace1.rawValue)
+        }
+        
+        sesacImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        annotationView?.image = resizedImage
+        
+        return annotationView
+    }
+}
+
+class CustomAnnotationView: MKAnnotationView {
+    
+    static let identifier = "CustomAnnotationView"
+    
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?){
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        frame = CGRect(x: 0, y: 0, width: 40, height: 50)
+        centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
+        setupUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
+        backgroundColor = .clear
+    }
+    
+}
+
+
+class CustomAnnotation: NSObject, MKAnnotation {
+  let sesac_image: Int?
+  let coordinate: CLLocationCoordinate2D
+
+  init(
+    sesac_image: Int?,
+    coordinate: CLLocationCoordinate2D
+  ) {
+    self.sesac_image = sesac_image
+    self.coordinate = coordinate
+
+    super.init()
+  }
+
 }
