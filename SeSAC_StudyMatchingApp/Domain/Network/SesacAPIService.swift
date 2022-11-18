@@ -50,7 +50,7 @@ final class SesacSignupAPIService {
         AF.request(router).responseDecodable(of: SearchData.self) { response in
             switch response.result {
             case .success(let success):
-                dump(success)
+//                dump(success)
                 completionHandler(.success(success))
             case .failure(_):
                 guard let statusCode = response.response?.statusCode else { return }

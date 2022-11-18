@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxGesture
 import RxSwift
+import RxKeyboard
  
 class SearchViewController: BaseViewController {
     let mainView = SearchView()
@@ -44,6 +45,43 @@ class SearchViewController: BaseViewController {
     }
     
     override func bindData() {
+        RxKeyboard.instance.visibleHeight
+            .skip(1)
+            .drive(onNext: { height in
+                let window = UIApplication.shared.windows.first
+                let extra = window!.safeAreaInsets.bottom
+                
+                self.mainView.searchButton.layer.cornerRadius = 0
+                self.mainView.searchButton.snp.updateConstraints { make in
+                    make.trailing.leading.equalTo(self.view.safeAreaLayoutGuide)
+                    make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(height - extra)
+                }
+                
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
+                
+            })
+            .disposed(by: disposeBag)
+        
+        view.rx.tapGesture()
+            .when(.recognized)
+            .withUnretained(self)
+            .subscribe { (vc, _) in
+                vc.searchBar.endEditing(true)
+                vc.mainView.searchButton.layer.cornerRadius = 8
+                vc.mainView.searchButton.snp.updateConstraints { make in
+                    make.trailing.leading.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
+                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide)
+                }
+                
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+            .disposed(by: disposeBag)
+            
+        
         searchBar.rx.searchButtonClicked
             .withUnretained(self)
             .bind { (vc, _) in

@@ -28,6 +28,7 @@
 		8505156029251FF100862A2F /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505155F29251FF100862A2F /* TagCell.swift */; };
 		85092939292635800074912E /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092938292635800074912E /* SearchData.swift */; };
 		8509293C292646200074912E /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509293B292646200074912E /* RecommendCell.swift */; };
+		8509293F29276AAE0074912E /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 8509293E29276AAE0074912E /* RxKeyboard */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
@@ -214,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				859921F5291BFE11007F96A6 /* Alamofire in Frameworks */,
+				8509293F29276AAE0074912E /* RxKeyboard in Frameworks */,
 				85D341C1291A2C4A00F27A78 /* Toast in Frameworks */,
 				85992234291D50A8007F96A6 /* FirebaseMessaging in Frameworks */,
 				8542BE272921F65800CF799A /* RxDataSources in Frameworks */,
@@ -991,6 +993,7 @@
 				85992233291D50A8007F96A6 /* FirebaseMessaging */,
 				8542BE262921F65800CF799A /* RxDataSources */,
 				85051517292243BB00862A2F /* MultiSlider */,
+				8509293E29276AAE0074912E /* RxKeyboard */,
 			);
 			productName = SeSAC_StudyMatchingApp;
 			productReference = 85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */;
@@ -1029,6 +1032,7 @@
 				8599222E291D50A8007F96A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8542BE252921F65800CF799A /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				85051516292243BB00862A2F /* XCRemoteSwiftPackageReference "MultiSlider" */,
+				8509293D29276AAE0074912E /* XCRemoteSwiftPackageReference "RxKeyboard" */,
 			);
 			productRefGroup = 85350A3B2918C1D600C70515 /* Products */;
 			projectDirPath = "";
@@ -1376,6 +1380,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		8509293D29276AAE0074912E /* XCRemoteSwiftPackageReference "RxKeyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxKeyboard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		85350A6D2918D43600C70515 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1439,6 +1451,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85051516292243BB00862A2F /* XCRemoteSwiftPackageReference "MultiSlider" */;
 			productName = MultiSlider;
+		};
+		8509293E29276AAE0074912E /* RxKeyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8509293D29276AAE0074912E /* XCRemoteSwiftPackageReference "RxKeyboard" */;
+			productName = RxKeyboard;
 		};
 		85350A6E2918D43600C70515 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
