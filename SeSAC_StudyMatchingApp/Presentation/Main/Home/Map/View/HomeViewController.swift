@@ -37,18 +37,19 @@ final class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
-//        searchData()
+        searchData()
     }
     
     func searchData() {
-//        locationManager.startUpdatingLocation()
-//        guard let coordinate = locationManager.location?.coordinate else { return }
-//        locationManager.stopUpdatingLocation()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self  else { return }
+            let allAnotations = self.mainView.mapView.annotations
+            self.mainView.mapView.removeAnnotations(allAnotations)
+        }
         
-        // Test Code : 영등포 캠퍼스 옆의 좌표
-        let coordinate = CLLocationCoordinate2D(latitude: defaultCoordinate.latitude, longitude: defaultCoordinate.longitude)
+        let center = mainView.mapView.region.center
         
-        viewModel.requsetSearchData(lat: coordinate.latitude, long: coordinate.longitude) { [weak self] response in
+        viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { [weak self] response in
             guard let self = self else { return }
             switch response {
             case .success(let success):
@@ -73,18 +74,20 @@ final class HomeViewController: BaseViewController {
     
     func setUserRegionAndAnnotation(lat: Double, long: Double) {
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
-        mainView.mapView.setRegion(region, animated: true)
+//        let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
+//                mainView.mapView.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
-//        annotation.
-//        annotation.title = "현재 위치"
         
-        mainView.mapView.addAnnotation(annotation)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.mainView.mapView.addAnnotation(annotation)
+        }
     }
     
     func setMyRegionAndAnnotation(lat: Double, long: Double) {
+        print(lat, long)
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
         mainView.mapView.setRegion(region, animated: true)
@@ -130,7 +133,7 @@ final class HomeViewController: BaseViewController {
                 if vc.locationStatus {
                     vc.locationManager.startUpdatingLocation()
                     guard let coordinate = vc.locationManager.location?.coordinate else { return }
-                    vc.setUserRegionAndAnnotation(lat: coordinate.latitude, long: coordinate.longitude)
+                    vc.setMyRegionAndAnnotation(lat: coordinate.latitude, long: coordinate.longitude)
                     vc.locationManager.stopUpdatingLocation()
                 } else {
                     vc.showAlert(message: "위치 권한을 허용해 주세요.")
@@ -141,11 +144,11 @@ final class HomeViewController: BaseViewController {
         mainView.searchButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-//                guard let coordinate = vc.locationManager.location?.coordinate else { return }
-                let coordinate = vc.defaultCoordinate
+                //                guard let coordinate = vc.locationManager.location?.coordinate else { return }
+                let center = vc.mainView.mapView.region.center
                 let nextVC = SearchViewController()
                 // Test code 추후에 바꿔야함
-                nextVC.viewModel.requsetSearchData(lat: coordinate.latitude, long: coordinate.longitude) { response in
+                nextVC.viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { response in
                     switch response {
                     case .success(let success):
                         var fromQueueDBSet = Set<String>()
@@ -165,8 +168,8 @@ final class HomeViewController: BaseViewController {
                         let fromQueueDBStudyTags = fromQueueDBSet.map { StudyTag(title: $0) }
                         let fromRecommendStudyTags = success.fromRecommend.map { StudyTag(title: $0) }
                         
-                        nextVC.viewModel.lat = coordinate.latitude
-                        nextVC.viewModel.long = coordinate.longitude
+                        nextVC.viewModel.lat = center.latitude
+                        nextVC.viewModel.long = center.longitude
                         nextVC.viewModel.fromQueueDB.append(contentsOf: fromQueueDBStudyTags)
                         nextVC.viewModel.recommandData.append(contentsOf: fromRecommendStudyTags)
                         vc.transViewController(ViewController: nextVC, type: .push)
@@ -227,5 +230,19 @@ extension HomeViewController: CLLocationManagerDelegate {
 }
 
 extension HomeViewController: MKMapViewDelegate {
-    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if !animated {
+            let lat = mapView.region.center.latitude
+            let long = mapView.region.center.longitude
+            
+            DispatchQueue.global().async { [weak self] in
+                guard let self = self else { return }
+                usleep(800000)
+                if lat == mapView.region.center.latitude, long == mapView.region.center.longitude {
+                    print("Search start", lat, long)
+                    self.searchData()
+                }
+            }
+        }
+    }
 }
