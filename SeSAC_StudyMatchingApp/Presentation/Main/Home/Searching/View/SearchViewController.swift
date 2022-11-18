@@ -83,11 +83,7 @@ class SearchViewController: BaseViewController {
                     vc.viewModel.myHopeStudies.append($0)
                 }
                 
-                var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
-                snapshot.appendSections([0, 1])
-                snapshot.appendItems(vc.viewModel.recommandData, toSection: 0)
-                snapshot.appendItems(vc.viewModel.myHopeStudies, toSection: 1)
-                vc.dataSource.apply(snapshot, animatingDifferences: false)
+                vc.updateSnapshot()
             }
             .disposed(by: disposeBag)
         
@@ -97,12 +93,11 @@ class SearchViewController: BaseViewController {
                 if value.section == 0 {
                     
                 } else if value.section == 1 {
-                    var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
-                    snapshot.appendSections([0, 1])
+                    
+                } else if value.section == 2 {
                     vc.viewModel.myHopeStudies.remove(at: value.item)
-                    snapshot.appendItems(vc.viewModel.recommandData, toSection: 0)
-                    snapshot.appendItems(vc.viewModel.myHopeStudies, toSection: 1)
-                    vc.dataSource.apply(snapshot, animatingDifferences: false)
+                    
+                    vc.updateSnapshot()
                 }
             }
             .disposed(by: disposeBag)
@@ -110,31 +105,30 @@ class SearchViewController: BaseViewController {
 }
 
 extension SearchViewController {
-    func configureDataSource() {
+    private func configureDataSource() {
         let tagCellRegistration = UICollectionView.CellRegistration<TagCell, String> { cell, indexPath, itemIdentifier in
             
             cell.titleLabel.text = itemIdentifier
         }
         
         let recommandCellRegistration = UICollectionView.CellRegistration<RecommandCell, String> { cell, indexPath, itemIdentifier in
-            if indexPath.item <= self.viewModel.recommandData.count - 1 {
+            if indexPath.section == 0 {
                 cell.setMostStyle()
             }
             cell.titleLabel.text = itemIdentifier
         }
         
-        let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] headerView, elementKind, indexPath in
-            guard let self = self else { return }
+        let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { headerView, elementKind, indexPath in
             
             var configuration = headerView.defaultContentConfiguration()
-            configuration.text = self.viewModel.titleArray[indexPath.section]
+            configuration.text = indexPath.section == 0 ? "지금 주변에는" : "내가 하고 싶은"
             configuration.textProperties.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12)
             configuration.textProperties.color = .black
             headerView.contentConfiguration = configuration
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            if indexPath.section == 0 {
+            if indexPath.section == 0 || indexPath.section == 1 {
                 let cell = collectionView.dequeueConfiguredReusableCell(using: recommandCellRegistration, for: indexPath, item: itemIdentifier)
                 
                 return cell
@@ -149,10 +143,15 @@ extension SearchViewController {
             return self?.mainView.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         }
         
+        updateSnapshot()
+    }
+    
+    private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
-        snapshot.appendSections([0, 1])
+        snapshot.appendSections([0, 1, 2])
         snapshot.appendItems(viewModel.recommandData, toSection: 0)
-        snapshot.appendItems(viewModel.myHopeStudies, toSection: 1)
+        snapshot.appendItems(viewModel.tagTitle, toSection: 1)
+        snapshot.appendItems(viewModel.myHopeStudies, toSection: 2)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }

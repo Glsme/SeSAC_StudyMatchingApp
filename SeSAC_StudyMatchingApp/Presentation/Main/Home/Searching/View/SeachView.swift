@@ -35,39 +35,66 @@ class SearchView: BaseView {
     }
     
     private func createTagLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(80),
-            heightDimension: .absolute(32)
-        )
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(32)
-        )
-        
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitems: [item, item]
-        )
-        
-        group.interItemSpacing = .fixed(8)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 8
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 30, trailing: 16)
-        
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(40))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        
-        section.boundarySupplementaryItems = [header]
-        
+        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            if sectionIndex == 0 {
+                let size = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(35))
+                
+                let item = NSCollectionLayoutItem(layoutSize: size)
+                
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(35))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+                
+                group.interItemSpacing = .fixed(8)
+                
+                let section = NSCollectionLayoutSection(group: group)
+                section.interGroupSpacing = 8
+                section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+                
+                section.boundarySupplementaryItems = [
+                    NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+                ]
+                
+                return section
+            } else if sectionIndex == 1 {
+                let size = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(35))
+                
+                let item = NSCollectionLayoutItem(layoutSize: size)
+                
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(35))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+                
+                group.interItemSpacing = .fixed(8)
+                
+                let section = NSCollectionLayoutSection(group: group)
+                section.interGroupSpacing = 8
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16)
+                return section
+            } else {
+                let size = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(35))
+                
+                let item = NSCollectionLayoutItem(layoutSize: size)
+                
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(35))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+                
+                group.interItemSpacing = .fixed(8)
+                
+                let section = NSCollectionLayoutSection(group: group)
+                section.interGroupSpacing = 8
+                section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+                
+                section.boundarySupplementaryItems = [
+                    NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+                ]
+                
+                return section
+            }
+        }
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.scrollDirection = .vertical
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
+        let layout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
         layout.configuration = config
+        
         return layout
     }
 }

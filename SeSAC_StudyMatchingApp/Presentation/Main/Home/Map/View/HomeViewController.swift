@@ -106,9 +106,25 @@ final class HomeViewController: BaseViewController {
             .bind { (vc, _) in
                 guard let coordinate = vc.locationManager.location?.coordinate else { return }
                 let nextVC = SearchViewController()
-                nextVC.viewModel.requsetSearchData(lat: coordinate.latitude, long: coordinate.longitude) { response in
+                // Test code 추후에 바꿔야함
+                nextVC.viewModel.requsetSearchData(lat: vc.defaultCoordinate.latitude, long: vc.defaultCoordinate.longitude) { response in
                     switch response {
                     case .success(let success):
+                        var fromQueueDBSet = Set<String>()
+                        
+                        success.fromQueueDB.map { $0.studylist }.forEach {
+                            $0.forEach {
+                                fromQueueDBSet.insert($0)
+                            }
+                        }
+                        
+                        success.fromQueueDBRequested.map { $0.studylist }.forEach {
+                            $0.forEach {
+                                fromQueueDBSet.insert($0)
+                            }
+                        }
+                        
+                        nextVC.viewModel.fromQueueDB.append(contentsOf: Array(fromQueueDBSet))
                         nextVC.viewModel.recommandData.append(contentsOf: success.fromRecommend)
                         vc.transViewController(ViewController: nextVC, type: .push)
                     case .failure(let error):
