@@ -150,7 +150,7 @@ extension SearchViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
         snapshot.appendSections([0, 1, 2])
         snapshot.appendItems(viewModel.recommandData, toSection: 0)
-        snapshot.appendItems(viewModel.tagTitle, toSection: 1)
+        snapshot.appendItems(viewModel.fromQueueDB, toSection: 1)
         snapshot.appendItems(viewModel.myHopeStudies, toSection: 2)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
