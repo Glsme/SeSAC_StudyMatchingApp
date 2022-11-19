@@ -37,21 +37,21 @@ final class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
-//        setButtonStyle()
+        //        setButtonStyle()
         searchData()
     }
     
     func setButtonStyle() {
-//        switch viewModel.status {
-//        case 0:
-//            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
-//        case 1:
-//            mainView.searchButton.setImage(UIImage(named: HomeAssets.antenna.rawValue), for: .normal)
-//        case 2:
-//            mainView.searchButton.setImage(UIImage(named: HomeAssets.mail.rawValue), for: .normal)
-//        default:
-//            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
-//        }
+        //        switch viewModel.status {
+        //        case 0:
+        //            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
+        //        case 1:
+        //            mainView.searchButton.setImage(UIImage(named: HomeAssets.antenna.rawValue), for: .normal)
+        //        case 2:
+        //            mainView.searchButton.setImage(UIImage(named: HomeAssets.mail.rawValue), for: .normal)
+        //        default:
+        //            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
+        //        }
     }
     
     func searchData() {
@@ -93,37 +93,17 @@ final class HomeViewController: BaseViewController {
                         let long = Double(value.long)
                         self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
                     }
-                } else if gender == 1 {
-                    success.fromQueueDB.forEach { value in
-                        if gender == value.gender {
-                            let lat = Double(value.lat)
-                            let long = Double(value.long)
-                            self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
-                        }
+                } else {
+                    success.fromQueueDB.filter { $0.gender == gender }.forEach { value in
+                        let lat = Double(value.lat)
+                        let long = Double(value.long)
+                        self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
                     }
                     
-                    success.fromQueueDBRequested.forEach { value in
-                        if gender == value.gender {
-                            let lat = Double(value.lat)
-                            let long = Double(value.long)
-                            self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
-                        }
-                    }
-                } else if gender == 0 {
-                    success.fromQueueDB.forEach { value in
-                        if gender == value.gender {
-                            let lat = Double(value.lat)
-                            let long = Double(value.long)
-                            self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
-                        }
-                    }
-                    
-                    success.fromQueueDBRequested.forEach { value in
-                        if gender == value.gender {
-                            let lat = Double(value.lat)
-                            let long = Double(value.long)
-                            self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
-                        }
+                    success.fromQueueDBRequested.filter { $0.gender == gender }.forEach { value in
+                        let lat = Double(value.lat)
+                        let long = Double(value.long)
+                        self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
                     }
                 }
                 
@@ -136,8 +116,6 @@ final class HomeViewController: BaseViewController {
     
     func setUserRegionAndAnnotation(lat: Double, long: Double, sesac: Int) {
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
-//        let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
-//                mainView.mapView.setRegion(region, animated: true)
         
         let annotation = CustomAnnotation(sesac_image: sesac, coordinate: location)
         
@@ -389,17 +367,17 @@ class CustomAnnotationView: MKAnnotationView {
 
 
 class CustomAnnotation: NSObject, MKAnnotation {
-  let sesac_image: Int?
-  let coordinate: CLLocationCoordinate2D
-
-  init(
-    sesac_image: Int?,
-    coordinate: CLLocationCoordinate2D
-  ) {
-    self.sesac_image = sesac_image
-    self.coordinate = coordinate
-
-    super.init()
-  }
-
+    let sesac_image: Int?
+    let coordinate: CLLocationCoordinate2D
+    
+    init(
+        sesac_image: Int?,
+        coordinate: CLLocationCoordinate2D
+    ) {
+        self.sesac_image = sesac_image
+        self.coordinate = coordinate
+        
+        super.init()
+    }
+    
 }
