@@ -12,7 +12,19 @@ struct StudyTag: Hashable {
     let title: String
 }
 
-class SearchViewModel {
+enum SearchStatus: Int {
+    case success = 200
+    case declaration = 201
+    case delayOneMinute = 203
+    case delayTowMinute = 204
+    case delayThreeMinute = 205
+    case firebaseTokenError = 401
+    case noSignupUser = 406
+    case serverError = 500
+    case clientError = 501
+}
+
+class SearchViewModel: HomeViewModel {
     let titleArray: [String] = ["지금 주변에는", "내가 하고 싶은"]
     var myHopeStudies: [StudyTag] = []
     var recommandData: [StudyTag] = []
@@ -39,7 +51,7 @@ class SearchViewModel {
     }
     
     func requsetSearchSesac(completion: @escaping (Int) -> Void) {
-        let studylist = myHopeStudies.count == 0 ? ["Anything"] : myHopeStudies.map { $0.title }
+        let studylist = myHopeStudies.count == 0 ? ["anything"] : myHopeStudies.map { $0.title }
         let data: SearchSesacData = SearchSesacData(lat: lat, long: long, studylist: studylist)
         print(data)
         let api = SesacAPIRouter.searchSesacPost(data: data)

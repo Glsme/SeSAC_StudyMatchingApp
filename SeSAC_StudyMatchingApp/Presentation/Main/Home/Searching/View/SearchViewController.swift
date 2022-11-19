@@ -11,12 +11,12 @@ import RxCocoa
 import RxGesture
 import RxSwift
 import RxKeyboard
- 
+
 class SearchViewController: BaseViewController {
     let mainView = SearchView()
     let viewModel = SearchViewModel()
     let disposeBag = DisposeBag()
-
+    
     private var dataSource: UICollectionViewDiffableDataSource<Int, StudyTag>!
     
     lazy var searchBar: UISearchBar = {
@@ -40,7 +40,7 @@ class SearchViewController: BaseViewController {
     override func configureUI() {
         tabBarController?.tabBar.isHidden = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
-//        mainView.collectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchHeaderView")
+        //        mainView.collectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchHeaderView")
         mainView.collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.reuseIdentifier)
     }
     
@@ -50,17 +50,17 @@ class SearchViewController: BaseViewController {
             .drive(onNext: { height in
                 let window = UIApplication.shared.windows.first
                 let extra = window!.safeAreaInsets.bottom
-
+                
                 self.mainView.searchButton.layer.cornerRadius = 0
                 self.mainView.searchButton.snp.updateConstraints { make in
                     make.trailing.leading.equalTo(self.view.safeAreaLayoutGuide)
                     make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(height - extra)
                 }
-
+                
                 UIView.animate(withDuration: 0.5) {
                     self.view.layoutIfNeeded()
                 }
-
+                
             })
             .disposed(by: disposeBag)
         
@@ -68,19 +68,19 @@ class SearchViewController: BaseViewController {
             .observe(on: MainScheduler.asyncInstance)
             .withUnretained(self)
             .subscribe(onNext: { (vc, _) in
-                    vc.searchBar.endEditing(true)
-                    vc.mainView.searchButton.layer.cornerRadius = 8
-                    vc.mainView.searchButton.snp.updateConstraints { make in
-                        make.trailing.leading.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
-                        make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
-                    }
-
-                    UIView.animate(withDuration: 0.2) {
-                        vc.view.layoutIfNeeded()
-                    }
+                vc.searchBar.endEditing(true)
+                vc.mainView.searchButton.layer.cornerRadius = 8
+                vc.mainView.searchButton.snp.updateConstraints { make in
+                    make.trailing.leading.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
+                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
+                }
+                
+                UIView.animate(withDuration: 0.2) {
+                    vc.view.layoutIfNeeded()
+                }
             })
             .disposed(by: disposeBag)
-            
+        
         
         searchBar.rx.searchButtonClicked
             .withUnretained(self)
@@ -162,26 +162,49 @@ class SearchViewController: BaseViewController {
             .bind { (vc, _) in
                 print("Search")
                 vc.viewModel.requsetSearchSesac { statusCode in
+                    guard let statusCode = SearchStatus(rawValue: statusCode) else { return }
                     switch statusCode {
-                    case 200:
+                    case .success:
                         vc.view.makeToast("찾기 요청 들어간다~", position: .center)
-                    case 201:
+                    case .declaration:
                         vc.view.makeToast("신고가 누적되어 이용하실 수 없습니다.", position: .center)
-                    case 203:
+                    case .delayOneMinute:
                         vc.view.makeToast("스터디 취소 패널티로, 1분동안 이용하실 수 없습니다.", position: .center)
-                    case 204:
+                    case .delayTowMinute:
                         vc.view.makeToast("스터디 취소 패널티로, 2분동안 이용하실 수 없습니다.", position: .center)
-                    case 205:
+                    case .delayThreeMinute:
                         vc.view.makeToast("스터디 취소 패널티로, 3분동안 이용하실 수 없습니다.", position: .center)
-                    case 401:
+                    case .firebaseTokenError:
                         print("Firebase Token Error")
-                    case 406:
+                    case .noSignupUser:
                         print("미가입 회원")
-                    case 500:
-                        print("Server Error")
-                    default:
-                        break
+                    case .serverError:
+                        print("serverError")
+                    case .clientError:
+                        print("Client Error")
+                        
                     }
+                    //                    switch statusCode {
+                    //                    case 200:
+                    //                        vc.view.makeToast("찾기 요청 들어간다~", position: .center)
+                    //                        vc.viewModel.status = 1
+                    //                    case 201:
+                    //                        vc.view.makeToast("신고가 누적되어 이용하실 수 없습니다.", position: .center)
+                    //                    case 203:
+                    //                        vc.view.makeToast("스터디 취소 패널티로, 1분동안 이용하실 수 없습니다.", position: .center)
+                    //                    case 204:
+                    //                        vc.view.makeToast("스터디 취소 패널티로, 2분동안 이용하실 수 없습니다.", position: .center)
+                    //                    case 205:
+                    //                        vc.view.makeToast("스터디 취소 패널티로, 3분동안 이용하실 수 없습니다.", position: .center)
+                    //                    case 401:
+                    //                        print("Firebase Token Error")
+                    //                    case 406:
+                    //                        print("미가입 회원")
+                    //                    case 500:
+                    //                        print("Server Error")
+                    //                    default:
+                    //                        break
+                    //                    }
                 }
             }
             .disposed(by: disposeBag)
