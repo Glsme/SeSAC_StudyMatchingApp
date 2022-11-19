@@ -63,20 +63,64 @@ final class HomeViewController: BaseViewController {
         
         let center = mainView.mapView.region.center
         
+        var gender = 0
+        
+        if mainView.manButton.backgroundColor == .sesacGreen {
+            gender = 1
+        } else if mainView.womanButton.backgroundColor == .sesacGreen {
+            gender = 0
+        } else {
+            gender = 2
+        }
+        
         viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { [weak self] response in
             guard let self = self else { return }
             switch response {
             case .success(let success):
-                success.fromQueueDB.forEach { value in
-                    let lat = Double(value.lat)
-                    let long = Double(value.long)
-                    self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
-                }
-                
-                success.fromQueueDBRequested.forEach { value in
-                    let lat = Double(value.lat)
-                    let long = Double(value.long)
-                    self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
+                if gender == 2 {
+                    success.fromQueueDB.forEach { value in
+                        let lat = Double(value.lat)
+                        let long = Double(value.long)
+                        self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
+                    }
+                    
+                    success.fromQueueDBRequested.forEach { value in
+                        let lat = Double(value.lat)
+                        let long = Double(value.long)
+                        self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
+                    }
+                } else if gender == 1 {
+                    success.fromQueueDB.forEach { value in
+                        if gender == value.gender {
+                            let lat = Double(value.lat)
+                            let long = Double(value.long)
+                            self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
+                        }
+                    }
+                    
+                    success.fromQueueDBRequested.forEach { value in
+                        if gender == value.gender {
+                            let lat = Double(value.lat)
+                            let long = Double(value.long)
+                            self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
+                        }
+                    }
+                } else if gender == 0 {
+                    success.fromQueueDB.forEach { value in
+                        if gender == value.gender {
+                            let lat = Double(value.lat)
+                            let long = Double(value.long)
+                            self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
+                        }
+                    }
+                    
+                    success.fromQueueDBRequested.forEach { value in
+                        if gender == value.gender {
+                            let lat = Double(value.lat)
+                            let long = Double(value.long)
+                            self.setUserRegionAndAnnotation(lat: lat, long: long, sesac: value.sesac)
+                        }
+                    }
                 }
                 
                 dump(success)
@@ -190,6 +234,27 @@ final class HomeViewController: BaseViewController {
                         vc.view.makeToast("검색 에러가 발생하였습니다. \n잠시 후 다시 시도해주세요", position: .center)
                     }
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.allButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.searchData()
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.manButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.searchData()
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.womanButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.searchData()
             }
             .disposed(by: disposeBag)
     }
