@@ -65,12 +65,16 @@ final class HomeViewController: BaseViewController {
         
         var gender = 0
         
-        if mainView.manButton.backgroundColor == .sesacGreen {
-            gender = 1
-        } else if mainView.womanButton.backgroundColor == .sesacGreen {
-            gender = 0
-        } else {
-            gender = 2
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            if self.mainView.manButton.backgroundColor == .sesacGreen {
+                gender = 1
+            } else if self.mainView.womanButton.backgroundColor == .sesacGreen {
+                gender = 0
+            } else {
+                gender = 2
+            }
         }
         
         viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { [weak self] response in
