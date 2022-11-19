@@ -24,7 +24,7 @@ enum SearchStatus: Int {
     case clientError = 501
 }
 
-class SearchViewModel: HomeViewModel {
+class SearchViewModel {
     let titleArray: [String] = ["지금 주변에는", "내가 하고 싶은"]
     var myHopeStudies: [StudyTag] = []
     var recommandData: [StudyTag] = []

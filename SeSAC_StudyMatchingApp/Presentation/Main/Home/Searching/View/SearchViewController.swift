@@ -182,29 +182,7 @@ class SearchViewController: BaseViewController {
                         print("serverError")
                     case .clientError:
                         print("Client Error")
-                        
                     }
-                    //                    switch statusCode {
-                    //                    case 200:
-                    //                        vc.view.makeToast("찾기 요청 들어간다~", position: .center)
-                    //                        vc.viewModel.status = 1
-                    //                    case 201:
-                    //                        vc.view.makeToast("신고가 누적되어 이용하실 수 없습니다.", position: .center)
-                    //                    case 203:
-                    //                        vc.view.makeToast("스터디 취소 패널티로, 1분동안 이용하실 수 없습니다.", position: .center)
-                    //                    case 204:
-                    //                        vc.view.makeToast("스터디 취소 패널티로, 2분동안 이용하실 수 없습니다.", position: .center)
-                    //                    case 205:
-                    //                        vc.view.makeToast("스터디 취소 패널티로, 3분동안 이용하실 수 없습니다.", position: .center)
-                    //                    case 401:
-                    //                        print("Firebase Token Error")
-                    //                    case 406:
-                    //                        print("미가입 회원")
-                    //                    case 500:
-                    //                        print("Server Error")
-                    //                    default:
-                    //                        break
-                    //                    }
                 }
             }
             .disposed(by: disposeBag)

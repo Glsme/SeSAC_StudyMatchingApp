@@ -37,21 +37,21 @@ final class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
-        setButtonStyle()
+//        setButtonStyle()
         searchData()
     }
     
     func setButtonStyle() {
-        switch viewModel.status {
-        case 0:
-            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
-        case 1:
-            mainView.searchButton.setImage(UIImage(named: HomeAssets.antenna.rawValue), for: .normal)
-        case 2:
-            mainView.searchButton.setImage(UIImage(named: HomeAssets.mail.rawValue), for: .normal)
-        default:
-            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
-        }
+//        switch viewModel.status {
+//        case 0:
+//            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
+//        case 1:
+//            mainView.searchButton.setImage(UIImage(named: HomeAssets.antenna.rawValue), for: .normal)
+//        case 2:
+//            mainView.searchButton.setImage(UIImage(named: HomeAssets.mail.rawValue), for: .normal)
+//        default:
+//            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
+//        }
     }
     
     func searchData() {
