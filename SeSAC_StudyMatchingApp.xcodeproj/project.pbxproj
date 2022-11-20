@@ -30,7 +30,8 @@
 		8509293C292646200074912E /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509293B292646200074912E /* RecommendCell.swift */; };
 		8509293F29276AAE0074912E /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = 8509293E29276AAE0074912E /* RxKeyboard */; };
 		85092941292772FA0074912E /* SearchSesacData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092940292772FA0074912E /* SearchSesacData.swift */; };
-		85092944292800700074912E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092943292800700074912E /* HomeViewModel.swift */; };
+		850929462929CC740074912E /* MyQueueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850929452929CC740074912E /* MyQueueState.swift */; };
+		850929482929CEC10074912E /* MyQueueStateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850929472929CEC10074912E /* MyQueueStateResponse.swift */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
@@ -103,7 +104,7 @@
 		85992232291D50A8007F96A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 85992231291D50A8007F96A6 /* FirebaseAuth */; };
 		85992234291D50A8007F96A6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 85992233291D50A8007F96A6 /* FirebaseMessaging */; };
 		8599223C291D6A8E007F96A6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599223B291D6A8E007F96A6 /* HomeViewController.swift */; };
-		8599223E291D6ADB007F96A6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599223D291D6ADB007F96A6 /* MainViewModel.swift */; };
+		8599223E291D6ADB007F96A6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599223D291D6ADB007F96A6 /* HomeViewModel.swift */; };
 		85992240291D6B13007F96A6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599223F291D6B13007F96A6 /* HomeView.swift */; };
 		85D341B629195FA200F27A78 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85D341B529195FA200F27A78 /* .gitignore */; };
 		85D341BE291A2A8C00F27A78 /* CertificationReceivingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D341BD291A2A8C00F27A78 /* CertificationReceivingViewModel.swift */; };
@@ -136,7 +137,8 @@
 		85092938292635800074912E /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 		8509293B292646200074912E /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		85092940292772FA0074912E /* SearchSesacData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSesacData.swift; sourceTree = "<group>"; };
-		85092943292800700074912E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		850929452929CC740074912E /* MyQueueState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQueueState.swift; sourceTree = "<group>"; };
+		850929472929CEC10074912E /* MyQueueStateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQueueStateResponse.swift; sourceTree = "<group>"; };
 		85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_StudyMatchingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85350A3D2918C1D600C70515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85350A3F2918C1D600C70515 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,7 +204,7 @@
 		8599222A291D2D06007F96A6 /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
 		8599222C291D2D0E007F96A6 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 		8599223B291D6A8E007F96A6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		8599223D291D6ADB007F96A6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		8599223D291D6ADB007F96A6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8599223F291D6B13007F96A6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		85D341B529195FA200F27A78 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeSAC_StudyMatchingApp.entitlements; sourceTree = "<group>"; };
@@ -342,7 +344,6 @@
 		850929422928005E0074912E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				85092943292800700074912E /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -748,6 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				85992201291C0B03007F96A6 /* LoginError.swift */,
+				850929472929CEC10074912E /* MyQueueStateResponse.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -759,6 +761,7 @@
 				859921FD291C0459007F96A6 /* SesacAPIRouter.swift */,
 				85092938292635800074912E /* SearchData.swift */,
 				85092940292772FA0074912E /* SearchSesacData.swift */,
+				850929452929CC740074912E /* MyQueueState.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -918,7 +921,7 @@
 		8599223A291D69DC007F96A6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				8599223D291D6ADB007F96A6 /* MainViewModel.swift */,
+				8599223D291D6ADB007F96A6 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1113,10 +1116,12 @@
 				850515392924066C00862A2F /* SeSACInfo.swift in Sources */,
 				8542BE222921F1CF00CF799A /* MyInfoViewController.swift in Sources */,
 				85992229291D2CFF007F96A6 /* GenderViewModel.swift in Sources */,
+				850929462929CC740074912E /* MyQueueState.swift in Sources */,
 				85350AA0291924FA00C70515 /* BaseButton.swift in Sources */,
 				8599223C291D6A8E007F96A6 /* HomeViewController.swift in Sources */,
 				8505151E29228FF200862A2F /* ProfileCardView.swift in Sources */,
 				85350A9E291924B500C70515 /* GreenBgButton.swift in Sources */,
+				850929482929CEC10074912E /* MyQueueStateResponse.swift in Sources */,
 				85E3ABB02922166400F890AF /* ManagementViewController.swift in Sources */,
 				85350A622918CB0600C70515 /* BaseView.swift in Sources */,
 				85992224291D1EE7007F96A6 /* EmailViewController.swift in Sources */,
@@ -1137,7 +1142,7 @@
 				8542BE12291E7BD500CF799A /* SplashViewModel.swift in Sources */,
 				85992208291CB01C007F96A6 /* NicknameView.swift in Sources */,
 				85350A862918F70500C70515 /* UIColor+Extension.swift in Sources */,
-				8599223E291D6ADB007F96A6 /* MainViewModel.swift in Sources */,
+				8599223E291D6ADB007F96A6 /* HomeViewModel.swift in Sources */,
 				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
 				85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */,
@@ -1151,7 +1156,6 @@
 				85992202291C0B03007F96A6 /* LoginError.swift in Sources */,
 				850515482924B73400862A2F /* WithdarwViewController.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
-				85092944292800700074912E /* HomeViewModel.swift in Sources */,
 				859921FC291C01D1007F96A6 /* SesacAPIService.swift in Sources */,
 				85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */,
 				859921F8291C0086007F96A6 /* UserData.swift in Sources */,

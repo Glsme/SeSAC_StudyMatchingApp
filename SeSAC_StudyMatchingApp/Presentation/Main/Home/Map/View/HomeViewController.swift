@@ -14,7 +14,7 @@ import RxSwift
 
 final class HomeViewController: BaseViewController {
     let mainView = HomeView()
-    let viewModel = MainViewModel()
+    let viewModel = HomeViewModel()
     let disposeBag = DisposeBag()
     
     let locationManager = CLLocationManager()
@@ -39,19 +39,39 @@ final class HomeViewController: BaseViewController {
         tabBarController?.tabBar.isHidden = false
         //        setButtonStyle()
         searchData()
+        requestMyQueueState()
     }
     
-    func setButtonStyle() {
-        //        switch viewModel.status {
-        //        case 0:
-        //            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
-        //        case 1:
-        //            mainView.searchButton.setImage(UIImage(named: HomeAssets.antenna.rawValue), for: .normal)
-        //        case 2:
-        //            mainView.searchButton.setImage(UIImage(named: HomeAssets.mail.rawValue), for: .normal)
-        //        default:
-        //            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
-        //        }
+    private func requestMyQueueState() {
+        viewModel.requsetMyStateData { [weak self] response in
+            guard let self = self else { return }
+            switch response {
+            case .success(let data):
+                self.setButtonStyle(data.matched)
+            case .failure(let error):
+                guard let error = error.asAFError else { return }
+                guard let statusCode = error.responseCode else { return }
+                switch MyQueueStateResponse(rawValue: statusCode) {
+                case .normal:
+                    self.setButtonStyle(statusCode)
+                default:
+                    print(statusCode, error)
+                }
+            }
+        }
+    }
+    
+    func setButtonStyle(_ matchState: Int) {
+        switch matchState {
+        case 201:
+            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
+        case 0:
+            mainView.searchButton.setImage(UIImage(named: HomeAssets.antenna.rawValue), for: .normal)
+        case 1:
+            mainView.searchButton.setImage(UIImage(named: HomeAssets.mail.rawValue), for: .normal)
+        default:
+            mainView.searchButton.setImage(UIImage(named: HomeAssets.search.rawValue), for: .normal)
+        }
     }
     
     func searchData() {

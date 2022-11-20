@@ -16,6 +16,7 @@ enum SesacAPIRouter: URLRequestConvertible {
     case withdraw
     case searchPost(lat: String, long: String)
     case searchSesacPost(data: SearchSesacData)
+    case myQueueStateGet
     
     var baseURL: URL {
         switch self {
@@ -31,6 +32,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             return URL(string: "http://api.sesac.co.kr:1210/v1/queue/search")!
         case .searchSesacPost:
             return URL(string: "http://api.sesac.co.kr:1210/v1/queue")!
+        case .myQueueStateGet:
+            return URL(string: "http://api.sesac.co.kr:1210/v1/queue/myQueueState")!
         }
     }
     
@@ -42,6 +45,7 @@ enum SesacAPIRouter: URLRequestConvertible {
         case .withdraw: return .post
         case .searchPost: return .post
         case .searchSesacPost: return .post
+        case .myQueueStateGet: return .get
         }
     }
     
@@ -85,6 +89,11 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["Content-Type": "application/x-www-form-urlencoded",
                     "accept": "*/*",
                     "idtoken": idToken]
+        case .myQueueStateGet:
+            guard let idToken = UserManager.authVerificationToken else { return ["": ""] }
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "accept": "*/*",
+                    "idtoken": idToken]
         }
     }
     
@@ -117,6 +126,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["lat": lat, "long": long]
         case .searchSesacPost(let data):
             return ["long": data.long, "lat" : data.lat, "studylist": data.studylist]
+        case .myQueueStateGet:
+            return ["": ""]
         }
     }
     
@@ -127,6 +138,5 @@ enum SesacAPIRouter: URLRequestConvertible {
         request.headers = headers
         
         return try URLEncoding(arrayEncoding: .noBrackets).encode(request, with: parameters)
-//        return request
     }
 }

@@ -67,4 +67,15 @@ final class SesacSignupAPIService {
             completionHandler(statusCode)
         }
     }
+    
+    public func requestMyStateData(router: SesacAPIRouter, completionHandler: @escaping (Result<MyQueueState, Error>) -> Void) {
+        AF.request(router).responseDecodable(of: MyQueueState.self) { response in
+            switch response.result {
+            case .success(let success):
+                completionHandler(.success(success))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
+    }
 }
