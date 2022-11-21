@@ -38,6 +38,8 @@
 		85092957292B297C0074912E /* AroundSesacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092956292B297C0074912E /* AroundSesacViewController.swift */; };
 		85092959292B29890074912E /* RecivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092958292B29890074912E /* RecivedViewController.swift */; };
 		8509295B292B2ED80074912E /* SearchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509295A292B2ED80074912E /* SearchTabView.swift */; };
+		8509295E292B36130074912E /* AroundSesacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509295D292B36130074912E /* AroundSesacView.swift */; };
+		85092961292B36230074912E /* RecivedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092960292B36230074912E /* RecivedView.swift */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
@@ -150,6 +152,8 @@
 		85092956292B297C0074912E /* AroundSesacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundSesacViewController.swift; sourceTree = "<group>"; };
 		85092958292B29890074912E /* RecivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecivedViewController.swift; sourceTree = "<group>"; };
 		8509295A292B2ED80074912E /* SearchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabView.swift; sourceTree = "<group>"; };
+		8509295D292B36130074912E /* AroundSesacView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundSesacView.swift; sourceTree = "<group>"; };
+		85092960292B36230074912E /* RecivedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecivedView.swift; sourceTree = "<group>"; };
 		85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_StudyMatchingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85350A3D2918C1D600C70515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85350A3F2918C1D600C70515 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -399,7 +403,7 @@
 		85092954292B29100074912E /* AroundSesac */ = {
 			isa = PBXGroup;
 			children = (
-				85092956292B297C0074912E /* AroundSesacViewController.swift */,
+				8509295C292B35E90074912E /* View */,
 			);
 			path = AroundSesac;
 			sourceTree = "<group>";
@@ -407,9 +411,27 @@
 		85092955292B291B0074912E /* Recived */ = {
 			isa = PBXGroup;
 			children = (
-				85092958292B29890074912E /* RecivedViewController.swift */,
+				8509295F292B36180074912E /* View */,
 			);
 			path = Recived;
+			sourceTree = "<group>";
+		};
+		8509295C292B35E90074912E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85092956292B297C0074912E /* AroundSesacViewController.swift */,
+				8509295D292B36130074912E /* AroundSesacView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8509295F292B36180074912E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85092958292B29890074912E /* RecivedViewController.swift */,
+				85092960292B36230074912E /* RecivedView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		85350A312918C1D600C70515 = {
@@ -1161,6 +1183,7 @@
 				85E3ABB22922168400F890AF /* ManagementView.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
 				859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */,
+				8509295E292B36130074912E /* AroundSesacView.swift in Sources */,
 				8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */,
 				8599220D291CB1FA007F96A6 /* BlackHighlightTextField.swift in Sources */,
 				85992222291D1EDB007F96A6 /* EmailView.swift in Sources */,
@@ -1211,6 +1234,7 @@
 				85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */,
 				8542BE12291E7BD500CF799A /* SplashViewModel.swift in Sources */,
 				85992208291CB01C007F96A6 /* NicknameView.swift in Sources */,
+				85092961292B36230074912E /* RecivedView.swift in Sources */,
 				85350A862918F70500C70515 /* UIColor+Extension.swift in Sources */,
 				8599223E291D6ADB007F96A6 /* HomeViewModel.swift in Sources */,
 				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
