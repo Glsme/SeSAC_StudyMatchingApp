@@ -23,6 +23,7 @@ class SearchTabView: BaseView {
         view.layer.borderColor = UIColor.sesacGreen.cgColor
         view.layer.borderWidth = 1
         view.setImage(UIImage(named: SearchAssets.reload.rawValue), for: .normal)
+        view.backgroundColor = .white
         return view
     }()
     

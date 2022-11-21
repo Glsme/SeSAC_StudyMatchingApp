@@ -84,6 +84,7 @@ final class SearchView: BaseView {
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = 8
                 section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16)
+                
                 return section
             } else {
                 let size = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(35))
@@ -106,6 +107,7 @@ final class SearchView: BaseView {
                 return section
             }
         }
+        
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.scrollDirection = .vertical
         let layout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)

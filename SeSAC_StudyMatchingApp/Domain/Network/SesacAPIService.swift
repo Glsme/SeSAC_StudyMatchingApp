@@ -63,6 +63,7 @@ final class SesacSignupAPIService {
     
     public func requestSesacSearchSesacData(router: SesacAPIRouter, completionHandler: @escaping (Int) -> Void) {
         AF.request(router).responseDecodable(of: Int.self) { response in
+            print(response.result)
             guard let statusCode = response.response?.statusCode else { return }
             completionHandler(statusCode)
         }
