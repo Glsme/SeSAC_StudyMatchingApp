@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class AroundSesacTableViewCell: UITableViewCell {
+class SesacCardTableViewCell: UITableViewCell {
     lazy var cardView = ProfileCardView()
     lazy var requsetButton: UIButton = {
         let view = UIButton()

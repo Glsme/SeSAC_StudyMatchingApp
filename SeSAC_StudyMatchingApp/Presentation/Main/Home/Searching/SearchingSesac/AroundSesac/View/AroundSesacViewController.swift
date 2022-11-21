@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 class AroundSesacViewController: BaseViewController {
-    let mainView = AroundSesacView()
+    let mainView = SesacCardView()
     let disposeBag = DisposeBag()
     let viewModel = AroundSesacViewModel()
     var hiddenFlag: [Bool] = []
@@ -26,9 +26,32 @@ class AroundSesacViewController: BaseViewController {
     }
     
     override func configureUI() {
-        mainView.tableView.register(AroundSesacTableViewCell.self, forCellReuseIdentifier: AroundSesacTableViewCell.reuseIdentifier)
+        mainView.tableView.register(SesacCardTableViewCell.self, forCellReuseIdentifier: SesacCardTableViewCell.reuseIdentifier)
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
+        
+        if let data = viewModel.searchedData, !data.fromQueueDB.isEmpty {
+            mainView.setSearchUI(noSearched: false)
+        } else {
+            mainView.setSearchUI(noSearched: true)
+        }
+    }
+    
+    override func bindData() {
+        mainView.noSearchView.reloadButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("reload")
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.noSearchView.changeButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("change")
+                vc.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -40,7 +63,7 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AroundSesacTableViewCell.reuseIdentifier, for: indexPath) as? AroundSesacTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SesacCardTableViewCell.reuseIdentifier, for: indexPath) as? SesacCardTableViewCell else { return UITableViewCell() }
         guard let data = viewModel.searchedData?.fromQueueDB[indexPath.row] else { return UITableViewCell() }
         cell.cardView.nicknameView.moreButton.tag = indexPath.row
         cell.cardView.nicknameView.nameLabel.text = data.nick

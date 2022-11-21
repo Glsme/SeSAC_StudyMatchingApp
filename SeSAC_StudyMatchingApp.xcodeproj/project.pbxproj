@@ -37,10 +37,10 @@
 		85092953292B28470074912E /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 85092952292B28470074912E /* Tabman */; };
 		85092957292B297C0074912E /* AroundSesacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092956292B297C0074912E /* AroundSesacViewController.swift */; };
 		85092959292B29890074912E /* RecivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092958292B29890074912E /* RecivedViewController.swift */; };
-		8509295B292B2ED80074912E /* SearchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509295A292B2ED80074912E /* SearchTabView.swift */; };
-		8509295E292B36130074912E /* AroundSesacView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509295D292B36130074912E /* AroundSesacView.swift */; };
+		8509295B292B2ED80074912E /* NoSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509295A292B2ED80074912E /* NoSearchView.swift */; };
+		8509295E292B36130074912E /* SesacCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509295D292B36130074912E /* SesacCardView.swift */; };
 		85092961292B36230074912E /* RecivedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092960292B36230074912E /* RecivedView.swift */; };
-		85092963292B4CF00074912E /* AroundSesacTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092962292B4CF00074912E /* AroundSesacTableViewCell.swift */; };
+		85092963292B4CF00074912E /* SesacCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092962292B4CF00074912E /* SesacCardTableViewCell.swift */; };
 		85092968292B62B70074912E /* SearchTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85092967292B62B70074912E /* SearchTabViewModel.swift */; };
 		8509296B292B89540074912E /* AroundSesacViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509296A292B89540074912E /* AroundSesacViewModel.swift */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
@@ -154,10 +154,10 @@
 		8509294F292B27DF0074912E /* SearchTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabViewController.swift; sourceTree = "<group>"; };
 		85092956292B297C0074912E /* AroundSesacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundSesacViewController.swift; sourceTree = "<group>"; };
 		85092958292B29890074912E /* RecivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecivedViewController.swift; sourceTree = "<group>"; };
-		8509295A292B2ED80074912E /* SearchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabView.swift; sourceTree = "<group>"; };
-		8509295D292B36130074912E /* AroundSesacView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundSesacView.swift; sourceTree = "<group>"; };
+		8509295A292B2ED80074912E /* NoSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchView.swift; sourceTree = "<group>"; };
+		8509295D292B36130074912E /* SesacCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacCardView.swift; sourceTree = "<group>"; };
 		85092960292B36230074912E /* RecivedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecivedView.swift; sourceTree = "<group>"; };
-		85092962292B4CF00074912E /* AroundSesacTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundSesacTableViewCell.swift; sourceTree = "<group>"; };
+		85092962292B4CF00074912E /* SesacCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacCardTableViewCell.swift; sourceTree = "<group>"; };
 		85092967292B62B70074912E /* SearchTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabViewModel.swift; sourceTree = "<group>"; };
 		8509296A292B89540074912E /* AroundSesacViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AroundSesacViewModel.swift; sourceTree = "<group>"; };
 		85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_StudyMatchingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -393,8 +393,9 @@
 		8509294D292B27A40074912E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8509296C292BA64A0074912E /* CardView */,
 				8509294F292B27DF0074912E /* SearchTabViewController.swift */,
-				8509295A292B2ED80074912E /* SearchTabView.swift */,
+				8509295A292B2ED80074912E /* NoSearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -428,8 +429,6 @@
 			isa = PBXGroup;
 			children = (
 				85092956292B297C0074912E /* AroundSesacViewController.swift */,
-				8509295D292B36130074912E /* AroundSesacView.swift */,
-				85092962292B4CF00074912E /* AroundSesacTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -449,6 +448,15 @@
 				8509296A292B89540074912E /* AroundSesacViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8509296C292BA64A0074912E /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				85092962292B4CF00074912E /* SesacCardTableViewCell.swift */,
+				8509295D292B36130074912E /* SesacCardView.swift */,
+			);
+			path = CardView;
 			sourceTree = "<group>";
 		};
 		85350A312918C1D600C70515 = {
@@ -1200,7 +1208,7 @@
 				85E3ABB22922168400F890AF /* ManagementView.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
 				859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */,
-				8509295E292B36130074912E /* AroundSesacView.swift in Sources */,
+				8509295E292B36130074912E /* SesacCardView.swift in Sources */,
 				8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */,
 				8599220D291CB1FA007F96A6 /* BlackHighlightTextField.swift in Sources */,
 				85992222291D1EDB007F96A6 /* EmailView.swift in Sources */,
@@ -1245,7 +1253,7 @@
 				859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */,
 				8509293C292646200074912E /* RecommendCell.swift in Sources */,
 				8505152B292368AA00862A2F /* CustomPhoneView.swift in Sources */,
-				8509295B292B2ED80074912E /* SearchTabView.swift in Sources */,
+				8509295B292B2ED80074912E /* NoSearchView.swift in Sources */,
 				850515222922B51B00862A2F /* ProfileNicknameView.swift in Sources */,
 				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
 				8505155E29251B0D00862A2F /* SearchViewModel.swift in Sources */,
@@ -1272,7 +1280,7 @@
 				859921FC291C01D1007F96A6 /* SesacAPIService.swift in Sources */,
 				85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */,
 				859921F8291C0086007F96A6 /* UserData.swift in Sources */,
-				85092963292B4CF00074912E /* AroundSesacTableViewCell.swift in Sources */,
+				85092963292B4CF00074912E /* SesacCardTableViewCell.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
 				85992215291CD686007F96A6 /* BirthViewModel.swift in Sources */,

@@ -13,7 +13,6 @@ import RxCocoa
 import RxSwift
 
 final class SearchTabViewController: TabmanViewController {
-    let mainView = SearchTabView()
     let disposebag = DisposeBag()
     let viewModel = SearchTabViewModel()
     
@@ -25,13 +24,9 @@ final class SearchTabViewController: TabmanViewController {
     
     private var viewControllers: [UIViewController] = []
     
-    override func loadView() {
-        self.view = mainView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         configureUI()
         bindData()
     }
@@ -63,22 +58,7 @@ final class SearchTabViewController: TabmanViewController {
         addBar(bar, dataSource: self, at: .top)
     }
     
-    func bindData() {
-        mainView.reloadButton.rx.tap
-            .withUnretained(self)
-            .bind { (vc, _) in
-                print("reload")
-            }
-            .disposed(by: disposebag)
-        
-        mainView.changeButton.rx.tap
-            .withUnretained(self)
-            .bind { (vc, _) in
-                print("change")
-                vc.navigationController?.popViewController(animated: true)
-            }
-            .disposed(by: disposebag)
-        
+    func bindData() {        
         stopButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in

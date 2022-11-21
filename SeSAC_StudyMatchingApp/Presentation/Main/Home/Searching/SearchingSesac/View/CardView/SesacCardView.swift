@@ -9,12 +9,14 @@ import UIKit
 
 import SnapKit
 
-class AroundSesacView: BaseView {
+class SesacCardView: BaseView {
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.separatorColor = .white
         return view
     }()
+    
+    lazy var noSearchView = NoSearchView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,11 +24,24 @@ class AroundSesacView: BaseView {
     
     override func configureUI() {
         self.addSubview(tableView)
+        self.addSubview(noSearchView)
     }
     
     override func setConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
+        }
+        
+        noSearchView.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide)
+        }
+    }
+    
+    func setSearchUI(noSearched: Bool) {
+        if noSearched {
+            tableView.isHidden = true
+        } else {
+            noSearchView.isHidden = true
         }
     }
 }
