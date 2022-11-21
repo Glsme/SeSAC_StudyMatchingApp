@@ -23,6 +23,21 @@ class SearchTabViewModel {
         }
     }
     
+    func requestMyQueueState(completion: @escaping (MyQueueState) -> Void) {
+        let api = SesacAPIRouter.myQueueStateGet
+        SesacSignupAPIService.shared.requestMyStateData(router: api) { response in
+            switch response {
+            case .success(let success):
+                if success.matched == 1 {
+                    completion(success)
+                }
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        
+    }
+    
     func requestStopMatching(completion: @escaping (Int) -> Void) {
         let api = SesacAPIRouter.myQueueStateDelete
         SesacSignupAPIService.shared.requestSesacSearchSesacData(router: api) { statusCode in

@@ -23,12 +23,14 @@ final class SearchTabViewController: TabmanViewController {
     let stopButton = UIBarButtonItem(title: "찾기중단", style: .done, target: AroundSesacViewController.self, action: nil)
     
     private var viewControllers: [UIViewController] = []
+    var timerDisposable: Disposable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureUI()
         bindData()
+        resetAndGoTimer()
     }
     
     func configureUI() {
@@ -65,6 +67,7 @@ final class SearchTabViewController: TabmanViewController {
                 vc.viewModel.requestStopMatching { statusCode in
                     switch stopMatchingCode(rawValue: statusCode) {
                     case .success:
+                        vc.timerDisposable?.dispose()
                         guard let vcs = vc.navigationController?.viewControllers else { return }
                         
                         for vc in vcs {
@@ -93,6 +96,21 @@ final class SearchTabViewController: TabmanViewController {
                 }
             }
             .disposed(by: disposebag)
+    }
+    
+    private func resetAndGoTimer() {
+        timerDisposable?.dispose()
+        timerDisposable = Observable<Int>
+            .timer(.seconds(1), period: .seconds(5), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, _) in
+                vc.viewModel.requestMyQueueState { result in
+                    vc.timerDisposable?.dispose()
+                    vc.view.makeToast("\(String(describing: result.matchedNick))님과 매칭되셨습니다.\n잠시 후 채팅방으로 이동합니다.", duration: 1) { didTap in
+                        print("채팅방 들어간다~")
+                    }
+                }
+            })
     }
 }
 
