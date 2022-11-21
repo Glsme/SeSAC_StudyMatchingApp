@@ -23,7 +23,7 @@ final class HomeViewModel {
         }
     }
     
-    func requsetMyStateData(completion: @escaping (Result<MyQueueState, Error>) -> Void) {
+    func requsetMyStateData(completion: @escaping (Result<MyQueueState, MyQueueStateResponse>) -> Void) {
         let api = SesacAPIRouter.myQueueStateGet
         SesacSignupAPIService.shared.requestMyStateData(router: api) { response in
             switch response {
