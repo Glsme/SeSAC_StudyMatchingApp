@@ -19,7 +19,7 @@ final class HomeViewController: BaseViewController {
     
     let locationManager = CLLocationManager()
     var locationStatus = false
-    let defaultCoordinate = CLLocationCoordinate2D(latitude: 37.517857, longitude: 126.887159)
+    let defaultCoordinate = CLLocationCoordinate2D(latitude: 37.516857, longitude: 126.885798)
     var firstFlag = true
     
     override func loadView() {
@@ -191,10 +191,15 @@ final class HomeViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 if vc.locationStatus {
-                    vc.locationManager.startUpdatingLocation()
-                    guard let coordinate = vc.locationManager.location?.coordinate else { return }
-                    vc.setMyRegionAndAnnotation(lat: coordinate.latitude, long: coordinate.longitude)
-                    vc.locationManager.stopUpdatingLocation()
+                    //Test Code
+                    let location = CLLocationCoordinate2D(latitude: vc.defaultCoordinate.latitude, longitude: vc.defaultCoordinate.longitude)
+                    let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
+                    vc.mainView.mapView.setRegion(region, animated: true)
+//                    vc.locationManager.startUpdatingLocation()
+//                    guard let coordinate = vc.locationManager.location?.coordinate else { return }
+//                    vc.firstFlag.toggle()
+//                    vc.setMyRegionAndAnnotation(lat: coordinate.latitude, long: coordinate.longitude)
+//                    vc.locationManager.stopUpdatingLocation()
                 } else {
                     vc.showAlert(message: "위치 권한을 허용해 주세요.")
                 }
@@ -205,7 +210,8 @@ final class HomeViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 //                guard let coordinate = vc.locationManager.location?.coordinate else { return }
-                let center = vc.mainView.mapView.region.center
+                // Test Code: default -> vc.mainView.mapView.region.center로 바꿔야함
+                let center = vc.defaultCoordinate //vc.mainView.mapView.region.center
                 let nextVC = SearchViewController()
                 // Test code 추후에 바꿔야함
                 nextVC.viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { response in
