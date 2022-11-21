@@ -13,10 +13,14 @@ import RxCocoa
 import RxSwift
 
 final class SearchTabViewController: TabmanViewController {
-    private var viewControllers: [UIViewController] = [AroundSesacViewController(), RecivedViewController()]
-    
     let mainView = SearchTabView()
     let disposebag = DisposeBag()
+    let viewModel = SearchTabViewModel()
+    
+    let aroundVC = AroundSesacViewController()
+    let recivedVC = RecivedViewController()
+    
+    private var viewControllers: [UIViewController] = []
     
     override func loadView() {
         self.view = mainView
@@ -30,6 +34,10 @@ final class SearchTabViewController: TabmanViewController {
     }
     
     func configureUI() {
+        viewControllers.append(aroundVC)
+        viewControllers.append(recivedVC)
+        aroundVC.viewModel.searchedData = viewModel.searchData
+        
         self.dataSource = self
         
         let bar = TMBar.ButtonBar()

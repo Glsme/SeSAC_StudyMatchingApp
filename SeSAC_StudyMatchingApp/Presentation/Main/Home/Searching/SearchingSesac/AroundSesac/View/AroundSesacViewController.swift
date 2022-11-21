@@ -13,6 +13,7 @@ import RxSwift
 class AroundSesacViewController: BaseViewController {
     let mainView = AroundSesacView()
     let disposeBag = DisposeBag()
+    let viewModel = AroundSesacViewModel()
     var hiddenFlag: [Bool] = []
     
     override func loadView() {
@@ -33,20 +34,30 @@ class AroundSesacViewController: BaseViewController {
 
 extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        hiddenFlag.append(contentsOf: Array<Bool>(repeating: true, count: 3))
-        return 3
+        let count = viewModel.searchedData?.fromQueueDB.count ?? 0
+        hiddenFlag.append(contentsOf: Array<Bool>(repeating: true, count: count))
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AroundSesacTableViewCell.reuseIdentifier, for: indexPath) as? AroundSesacTableViewCell else { return UITableViewCell() }
+        guard let data = viewModel.searchedData?.fromQueueDB[indexPath.row] else { return UITableViewCell() }
         cell.cardView.nicknameView.moreButton.tag = indexPath.row
+        cell.cardView.nicknameView.nameLabel.text = data.nick
+        cell.setImage(data.background, data.sesac)
         cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
+        cell.setSesacTitleColor(data.reputation)
+        if data.reviews.count > 0 {
+            cell.cardView.titleView.reviewLabel.text = data.reviews.joined(separator: "\n")
+            cell.cardView.titleView.reviewLabel.textColor = .black
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         hiddenFlag[indexPath.row].toggle()
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.reloadRows(at: [indexPath], with: .fade)
     }
 }

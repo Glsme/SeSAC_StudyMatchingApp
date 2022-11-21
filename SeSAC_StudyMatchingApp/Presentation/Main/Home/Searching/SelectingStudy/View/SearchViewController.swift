@@ -160,13 +160,20 @@ class SearchViewController: BaseViewController {
         mainView.searchButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                print("Search")
                 vc.viewModel.requsetSearchSesac { statusCode in
                     guard let statusCode = SearchStatus(rawValue: statusCode) else { return }
                     switch statusCode {
                     case .success:
-                        let nextVC = SearchTabViewController()
-                        vc.transViewController(ViewController: nextVC, type: .push)
+                        vc.viewModel.requsetSearchData(lat: vc.viewModel.lat, long: vc.viewModel.long) { response in
+                            switch response {
+                            case .success(let success):
+                                let nextVC = SearchTabViewController()
+                                nextVC.viewModel.searchData = success
+                                vc.transViewController(ViewController: nextVC, type: .push)
+                            case .failure(let error):
+                                print("error: \(error)")
+                            }
+                        }
                     case .declaration:
                         vc.view.makeToast("신고가 누적되어 이용하실 수 없습니다.", position: .center)
                     case .delayOneMinute:
