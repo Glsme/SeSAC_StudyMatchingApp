@@ -165,7 +165,8 @@ class SearchViewController: BaseViewController {
                     guard let statusCode = SearchStatus(rawValue: statusCode) else { return }
                     switch statusCode {
                     case .success:
-                        vc.view.makeToast("찾기 요청 들어간다~", position: .center)
+                        let nextVC = SearchTabViewController()
+                        vc.transViewController(ViewController: nextVC, type: .push)
                     case .declaration:
                         vc.view.makeToast("신고가 누적되어 이용하실 수 없습니다.", position: .center)
                     case .delayOneMinute:

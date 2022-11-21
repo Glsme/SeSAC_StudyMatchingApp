@@ -147,7 +147,10 @@ final class HomeViewController: BaseViewController {
     func setMyRegionAndAnnotation(lat: Double, long: Double) {
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
-        mainView.mapView.setRegion(region, animated: true)
+        if firstFlag {
+            mainView.mapView.setRegion(region, animated: true)
+            firstFlag.toggle()
+        }
     }
     
     override func bindData() {
@@ -291,9 +294,8 @@ extension HomeViewController {
 
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let coordinate = locations.first, firstFlag {
+        if let coordinate = locations.first {
             setMyRegionAndAnnotation(lat: coordinate.coordinate.latitude, long: coordinate.coordinate.longitude)
-            firstFlag.toggle()
         }
         
         locationManager.stopUpdatingHeading()
