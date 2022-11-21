@@ -50,13 +50,12 @@ final class HomeViewController: BaseViewController {
             case .success(let data):
                 self.setButtonStyle(data.matched)
             case .failure(let error):
-                guard let error = error.asAFError else { return }
-                guard let statusCode = error.responseCode else { return }
-                switch MyQueueStateResponse(rawValue: statusCode) {
+                guard let error = error as? MyQueueStateResponse else { return }
+                switch MyQueueStateResponse(rawValue: error.rawValue) {
                 case .normal:
-                    self.setButtonStyle(statusCode)
+                    self.setButtonStyle(error.rawValue)
                 default:
-                    print(statusCode, error)
+                    print(error.rawValue, error)
                 }
             }
         }
