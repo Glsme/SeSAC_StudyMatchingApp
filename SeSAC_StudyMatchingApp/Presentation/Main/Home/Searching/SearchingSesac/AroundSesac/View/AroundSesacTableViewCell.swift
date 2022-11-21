@@ -11,6 +11,16 @@ import SnapKit
 
 class AroundSesacTableViewCell: UITableViewCell {
     lazy var cardView = ProfileCardView()
+    lazy var requsetButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .sesacError
+        view.setTitle("요청하기", for: .normal)
+        view.titleLabel?.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14)
+        view.setTitleColor(.white, for: .normal)
+        view.layer.cornerRadius = 8
+        return view
+    }()
+    
     var hiddenFlag = true
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -26,12 +36,19 @@ class AroundSesacTableViewCell: UITableViewCell {
     
     func configureUI() {
         self.contentView.addSubview(cardView)
+        self.contentView.addSubview(requsetButton)
         selectionStyle = .none
     }
     
     func setConstraints() {
         cardView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(16)
+        }
+        
+        requsetButton.snp.makeConstraints { make in
+            make.top.trailing.equalToSuperview().inset(28)
+            make.width.equalTo(80)
+            make.height.equalTo(40)
         }
     }
     

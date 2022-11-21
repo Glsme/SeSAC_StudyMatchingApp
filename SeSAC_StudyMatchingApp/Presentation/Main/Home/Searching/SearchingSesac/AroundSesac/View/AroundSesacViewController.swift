@@ -47,6 +47,7 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         cell.setImage(data.background, data.sesac)
         cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
         cell.setSesacTitleColor(data.reputation)
+        
         if data.reviews.count > 0 {
             cell.cardView.titleView.reviewLabel.text = data.reviews.joined(separator: "\n")
             cell.cardView.titleView.reviewLabel.textColor = .black

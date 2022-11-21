@@ -22,4 +22,20 @@ class SearchTabViewModel {
             }
         }
     }
+    
+    func requestStopMatching(completion: @escaping (Int) -> Void) {
+        let api = SesacAPIRouter.myQueueStateDelete
+        SesacSignupAPIService.shared.requestSesacSearchSesacData(router: api) { statusCode in
+            completion(statusCode)
+        }
+    }
+}
+
+enum stopMatchingCode: Int {
+    case success = 200
+    case alreadyStop = 201
+    case firebaseTokenError = 401
+    case noSignup = 406
+    case serverError = 500
+    case clientError = 501
 }

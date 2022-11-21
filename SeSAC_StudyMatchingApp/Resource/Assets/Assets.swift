@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum CommonAssets: String {
+    case backButton
+}
+
 //MARK: - Onboarding Assets
 enum OnboardingAssets: String {
     case onboardingImg1 = "onboarding_img1"

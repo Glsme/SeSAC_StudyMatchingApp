@@ -20,6 +20,9 @@ final class SearchTabViewController: TabmanViewController {
     let aroundVC = AroundSesacViewController()
     let recivedVC = RecivedViewController()
     
+    let backButton = UIBarButtonItem(image: UIImage(named: CommonAssets.backButton.rawValue), style: .done, target: AroundSesacViewController.self, action: nil)
+    let stopButton = UIBarButtonItem(title: "찾기중단", style: .done, target: AroundSesacViewController.self, action: nil)
+    
     private var viewControllers: [UIViewController] = []
     
     override func loadView() {
@@ -34,6 +37,11 @@ final class SearchTabViewController: TabmanViewController {
     }
     
     func configureUI() {
+        navigationItem.leftBarButtonItem = backButton
+        navigationItem.rightBarButtonItem = stopButton
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.leftBarButtonItem?.tintColor = .black
+        
         viewControllers.append(aroundVC)
         viewControllers.append(recivedVC)
         aroundVC.viewModel.searchedData = viewModel.searchData
@@ -68,6 +76,41 @@ final class SearchTabViewController: TabmanViewController {
             .bind { (vc, _) in
                 print("change")
                 vc.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposebag)
+        
+        stopButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.requestStopMatching { statusCode in
+                    switch stopMatchingCode(rawValue: statusCode) {
+                    case .success:
+                        guard let vcs = vc.navigationController?.viewControllers else { return }
+                        
+                        for vc in vcs {
+                            if let rootVC = vc as? HomeViewController {
+                                vc.navigationController?.popToViewController(rootVC, animated: true)
+                            }
+                        }
+                    case .alreadyStop:
+                        vc.view.makeToast("이미 찾기가 중단되었습니다.", position: .center)
+                    default:
+                        print(statusCode)
+                    }
+                }
+            }
+            .disposed(by: disposebag)
+        
+        backButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                guard let vcs = vc.navigationController?.viewControllers else { return }
+                
+                for vc in vcs {
+                    if let rootVC = vc as? HomeViewController {
+                        vc.navigationController?.popToViewController(rootVC, animated: true)
+                    }
+                }
             }
             .disposed(by: disposebag)
     }

@@ -17,6 +17,7 @@ enum SesacAPIRouter: URLRequestConvertible {
     case searchPost(lat: String, long: String)
     case searchSesacPost(data: SearchSesacData)
     case myQueueStateGet
+    case myQueueStateDelete
     
     var baseURL: URL {
         switch self {
@@ -30,7 +31,7 @@ enum SesacAPIRouter: URLRequestConvertible {
             return URL(string: "http://api.sesac.co.kr:1210/v1/user/withdraw")!
         case .searchPost:
             return URL(string: "http://api.sesac.co.kr:1210/v1/queue/search")!
-        case .searchSesacPost:
+        case .searchSesacPost, .myQueueStateDelete:
             return URL(string: "http://api.sesac.co.kr:1210/v1/queue")!
         case .myQueueStateGet:
             return URL(string: "http://api.sesac.co.kr:1210/v1/queue/myQueueState")!
@@ -46,6 +47,7 @@ enum SesacAPIRouter: URLRequestConvertible {
         case .searchPost: return .post
         case .searchSesacPost: return .post
         case .myQueueStateGet: return .get
+        case .myQueueStateDelete: return .delete
         }
     }
     
@@ -94,6 +96,11 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["Content-Type": "application/x-www-form-urlencoded",
                     "accept": "*/*",
                     "idtoken": idToken]
+        case .myQueueStateDelete:
+            guard let idToken = UserManager.authVerificationToken else { return ["": ""] }
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "accept": "*/*",
+                    "idtoken": idToken]
         }
     }
     
@@ -127,6 +134,8 @@ enum SesacAPIRouter: URLRequestConvertible {
         case .searchSesacPost(let data):
             return ["long": data.long, "lat" : data.lat, "studylist": data.studylist]
         case .myQueueStateGet:
+            return ["": ""]
+        case .myQueueStateDelete:
             return ["": ""]
         }
     }
