@@ -9,13 +9,27 @@ import UIKit
 
 import Tabman
 import Pageboy
+import RxCocoa
+import RxSwift
 
-class SearchTabViewController: TabmanViewController {
+final class SearchTabViewController: TabmanViewController {
     private var viewControllers: [UIViewController] = [AroundSesacViewController(), RecivedViewController()]
+    
+    let mainView = SearchTabView()
+    let disposebag = DisposeBag()
+    
+    override func loadView() {
+        self.view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+        bindData()
+    }
+    
+    func configureUI() {
         self.dataSource = self
         
         let bar = TMBar.ButtonBar()
@@ -31,6 +45,23 @@ class SearchTabViewController: TabmanViewController {
         bar.backgroundView.style = .blur(style: .regular)
         
         addBar(bar, dataSource: self, at: .top)
+    }
+    
+    func bindData() {
+        mainView.reloadButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("reload")
+            }
+            .disposed(by: disposebag)
+        
+        mainView.changeButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("change")
+                vc.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposebag)
     }
 }
 

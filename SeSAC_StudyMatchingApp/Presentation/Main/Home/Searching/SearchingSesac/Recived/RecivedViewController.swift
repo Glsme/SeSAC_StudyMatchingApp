@@ -11,6 +11,5 @@ class RecivedViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .sesacGreen
     }
 }

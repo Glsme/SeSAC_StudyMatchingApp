@@ -68,3 +68,7 @@ enum HomeAssets: String {
     case search, antenna, mail, place
     case mapMarker = "map_marker"
 }
+
+enum SearchAssets: String {
+    case reload, graySesac
+}
