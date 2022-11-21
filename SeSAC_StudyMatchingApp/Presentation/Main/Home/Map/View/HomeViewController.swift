@@ -20,6 +20,7 @@ final class HomeViewController: BaseViewController {
     let locationManager = CLLocationManager()
     var locationStatus = false
     let defaultCoordinate = CLLocationCoordinate2D(latitude: 37.517857, longitude: 126.887159)
+    var firstFlag = true
     
     override func loadView() {
         self.view = mainView
@@ -82,7 +83,6 @@ final class HomeViewController: BaseViewController {
         }
         
         let center = mainView.mapView.region.center
-        
         var gender = 0
         
         DispatchQueue.main.async { [weak self] in
@@ -136,7 +136,6 @@ final class HomeViewController: BaseViewController {
     
     func setUserRegionAndAnnotation(lat: Double, long: Double, sesac: Int) {
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        
         let annotation = CustomAnnotation(sesac_image: sesac, coordinate: location)
         
         DispatchQueue.main.async { [weak self] in
@@ -292,8 +291,9 @@ extension HomeViewController {
 
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let coordinate = locations.first {
+        if let coordinate = locations.first, firstFlag {
             setMyRegionAndAnnotation(lat: coordinate.coordinate.latitude, long: coordinate.coordinate.longitude)
+            firstFlag.toggle()
         }
         
         locationManager.stopUpdatingHeading()
