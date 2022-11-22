@@ -14,6 +14,7 @@ class AroundSesacViewController: BaseViewController {
     let mainView = SesacCardView()
     let disposeBag = DisposeBag()
     let viewModel = SearchedViewModel()
+    let refreshControl = UIRefreshControl()
     var hiddenFlag: [Bool] = []
         
     override func loadView() {
@@ -29,6 +30,7 @@ class AroundSesacViewController: BaseViewController {
         mainView.tableView.register(SesacCardTableViewCell.self, forCellReuseIdentifier: SesacCardTableViewCell.reuseIdentifier)
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
+        mainView.tableView.refreshControl = refreshControl
         
         if let data = viewModel.searchedData, !data.fromQueueDB.isEmpty {
             mainView.setSearchUI(noSearched: false)
@@ -38,7 +40,51 @@ class AroundSesacViewController: BaseViewController {
     }
     
     override func bindData() {
+        mainView.noSearchView.reloadButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("reload")
+                if vc.viewModel.lat != 0, vc.viewModel.long != 0 {
+                    vc.viewModel.requsetSearchData(lat: vc.viewModel.lat, long: vc.viewModel.long) { response in
+                        switch response {
+                        case .success(let success):
+                            print(success)
+                            
+                            vc.viewModel.searchedData = success
+                            vc.configureUI()
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
         
+        mainView.noSearchView.changeButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("change")
+                vc.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        refreshControl.rx.controlEvent(.valueChanged)
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.requsetSearchData(lat: vc.viewModel.lat, long: vc.viewModel.long) { response in
+                    switch response {
+                    case .success(let success):
+                        print("success!!!")
+                        vc.viewModel.searchedData = success
+                    case .failure(let error):
+                        print("error \(error)")
+                    }
+                }
+                
+                vc.mainView.tableView.reloadData()
+                vc.refreshControl.endRefreshing()
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -56,6 +102,13 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         cell.cardView.nicknameView.nameLabel.text = data.nick
         cell.setImage(data.background, data.sesac)
         cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
+        
+        if hiddenFlag[indexPath.row] {
+            cell.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        } else {
+            cell.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        
         cell.setSesacTitleColor(data.reputation)
         cell.configureDataSource()
         

@@ -12,8 +12,10 @@ import RxSwift
 
 class RecivedViewController: BaseViewController {
     let mainView = SesacCardView()
-    let viewModel = SearchedViewModel()
     let disposeBag = DisposeBag()
+    let viewModel = SearchedViewModel()
+    let refreshControl = UIRefreshControl()
+    var hiddenFlag: [Bool] = []
     
     override func loadView() {
         self.view = mainView
@@ -25,10 +27,15 @@ class RecivedViewController: BaseViewController {
     }
     
     override func configureUI() {
-        if let data = viewModel.searchedData, data.fromQueueDBRequested.isEmpty {
-            mainView.setSearchUI(noSearched: true)
-        } else {
+        mainView.tableView.register(SesacCardTableViewCell.self, forCellReuseIdentifier: SesacCardTableViewCell.reuseIdentifier)
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+        mainView.tableView.refreshControl = refreshControl
+        
+        if let data = viewModel.searchedData, !data.fromQueueDBRequested.isEmpty {
             mainView.setSearchUI(noSearched: false)
+        } else {
+            mainView.setSearchUI(noSearched: true)
         }
     }
     
@@ -60,5 +67,62 @@ class RecivedViewController: BaseViewController {
                 vc.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)
+        
+        refreshControl.rx.controlEvent(.valueChanged)
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.requsetSearchData(lat: vc.viewModel.lat, long: vc.viewModel.long) { response in
+                    switch response {
+                    case .success(let success):
+                        print("success!!!")
+                        vc.viewModel.searchedData = success
+                    case .failure(let error):
+                        print("error \(error)")
+                    }
+                }
+                
+                vc.mainView.tableView.reloadData()
+                vc.refreshControl.endRefreshing()
+            }
+            .disposed(by: disposeBag)
+    }
+}
+
+extension RecivedViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = viewModel.searchedData?.fromQueueDBRequested.count ?? 0
+        hiddenFlag.append(contentsOf: Array<Bool>(repeating: true, count: count))
+        return count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SesacCardTableViewCell.reuseIdentifier, for: indexPath) as? SesacCardTableViewCell else { return UITableViewCell() }
+        guard let data = viewModel.searchedData?.fromQueueDBRequested[indexPath.row] else { return UITableViewCell() }
+        cell.cardView.nicknameView.moreButton.tag = indexPath.row
+        cell.cardView.nicknameView.nameLabel.text = data.nick
+        cell.setImage(data.background, data.sesac)
+        cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
+        
+        if hiddenFlag[indexPath.row] {
+            cell.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        } else {
+            cell.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        
+        cell.setSesacTitleColor(data.reputation)
+        cell.configureDataSource()
+        
+        if data.reviews.count > 0 {
+            cell.cardView.titleView.reviewLabel.text = data.reviews.joined(separator: "\n")
+            cell.cardView.titleView.reviewLabel.textColor = .black
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        hiddenFlag[indexPath.row].toggle()
+        tableView.reloadRows(at: [indexPath], with: .fade)
     }
 }
