@@ -53,9 +53,13 @@ class ManagementViewController: BaseViewController {
         setGenderColor(userInfo: userInfo)
         mainView.studyView.studyTextField.textField.text = userInfo.study
         setPermitPhoneSearching(userInfo: userInfo)
+        
         if userInfo.comment.count != 0 {
-            mainView.cardView.titleView.reviewLabel.text = userInfo.comment.joined(separator: "\n")
+            mainView.cardView.titleView.setMoreButtonFromReview(false)
+            mainView.cardView.titleView.reviewLabel.text = userInfo.comment.first
             mainView.cardView.titleView.reviewLabel.textColor = .black
+        } else {
+            mainView.cardView.titleView.setMoreButtonFromReview(true)
         }
     }
     
@@ -131,6 +135,16 @@ class ManagementViewController: BaseViewController {
                 
                 guard let delegate = self.sceneDelegate else { return }
                 delegate.window?.rootViewController?.present(popupVC, animated: false)
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.cardView.titleView.moreButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                guard let userInfo = try? vc.viewModel.userInfo.value() else { return }
+                let nextVC = ReviewTableViewController()
+                nextVC.reviews = userInfo.comment
+                vc.transViewController(ViewController: nextVC, type: .push)
             }
             .disposed(by: disposeBag)
     }

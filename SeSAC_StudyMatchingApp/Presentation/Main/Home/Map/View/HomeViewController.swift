@@ -190,14 +190,15 @@ final class HomeViewController: BaseViewController {
             .bind { (vc, _) in
                 if vc.locationStatus {
                     //Test Code
-                    let location = CLLocationCoordinate2D(latitude: vc.defaultCoordinate.latitude, longitude: vc.defaultCoordinate.longitude)
-                    let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
-                    vc.mainView.mapView.setRegion(region, animated: true)
-//                    vc.locationManager.startUpdatingLocation()
-//                    guard let coordinate = vc.locationManager.location?.coordinate else { return }
-//                    vc.firstFlag.toggle()
-//                    vc.setMyRegionAndAnnotation(lat: coordinate.latitude, long: coordinate.longitude)
-//                    vc.locationManager.stopUpdatingLocation()
+//                    let location = CLLocationCoordinate2D(latitude: vc.defaultCoordinate.latitude, longitude: vc.defaultCoordinate.longitude)
+//                    let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
+//                    vc.mainView.mapView.setRegion(region, animated: true)
+                    // Normal Code
+                    vc.locationManager.startUpdatingLocation()
+                    guard let coordinate = vc.locationManager.location?.coordinate else { return }
+                    vc.firstFlag.toggle()
+                    vc.setMyRegionAndAnnotation(lat: coordinate.latitude, long: coordinate.longitude)
+                    vc.locationManager.stopUpdatingLocation()
                 } else {
                     vc.showAlert(message: "위치 권한을 허용해 주세요.")
                 }

@@ -8,6 +8,8 @@
 import UIKit
 
 import SnapKit
+import RxCocoa
+import RxSwift
 
 class SesacCardTableViewCell: UITableViewCell {
     lazy var cardView = ProfileCardView()
@@ -22,8 +24,8 @@ class SesacCardTableViewCell: UITableViewCell {
     }()
     
     var hiddenFlag = true
-    
     private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    let disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -76,12 +76,19 @@ class ProfileTitleView: BaseView {
         return view
     }()
     
+    lazy var moreButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        view.tintColor = .sesacGray7
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        [titleLabel, firstButton, secondButton, thirdButton, fourthButton, fifthButton, sixthButton, studyCollectionView, sesacReviewLabel, reviewLabel].forEach {
+        [titleLabel, firstButton, secondButton, thirdButton, fourthButton, fifthButton, sixthButton, studyCollectionView, sesacReviewLabel, reviewLabel, moreButton].forEach {
             self.addSubview($0)
         }
         
@@ -144,7 +151,8 @@ class ProfileTitleView: BaseView {
 
         sesacReviewLabel.snp.makeConstraints { make in
             make.top.equalTo(studyCollectionView.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalTo(moreButton.snp.leading)
         }
 
         reviewLabel.snp.makeConstraints { make in
@@ -152,6 +160,16 @@ class ProfileTitleView: BaseView {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-16)
         }
+        
+        moreButton.snp.makeConstraints { make in
+            make.centerY.equalTo(sesacReviewLabel.snp.centerY)
+            make.trailing.equalToSuperview()
+            make.height.width.equalTo(16)
+        }
+    }
+    
+    func setMoreButtonFromReview(_ noReview: Bool) {
+        moreButton.isHidden = noReview
     }
     
     private func createTagLayout() -> UICollectionViewLayout {

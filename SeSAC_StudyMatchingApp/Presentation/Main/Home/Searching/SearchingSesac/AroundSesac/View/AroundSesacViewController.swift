@@ -102,6 +102,8 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         cell.cardView.nicknameView.nameLabel.text = data.nick
         cell.setImage(data.background, data.sesac)
         cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
+        cell.cardView.titleView.moreButton.tag = indexPath.row
+        cell.cardView.titleView.moreButton.addTarget(self, action: #selector(moreButtonTapped(_ :)), for: .touchUpInside)
         
         if hiddenFlag[indexPath.row] {
             cell.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
@@ -109,11 +111,12 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
             cell.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.up"), for: .normal)
         }
         
+        cell.cardView.titleView.setMoreButtonFromReview(data.reviews.count > 0 ? false : true)
         cell.setSesacTitleColor(data.reputation)
         cell.configureDataSource()
         
         if data.reviews.count > 0 {
-            cell.cardView.titleView.reviewLabel.text = data.reviews.joined(separator: "\n")
+            cell.cardView.titleView.reviewLabel.text = data.reviews.first
             cell.cardView.titleView.reviewLabel.textColor = .black
         }
         
@@ -124,5 +127,12 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         
         hiddenFlag[indexPath.row].toggle()
         tableView.reloadRows(at: [indexPath], with: .fade)
+    }
+    
+    @objc func moreButtonTapped(_ button: UIButton) {
+        let vc = ReviewTableViewController()
+        guard let data = viewModel.searchedData?.fromQueueDB else { return }
+        vc.reviews = data[button.tag].reviews
+        transViewController(ViewController: vc, type: .push)
     }
 }
