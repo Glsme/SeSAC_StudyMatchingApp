@@ -30,6 +30,7 @@ class WithdrawPopupView: BaseView {
         view.text = "탈퇴하시면 새싹 스터디를 이용할 수 없어요ㅠ"
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
         view.textAlignment = .center
+        view.numberOfLines = 0
         return view
     }()
     
@@ -71,7 +72,7 @@ class WithdrawPopupView: BaseView {
         popupView.snp.makeConstraints { make in
             make.center.equalTo(safeAreaLayoutGuide)
             make.width.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.9)
-            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.21)
+            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.24)
         }
         
         okButton.snp.makeConstraints { make in
@@ -95,5 +96,10 @@ class WithdrawPopupView: BaseView {
             make.top.equalToSuperview().inset(16)
             make.centerX.leading.trailing.equalToSuperview()
         }
+    }
+    
+    func setPopupText(_ title: String, subTitle: String) {
+        titleLabel.text = title
+        subtitleLabel.text = subTitle
     }
 }

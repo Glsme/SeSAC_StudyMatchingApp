@@ -104,6 +104,7 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
         cell.cardView.titleView.moreButton.tag = indexPath.row
         cell.cardView.titleView.moreButton.addTarget(self, action: #selector(moreButtonTapped(_ :)), for: .touchUpInside)
+        cell.requsetButton.addTarget(self, action: #selector(requsetButtonTapped(_ :)), for: .touchUpInside)
         
         if hiddenFlag[indexPath.row] {
             cell.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
@@ -134,5 +135,13 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         guard let data = viewModel.searchedData?.fromQueueDB else { return }
         vc.reviews = data[button.tag].reviews
         transViewController(ViewController: vc, type: .push)
+    }
+    
+    @objc func requsetButtonTapped(_ button: UIButton) {
+        guard let data = viewModel.searchedData?.fromQueueDB[button.tag] else { return }
+        let vc = RequestPopupViewController()
+        vc.uid = data.uid
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false)
     }
 }
