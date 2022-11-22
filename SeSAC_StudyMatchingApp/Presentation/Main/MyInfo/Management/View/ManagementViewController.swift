@@ -77,6 +77,13 @@ class ManagementViewController: BaseViewController {
             .bind { (vc, _) in
                 vc.cardToggle.toggle()
                 print("tap")
+                
+                vc.mainView.cardView.titleView.studyCollectionView.snp.remakeConstraints { make in
+                    make.top.equalTo(vc.mainView.cardView.titleView.sixthButton.snp.bottom).offset(16)
+                    make.trailing.leading.equalToSuperview()
+                    make.height.greaterThanOrEqualTo(0)
+                }
+                
                 UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut) {
                     vc.mainView.cardView.titleView.isHidden = vc.cardToggle
                 }

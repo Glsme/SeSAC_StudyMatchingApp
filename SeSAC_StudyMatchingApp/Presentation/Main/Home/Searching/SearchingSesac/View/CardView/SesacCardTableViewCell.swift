@@ -113,7 +113,7 @@ class SesacCardTableViewCell: UITableViewCell {
         }
     }
     
-    func configureDataSource() {
+    func configureDataSource(studies: [String]) {
         let tagCellRegistration = UICollectionView.CellRegistration<RecommendCell, String> { cell, indexPath, itemIdentifier in
             
             cell.titleLabel.text = itemIdentifier
@@ -140,7 +140,7 @@ class SesacCardTableViewCell: UITableViewCell {
         
         var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
         snapshot.appendSections([0])
-        snapshot.appendItems(["hi", "dddd","ccdcd"])
+        snapshot.appendItems(studies, toSection: 0)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }

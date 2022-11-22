@@ -113,7 +113,7 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         
         cell.cardView.titleView.setMoreButtonFromReview(data.reviews.count > 0 ? false : true)
         cell.setSesacTitleColor(data.reputation)
-        cell.configureDataSource()
+        cell.configureDataSource(studies: data.studylist)
         
         if data.reviews.count > 0 {
             cell.cardView.titleView.reviewLabel.text = data.reviews.first

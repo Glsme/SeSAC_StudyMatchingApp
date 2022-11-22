@@ -78,7 +78,7 @@ class ProfileCardView: BaseView {
         }
         
         coverStackView.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView.snp.bottom)
+            make.top.equalTo(backgroundImageView.snp.bottom)
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
         }

@@ -146,7 +146,7 @@ class ProfileTitleView: BaseView {
         studyCollectionView.snp.makeConstraints { make in
             make.top.equalTo(sixthButton.snp.bottom).offset(16)
             make.trailing.leading.equalToSuperview()
-//            make.height.greaterThanOrEqualTo(90)
+            make.height.greaterThanOrEqualTo(100)
         }
 
         sesacReviewLabel.snp.makeConstraints { make in
