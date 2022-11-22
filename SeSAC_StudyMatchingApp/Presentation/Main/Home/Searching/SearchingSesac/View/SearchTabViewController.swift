@@ -42,6 +42,13 @@ final class SearchTabViewController: TabmanViewController {
         viewControllers.append(aroundVC)
         viewControllers.append(recivedVC)
         aroundVC.viewModel.searchedData = viewModel.searchData
+        recivedVC.viewModel.searchedData = viewModel.searchData
+        
+        aroundVC.viewModel.lat = viewModel.lat
+        recivedVC.viewModel.lat = viewModel.lat
+        
+        aroundVC.viewModel.long = viewModel.long
+        recivedVC.viewModel.long = viewModel.long
         
         self.dataSource = self
         

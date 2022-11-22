@@ -68,8 +68,9 @@ class NoSearchView: BaseView {
     override func setConstraints() {
         noCardView.snp.makeConstraints { make in
             make.trailing.leading.equalTo(safeAreaLayoutGuide)
-            make.center.equalTo(safeAreaLayoutGuide.snp.center)
-            make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.2)
+            make.centerX.equalTo(safeAreaLayoutGuide.snp.centerX)
+            make.centerY.equalTo(safeAreaLayoutGuide.snp.centerY).multipliedBy(0.8)
+            make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.25)
         }
         
         graySesacImageView.snp.makeConstraints { make in

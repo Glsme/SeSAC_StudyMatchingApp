@@ -9,6 +9,8 @@ import Foundation
 
 class SearchTabViewModel {
     var searchData: SearchData?
+    var lat: Double = 0
+    var long: Double = 0
     
     func requsetSearchData(lat: Double, long: Double, completion: @escaping (Result<SearchData, Error>) -> Void) {
         let api = SesacAPIRouter.searchPost(lat: String(lat), long: String(long))

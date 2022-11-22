@@ -74,7 +74,7 @@ class ProfileCardView: BaseView {
         profileImageView.snp.makeConstraints { make in
             make.centerX.equalTo(self.snp.centerX)
             make.height.width.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.49)
-            make.bottom.equalTo(backgroundImageView.snp.bottom)
+            make.bottom.equalTo(backgroundImageView.snp.bottom).offset(10)
         }
         
         coverStackView.snp.makeConstraints { make in
@@ -97,7 +97,6 @@ class ProfileCardView: BaseView {
         
         titleView.snp.makeConstraints { make in
             make.top.equalTo(nicknameView.snp.bottom)
-            make.centerX.equalToSuperview()
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
         }

@@ -209,7 +209,7 @@ final class HomeViewController: BaseViewController {
             .bind { (vc, _) in
                 //                guard let coordinate = vc.locationManager.location?.coordinate else { return }
                 // Test Code: default -> vc.mainView.mapView.region.center로 바꿔야함
-                let center = vc.defaultCoordinate //vc.mainView.mapView.region.center
+                let center =  vc.mainView.mapView.region.center // vc.defaultCoordinate
                 let nextVC = SearchViewController()
                 // Test code 추후에 바꿔야함
                 nextVC.viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { response in

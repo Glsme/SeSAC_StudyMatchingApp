@@ -169,6 +169,8 @@ class SearchViewController: BaseViewController {
                             case .success(let success):
                                 let nextVC = SearchTabViewController()
                                 nextVC.viewModel.searchData = success
+                                nextVC.viewModel.lat = vc.viewModel.lat
+                                nextVC.viewModel.long = vc.viewModel.long
                                 vc.transViewController(ViewController: nextVC, type: .push)
                             case .failure(let error):
                                 print("error: \(error)")

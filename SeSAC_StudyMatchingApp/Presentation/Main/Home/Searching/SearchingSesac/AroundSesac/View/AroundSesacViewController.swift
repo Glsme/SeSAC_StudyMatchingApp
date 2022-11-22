@@ -13,9 +13,9 @@ import RxSwift
 class AroundSesacViewController: BaseViewController {
     let mainView = SesacCardView()
     let disposeBag = DisposeBag()
-    let viewModel = AroundSesacViewModel()
+    let viewModel = SearchedViewModel()
     var hiddenFlag: [Bool] = []
-    
+        
     override func loadView() {
         self.view = mainView
     }
@@ -38,20 +38,7 @@ class AroundSesacViewController: BaseViewController {
     }
     
     override func bindData() {
-        mainView.noSearchView.reloadButton.rx.tap
-            .withUnretained(self)
-            .bind { (vc, _) in
-                print("reload")
-            }
-            .disposed(by: disposeBag)
         
-        mainView.noSearchView.changeButton.rx.tap
-            .withUnretained(self)
-            .bind { (vc, _) in
-                print("change")
-                vc.navigationController?.popViewController(animated: true)
-            }
-            .disposed(by: disposeBag)
     }
 }
 
@@ -70,6 +57,7 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         cell.setImage(data.background, data.sesac)
         cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
         cell.setSesacTitleColor(data.reputation)
+        cell.configureDataSource()
         
         if data.reviews.count > 0 {
             cell.cardView.titleView.reviewLabel.text = data.reviews.joined(separator: "\n")

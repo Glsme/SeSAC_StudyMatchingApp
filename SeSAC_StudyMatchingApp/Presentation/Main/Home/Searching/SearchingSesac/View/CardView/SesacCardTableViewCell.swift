@@ -23,6 +23,8 @@ class SesacCardTableViewCell: UITableViewCell {
     
     var hiddenFlag = true
     
+    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -38,6 +40,8 @@ class SesacCardTableViewCell: UITableViewCell {
         self.contentView.addSubview(cardView)
         self.contentView.addSubview(requsetButton)
         selectionStyle = .none
+        
+        cardView.titleView.studyCollectionView.isHidden = false
     }
     
     func setConstraints() {
@@ -105,5 +109,36 @@ class SesacCardTableViewCell: UITableViewCell {
                 buttonArray[count].setSelectedStyle(true)
             }
         }
+    }
+    
+    func configureDataSource() {
+        let tagCellRegistration = UICollectionView.CellRegistration<RecommendCell, String> { cell, indexPath, itemIdentifier in
+            
+            cell.titleLabel.text = itemIdentifier
+        }
+        
+        let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { headerView, elementKind, indexPath in
+            
+            var configuration = headerView.defaultContentConfiguration()
+            configuration.text = "하고 싶은 스터디"
+            configuration.textProperties.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12)
+            configuration.textProperties.color = .black
+            headerView.contentConfiguration = configuration
+        }
+        
+        dataSource = UICollectionViewDiffableDataSource(collectionView: cardView.titleView.studyCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: itemIdentifier)
+            
+            return cell
+        })
+        
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
+            return self?.cardView.titleView.studyCollectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+        }
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(["hi", "dddd","ccdcd"])
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }

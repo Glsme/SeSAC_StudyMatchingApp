@@ -49,6 +49,7 @@ class ManagementView: UIScrollView {
         self.addSubview(contentView)
         
         contentView.addSubview(stackView)
+        cardView.titleView.studyCollectionView.isHidden = true
     }
     
     func setConstraints() {

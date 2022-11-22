@@ -67,14 +67,25 @@ class ProfileTitleView: BaseView {
         return view
     }()
     
+    lazy var studyCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: createTagLayout())
+        view.showsVerticalScrollIndicator = false
+        view.register(RecommendCell.self, forCellWithReuseIdentifier: RecommendCell.reuseIdentifier)
+        view.showsHorizontalScrollIndicator = false
+        view.showsVerticalScrollIndicator = false
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        [titleLabel, firstButton, secondButton, thirdButton, fourthButton, fifthButton, sixthButton, sesacReviewLabel, reviewLabel].forEach {
+        [titleLabel, firstButton, secondButton, thirdButton, fourthButton, fifthButton, sixthButton, studyCollectionView, sesacReviewLabel, reviewLabel].forEach {
             self.addSubview($0)
         }
+        
+        studyCollectionView.isHidden = true
     }
     
     override func setConstraints() {
@@ -124,9 +135,15 @@ class ProfileTitleView: BaseView {
 //            make.height.equalTo(32)
             make.width.equalTo(self.snp.width).multipliedBy(0.49)
         }
+        
+        studyCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(sixthButton.snp.bottom).offset(16)
+            make.trailing.leading.equalToSuperview()
+//            make.height.greaterThanOrEqualTo(90)
+        }
 
         sesacReviewLabel.snp.makeConstraints { make in
-            make.top.equalTo(fifthButton.snp.bottom).offset(16)
+            make.top.equalTo(studyCollectionView.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview()
         }
 
@@ -135,5 +152,31 @@ class ProfileTitleView: BaseView {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-16)
         }
+    }
+    
+    private func createTagLayout() -> UICollectionViewLayout {
+        let size = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(35))
+        
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(35))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        group.interItemSpacing = .fixed(8)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 8
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0)
+        
+        section.boundarySupplementaryItems = [
+            NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        ]
+        
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.scrollDirection = .vertical
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        layout.configuration = config
+        
+        return layout
     }
 }
