@@ -146,7 +146,7 @@ final class HomeViewController: BaseViewController {
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let region = MKCoordinateRegion(center: location, latitudinalMeters: 700, longitudinalMeters: 700)
         if firstFlag {
-            mainView.mapView.setRegion(region, animated: true)
+            mainView.mapView.setRegion(region, animated: false)
             firstFlag.toggle()
         }
     }

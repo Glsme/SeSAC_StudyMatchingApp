@@ -127,6 +127,27 @@ extension SearchTabViewController: PageboyViewControllerDataSource, TMBarDataSou
     }
     
     func viewController(for pageboyViewController: PageboyViewController, at index: PageboyViewController.PageIndex) -> UIViewController? {
+        timerDisposable?.dispose()
+        
+        viewModel.requsetSearchData(lat: viewModel.lat, long: viewModel.long) { [weak self] response in
+            guard let self = self else{ return }
+            switch response {
+            case .success(let success):
+                print("success search")
+                self.aroundVC.viewModel.lat = self.viewModel.lat
+                self.aroundVC.viewModel.long = self.viewModel.long
+                self.recivedVC.viewModel.lat = self.viewModel.lat
+                self.recivedVC.viewModel.long = self.viewModel.long
+                
+                self.aroundVC.viewModel.searchedData = success
+                self.recivedVC.viewModel.searchedData = success
+            case .failure(let error):
+                print("error \(error)")
+            }
+        }
+        
+        resetAndGoTimer()
+        
         return viewControllers[index]
     }
     
