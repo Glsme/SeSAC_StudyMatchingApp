@@ -39,6 +39,9 @@ final class SearchTabViewController: TabmanViewController {
         navigationItem.rightBarButtonItem?.tintColor = .black
         navigationItem.leftBarButtonItem?.tintColor = .black
         
+        navigationItem.title = "새싹 찾기"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
+        
         viewControllers.append(aroundVC)
         viewControllers.append(recivedVC)
         aroundVC.viewModel.searchedData = viewModel.searchData
