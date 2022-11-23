@@ -128,6 +128,8 @@
 		85EF7E67292DD3A2008426AF /* RecievedPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E66292DD3A2008426AF /* RecievedPopupViewController.swift */; };
 		85EF7E6C292DFA82008426AF /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E6B292DFA82008426AF /* ChattingViewController.swift */; };
 		85EF7E6E292DFB29008426AF /* ChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E6D292DFB29008426AF /* ChattingViewModel.swift */; };
+		85EF7E70292E5A4F008426AF /* YourChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E6F292E5A4F008426AF /* YourChatTableViewCell.swift */; };
+		85EF7E73292E5A99008426AF /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -242,6 +244,8 @@
 		85EF7E66292DD3A2008426AF /* RecievedPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecievedPopupViewController.swift; sourceTree = "<group>"; };
 		85EF7E6B292DFA82008426AF /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
 		85EF7E6D292DFB29008426AF /* ChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewModel.swift; sourceTree = "<group>"; };
+		85EF7E6F292E5A4F008426AF /* YourChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChatTableViewCell.swift; sourceTree = "<group>"; };
+		85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1109,6 +1113,7 @@
 		85EF7E69292DFA73008426AF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				85EF7E71292E5A58008426AF /* ChatTableViewCell */,
 				85EF7E6B292DFA82008426AF /* ChattingViewController.swift */,
 			);
 			path = View;
@@ -1120,6 +1125,15 @@
 				85EF7E6D292DFB29008426AF /* ChattingViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		85EF7E71292E5A58008426AF /* ChatTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				85EF7E6F292E5A4F008426AF /* YourChatTableViewCell.swift */,
+				85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */,
+			);
+			path = ChatTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1260,6 +1274,7 @@
 				8505155C2925149D00862A2F /* SearchViewController.swift in Sources */,
 				85092968292B62B70074912E /* SearchTabViewModel.swift in Sources */,
 				850515422924B3A600862A2F /* WithdrawPopupView.swift in Sources */,
+				85EF7E73292E5A99008426AF /* MyChatTableViewCell.swift in Sources */,
 				850515392924066C00862A2F /* SeSACInfo.swift in Sources */,
 				850929A6292CB60E0074912E /* ReviewTableViewController.swift in Sources */,
 				8542BE222921F1CF00CF799A /* MyInfoViewController.swift in Sources */,
@@ -1303,6 +1318,7 @@
 				85992219291CD6B8007F96A6 /* BirthViewController.swift in Sources */,
 				85EF7E6E292DFB29008426AF /* ChattingViewModel.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
+				85EF7E70292E5A4F008426AF /* YourChatTableViewCell.swift in Sources */,
 				85EF7E67292DD3A2008426AF /* RecievedPopupViewController.swift in Sources */,
 				85992220291D1ED1007F96A6 /* EmailViewModel.swift in Sources */,
 				8505152D2923693E00862A2F /* CustomAgeView.swift in Sources */,
