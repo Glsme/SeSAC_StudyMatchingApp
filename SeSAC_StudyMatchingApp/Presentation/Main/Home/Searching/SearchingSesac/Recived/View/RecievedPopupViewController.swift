@@ -51,7 +51,9 @@ class RecievedPopupViewController: BaseViewController {
             guard let self = self else { return }
             switch MatchingAcceptCode(rawValue: statusCode) {
             case .success:
-                self.dismiss(animated: false)
+                self.dismiss(animated: false) {
+                    
+                }
             case .alreadyMatching:
                 self.dismiss(animated: false)
                 guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }

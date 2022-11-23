@@ -60,7 +60,10 @@ class RequestPopupViewController: BaseViewController {
             case .alreadyRequestMe:
                 print("alreadyRequsetMe")
             case .stopRequest:
-                self.dismiss(animated: false)
+                self.dismiss(animated: false) {
+                    guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+                    vc.view.makeToast("상대방이 스터디 찾기를 그만두었습니다.", position: .center)
+                }
             default:
                 print(MatchingCode(rawValue: statusCode)!)
             }

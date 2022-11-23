@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchTabViewModel {
+class SearchTabViewModel: CommonViewModel {
     var searchData: SearchData?
     var lat: Double = 0
     var long: Double = 0
@@ -27,7 +27,8 @@ class SearchTabViewModel {
     
     func requestMyQueueState(completion: @escaping (MyQueueState) -> Void) {
         let api = SesacAPIRouter.myQueueStateGet
-        SesacSignupAPIService.shared.requestMyStateData(router: api) { response in
+        SesacSignupAPIService.shared.requestMyStateData(router: api) { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let success):
                 if success.matched == 1 {
@@ -35,9 +36,26 @@ class SearchTabViewModel {
                 }
             case .failure(let failure):
                 print(failure)
+                
+                switch failure {
+                case .firebaseError:
+                    self.refreshToken()
+                    
+                    SesacSignupAPIService.shared.requestMyStateData(router: api) { response in
+                        switch response {
+                        case .success(let success):
+                            if success.matched == 1 {
+                                completion(success)
+                            }
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
+                default:
+                    break
+                }
             }
         }
-        
     }
     
     func requestStopMatching(completion: @escaping (Int) -> Void) {
