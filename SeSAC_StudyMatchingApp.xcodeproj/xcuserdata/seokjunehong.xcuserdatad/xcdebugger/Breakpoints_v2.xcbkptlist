@@ -7,16 +7,112 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "332D5F78-72EB-4170-B477-36E71353D2A8"
-            shouldBeEnabled = "Yes"
+            uuid = "1A4FC5F4-7F00-48B9-8336-9576C067DAC7"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Map/ViewModel/HomeViewModel.swift"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Searching/SearchingSesac/Recived/View/RecivedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "requsetSearchData(lat:long:completion:)"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "bindData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "659E7323-D153-4402-8EB3-B2A45699AEF7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Searching/SearchingSesac/Recived/View/RecivedViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "bindData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "659E7323-D153-4402-8EB3-B2A45699AEF7 - 77be0f33aab4d81a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SeSAC_StudyMatchingApp.RecivedViewController, ()) -&gt; () in SeSAC_StudyMatchingApp.RecivedViewController.bindData() -&gt; ()"
+                  moduleName = "SeSAC_StudyMatchingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seokjunehong/Desktop/iOS/seSAC/SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp/Presentation/Main/Home/Searching/SearchingSesac/Recived/View/RecivedViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  uuid = "659E7323-D153-4402-8EB3-B2A45699AEF7 - 3f880d053072c163"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;SeSAC_StudyMatchingApp.SearchData, Swift.Error&gt;) -&gt; () in closure #1 (SeSAC_StudyMatchingApp.RecivedViewController, ()) -&gt; () in SeSAC_StudyMatchingApp.RecivedViewController.bindData() -&gt; ()"
+                  moduleName = "SeSAC_StudyMatchingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seokjunehong/Desktop/iOS/seSAC/SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp/Presentation/Main/Home/Searching/SearchingSesac/Recived/View/RecivedViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "144">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11CCF0E5-BC45-4AFF-BBE9-87C1D94EA65B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Searching/SearchingSesac/Recived/View/RecivedViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "bindData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F20A0D1-6F0E-4D2E-B528-44ACD7F2B1F1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Searching/SearchingSesac/Recived/View/RecivedViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "bindData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4FBDBE3-170B-4476-BCD9-6867333B43F4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Searching/SearchingSesac/Recived/View/RecivedViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "bindData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

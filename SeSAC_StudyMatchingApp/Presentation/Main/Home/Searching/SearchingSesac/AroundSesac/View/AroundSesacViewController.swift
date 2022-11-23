@@ -52,6 +52,7 @@ class AroundSesacViewController: BaseViewController {
                             
                             vc.viewModel.searchedData = success
                             vc.configureUI()
+                            vc.mainView.tableView.reloadData()
                         case .failure(let error):
                             print(error)
                         }

@@ -26,7 +26,6 @@ class CommonViewModel {
             }
             
             UserManager.authVerificationToken = idToken
-            let api = SesacAPIRouter.loginGet
         }
     }
 }

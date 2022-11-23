@@ -59,6 +59,12 @@ class RequestPopupViewController: BaseViewController {
                 }
             case .alreadyRequestMe:
                 print("alreadyRequsetMe")
+                self.dismiss(animated: false) {
+                    guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+                    vc.view.makeToast("상대방도 스터디를 요청하여 매칭되었습니다.\n잠시 후 채팅방으로 이동합니다", position: .center) { didTap in
+                        //push
+                    }
+                }
             case .stopRequest:
                 self.dismiss(animated: false) {
                     guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }

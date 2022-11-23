@@ -19,6 +19,7 @@ final class HomeViewModel: CommonViewModel {
                 completion(.success(success))
             case .failure(let error):
                 print("Error", error)
+                
                 guard let error = error as? LoginError else { return }
                 if error == .firbaseTokenError {
                     self.refreshToken()

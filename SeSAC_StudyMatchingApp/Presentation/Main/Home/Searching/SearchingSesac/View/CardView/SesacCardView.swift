@@ -40,7 +40,9 @@ class SesacCardView: BaseView {
     func setSearchUI(noSearched: Bool) {
         if noSearched {
             tableView.isHidden = true
+            noSearchView.isHidden = false
         } else {
+            tableView.isHidden = false
             noSearchView.isHidden = true
         }
     }

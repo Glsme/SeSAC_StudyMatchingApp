@@ -278,17 +278,37 @@ final class HomeViewController: BaseViewController {
             }
         case UIImage(named: HomeAssets.antenna.rawValue):
             print("antenna")
+            let firstVC = SearchViewController()
             let nextVC = SearchTabViewController()
             
             nextVC.viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { [weak self] response in
                 guard let self = self else { return }
                 switch response {
                 case .success(let success):
+                    var fromQueueDBSet = Set<String>()
+                    
+                    success.fromQueueDB.map { $0.studylist }.forEach {
+                        $0.forEach {
+                            fromQueueDBSet.insert($0)
+                        }
+                    }
+                    
+                    success.fromQueueDBRequested.map { $0.studylist }.forEach {
+                        $0.forEach {
+                            fromQueueDBSet.insert($0)
+                        }
+                    }
+                    
+                    let fromQueueDBStudyTags = fromQueueDBSet.map { StudyTag(title: $0) }
+                    let fromRecommendStudyTags = success.fromRecommend.map { StudyTag(title: $0) }
                     
                     nextVC.viewModel.lat = center.latitude
                     nextVC.viewModel.long = center.longitude
                     nextVC.viewModel.searchData = success
-                    self.transViewController(ViewController: nextVC, type: .push)
+                    self.transViewController(ViewController: firstVC, type: .pushWithoutAni)
+                    firstVC.viewModel.fromQueueDB.append(contentsOf: fromQueueDBStudyTags)
+                    firstVC.viewModel.recommandData.append(contentsOf: fromRecommendStudyTags)
+                    firstVC.transViewController(ViewController: nextVC, type: .pushWithoutAni)
                 case .failure(let error):
                     print(error)
                     self.view.makeToast("검색 에러가 발생하였습니다. \n잠시 후 다시 시도해주세요", position: .center)
