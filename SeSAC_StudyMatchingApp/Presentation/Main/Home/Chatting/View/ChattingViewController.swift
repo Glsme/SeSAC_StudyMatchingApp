@@ -8,12 +8,28 @@
 import UIKit
 
 import RxCocoa
+import RxDataSources
 import RxSwift
 
 class ChattingViewController: BaseViewController {
+    let mainView = ChatView()
     let viewModel = ChattingViewModel()
     let disposeBag = DisposeBag()
     let backButton = UIBarButtonItem(image: UIImage(named: CommonAssets.backButton.rawValue), style: .done, target: ChattingViewController.self, action: nil)
+    
+    lazy var dataSource = RxTableViewSectionedReloadDataSource<SectionOfMessageCell> { [weak self] dataSource, tableView, indexPath, item in
+        guard let self = self else { return UITableViewCell() }
+        guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier) as? YourChatTableViewCell else { return UITableViewCell() }
+        
+        cell.talkLabel.text = item.message
+        cell.timeLabel.text = "11:36"
+        
+        return cell
+    }
+    
+    override func loadView() {
+        self.view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,5 +61,11 @@ class ChattingViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        Observable.just([
+            SectionOfMessageCell(header: "hi", items: [MessageCell(message: "하이여"), MessageCell(message: "하이여\ndsafsdfasf\nasdfasdf")])
+        ])
+        .bind(to: mainView.chatTableView.rx.items(dataSource: dataSource))
+        .disposed(by: disposeBag)
     }
 }

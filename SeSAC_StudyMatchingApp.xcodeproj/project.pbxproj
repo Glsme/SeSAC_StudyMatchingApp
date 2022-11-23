@@ -130,6 +130,7 @@
 		85EF7E6E292DFB29008426AF /* ChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E6D292DFB29008426AF /* ChattingViewModel.swift */; };
 		85EF7E70292E5A4F008426AF /* YourChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E6F292E5A4F008426AF /* YourChatTableViewCell.swift */; };
 		85EF7E73292E5A99008426AF /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */; };
+		85EF7E75292E6028008426AF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E74292E6028008426AF /* ChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -246,6 +247,7 @@
 		85EF7E6D292DFB29008426AF /* ChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewModel.swift; sourceTree = "<group>"; };
 		85EF7E6F292E5A4F008426AF /* YourChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChatTableViewCell.swift; sourceTree = "<group>"; };
 		85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
+		85EF7E74292E6028008426AF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1115,6 +1117,7 @@
 			children = (
 				85EF7E71292E5A58008426AF /* ChatTableViewCell */,
 				85EF7E6B292DFA82008426AF /* ChattingViewController.swift */,
+				85EF7E74292E6028008426AF /* ChatView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1304,6 +1307,7 @@
 				850515222922B51B00862A2F /* ProfileNicknameView.swift in Sources */,
 				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
 				8505155E29251B0D00862A2F /* SearchViewModel.swift in Sources */,
+				85EF7E75292E6028008426AF /* ChatView.swift in Sources */,
 				85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */,
 				8542BE12291E7BD500CF799A /* SplashViewModel.swift in Sources */,
 				85992208291CB01C007F96A6 /* NicknameView.swift in Sources */,
