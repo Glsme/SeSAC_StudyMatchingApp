@@ -58,6 +58,16 @@ class SesacCardTableViewCell: UITableViewCell {
         }
     }
     
+    func setRequestButtonType(request: Bool) {
+        if request {
+            requsetButton.setTitle("요청하기", for: .normal)
+            requsetButton.backgroundColor = .sesacError
+        } else {
+            requsetButton.setTitle("수락하기", for: .normal)
+            requsetButton.backgroundColor = .sesacSuccess
+        }
+    }
+    
     func setHidden(_ bool: Bool) {
         cardView.titleView.isHidden = bool
     }

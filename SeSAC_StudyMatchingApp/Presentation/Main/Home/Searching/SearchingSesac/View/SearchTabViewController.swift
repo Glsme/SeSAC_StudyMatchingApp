@@ -114,6 +114,7 @@ final class SearchTabViewController: TabmanViewController {
             .timer(.seconds(1), period: .seconds(5), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
             .withUnretained(self)
             .subscribe(onNext: { (vc, _) in
+                print("timer run")
                 vc.viewModel.requestMyQueueState { result in
                     vc.timerDisposable?.dispose()
                     vc.view.makeToast("\(String(describing: result.matchedNick))님과 매칭되셨습니다.\n잠시 후 채팅방으로 이동합니다.", duration: 1) { didTap in

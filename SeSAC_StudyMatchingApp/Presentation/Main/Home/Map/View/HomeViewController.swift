@@ -48,6 +48,7 @@ final class HomeViewController: BaseViewController {
             guard let self = self else { return }
             switch response {
             case .success(let data):
+                dump(data)
                 self.setButtonStyle(data.matched)
             case .failure(let error):
                 switch MyQueueStateResponse(rawValue: error.rawValue) {
@@ -210,7 +211,7 @@ final class HomeViewController: BaseViewController {
             .bind { (vc, _) in
                 //                guard let coordinate = vc.locationManager.location?.coordinate else { return }
                 // Test Code: default -> vc.mainView.mapView.region.center로 바꿔야함
-                let center =  vc.mainView.mapView.region.center // vc.defaultCoordinate
+                let center = vc.defaultCoordinate // vc.mainView.mapView.region.center
                 let nextVC = SearchViewController()
                 // Test code 추후에 바꿔야함
                 nextVC.viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { response in

@@ -59,7 +59,7 @@ class RequestPopupViewController: BaseViewController {
             case .stopRequest:
                 self.dismiss(animated: false)
             default:
-                print(MatchingCode(rawValue: statusCode))
+                print(MatchingCode(rawValue: statusCode)!)
             }
         }
     }

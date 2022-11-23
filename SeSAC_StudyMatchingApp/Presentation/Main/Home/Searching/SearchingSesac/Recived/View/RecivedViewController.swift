@@ -48,7 +48,7 @@ class RecivedViewController: BaseViewController {
                     vc.viewModel.requsetSearchData(lat: vc.viewModel.lat, long: vc.viewModel.long) { response in
                         switch response {
                         case .success(let success):
-                            print(success)
+                            dump(success.fromQueueDBRequested)
                             
                             vc.viewModel.searchedData = success
                             vc.configureUI()
@@ -101,9 +101,11 @@ extension RecivedViewController: UITableViewDelegate, UITableViewDataSource {
         cell.cardView.nicknameView.moreButton.tag = indexPath.row
         cell.cardView.nicknameView.nameLabel.text = data.nick
         cell.setImage(data.background, data.sesac)
+        cell.setRequestButtonType(request: false)
         cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
         cell.cardView.titleView.moreButton.tag = indexPath.row
         cell.cardView.titleView.moreButton.addTarget(self, action: #selector(moreButtonTapped(_ :)), for: .touchUpInside)
+        cell.requsetButton.addTarget(self, action: #selector(requsetButtonTapped(_ :)), for: .touchUpInside)
         
         if hiddenFlag[indexPath.row] {
             cell.cardView.nicknameView.moreButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
@@ -134,5 +136,13 @@ extension RecivedViewController: UITableViewDelegate, UITableViewDataSource {
         guard let data = viewModel.searchedData?.fromQueueDBRequested else { return }
         vc.reviews = data[button.tag].reviews
         transViewController(ViewController: vc, type: .push)
+    }
+    
+    @objc func requsetButtonTapped(_ button: UIButton) {
+        guard let data = viewModel.searchedData?.fromQueueDBRequested[button.tag] else { return }
+        let vc = RecievedPopupViewController()
+        vc.uid = data.uid
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false)
     }
 }

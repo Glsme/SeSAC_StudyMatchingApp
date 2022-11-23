@@ -83,7 +83,9 @@ final class SearchView: BaseView {
                 
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = 8
-                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+                
+                section.boundarySupplementaryItems = []
                 
                 return section
             } else {

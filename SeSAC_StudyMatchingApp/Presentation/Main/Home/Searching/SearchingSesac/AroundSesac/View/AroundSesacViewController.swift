@@ -101,6 +101,7 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         cell.cardView.nicknameView.moreButton.tag = indexPath.row
         cell.cardView.nicknameView.nameLabel.text = data.nick
         cell.setImage(data.background, data.sesac)
+        cell.setRequestButtonType(request: true)
         cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
         cell.cardView.titleView.moreButton.tag = indexPath.row
         cell.cardView.titleView.moreButton.addTarget(self, action: #selector(moreButtonTapped(_ :)), for: .touchUpInside)
@@ -140,6 +141,7 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
     @objc func requsetButtonTapped(_ button: UIButton) {
         guard let data = viewModel.searchedData?.fromQueueDB[button.tag] else { return }
         let vc = RequestPopupViewController()
+        
         vc.uid = data.uid
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: false)
