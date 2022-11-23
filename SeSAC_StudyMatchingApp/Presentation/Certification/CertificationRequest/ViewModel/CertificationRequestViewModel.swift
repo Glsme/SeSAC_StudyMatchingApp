@@ -11,7 +11,7 @@ import FirebaseCore
 import FirebaseAuth
 import RxCocoa
 
-final class CertificationRequestViewModel: CommonViewModel {
+final class CertificationRequestViewModel: InOutputViewModel {
     struct Input {
         let certificationText: ControlProperty<String?>
         let requstButtonTapped: ControlEvent<Void>

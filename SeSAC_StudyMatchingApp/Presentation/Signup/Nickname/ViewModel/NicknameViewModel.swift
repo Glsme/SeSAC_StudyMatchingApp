@@ -9,7 +9,7 @@ import Foundation
 
 import RxCocoa
 
-final class NicknameViewModel: CommonViewModel {
+final class NicknameViewModel: InOutputViewModel {
     struct Input {
         let nicknameText: ControlProperty<String?>
         let nextButtonTapped: ControlEvent<Void>

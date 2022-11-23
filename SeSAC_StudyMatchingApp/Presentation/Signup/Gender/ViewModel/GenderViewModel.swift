@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import RxCocoa
 
-class GenderViewModel: CommonViewModel {
+class GenderViewModel: InOutputViewModel {
     struct Input {
         let womanButtonTapped: ControlEvent<Void>
         let manButtonTapped: ControlEvent<Void>

@@ -91,7 +91,7 @@
 		859921E4291A788F007F96A6 /* Userdefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E3291A788F007F96A6 /* Userdefault.swift */; };
 		859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E6291A7D7B007F96A6 /* RegexVaidation.swift */; };
 		859921EB291AB490007F96A6 /* FirebaseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921EA291AB490007F96A6 /* FirebaseAPIService.swift */; };
-		859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921EC291AC1E3007F96A6 /* CommonViewModel.swift */; };
+		859921ED291AC1E3007F96A6 /* InOutputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921EC291AC1E3007F96A6 /* InOutputViewModel.swift */; };
 		859921F2291BFB36007F96A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 859921F1291BFB36007F96A6 /* GoogleService-Info.plist */; };
 		859921F5291BFE11007F96A6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 859921F4291BFE11007F96A6 /* Alamofire */; };
 		859921F8291C0086007F96A6 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921F7291C0086007F96A6 /* UserData.swift */; };
@@ -207,7 +207,7 @@
 		859921E3291A788F007F96A6 /* Userdefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefault.swift; sourceTree = "<group>"; };
 		859921E6291A7D7B007F96A6 /* RegexVaidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexVaidation.swift; sourceTree = "<group>"; };
 		859921EA291AB490007F96A6 /* FirebaseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIService.swift; sourceTree = "<group>"; };
-		859921EC291AC1E3007F96A6 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
+		859921EC291AC1E3007F96A6 /* InOutputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOutputViewModel.swift; sourceTree = "<group>"; };
 		859921F1291BFB36007F96A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		859921F7291C0086007F96A6 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		859921FB291C01D1007F96A6 /* SesacAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIService.swift; sourceTree = "<group>"; };
@@ -559,7 +559,7 @@
 		85350A5F2918CADA00C70515 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				859921EC291AC1E3007F96A6 /* CommonViewModel.swift */,
+				859921EC291AC1E3007F96A6 /* InOutputViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1205,7 +1205,7 @@
 				8505152F29236A1C00862A2F /* CustomwithdarwView.swift in Sources */,
 				85E3ABB22922168400F890AF /* ManagementView.swift in Sources */,
 				85350A92291908D200C70515 /* RxSwiftProtocol.swift in Sources */,
-				859921ED291AC1E3007F96A6 /* CommonViewModel.swift in Sources */,
+				859921ED291AC1E3007F96A6 /* InOutputViewModel.swift in Sources */,
 				8509295E292B36130074912E /* SesacCardView.swift in Sources */,
 				8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */,
 				8599220D291CB1FA007F96A6 /* BlackHighlightTextField.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 
 import RxCocoa
 
-final class CertificationReceivingViewModel: CommonViewModel {
+final class CertificationReceivingViewModel: InOutputViewModel {
     struct Input {
         let certificationText: ControlProperty<String?>
         let requstButtonTapped: ControlEvent<Void>

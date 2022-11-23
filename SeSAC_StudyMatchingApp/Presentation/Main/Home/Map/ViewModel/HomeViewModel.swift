@@ -9,7 +9,7 @@ import Foundation
 
 import Alamofire
 
-final class HomeViewModel {
+final class HomeViewModel: CommonViewModel {
     func requsetSearchData(lat: Double, long: Double, completion: @escaping (Result<SearchData, Error>) -> Void) {
         let api = SesacAPIRouter.searchPost(lat: String(lat), long: String(long))
         SesacSignupAPIService.shared.requestSesacSearch(router: api) { response in

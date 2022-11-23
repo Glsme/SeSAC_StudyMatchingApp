@@ -9,7 +9,7 @@ import Foundation
 
 import RxCocoa
 
-final class BirthViewModel: CommonViewModel {
+final class BirthViewModel: InOutputViewModel {
     struct Input {
         let nextButton: ControlEvent<Void>
         let textField: ControlProperty<String?>
