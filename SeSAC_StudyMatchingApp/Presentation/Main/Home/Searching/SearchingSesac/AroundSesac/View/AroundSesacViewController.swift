@@ -105,6 +105,7 @@ extension AroundSesacViewController: UITableViewDelegate, UITableViewDataSource 
         cell.cardView.titleView.isHidden = hiddenFlag[indexPath.row]
         cell.cardView.titleView.moreButton.tag = indexPath.row
         cell.cardView.titleView.moreButton.addTarget(self, action: #selector(moreButtonTapped(_ :)), for: .touchUpInside)
+        cell.requsetButton.tag = indexPath.row
         cell.requsetButton.addTarget(self, action: #selector(requsetButtonTapped(_ :)), for: .touchUpInside)
         
         if hiddenFlag[indexPath.row] {

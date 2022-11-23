@@ -32,7 +32,6 @@ final class HomeViewModel: CommonViewModel {
             case .failure(let error):
                 completion(.failure(error))
             }
-            
         }
     }
 }

@@ -53,9 +53,13 @@ class RecievedPopupViewController: BaseViewController {
             case .success:
                 self.dismiss(animated: false)
             case .alreadyMatching:
-                self.view.makeToast("이미 다른 새싹과 스터디를 함께 하는 중입니다.", position: .center)
+                self.dismiss(animated: false)
+                guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+                vc.view.makeToast("이미 다른 새싹과 스터디를 함께 하는 중입니다.", position: .center)
             case .stopUserRequest:
-                self.view.makeToast("상대방이 스터디 찾기를 그만두었습니다.", position: .center)
+                self.dismiss(animated: false)
+                guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+                vc.view.makeToast("상대방이 스터디 찾기를 그만두었습니다.", position: .center)
             default:
                 print(MatchingCode(rawValue: statusCode)!)
             }

@@ -34,6 +34,8 @@ final class SearchTabViewController: TabmanViewController {
     }
     
     func configureUI() {
+        navigationController?.navigationBar.isHidden = false
+        
         navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItem = stopButton
         navigationItem.rightBarButtonItem?.tintColor = .black

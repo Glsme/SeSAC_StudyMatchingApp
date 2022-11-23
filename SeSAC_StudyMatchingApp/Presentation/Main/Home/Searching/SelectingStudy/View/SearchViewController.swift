@@ -210,12 +210,8 @@ extension SearchViewController {
                 cell.setMostStyle()
             }
             
-            //Error Code 대응
-            if itemIdentifier.title == "죄송합니다..죄송합니다..죄송합니다..죄송합니다,죄송합니다..죄송합니다..죄송합니다..죄송합니다" {
-                cell.titleLabel.text = "죄송합니다..죄송합니다..죄송합니다..죄송합니다"
-            } else {
-                cell.titleLabel.text = itemIdentifier.title
-            }
+            cell.titleLabel.text = itemIdentifier.title
+            
         }
         
         let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { headerView, elementKind, indexPath in
@@ -226,7 +222,7 @@ extension SearchViewController {
             } else if indexPath.section == 2 {
                 configuration.text = "내가 하고 싶은"
             }
-//            configuration.text = indexPath.section == 0 ? "지금 주변에는" : "내가 하고 싶은"
+            //            configuration.text = indexPath.section == 0 ? "지금 주변에는" : "내가 하고 싶은"
             configuration.textProperties.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12)
             configuration.textProperties.color = .black
             headerView.contentConfiguration = configuration
