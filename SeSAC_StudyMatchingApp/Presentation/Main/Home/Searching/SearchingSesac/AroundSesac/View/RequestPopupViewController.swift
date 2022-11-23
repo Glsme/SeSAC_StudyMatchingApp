@@ -59,10 +59,15 @@ class RequestPopupViewController: BaseViewController {
                 }
             case .alreadyRequestMe:
                 print("alreadyRequsetMe")
-                self.dismiss(animated: false) {
-                    guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
-                    vc.view.makeToast("상대방도 스터디를 요청하여 매칭되었습니다.\n잠시 후 채팅방으로 이동합니다", position: .center) { didTap in
-                        //push
+                self.requestMatchingAccept(uid: uid) {
+                    NotificationCenter.default.post(name: NSNotification.Name("Matched"), object: self)
+                    self.dismiss(animated: false) {
+                        let chatVC = ChattingViewController()
+            
+                        guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+                        vc.view.makeToast("상대방도 스터디를 요청하여 매칭되었습니다.\n잠시 후 채팅방으로 이동합니다", position: .center) { didTap in
+                            vc.transViewController(ViewController: chatVC, type: .push)
+                        }
                     }
                 }
             case .stopRequest:
@@ -70,6 +75,18 @@ class RequestPopupViewController: BaseViewController {
                     guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
                     vc.view.makeToast("상대방이 스터디 찾기를 그만두었습니다.", position: .center)
                 }
+            default:
+                print(MatchingCode(rawValue: statusCode)!)
+            }
+        }
+    }
+    
+    func requestMatchingAccept(uid: String, completion: @escaping () -> Void) {
+        let api = SesacAPIRouter.studyAccept(uid: uid)
+        SesacSignupAPIService.shared.requestStudyRequest(router: api) { statusCode in
+            switch MatchingAcceptCode(rawValue: statusCode) {
+            case .success:
+                completion()
             default:
                 print(MatchingCode(rawValue: statusCode)!)
             }

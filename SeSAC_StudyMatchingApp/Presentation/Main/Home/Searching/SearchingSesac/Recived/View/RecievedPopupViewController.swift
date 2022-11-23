@@ -52,7 +52,9 @@ class RecievedPopupViewController: BaseViewController {
             switch MatchingAcceptCode(rawValue: statusCode) {
             case .success:
                 self.dismiss(animated: false) {
-                    
+                    let chatVC = ChattingViewController()
+                    guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+                    vc.transViewController(ViewController: chatVC, type: .push)
                 }
             case .alreadyMatching:
                 self.dismiss(animated: false) {

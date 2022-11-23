@@ -27,10 +27,27 @@ final class SearchTabViewController: TabmanViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         configureUI()
         bindData()
         resetAndGoTimer()
+        addNotification()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        timerDisposable?.dispose()
+    }
+    
+    func addNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(matched), name: NSNotification.Name("Matched"), object: nil)
+    }
+    
+    @objc func matched() {
+        timerDisposable?.dispose()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("Matched"), object: nil)
     }
     
     func configureUI() {
@@ -119,7 +136,7 @@ final class SearchTabViewController: TabmanViewController {
                 print("timer run")
                 vc.viewModel.requestMyQueueState { result in
                     vc.timerDisposable?.dispose()
-                    vc.view.makeToast("\(result.matchedNick ?? "새싹")님과 매칭되셨습니다.\n잠시 후 채팅방으로 이동합니다.", duration: 1) { didTap in
+                    vc.view.makeToast("\(result.matchedNick ?? "새싹")님과 매칭되셨습니다.\n잠시 후 채팅방으로 이동합니다.", duration: 1, position: .center) { didTap in
                         print("채팅방 들어간다~")
                         let nextVC = ChattingViewController()
                         nextVC.viewModel.data = result
