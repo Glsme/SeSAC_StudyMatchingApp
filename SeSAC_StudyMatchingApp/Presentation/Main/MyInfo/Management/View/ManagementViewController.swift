@@ -36,8 +36,7 @@ class ManagementViewController: BaseViewController {
         mainView.cardView.backgroundImageView.image = UIImage(named: profile[0])
         mainView.cardView.profileImageView.image = UIImage(named: profile[1])
         
-        navigationItem.title = "정보 관리"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
+        setNavigationTitle("정보 관리")
         navigationItem.rightBarButtonItem = saveButton
         saveButton.tintColor = .black
         

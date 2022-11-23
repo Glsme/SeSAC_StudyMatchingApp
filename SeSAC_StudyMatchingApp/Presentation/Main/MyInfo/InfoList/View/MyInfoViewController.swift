@@ -27,8 +27,7 @@ final class MyInfoViewController: BaseViewController {
     
     override func configureUI() {
         viewModel.setCellData()
-        navigationItem.title = "내정보"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
+        setNavigationTitle("내정보")
     }
     
     override func bindData() {

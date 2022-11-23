@@ -17,7 +17,7 @@ class ChattingViewController: BaseViewController {
     
     override func configureUI() {
         navigationController?.navigationBar.isHidden = false
-        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
         
         guard let data = viewModel.data else { return }
         setNavigationTitle(data.matchedNick ?? "새싹")
