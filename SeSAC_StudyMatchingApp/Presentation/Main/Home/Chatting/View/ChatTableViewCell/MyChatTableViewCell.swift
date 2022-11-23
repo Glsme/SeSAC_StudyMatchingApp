@@ -44,6 +44,8 @@ class MyChatTableViewCell: UITableViewCell {
     }
     
     func configureUI() {
+        selectionStyle = .none
+        
         talkBubble.addSubview(talkLabel)
         
         [talkBubble, timeLabel].forEach {

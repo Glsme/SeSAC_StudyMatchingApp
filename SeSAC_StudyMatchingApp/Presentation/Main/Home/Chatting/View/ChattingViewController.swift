@@ -45,10 +45,17 @@ class ChattingViewController: BaseViewController {
         
         guard let data = viewModel.data else { return }
         setNavigationTitle(data.matchedNick ?? "새싹")
-        
     }
     
     override func bindData() {
+        mainView.chatTableView.rx.didScroll
+            .observe(on: MainScheduler.asyncInstance)
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, _) in
+                vc.view.endEditing(false)
+            })
+            .disposed(by: disposeBag)
+        
         backButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
