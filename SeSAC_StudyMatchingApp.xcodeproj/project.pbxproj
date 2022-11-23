@@ -126,6 +126,8 @@
 		85E3ABB22922168400F890AF /* ManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E3ABB12922168400F890AF /* ManagementView.swift */; };
 		85E3ABB4292216FE00F890AF /* ManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E3ABB3292216FE00F890AF /* ManagementViewModel.swift */; };
 		85EF7E67292DD3A2008426AF /* RecievedPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E66292DD3A2008426AF /* RecievedPopupViewController.swift */; };
+		85EF7E6C292DFA82008426AF /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E6B292DFA82008426AF /* ChattingViewController.swift */; };
+		85EF7E6E292DFB29008426AF /* ChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E6D292DFB29008426AF /* ChattingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -238,6 +240,8 @@
 		85E3ABB12922168400F890AF /* ManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementView.swift; sourceTree = "<group>"; };
 		85E3ABB3292216FE00F890AF /* ManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementViewModel.swift; sourceTree = "<group>"; };
 		85EF7E66292DD3A2008426AF /* RecievedPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecievedPopupViewController.swift; sourceTree = "<group>"; };
+		85EF7E6B292DFA82008426AF /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
+		85EF7E6D292DFB29008426AF /* ChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1011,6 +1015,7 @@
 		85992238291D69CE007F96A6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				85EF7E68292DFA5D008426AF /* Chatting */,
 				850929422928005E0074912E /* ViewModel */,
 				850515562925145500862A2F /* Searching */,
 				850515552925144900862A2F /* Map */,
@@ -1090,6 +1095,31 @@
 				85E3ABAF2922166400F890AF /* ManagementViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		85EF7E68292DFA5D008426AF /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				85EF7E6A292DFA79008426AF /* ViewModel */,
+				85EF7E69292DFA73008426AF /* View */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
+		85EF7E69292DFA73008426AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85EF7E6B292DFA82008426AF /* ChattingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85EF7E6A292DFA79008426AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				85EF7E6D292DFB29008426AF /* ChattingViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1224,6 +1254,7 @@
 				8505155A2925149300862A2F /* SeachView.swift in Sources */,
 				85051529292367BC00862A2F /* CustomStudyView.swift in Sources */,
 				85E3ABB4292216FE00F890AF /* ManagementViewModel.swift in Sources */,
+				85EF7E6C292DFA82008426AF /* ChattingViewController.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */,
 				8505155C2925149D00862A2F /* SearchViewController.swift in Sources */,
@@ -1270,6 +1301,7 @@
 				8509294A2929E0D20074912E /* CustomAnnotationView.swift in Sources */,
 				8505154B2924B78700862A2F /* WithdarwViewModel.swift in Sources */,
 				85992219291CD6B8007F96A6 /* BirthViewController.swift in Sources */,
+				85EF7E6E292DFB29008426AF /* ChattingViewModel.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85EF7E67292DD3A2008426AF /* RecievedPopupViewController.swift in Sources */,
 				85992220291D1ED1007F96A6 /* EmailViewModel.swift in Sources */,

@@ -27,7 +27,6 @@ class CustomAnnotationView: MKAnnotationView {
     private func setupUI() {
         backgroundColor = .clear
     }
-    
 }
 
 

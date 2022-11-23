@@ -28,4 +28,9 @@ public class BaseViewController: UIViewController, BaseViewProtocol, RxSwiftProt
         
         present(alert, animated: true)
     }
+    
+    func setNavigationTitle(_ title: String) {
+        navigationItem.title = title
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
+    }
 }

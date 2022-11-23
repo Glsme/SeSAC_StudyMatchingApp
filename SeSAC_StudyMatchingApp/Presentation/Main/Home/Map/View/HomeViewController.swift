@@ -210,40 +210,7 @@ final class HomeViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 //                guard let coordinate = vc.locationManager.location?.coordinate else { return }
-                // Test Code: default -> vc.mainView.mapView.region.center로 바꿔야함
-                let center = vc.defaultCoordinate // vc.mainView.mapView.region.center
-                let nextVC = SearchViewController()
-                // Test code 추후에 바꿔야함
-                nextVC.viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { response in
-                    switch response {
-                    case .success(let success):
-                        var fromQueueDBSet = Set<String>()
-                        
-                        success.fromQueueDB.map { $0.studylist }.forEach {
-                            $0.forEach {
-                                fromQueueDBSet.insert($0)
-                            }
-                        }
-                        
-                        success.fromQueueDBRequested.map { $0.studylist }.forEach {
-                            $0.forEach {
-                                fromQueueDBSet.insert($0)
-                            }
-                        }
-                        
-                        let fromQueueDBStudyTags = fromQueueDBSet.map { StudyTag(title: $0) }
-                        let fromRecommendStudyTags = success.fromRecommend.map { StudyTag(title: $0) }
-                        
-                        nextVC.viewModel.lat = center.latitude
-                        nextVC.viewModel.long = center.longitude
-                        nextVC.viewModel.fromQueueDB.append(contentsOf: fromQueueDBStudyTags)
-                        nextVC.viewModel.recommandData.append(contentsOf: fromRecommendStudyTags)
-                        vc.transViewController(ViewController: nextVC, type: .push)
-                    case .failure(let error):
-                        print(error)
-                        vc.view.makeToast("검색 에러가 발생하였습니다. \n잠시 후 다시 시도해주세요", position: .center)
-                    }
-                }
+                vc.goToPageAccordingToState()
             }
             .disposed(by: disposeBag)
         
@@ -267,6 +234,85 @@ final class HomeViewController: BaseViewController {
                 vc.searchData()
             }
             .disposed(by: disposeBag)
+    }
+    
+    func goToPageAccordingToState() {
+        // Test Code: default -> vc.mainView.mapView.region.center로 바꿔야함
+        let center = defaultCoordinate // vc.mainView.mapView.region.center
+
+        switch mainView.searchButton.image(for: .normal) {
+        case UIImage(named: HomeAssets.search.rawValue):
+            print("search")
+            let nextVC = SearchViewController()
+            
+            nextVC.viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { [weak self] response in
+                guard let self = self else { return }
+                switch response {
+                case .success(let success):
+                    var fromQueueDBSet = Set<String>()
+                    
+                    success.fromQueueDB.map { $0.studylist }.forEach {
+                        $0.forEach {
+                            fromQueueDBSet.insert($0)
+                        }
+                    }
+                    
+                    success.fromQueueDBRequested.map { $0.studylist }.forEach {
+                        $0.forEach {
+                            fromQueueDBSet.insert($0)
+                        }
+                    }
+                    
+                    let fromQueueDBStudyTags = fromQueueDBSet.map { StudyTag(title: $0) }
+                    let fromRecommendStudyTags = success.fromRecommend.map { StudyTag(title: $0) }
+                    
+                    nextVC.viewModel.lat = center.latitude
+                    nextVC.viewModel.long = center.longitude
+                    nextVC.viewModel.fromQueueDB.append(contentsOf: fromQueueDBStudyTags)
+                    nextVC.viewModel.recommandData.append(contentsOf: fromRecommendStudyTags)
+                    self.transViewController(ViewController: nextVC, type: .push)
+                case .failure(let error):
+                    print(error)
+                    self.view.makeToast("검색 에러가 발생하였습니다. \n잠시 후 다시 시도해주세요", position: .center)
+                }
+            }
+        case UIImage(named: HomeAssets.antenna.rawValue):
+            print("antenna")
+            let nextVC = SearchTabViewController()
+            
+            nextVC.viewModel.requsetSearchData(lat: center.latitude, long: center.longitude) { [weak self] response in
+                guard let self = self else { return }
+                switch response {
+                case .success(let success):
+                    
+                    nextVC.viewModel.lat = center.latitude
+                    nextVC.viewModel.long = center.longitude
+                    nextVC.viewModel.searchData = success
+                    self.transViewController(ViewController: nextVC, type: .push)
+                case .failure(let error):
+                    print(error)
+                    self.view.makeToast("검색 에러가 발생하였습니다. \n잠시 후 다시 시도해주세요", position: .center)
+                }
+            }
+        case UIImage(named: HomeAssets.mail.rawValue):
+            print("mail")
+            let nextVC = ChattingViewController()
+
+            viewModel.requsetMyStateData { [weak self] response in
+                guard let self = self else { return }
+                switch response {
+                case .success(let success):
+                    if success.matched == 1 {
+                        nextVC.viewModel.data = success
+                        self.transViewController(ViewController: nextVC, type: .push)
+                    }
+                case . failure(let error):
+                    print("error: \(error)")
+                }
+            }
+        default:
+            break
+        }
     }
 }
 
