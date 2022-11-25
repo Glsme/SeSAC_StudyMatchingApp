@@ -36,6 +36,7 @@ class ChattingViewModel: CommonViewModel {
     var chat: [MyChat] = []
     
     func fetchChats() {
+        getChat()
         SocketIOManager.shared.establishConnection()
     }
     
@@ -43,11 +44,29 @@ class ChattingViewModel: CommonViewModel {
         guard let data = data else { return }
         guard let uid = data.matchedUid else { return }
         let api = SesacAPIRouter.chatPost(chat: text, uid: uid)
+        
         SesacSignupAPIService.shared.requestPostChat(router: api) { statusCode in
             if ChattingCode(rawValue: statusCode) == .success {
                 print("Post Success")
             } else {
                 print(ChattingCode(rawValue: statusCode)!)
+            }
+        }
+    }
+    
+    func getChat() {
+        guard let data = data else { return }
+        guard let uid = data.matchedUid else { return }
+        let date: String = "2000-01-01T00:00:00.000Z"
+        let api = SesacAPIRouter.chatGet(lastDate: date, uid: uid)
+        
+        SesacSignupAPIService.shared.requestGetChat(router: api) { response in
+            switch response {
+            case .success(let success):
+                print("success!!!!!!!!!!")
+                dump(success)
+            case .failure(let error):
+                print("error:: \(error)")
             }
         }
     }

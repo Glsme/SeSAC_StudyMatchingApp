@@ -96,4 +96,18 @@ final class SesacSignupAPIService {
             completionHandler(statusCode)
         }
     }
+    
+    public func requestGetChat(router: SesacAPIRouter, completionHandler: @escaping (Result<MyChat, LoginError>) -> Void) {
+        AF.request(router).responseDecodable(of: MyChat.self) { response in
+            switch response.result {
+            case .success(let success):
+                completionHandler(.success(success))
+            case .failure(_):
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let error = LoginError(rawValue: statusCode) else { return }
+                completionHandler(.failure(error))
+                
+            }
+        }
+    }
 }
