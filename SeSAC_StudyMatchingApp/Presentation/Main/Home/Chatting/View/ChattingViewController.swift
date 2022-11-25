@@ -9,6 +9,7 @@ import UIKit
 
 import RxCocoa
 import RxDataSources
+import RxGesture
 import RxKeyboard
 import RxSwift
 
@@ -19,7 +20,7 @@ class ChattingViewController: BaseViewController {
     let backButton = UIBarButtonItem(image: UIImage(named: CommonAssets.backButton.rawValue), style: .done, target: ChattingViewController.self, action: nil)
     let moreButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .done, target: ChattingViewController.self, action: nil)
     
-    var moreButtonToggle: Bool = false
+    var moreButtonToggle: Bool = true
     lazy var dataSource = RxTableViewSectionedReloadDataSource<SectionOfMessageCell> { [weak self] dataSource, tableView, indexPath, item in
         guard let self = self else { return UITableViewCell() }
         
@@ -113,6 +114,21 @@ class ChattingViewController: BaseViewController {
                     
                     UIView.animate(withDuration: 0.3) {
                         vc.view.layoutIfNeeded()
+                    }
+                }
+                
+                vc.moreButtonToggle.toggle()
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.topBGView.rx.tapGesture()
+            .withUnretained(self)
+            .subscribe { (vc, _) in
+                if vc.moreButtonToggle {
+                    vc.mainView.topBGView.isHidden = vc.moreButtonToggle
+                    
+                    vc.mainView.topButtonStackView.snp.updateConstraints { make in
+                        make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top)
                     }
                 }
                 

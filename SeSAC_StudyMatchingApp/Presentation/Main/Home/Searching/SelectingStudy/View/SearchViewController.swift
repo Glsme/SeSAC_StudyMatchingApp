@@ -8,7 +8,6 @@
 import UIKit
 
 import RxCocoa
-import RxGesture
 import RxSwift
 import RxKeyboard
 
