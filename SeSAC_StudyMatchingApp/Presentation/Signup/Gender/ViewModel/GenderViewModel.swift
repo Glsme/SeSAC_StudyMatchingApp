@@ -8,6 +8,7 @@
 import Foundation
 
 import FirebaseAuth
+import FirebaseMessaging
 import RxCocoa
 
 class GenderViewModel: InOutputViewModel {
@@ -32,6 +33,15 @@ class GenderViewModel: InOutputViewModel {
     }
     
     func requsetSignup(completion: @escaping (Result<UserData, LoginError>) -> Void) {
+        Messaging.messaging().token { token, error in
+            if let error = error {
+//                print("Error fetching FCM registration token: \(error)")
+            } else if let token = token {
+//                print("FCM registration token: \(token)")
+                UserManager.fcmToken = token
+            }
+        }
+        
         let api = SesacAPIRouter.signupPost
         SesacSignupAPIService.shared.requestSesacLogin(router: api) { response in
             switch response {

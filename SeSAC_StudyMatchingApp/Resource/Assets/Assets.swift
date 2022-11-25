@@ -76,3 +76,7 @@ enum HomeAssets: String {
 enum SearchAssets: String {
     case reload, graySesac
 }
+
+enum ChattingAssets: String {
+    case sendIcon, sendFillIcon
+}

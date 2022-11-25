@@ -9,6 +9,7 @@ import UIKit
 
 import RxCocoa
 import RxDataSources
+import RxKeyboard
 import RxSwift
 
 class ChattingViewController: BaseViewController {
@@ -48,11 +49,35 @@ class ChattingViewController: BaseViewController {
     }
     
     override func bindData() {
+        RxKeyboard.instance.visibleHeight
+            .skip(1)
+            .drive(onNext: { height in
+                self.mainView.setButtonisSendMode(true)
+                
+                let window = UIApplication.shared.windows.first
+                let extra = window!.safeAreaInsets.bottom
+                
+                self.mainView.userInputView.snp.updateConstraints { make in
+                    make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(height - extra + 16)
+                }
+                
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
+                
+            })
+            .disposed(by: disposeBag)
+        
         mainView.chatTableView.rx.didScroll
             .observe(on: MainScheduler.asyncInstance)
             .withUnretained(self)
             .subscribe(onNext: { (vc, _) in
                 vc.view.endEditing(false)
+                vc.mainView.setButtonisSendMode(false)
+                
+                vc.mainView.userInputView.snp.updateConstraints { make in
+                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
+                }
             })
             .disposed(by: disposeBag)
         

@@ -29,6 +29,14 @@ class ChatView: BaseView {
         let view = UITextView()
         view.isScrollEnabled = false
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    lazy var sendButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(named: ChattingAssets.sendIcon.rawValue), for: .normal)
+        view.clipsToBounds = true
         return view
     }()
     
@@ -41,7 +49,7 @@ class ChatView: BaseView {
             self.addSubview($0)
         }
         
-        [inputTextView].forEach {
+        [inputTextView, sendButton].forEach {
             userInputView.addSubview($0)
         }
     }
@@ -61,6 +69,20 @@ class ChatView: BaseView {
             make.leading.equalToSuperview().inset(12)
             make.height.greaterThanOrEqualTo(26)
             make.width.equalToSuperview().multipliedBy(0.8)
+        }
+        
+        sendButton.snp.makeConstraints { make in
+            make.centerY.equalTo(inputTextView.snp.centerY)
+            make.width.height.equalTo(24)
+            make.trailing.equalToSuperview().inset(14)
+        }
+    }
+    
+    func setButtonisSendMode(_ on: Bool) {
+        if on {
+            sendButton.setImage(UIImage(named: ChattingAssets.sendFillIcon.rawValue), for: .normal)
+        } else {
+            sendButton.setImage(UIImage(named: ChattingAssets.sendIcon.rawValue), for: .normal)
         }
     }
 }
