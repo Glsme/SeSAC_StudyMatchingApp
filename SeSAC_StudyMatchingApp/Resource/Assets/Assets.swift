@@ -79,4 +79,6 @@ enum SearchAssets: String {
 
 enum ChattingAssets: String {
     case sendIcon, sendFillIcon
+    case cancelButton = "cancel_match"
+    case reportIcon, write
 }

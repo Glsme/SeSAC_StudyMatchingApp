@@ -19,6 +19,7 @@ class ChattingViewController: BaseViewController {
     let backButton = UIBarButtonItem(image: UIImage(named: CommonAssets.backButton.rawValue), style: .done, target: ChattingViewController.self, action: nil)
     let moreButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .done, target: ChattingViewController.self, action: nil)
     
+    var moreButtonToggle: Bool = false
     lazy var dataSource = RxTableViewSectionedReloadDataSource<SectionOfMessageCell> { [weak self] dataSource, tableView, indexPath, item in
         guard let self = self else { return UITableViewCell() }
         
@@ -60,10 +61,17 @@ class ChattingViewController: BaseViewController {
         navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = true
         
+        navigationController?.navigationBar.backgroundColor = .white
         navigationItem.leftBarButtonItem = backButton
         navigationItem.leftBarButtonItem?.tintColor = .black
         navigationItem.rightBarButtonItem = moreButton
         navigationItem.rightBarButtonItem?.tintColor = .black
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithDefaultBackground()
+        navigationBarAppearance.backgroundColor = .white
+        
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         
         guard let data = viewModel.data else { return }
         setNavigationTitle(data.matchedNick ?? "새싹")
@@ -81,6 +89,37 @@ class ChattingViewController: BaseViewController {
         .bind(to: mainView.chatTableView.rx.items(dataSource: dataSource))
         .disposed(by: disposeBag)
         
+        moreButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("tap moreButton, \(vc.moreButtonToggle)")
+                
+                if vc.moreButtonToggle {
+                    vc.mainView.topBGView.isHidden = vc.moreButtonToggle
+                    
+                    vc.mainView.topButtonStackView.snp.updateConstraints { make in
+                        make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top)
+                    }
+//
+//                    UIView.animate(withDuration: 0.3) {
+//                        vc.view.layoutIfNeeded()
+//                    }
+                } else {
+                    vc.mainView.topBGView.isHidden = vc.moreButtonToggle
+                    
+                    vc.mainView.topButtonStackView.snp.updateConstraints { make in
+                        make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top).offset(72)
+                    }
+                    
+                    UIView.animate(withDuration: 0.3) {
+                        vc.view.layoutIfNeeded()
+                    }
+                }
+                
+                vc.moreButtonToggle.toggle()
+            }
+            .disposed(by: disposeBag)
+        
         RxKeyboard.instance.visibleHeight
             .skip(1)
             .drive(onNext: { height in
@@ -92,6 +131,10 @@ class ChattingViewController: BaseViewController {
                 self.mainView.userInputView.snp.updateConstraints { make in
                     make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(height - extra + 16)
                 }
+                
+//                self.mainView.chatTableView.snp.updateConstraints { make in
+//                    make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(height - extra)
+//                }
                 
                 UIView.animate(withDuration: 0.5) {
                     self.view.layoutIfNeeded()
@@ -110,6 +153,10 @@ class ChattingViewController: BaseViewController {
                 vc.mainView.userInputView.snp.updateConstraints { make in
                     make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
                 }
+                
+//                vc.mainView.chatTableView.snp.updateConstraints { make in
+//                    make.bottom.equalTo(vc.mainView.userInputView.snp.top).inset(16)
+//                }
             })
             .disposed(by: disposeBag)
         

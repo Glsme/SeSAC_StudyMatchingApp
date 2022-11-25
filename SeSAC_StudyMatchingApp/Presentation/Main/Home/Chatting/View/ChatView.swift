@@ -43,14 +43,92 @@ class ChatView: BaseView {
         return view
     }()
     
+    lazy var topBGView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0.5
+        return view
+    }()
+    
+    lazy var reportButton: UIButton = {
+        let view = UIButton()
+        
+        var config = UIButton.Configuration.tinted()
+        var titleAttr = AttributedString.init("새싹 신고")
+        titleAttr.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14)
+        titleAttr.foregroundColor = .black
+        config.attributedTitle = titleAttr
+        
+        config.image = UIImage(named: ChattingAssets.reportIcon.rawValue)
+        config.imagePadding = 5
+        config.imagePlacement = .top
+        config.baseBackgroundColor = .white
+        
+        view.tintColor = .black
+        view.configuration = config
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    lazy var cancelButton: UIButton = {
+        let view = UIButton()
+        
+        var config = UIButton.Configuration.tinted()
+        var titleAttr = AttributedString.init("스터디 취소")
+        titleAttr.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14)
+        titleAttr.foregroundColor = .black
+        config.attributedTitle = titleAttr
+        
+        config.image = UIImage(named: ChattingAssets.cancelButton.rawValue)
+        config.imagePadding = 5
+        config.imagePlacement = .top
+        config.baseBackgroundColor = .white
+        
+        view.tintColor = .black
+        view.configuration = config
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    lazy var writeButton: UIButton = {
+        let view = UIButton()
+        
+        var config = UIButton.Configuration.tinted()
+        var titleAttr = AttributedString.init("리뷰 등록")
+        titleAttr.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14)
+        titleAttr.foregroundColor = .black
+        config.attributedTitle = titleAttr
+        
+        config.image = UIImage(named: ChattingAssets.write.rawValue)
+        config.imagePadding = 5
+        config.imagePlacement = .top
+        config.baseBackgroundColor = .white
+        
+        view.tintColor = .black
+        view.configuration = config
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    lazy var topButtonStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [reportButton, cancelButton, writeButton])
+        view.backgroundColor = .white
+        view.axis = .horizontal
+        view.alignment = .fill
+        view.distribution = .fillEqually
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        [chatTableView, userInputView].forEach {
+        [chatTableView, userInputView, topBGView, topButtonStackView].forEach {
             self.addSubview($0)
         }
+        
+        topBGView.isHidden = true
         
         [inputTextView, sendButton].forEach {
             userInputView.addSubview($0)
@@ -58,8 +136,20 @@ class ChatView: BaseView {
     }
     
     override func setConstraints() {
+        topBGView.snp.makeConstraints { make in
+            make.top.trailing.leading.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
+        }
+        
+        topButtonStackView.snp.makeConstraints { make in
+            make.trailing.leading.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.top)
+            make.height.equalTo(72)
+        }
+        
         chatTableView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.top.trailing.leading.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(userInputView.snp.top).inset(16)
         }
         
         userInputView.snp.makeConstraints { make in
