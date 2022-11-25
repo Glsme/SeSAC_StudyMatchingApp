@@ -132,6 +132,10 @@
 		85EF7E73292E5A99008426AF /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */; };
 		85EF7E75292E6028008426AF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E74292E6028008426AF /* ChatView.swift */; };
 		85F3CA5C29309FCC007079D8 /* DateTabeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3CA5B29309FCC007079D8 /* DateTabeViewCell.swift */; };
+		85F3CA5E2930F940007079D8 /* MyChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3CA5D2930F940007079D8 /* MyChat.swift */; };
+		85F3CA602930FC73007079D8 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3CA5F2930FC73007079D8 /* SocketIOManager.swift */; };
+		85F3CA632930FCD4007079D8 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 85F3CA622930FCD4007079D8 /* SocketIO */; };
+		85F3CA662930FD9A007079D8 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3CA652930FD9A007079D8 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -250,6 +254,9 @@
 		85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
 		85EF7E74292E6028008426AF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		85F3CA5B29309FCC007079D8 /* DateTabeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTabeViewCell.swift; sourceTree = "<group>"; };
+		85F3CA5D2930F940007079D8 /* MyChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChat.swift; sourceTree = "<group>"; };
+		85F3CA5F2930FC73007079D8 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		85F3CA652930FD9A007079D8 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +273,7 @@
 				85992230291D50A8007F96A6 /* FirebaseAnalytics in Frameworks */,
 				85992232291D50A8007F96A6 /* FirebaseAuth in Frameworks */,
 				85350A902919083200C70515 /* RxSwift in Frameworks */,
+				85F3CA632930FCD4007079D8 /* SocketIO in Frameworks */,
 				85051518292243BB00862A2F /* MultiSlider in Frameworks */,
 				85350A8E2919083200C70515 /* RxCocoa in Frameworks */,
 				85350AA6291931BC00C70515 /* RxGesture in Frameworks */,
@@ -302,6 +310,7 @@
 		850515362924063700862A2F /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				85F3CA642930FD94007079D8 /* APIKey */,
 				859921F6291BFE40007F96A6 /* Model */,
 				85350A522918C5FA00C70515 /* Network */,
 			);
@@ -512,6 +521,7 @@
 			isa = PBXGroup;
 			children = (
 				8542BE13291F67D400CF799A /* Utils */,
+				85F3CA5F2930FC73007079D8 /* SocketIOManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -883,6 +893,7 @@
 				85092938292635800074912E /* SearchData.swift */,
 				85092940292772FA0074912E /* SearchSesacData.swift */,
 				850929452929CC740074912E /* MyQueueState.swift */,
+				85F3CA5D2930F940007079D8 /* MyChat.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -1142,6 +1153,14 @@
 			path = ChatTableViewCell;
 			sourceTree = "<group>";
 		};
+		85F3CA642930FD94007079D8 /* APIKey */ = {
+			isa = PBXGroup;
+			children = (
+				85F3CA652930FD9A007079D8 /* APIKey.swift */,
+			);
+			path = APIKey;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1172,6 +1191,7 @@
 				85051517292243BB00862A2F /* MultiSlider */,
 				8509293E29276AAE0074912E /* RxKeyboard */,
 				85092952292B28470074912E /* Tabman */,
+				85F3CA622930FCD4007079D8 /* SocketIO */,
 			);
 			productName = SeSAC_StudyMatchingApp;
 			productReference = 85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */;
@@ -1212,6 +1232,7 @@
 				85051516292243BB00862A2F /* XCRemoteSwiftPackageReference "MultiSlider" */,
 				8509293D29276AAE0074912E /* XCRemoteSwiftPackageReference "RxKeyboard" */,
 				85092951292B28470074912E /* XCRemoteSwiftPackageReference "Tabman" */,
+				85F3CA612930FCD4007079D8 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			productRefGroup = 85350A3B2918C1D600C70515 /* Products */;
 			projectDirPath = "";
@@ -1283,6 +1304,7 @@
 				85EF7E73292E5A99008426AF /* MyChatTableViewCell.swift in Sources */,
 				850515392924066C00862A2F /* SeSACInfo.swift in Sources */,
 				850929A6292CB60E0074912E /* ReviewTableViewController.swift in Sources */,
+				85F3CA602930FC73007079D8 /* SocketIOManager.swift in Sources */,
 				8542BE222921F1CF00CF799A /* MyInfoViewController.swift in Sources */,
 				85992229291D2CFF007F96A6 /* GenderViewModel.swift in Sources */,
 				850929462929CC740074912E /* MyQueueState.swift in Sources */,
@@ -1297,6 +1319,7 @@
 				85992224291D1EE7007F96A6 /* EmailViewController.swift in Sources */,
 				85051527292364EB00862A2F /* CustomGenderView.swift in Sources */,
 				8509296F292BBBD60074912E /* SearchedViewModel.swift in Sources */,
+				85F3CA662930FD9A007079D8 /* APIKey.swift in Sources */,
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,
 				850515152922295800862A2F /* GreenSelectedButton.swift in Sources */,
 				85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */,
@@ -1334,6 +1357,7 @@
 				850515482924B73400862A2F /* WithdarwViewController.swift in Sources */,
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
 				859921FC291C01D1007F96A6 /* SesacAPIService.swift in Sources */,
+				85F3CA5E2930F940007079D8 /* MyChat.swift in Sources */,
 				85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */,
 				859921F8291C0086007F96A6 /* UserData.swift in Sources */,
 				85092963292B4CF00074912E /* SesacCardTableViewCell.swift in Sources */,
@@ -1652,6 +1676,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		85F3CA612930FCD4007079D8 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 16.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1719,6 +1751,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85D341BF291A2C4A00F27A78 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		85F3CA622930FCD4007079D8 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85F3CA612930FCD4007079D8 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

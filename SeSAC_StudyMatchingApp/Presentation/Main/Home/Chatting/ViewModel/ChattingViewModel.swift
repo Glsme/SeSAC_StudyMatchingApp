@@ -33,4 +33,5 @@ extension SectionOfMessageCell: SectionModelType {
 
 class ChattingViewModel: CommonViewModel {
     var data: MyQueueState?
+    var chat: [MyChat] = []
 }

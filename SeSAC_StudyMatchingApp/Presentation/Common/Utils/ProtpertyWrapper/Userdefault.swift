@@ -58,4 +58,7 @@ class UserManager {
     
     @UserDefault(key: "sesac", defaultValue: nil)
     static var sesac: Int?
+    
+    @UserDefault(key: "myUid", defaultValue: nil)
+    static var myUid: String?
 }

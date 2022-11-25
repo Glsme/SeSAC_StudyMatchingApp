@@ -48,6 +48,7 @@ struct UserData: Codable {
                          study: study,
                          searchable: searchable,
                          ageMin: ageMin,
-                         ageMax: ageMax)
+                         ageMax: ageMax,
+                        uid: uid)
     }
 }

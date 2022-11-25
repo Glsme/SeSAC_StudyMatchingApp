@@ -34,5 +34,6 @@ class WithdrawViewModel {
         UserDefaults.standard.removeObject(forKey: "email")
         UserDefaults.standard.removeObject(forKey: "gender")
         UserDefaults.standard.removeObject(forKey: "sesac")
+        UserDefaults.standard.removeObject(forKey: "myUid")
     }
 }

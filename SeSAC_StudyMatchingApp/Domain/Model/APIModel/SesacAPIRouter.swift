@@ -20,6 +20,7 @@ enum SesacAPIRouter: URLRequestConvertible {
     case myQueueStateDelete
     case studyRequsetPost(uid: String)
     case studyAccept(uid: String)
+    case chatPost(chat: String)
     
     var baseURL: URL {
         switch self {
@@ -41,6 +42,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             return URL(string: "http://api.sesac.co.kr:1210/v1/queue/studyrequest")!
         case .studyAccept:
             return URL(string: "http://api.sesac.co.kr:1210/v1/queue/studyaccept")!
+        case . chatPost:
+            return URL(string: "http://api.sesac.co.kr:1210/v1/chat")!
         }
     }
     
@@ -56,6 +59,7 @@ enum SesacAPIRouter: URLRequestConvertible {
         case .myQueueStateDelete: return .delete
         case .studyRequsetPost: return .post
         case .studyAccept: return .post
+        case .chatPost: return .post
         }
     }
     
@@ -119,6 +123,11 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["Content-Type": "application/x-www-form-urlencoded",
                     "accept": "*/*",
                     "idtoken": idToken]
+        case .chatPost:
+            guard let idToken = UserManager.authVerificationToken else { return ["": ""] }
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "accept": "*/*",
+                    "idtoken": idToken]
         }
     }
     
@@ -159,6 +168,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["otheruid": uid]
         case .studyAccept(let uid):
             return ["otheruid": uid]
+        case .chatPost(let chat):
+            return ["chat": chat]
         }
     }
     

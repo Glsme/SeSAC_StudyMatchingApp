@@ -58,6 +58,12 @@ class ChattingViewController: BaseViewController {
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        SocketIOManager.shared.closeConnection()
+    }
+    
     override func configureUI() {
         navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = true
@@ -76,6 +82,10 @@ class ChattingViewController: BaseViewController {
         
         guard let data = viewModel.data else { return }
         setNavigationTitle(data.matchedNick ?? "새싹")
+    }
+    
+    func fetchChats() {
+        
     }
     
     override func bindData() {

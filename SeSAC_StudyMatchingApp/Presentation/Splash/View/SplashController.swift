@@ -66,6 +66,7 @@ final class SplashController: BaseViewController {
                     let result = success.toDomain()
                     UserManager.sesac = result.sesac
                     UserManager.nickname = result.nick
+                    UserManager.myUid = result.uid
                     guard let delegate = self.sceneDelegate else { return }
                     delegate.window?.rootViewController = MainTabBarController()
                 case .failure(let error):
