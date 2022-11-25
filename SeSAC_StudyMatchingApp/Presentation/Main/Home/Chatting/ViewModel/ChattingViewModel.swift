@@ -8,11 +8,12 @@
 import Foundation
 
 import RxDataSources
+import RxSwift
 
 struct MessageCell {
-    var message: String
+    var message: Payload
     
-    init(message: String) {
+    init(message: Payload) {
         self.message = message
     }
 }
@@ -33,7 +34,8 @@ extension SectionOfMessageCell: SectionModelType {
 
 class ChattingViewModel: CommonViewModel {
     var data: MyQueueState?
-    var chat: [MyChat] = []
+    var chat = PublishSubject<[SectionOfMessageCell]>()
+    var payload: [MessageCell] = []
     
     func fetchChats() {
         getChat()
@@ -60,15 +62,25 @@ class ChattingViewModel: CommonViewModel {
         let date: String = "2000-01-01T00:00:00.000Z"
         let api = SesacAPIRouter.chatGet(lastDate: date, uid: uid)
         
-        SesacSignupAPIService.shared.requestGetChat(router: api) { response in
+        SesacSignupAPIService.shared.requestGetChat(router: api) { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let success):
                 print("success!!!!!!!!!!")
+                self.inputChatData(data: success)
                 dump(success)
             case .failure(let error):
                 print("error:: \(error)")
             }
         }
+    }
+    
+    func inputChatData(data: MyChat) {
+        data.payload.forEach {
+            payload.append(MessageCell(message: $0))
+        }
+        
+        chat.onNext([SectionOfMessageCell(header: "1", items: payload)])
     }
 }
 

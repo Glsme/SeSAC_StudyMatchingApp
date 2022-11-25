@@ -13,7 +13,7 @@ class MyChatTableViewCell: UITableViewCell {
     lazy var talkBubble: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8
-        view.layer.borderColor = UIColor.sesacWhiteGreen.cgColor
+        view.backgroundColor = .sesacWhiteGreen
         return view
     }()
     
@@ -29,6 +29,7 @@ class MyChatTableViewCell: UITableViewCell {
         let view = UILabel()
         view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 12)
         view.textColor = .sesacGray6
+        view.textAlignment = .right
         return view
     }()
     
@@ -56,7 +57,7 @@ class MyChatTableViewCell: UITableViewCell {
     func setConstraints() {
         talkBubble.snp.makeConstraints { make in
             make.top.bottom.trailing.equalToSuperview().inset(16)
-            make.width.equalToSuperview().multipliedBy(0.29)
+            make.width.equalToSuperview().multipliedBy(0.71)
         }
         
         talkLabel.snp.makeConstraints { make in

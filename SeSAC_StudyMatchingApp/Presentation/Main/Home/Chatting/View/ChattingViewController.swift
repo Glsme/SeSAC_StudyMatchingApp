@@ -26,8 +26,8 @@ class ChattingViewController: BaseViewController {
         
         if indexPath.row == 0 {
             guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: DateTableViewCell.reuseIdentifier, for: indexPath) as? DateTableViewCell else { return UITableViewCell() }
-            
-            cell.dateLabel.text = item.message
+
+            cell.dateLabel.text = "날짜"
             if indexPath.section == 0 {
                 if let data = self.viewModel.data {
                     cell.matchedTitleLabel.text = "\(data.matchedNick ?? "새싹")님과 매칭되었습니다."
@@ -38,12 +38,21 @@ class ChattingViewController: BaseViewController {
             
             return cell
         } else {
-            guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier) as? YourChatTableViewCell else { return UITableViewCell() }
-            
-            cell.talkLabel.text = item.message
-            cell.timeLabel.text = "11:36"
-            
-            return cell
+            if let myUid = UserManager.myUid, item.message.from == myUid {
+                guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.reuseIdentifier) as? MyChatTableViewCell else { return UITableViewCell() }
+                
+                cell.talkLabel.text = item.message.chat
+                cell.timeLabel.text = "11:36"
+                
+                return cell
+            } else {
+                guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier) as? YourChatTableViewCell else { return UITableViewCell() }
+                
+                cell.talkLabel.text = item.message.chat
+                cell.timeLabel.text = "11:36"
+                
+                return cell
+            }
         }
     }
     
@@ -84,16 +93,9 @@ class ChattingViewController: BaseViewController {
     }
     
     override func bindData() {
-        Observable.just([
-            SectionOfMessageCell(header: "hi", items: [MessageCell(message: "11월 24일 목요일"),
-                                                       MessageCell(message: "하이여"),
-                                                       MessageCell(message: "하이여\ndsafsdfasf\nasdfasdf")]),
-            SectionOfMessageCell(header: "hihi", items: [MessageCell(message: "11월 25일 금요일"),
-                                                        MessageCell(message: "안녕"),
-                                                        MessageCell(message: "하세요")])
-        ])
-        .bind(to: mainView.chatTableView.rx.items(dataSource: dataSource))
-        .disposed(by: disposeBag)
+        viewModel.chat
+            .bind(to: mainView.chatTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
         
         moreButton.rx.tap
             .withUnretained(self)
