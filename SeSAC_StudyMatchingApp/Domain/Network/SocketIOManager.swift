@@ -37,16 +37,6 @@ class SocketIOManager {
         //이벤트 수신
         socket.on("sesac") { dataArray, ack in
             print("SESAC RECEIVED", dataArray, ack)
-            
-            let data = dataArray[0] as! NSDictionary
-            let chat = data["text"] as! String
-            let name = data["name"] as! String
-            let userId = data["userId"] as! String
-            let createdAt = data["createdAt"] as! String
-            
-            print("CHECK >>>", chat, name, createdAt)
-            
-            NotificationCenter.default.post(name: NSNotification.Name("getMessage"), object: self, userInfo: ["chat": chat, "name": name, "createdAt": createdAt, "userId": userId])
         }
     }
     

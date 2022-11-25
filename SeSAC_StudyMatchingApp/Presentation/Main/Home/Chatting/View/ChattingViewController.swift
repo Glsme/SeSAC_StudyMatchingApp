@@ -56,6 +56,7 @@ class ChattingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.fetchChats()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -82,10 +83,6 @@ class ChattingViewController: BaseViewController {
         
         guard let data = viewModel.data else { return }
         setNavigationTitle(data.matchedNick ?? "새싹")
-    }
-    
-    func fetchChats() {
-        
     }
     
     override func bindData() {
@@ -196,6 +193,13 @@ class ChattingViewController: BaseViewController {
                         vc.navigationController?.popToViewController(rootVC, animated: true)
                     }
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.reportButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.postChat("잭님 안녕하세요")
             }
             .disposed(by: disposeBag)
     }

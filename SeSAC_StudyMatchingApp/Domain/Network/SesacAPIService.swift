@@ -89,4 +89,11 @@ final class SesacSignupAPIService {
             completionHandler(statusCode)
         }
     }
+    
+    public func requestPostChat(router: SesacAPIRouter, completionHandler: @escaping (Int) -> Void) {
+        AF.request(router).responseString { response in
+            guard let statusCode = response.response?.statusCode else { return }
+            completionHandler(statusCode)
+        }
+    }
 }

@@ -20,7 +20,7 @@ enum SesacAPIRouter: URLRequestConvertible {
     case myQueueStateDelete
     case studyRequsetPost(uid: String)
     case studyAccept(uid: String)
-    case chatPost(chat: String)
+    case chatPost(chat: String, uid: String)
     
     var baseURL: URL {
         switch self {
@@ -168,14 +168,23 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["otheruid": uid]
         case .studyAccept(let uid):
             return ["otheruid": uid]
-        case .chatPost(let chat):
+        case .chatPost(let chat, _):
             return ["chat": chat]
         }
     }
     
     func asURLRequest() throws -> URLRequest {
-        let url = baseURL
+        var url = baseURL
+        
+        switch self {
+        case .chatPost(_, let uid):
+            url = url.appendingPathComponent(uid)
+        default:
+            break
+        }
+        
         var request = URLRequest(url: url)
+        
         request.method = method
         request.headers = headers
         
