@@ -17,6 +17,7 @@ class ChattingViewController: BaseViewController {
     let viewModel = ChattingViewModel()
     let disposeBag = DisposeBag()
     let backButton = UIBarButtonItem(image: UIImage(named: CommonAssets.backButton.rawValue), style: .done, target: ChattingViewController.self, action: nil)
+    let moreButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .done, target: ChattingViewController.self, action: nil)
     
     lazy var dataSource = RxTableViewSectionedReloadDataSource<SectionOfMessageCell> { [weak self] dataSource, tableView, indexPath, item in
         guard let self = self else { return UITableViewCell() }
@@ -43,6 +44,8 @@ class ChattingViewController: BaseViewController {
         
         navigationItem.leftBarButtonItem = backButton
         navigationItem.leftBarButtonItem?.tintColor = .black
+        navigationItem.rightBarButtonItem = moreButton
+        navigationItem.rightBarButtonItem?.tintColor = .black
         
         guard let data = viewModel.data else { return }
         setNavigationTitle(data.matchedNick ?? "새싹")
@@ -95,7 +98,8 @@ class ChattingViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         Observable.just([
-            SectionOfMessageCell(header: "hi", items: [MessageCell(message: "하이여"), MessageCell(message: "하이여\ndsafsdfasf\nasdfasdf")])
+            SectionOfMessageCell(header: "hi", items: [MessageCell(message: "하이여"),
+                                                       MessageCell(message: "하이여\ndsafsdfasf\nasdfasdf")])
         ])
         .bind(to: mainView.chatTableView.rx.items(dataSource: dataSource))
         .disposed(by: disposeBag)
