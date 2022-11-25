@@ -21,13 +21,31 @@ class ChattingViewController: BaseViewController {
     
     lazy var dataSource = RxTableViewSectionedReloadDataSource<SectionOfMessageCell> { [weak self] dataSource, tableView, indexPath, item in
         guard let self = self else { return UITableViewCell() }
-        guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier) as? YourChatTableViewCell else { return UITableViewCell() }
         
-        cell.talkLabel.text = item.message
-        cell.timeLabel.text = "11:36"
-        
-        return cell
+        if indexPath.row == 0 {
+            guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: DateTableViewCell.reuseIdentifier, for: indexPath) as? DateTableViewCell else { return UITableViewCell() }
+            
+            cell.dateLabel.text = item.message
+            if indexPath.section == 0 {
+                if let data = self.viewModel.data {
+                    cell.matchedTitleLabel.text = "\(data.matchedNick ?? "새싹")님과 매칭되었습니다."
+                }
+                
+                cell.setFirstMatched(true)
+            }
+            
+            return cell
+        } else {
+            guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier) as? YourChatTableViewCell else { return UITableViewCell() }
+            
+            cell.talkLabel.text = item.message
+            cell.timeLabel.text = "11:36"
+            
+            return cell
+        }
     }
+
+
     
     override func loadView() {
         self.view = mainView
@@ -52,6 +70,17 @@ class ChattingViewController: BaseViewController {
     }
     
     override func bindData() {
+        Observable.just([
+            SectionOfMessageCell(header: "hi", items: [MessageCell(message: "11월 24일 목요일"),
+                                                       MessageCell(message: "하이여"),
+                                                       MessageCell(message: "하이여\ndsafsdfasf\nasdfasdf")]),
+            SectionOfMessageCell(header: "hihi", items: [MessageCell(message: "11월 25일 금요일"),
+                                                        MessageCell(message: "안녕"),
+                                                        MessageCell(message: "하세요")])
+        ])
+        .bind(to: mainView.chatTableView.rx.items(dataSource: dataSource))
+        .disposed(by: disposeBag)
+        
         RxKeyboard.instance.visibleHeight
             .skip(1)
             .drive(onNext: { height in
@@ -96,12 +125,5 @@ class ChattingViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-        
-        Observable.just([
-            SectionOfMessageCell(header: "hi", items: [MessageCell(message: "하이여"),
-                                                       MessageCell(message: "하이여\ndsafsdfasf\nasdfasdf")])
-        ])
-        .bind(to: mainView.chatTableView.rx.items(dataSource: dataSource))
-        .disposed(by: disposeBag)
     }
 }

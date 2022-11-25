@@ -12,8 +12,11 @@ import SnapKit
 class ChatView: BaseView {
     lazy var chatTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
+        view.register(DateTableViewCell.self, forCellReuseIdentifier: DateTableViewCell.reuseIdentifier)
         view.register(YourChatTableViewCell.self, forCellReuseIdentifier: YourChatTableViewCell.reuseIdentifier)
         view.register(MyChatTableViewCell.self, forCellReuseIdentifier: MyChatTableViewCell.reuseIdentifier)
+//        view.estimatedRowHeight = 100
+        view.rowHeight = UITableView.automaticDimension
         view.separatorColor = .white
         return view
     }()

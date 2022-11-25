@@ -131,6 +131,7 @@
 		85EF7E70292E5A4F008426AF /* YourChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E6F292E5A4F008426AF /* YourChatTableViewCell.swift */; };
 		85EF7E73292E5A99008426AF /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */; };
 		85EF7E75292E6028008426AF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EF7E74292E6028008426AF /* ChatView.swift */; };
+		85F3CA5C29309FCC007079D8 /* DateTabeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3CA5B29309FCC007079D8 /* DateTabeViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -248,6 +249,7 @@
 		85EF7E6F292E5A4F008426AF /* YourChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChatTableViewCell.swift; sourceTree = "<group>"; };
 		85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
 		85EF7E74292E6028008426AF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		85F3CA5B29309FCC007079D8 /* DateTabeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTabeViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1133,6 +1135,7 @@
 		85EF7E71292E5A58008426AF /* ChatTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				85F3CA5B29309FCC007079D8 /* DateTabeViewCell.swift */,
 				85EF7E6F292E5A4F008426AF /* YourChatTableViewCell.swift */,
 				85EF7E72292E5A99008426AF /* MyChatTableViewCell.swift */,
 			);
@@ -1335,6 +1338,7 @@
 				859921F8291C0086007F96A6 /* UserData.swift in Sources */,
 				85092963292B4CF00074912E /* SesacCardTableViewCell.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
+				85F3CA5C29309FCC007079D8 /* DateTabeViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
 				85992215291CD686007F96A6 /* BirthViewModel.swift in Sources */,
 				85992217291CD6B0007F96A6 /* BirthView.swift in Sources */,
