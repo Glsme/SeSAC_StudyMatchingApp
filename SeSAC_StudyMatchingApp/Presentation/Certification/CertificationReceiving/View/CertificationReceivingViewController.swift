@@ -108,7 +108,7 @@ final class CertificationReceivingViewController: BaseViewController {
                 } else if value <= 50 {
                     vc.mainView.timerLabel.text = "00:\(60-value)"
                 } else {
-                    UserDefaults.standard.removeObject(forKey: "authVerificationID")
+                    UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.authVerificationID.rawValue)
                     vc.timerDisposable?.dispose()
                 }
             })

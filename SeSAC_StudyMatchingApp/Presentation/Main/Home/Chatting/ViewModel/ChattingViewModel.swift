@@ -59,6 +59,7 @@ class ChattingViewModel: CommonViewModel {
     func getChat() {
         guard let data = data else { return }
         guard let uid = data.matchedUid else { return }
+        //yyyyMMddTHHmmssSSZ
         let date: String = "2000-01-01T00:00:00.000Z"
         let api = SesacAPIRouter.chatGet(lastDate: date, uid: uid)
         

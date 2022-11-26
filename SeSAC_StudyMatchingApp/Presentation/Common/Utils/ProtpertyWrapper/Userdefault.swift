@@ -62,3 +62,8 @@ class UserManager {
     @UserDefault(key: "myUid", defaultValue: nil)
     static var myUid: String?
 }
+
+enum UserDefaultsKeys: String {
+    case fcmToken, authVerificationID, first, phoneNumber, authVerificationToken
+    case certificationCode, nickname, birth, email, gender, sesac, myUid
+}
