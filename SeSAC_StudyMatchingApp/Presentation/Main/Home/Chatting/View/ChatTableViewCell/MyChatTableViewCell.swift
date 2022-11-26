@@ -57,7 +57,7 @@ class MyChatTableViewCell: UITableViewCell {
     func setConstraints() {
         talkBubble.snp.makeConstraints { make in
             make.top.bottom.trailing.equalToSuperview().inset(16)
-            make.width.equalToSuperview().multipliedBy(0.71)
+            make.leading.greaterThanOrEqualToSuperview().multipliedBy(0.29)
         }
         
         talkLabel.snp.makeConstraints { make in

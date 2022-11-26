@@ -199,7 +199,7 @@ class ChattingViewController: BaseViewController {
         mainView.reportButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-//                vc.viewModel.postChat("잭님 안녕하세요")
+                vc.viewModel.postChat("잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요")
             }
             .disposed(by: disposeBag)
     }
