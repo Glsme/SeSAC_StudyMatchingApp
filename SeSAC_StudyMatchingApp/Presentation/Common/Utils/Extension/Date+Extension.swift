@@ -10,7 +10,7 @@ import Foundation
 extension Date {
     public func dateCompare(fromDate: Date) -> Bool {
         var validation: Bool = false
-        let result:ComparisonResult = self.compare(fromDate)
+        let result: ComparisonResult = self.compare(fromDate)
         
         switch result {
         case .orderedAscending:
@@ -21,5 +21,11 @@ extension Date {
         }
         
         return validation
+    }
+    
+    public func dateCompareToChat(fromDate: Date) -> ComparisonResult {
+        let result: ComparisonResult = self.compare(fromDate)
+        
+        return result
     }
 }

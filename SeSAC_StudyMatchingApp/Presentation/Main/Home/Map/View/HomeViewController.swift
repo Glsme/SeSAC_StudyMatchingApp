@@ -239,7 +239,7 @@ final class HomeViewController: BaseViewController {
     
     func goToPageAccordingToState() {
         // Test Code: default -> vc.mainView.mapView.region.center로 바꿔야함
-        let center = defaultCoordinate // vc.mainView.mapView.region.center
+        let center = mainView.mapView.region.center // defaultCoordinate // vc.mainView.mapView.region.center
 
         switch mainView.searchButton.image(for: .normal) {
         case UIImage(named: HomeAssets.search.rawValue):

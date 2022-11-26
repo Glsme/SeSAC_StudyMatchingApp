@@ -42,6 +42,13 @@ class ChattingViewModel: CommonViewModel {
         SocketIOManager.shared.establishConnection()
     }
     
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M월 d일 EEEE"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        return dateFormatter
+    }()
+    
     func postChat(_ text: String) {
         guard let data = data else { return }
         guard let uid = data.matchedUid else { return }
@@ -59,7 +66,6 @@ class ChattingViewModel: CommonViewModel {
     func getChat() {
         guard let data = data else { return }
         guard let uid = data.matchedUid else { return }
-        //yyyyMMddTHHmmssSSZ
         let date: String = "2000-01-01T00:00:00.000Z"
         let api = SesacAPIRouter.chatGet(lastDate: date, uid: uid)
         
@@ -68,8 +74,9 @@ class ChattingViewModel: CommonViewModel {
             switch response {
             case .success(let success):
                 print("success!!!!!!!!!!")
-                self.inputChatData(data: success)
                 dump(success)
+                print("success!!!!!!!!!!")
+                self.inputChatData(data: success)
             case .failure(let error):
                 print("error:: \(error)")
             }
@@ -77,11 +84,40 @@ class ChattingViewModel: CommonViewModel {
     }
     
     func inputChatData(data: MyChat) {
+        guard !data.payload.isEmpty else { return }
+        guard var date = data.payload[0].createdAt.toDate() else { return }
+        var sections: [SectionOfMessageCell] = []
+        var dateArray: [Payload] = [data.payload[0]]
+        
         data.payload.forEach {
-            payload.append(MessageCell(message: $0))
+            guard let targetDate = $0.createdAt.toDate() else { return }
+            //가장 오래된 데이터의 날짜 값이 targetDate와 다르면 Section 추가
+            if dateFormatter.string(from: date) != dateFormatter.string(from: targetDate) {
+                guard let nexDate = $0.createdAt.toDate() else { return }
+                date = nexDate
+                
+                dateArray.append($0)
+            }
         }
         
-        chat.onNext([SectionOfMessageCell(header: "1", items: payload)])
+        for date in dateArray {
+            var section: [MessageCell] = []
+            guard let currentDate = date.createdAt.toDate() else { return }
+            
+            section.append(MessageCell(message: date))
+            
+            for chat in data.payload {
+                guard let targetDate = chat.createdAt.toDate() else { return }
+                
+                if dateFormatter.string(from: currentDate) == dateFormatter.string(from: targetDate) {
+                    section.append(MessageCell(message: chat))
+                }
+            }
+            
+            sections.append(SectionOfMessageCell(header: "\(section.count)", items: section))
+        }
+        
+        chat.onNext(sections)
     }
 }
 

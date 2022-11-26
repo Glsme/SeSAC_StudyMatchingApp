@@ -87,6 +87,7 @@
 		8542BE242921F22E00CF799A /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542BE232921F22E00CF799A /* MyInfoViewModel.swift */; };
 		8542BE272921F65800CF799A /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 8542BE262921F65800CF799A /* RxDataSources */; };
 		8542BE2A2921F77F00CF799A /* MyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542BE292921F77F00CF799A /* MyInfoTableViewCell.swift */; };
+		856E1B172932018100CA6AE9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E1B162932018100CA6AE9 /* String+Extension.swift */; };
 		859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */; };
 		859921E4291A788F007F96A6 /* Userdefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E3291A788F007F96A6 /* Userdefault.swift */; };
 		859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E6291A7D7B007F96A6 /* RegexVaidation.swift */; };
@@ -213,6 +214,7 @@
 		8542BE212921F1CF00CF799A /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		8542BE232921F22E00CF799A /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
 		8542BE292921F77F00CF799A /* MyInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoTableViewCell.swift; sourceTree = "<group>"; };
+		856E1B162932018100CA6AE9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		859921E3291A788F007F96A6 /* Userdefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefault.swift; sourceTree = "<group>"; };
 		859921E6291A7D7B007F96A6 /* RegexVaidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexVaidation.swift; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 				85350A852918F70500C70515 /* UIColor+Extension.swift */,
 				859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */,
 				8599221A291D1BBA007F96A6 /* Date+Extension.swift */,
+				856E1B162932018100CA6AE9 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1342,6 +1345,7 @@
 				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
 				85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */,
+				856E1B172932018100CA6AE9 /* String+Extension.swift in Sources */,
 				85092941292772FA0074912E /* SearchSesacData.swift in Sources */,
 				8509294A2929E0D20074912E /* CustomAnnotationView.swift in Sources */,
 				8505154B2924B78700862A2F /* WithdarwViewModel.swift in Sources */,

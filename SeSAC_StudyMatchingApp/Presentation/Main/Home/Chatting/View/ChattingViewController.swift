@@ -27,7 +27,8 @@ class ChattingViewController: BaseViewController {
         if indexPath.row == 0 {
             guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: DateTableViewCell.reuseIdentifier, for: indexPath) as? DateTableViewCell else { return UITableViewCell() }
 
-            cell.dateLabel.text = "날짜"
+            guard let date = item.message.createdAt.toDate() else { return UITableViewCell() }
+            cell.dateLabel.text = self.viewModel.dateFormatter.string(from: date)
             if indexPath.section == 0 {
                 if let data = self.viewModel.data {
                     cell.matchedTitleLabel.text = "\(data.matchedNick ?? "새싹")님과 매칭되었습니다."
@@ -199,7 +200,7 @@ class ChattingViewController: BaseViewController {
         mainView.reportButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-//                vc.viewModel.postChat("잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요잭님 안녕하세요")
+                vc.viewModel.postChat("재용 하이")
             }
             .disposed(by: disposeBag)
     }
