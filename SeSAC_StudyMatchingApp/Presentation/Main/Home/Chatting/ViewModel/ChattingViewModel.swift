@@ -49,6 +49,13 @@ class ChattingViewModel: CommonViewModel {
         return dateFormatter
     }()
     
+    let timeFormatter: DateFormatter = {
+        let timeForatter = DateFormatter()
+        timeForatter.dateFormat = "HH:mm"
+        timeForatter.timeZone = TimeZone(identifier: "UTC+18")
+        return timeForatter
+    }()
+    
     func postChat(_ text: String) {
         guard let data = data else { return }
         guard let uid = data.matchedUid else { return }

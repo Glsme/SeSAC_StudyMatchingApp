@@ -43,14 +43,14 @@ class ChattingViewController: BaseViewController {
                 guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.reuseIdentifier) as? MyChatTableViewCell else { return UITableViewCell() }
                 
                 cell.talkLabel.text = item.message.chat
-                cell.timeLabel.text = "11:36"
+                cell.timeLabel.text = self.viewModel.timeFormatter.string(from: item.message.createdAt.toDate() ?? Date())
                 
                 return cell
             } else {
                 guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier) as? YourChatTableViewCell else { return UITableViewCell() }
                 
                 cell.talkLabel.text = item.message.chat
-                cell.timeLabel.text = "11:36"
+                cell.timeLabel.text = self.viewModel.timeFormatter.string(from: item.message.createdAt.toDate() ?? Date())
                 
                 return cell
             }
@@ -200,7 +200,7 @@ class ChattingViewController: BaseViewController {
         mainView.reportButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                vc.viewModel.postChat("재용 하이")
+                vc.viewModel.postChat("하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이")
             }
             .disposed(by: disposeBag)
     }

@@ -56,7 +56,7 @@ class YourChatTableViewCell: UITableViewCell {
     func setConstraints() {
         talkBubble.snp.makeConstraints { make in
             make.top.bottom.leading.equalToSuperview().inset(16)
-            make.trailing.greaterThanOrEqualToSuperview().multipliedBy(0.29)
+            make.trailing.lessThanOrEqualTo(safeAreaLayoutGuide.snp.trailing).offset(-70)
         }
         
         talkLabel.snp.makeConstraints { make in
@@ -67,7 +67,6 @@ class YourChatTableViewCell: UITableViewCell {
         timeLabel.snp.makeConstraints { make in
             make.leading.equalTo(talkBubble.snp.trailing).offset(8)
             make.bottom.equalTo(talkBubble.snp.bottom)
-            make.trailing.equalToSuperview()
         }
     }
 }
