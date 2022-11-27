@@ -214,7 +214,18 @@ class ChattingViewController: BaseViewController {
         mainView.reportButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                vc.viewModel.postChat("하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이")
+                
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.sendButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                guard let text = vc.mainView.inputTextView.text else { return }
+                vc.viewModel.postChat(text)
+                vc.mainView.inputTextView.text = ""
+                vc.mainView.setButtonisSendMode(false)
+                vc.view.endEditing(true)
             }
             .disposed(by: disposeBag)
     }
