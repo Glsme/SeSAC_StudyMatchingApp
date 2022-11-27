@@ -34,6 +34,7 @@ extension SectionOfMessageCell: SectionModelType {
 
 class ChattingViewModel: CommonViewModel {
     var data: MyQueueState?
+    var mychatData: MyChat = MyChat(payload: [])
     var chat = PublishSubject<[SectionOfMessageCell]>()
     var payload: [MessageCell] = []
     
@@ -80,9 +81,7 @@ class ChattingViewModel: CommonViewModel {
             guard let self = self else { return }
             switch response {
             case .success(let success):
-                print("success!!!!!!!!!!")
-                dump(success)
-                print("success!!!!!!!!!!")
+                self.mychatData = success
                 self.inputChatData(data: success)
             case .failure(let error):
                 print("error:: \(error)")

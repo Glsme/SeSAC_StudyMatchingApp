@@ -65,12 +65,26 @@ class ChattingViewController: BaseViewController {
         super.viewDidLoad()
         
         viewModel.fetchChats()
+        NotificationCenter.default.addObserver(self, selector: #selector(getMessage), name: NSNotification.Name("getMessage"), object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         SocketIOManager.shared.closeConnection()
+    }
+    
+    @objc func getMessage(notification: NSNotification) {
+        let chat = notification.userInfo!["chat"] as! String
+        let createdAt = notification.userInfo!["createdAt"] as! String
+        let id = notification.userInfo!["id"] as! String
+        let to = notification.userInfo!["to"] as! String
+        let from = notification.userInfo!["from"] as! String
+        
+        let value = Payload(id: id, to: to, from: from, chat: chat, createdAt: createdAt)
+        
+        viewModel.mychatData.payload.append(value)
+        viewModel.inputChatData(data: viewModel.mychatData)
     }
     
     override func configureUI() {

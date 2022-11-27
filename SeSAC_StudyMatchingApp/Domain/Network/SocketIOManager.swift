@@ -17,8 +17,8 @@ class SocketIOManager {
     var socket: SocketIOClient
     private init() {
         manager = SocketManager(socketURL: URL(string: APIKey.socket)!, config: [
-            .log(true),
-            .extraHeaders(["idtoken": UserManager.authVerificationToken ?? ""])
+            .forceWebsockets(true)
+//            .extraHeaders(["idtoken": UserManager.authVerificationToken ?? ""])
         ])
         
         socket = manager.defaultSocket
@@ -35,8 +35,19 @@ class SocketIOManager {
         }
         
         //이벤트 수신
-        socket.on("sesac") { dataArray, ack in
+        socket.on("chat") { dataArray, ack in
             print("SESAC RECEIVED", dataArray, ack)
+            
+            let data = dataArray[0] as! NSDictionary
+            let id = data["_id"] as! String
+            let chat = data["chat"] as! String
+            let to = data["to"] as! String
+            let from = data["from"] as! String
+            let createdAt = data["createdAt"] as! String
+            
+//            print("CHECK >>>", chat, createdAt)
+            
+            NotificationCenter.default.post(name: NSNotification.Name("getMessage"), object: self, userInfo: ["chat": chat, "id": id, "to": to, "from": from, "createdAt": createdAt])
         }
     }
     

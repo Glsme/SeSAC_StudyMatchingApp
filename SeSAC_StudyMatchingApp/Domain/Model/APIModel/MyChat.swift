@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - MyChat
 struct MyChat: Codable {
-    let payload: [Payload]
+    var payload: [Payload]
 }
 
 // MARK: - Payload
