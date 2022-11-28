@@ -112,6 +112,12 @@ class ChattingViewController: BaseViewController {
             .bind(to: mainView.chatTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
+        viewModel.chat
+            .bind { value in
+                print(value)
+            }
+            .disposed(by: disposeBag)
+        
         moreButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in

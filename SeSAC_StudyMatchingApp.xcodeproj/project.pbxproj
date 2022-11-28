@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8504C61C2934BB780056D71F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8504C61B2934BB780056D71F /* Realm */; };
+		8504C61E2934BB780056D71F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8504C61D2934BB780056D71F /* RealmSwift */; };
 		850515152922295800862A2F /* GreenSelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515142922295800862A2F /* GreenSelectedButton.swift */; };
 		85051518292243BB00862A2F /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 85051517292243BB00862A2F /* MultiSlider */; };
 		8505151E29228FF200862A2F /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505151D29228FF200862A2F /* ProfileCardView.swift */; };
@@ -274,7 +276,9 @@
 				8542BE272921F65800CF799A /* RxDataSources in Frameworks */,
 				85992230291D50A8007F96A6 /* FirebaseAnalytics in Frameworks */,
 				85992232291D50A8007F96A6 /* FirebaseAuth in Frameworks */,
+				8504C61E2934BB780056D71F /* RealmSwift in Frameworks */,
 				85350A902919083200C70515 /* RxSwift in Frameworks */,
+				8504C61C2934BB780056D71F /* Realm in Frameworks */,
 				85F3CA632930FCD4007079D8 /* SocketIO in Frameworks */,
 				85051518292243BB00862A2F /* MultiSlider in Frameworks */,
 				85350A8E2919083200C70515 /* RxCocoa in Frameworks */,
@@ -1195,6 +1199,8 @@
 				8509293E29276AAE0074912E /* RxKeyboard */,
 				85092952292B28470074912E /* Tabman */,
 				85F3CA622930FCD4007079D8 /* SocketIO */,
+				8504C61B2934BB780056D71F /* Realm */,
+				8504C61D2934BB780056D71F /* RealmSwift */,
 			);
 			productName = SeSAC_StudyMatchingApp;
 			productReference = 85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */;
@@ -1236,6 +1242,7 @@
 				8509293D29276AAE0074912E /* XCRemoteSwiftPackageReference "RxKeyboard" */,
 				85092951292B28470074912E /* XCRemoteSwiftPackageReference "Tabman" */,
 				85F3CA612930FCD4007079D8 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				8504C61A2934BB780056D71F /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 85350A3B2918C1D600C70515 /* Products */;
 			projectDirPath = "";
@@ -1600,6 +1607,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8504C61A2934BB780056D71F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		85051516292243BB00862A2F /* XCRemoteSwiftPackageReference "MultiSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yonat/MultiSlider.git";
@@ -1691,6 +1706,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8504C61B2934BB780056D71F /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8504C61A2934BB780056D71F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		8504C61D2934BB780056D71F /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8504C61A2934BB780056D71F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		85051517292243BB00862A2F /* MultiSlider */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 85051516292243BB00862A2F /* XCRemoteSwiftPackageReference "MultiSlider" */;
