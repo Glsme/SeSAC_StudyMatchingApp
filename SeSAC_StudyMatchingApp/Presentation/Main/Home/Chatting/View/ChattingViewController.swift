@@ -222,7 +222,20 @@ class ChattingViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 guard let text = vc.mainView.inputTextView.text else { return }
-                vc.viewModel.postChat(text)
+                vc.viewModel.postChat(text) { [weak self] statusCode in
+                    guard let self = self else { return }
+                    if ChattingCode(rawValue: statusCode) == .success {
+                        let date = self.viewModel.iso8601DateFormatter.string(from: Date())
+                        
+                        let value = Payload(id: "", to: self.viewModel.data?.matchedUid ?? "", from: UserManager.myUid ?? "", chat: text, createdAt: "\(date)")
+                        
+                        self.viewModel.mychatData.payload.append(value)
+                        self.viewModel.inputChatData(data: self.viewModel.mychatData)
+                    } else {
+                        vc.view.makeToast("전송에 실패했습니다.", position: .center)
+                    }
+                }
+                
                 vc.mainView.inputTextView.text = ""
                 vc.mainView.setButtonisSendMode(false)
                 vc.view.endEditing(true)

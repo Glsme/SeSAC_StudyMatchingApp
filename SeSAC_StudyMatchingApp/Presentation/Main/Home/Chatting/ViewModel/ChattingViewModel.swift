@@ -50,6 +50,12 @@ class ChattingViewModel: CommonViewModel {
         return dateFormatter
     }()
     
+    let iso8601DateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        return dateFormatter
+    }()
+    
     let timeFormatter: DateFormatter = {
         let timeForatter = DateFormatter()
         timeForatter.dateFormat = "HH:mm"
@@ -57,17 +63,13 @@ class ChattingViewModel: CommonViewModel {
         return timeForatter
     }()
     
-    func postChat(_ text: String) {
+    func postChat(_ text: String, completion: @escaping (Int) -> Void) {
         guard let data = data else { return }
         guard let uid = data.matchedUid else { return }
         let api = SesacAPIRouter.chatPost(chat: text, uid: uid)
         
         SesacSignupAPIService.shared.requestPostChat(router: api) { statusCode in
-            if ChattingCode(rawValue: statusCode) == .success {
-                print("Post Success")
-            } else {
-                print(ChattingCode(rawValue: statusCode)!)
-            }
+            completion(statusCode)
         }
     }
     
@@ -113,7 +115,9 @@ class ChattingViewModel: CommonViewModel {
             section.append(MessageCell(message: date))
             
             for chat in data.payload {
-                guard let targetDate = chat.createdAt.toDate() else { return }
+                guard let targetDate = chat.createdAt.toDate() else {
+                    print(chat.createdAt.toDate(), "@@@@@@@@")
+                    return }
                 
                 if dateFormatter.string(from: currentDate) == dateFormatter.string(from: targetDate) {
                     section.append(MessageCell(message: chat))
