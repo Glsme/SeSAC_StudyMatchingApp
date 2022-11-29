@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8504C61C2934BB780056D71F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8504C61B2934BB780056D71F /* Realm */; };
 		8504C61E2934BB780056D71F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8504C61D2934BB780056D71F /* RealmSwift */; };
+		8504C6212934C55F0056D71F /* SesacAPIUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C6202934C55F0056D71F /* SesacAPIUserRouter.swift */; };
+		8504C669293605100056D71F /* ChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C668293605100056D71F /* ChatData.swift */; };
+		8504C66B29361BBD0056D71F /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C66A29361BBD0056D71F /* ChatRepository.swift */; };
 		850515152922295800862A2F /* GreenSelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515142922295800862A2F /* GreenSelectedButton.swift */; };
 		85051518292243BB00862A2F /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 85051517292243BB00862A2F /* MultiSlider */; };
 		8505151E29228FF200862A2F /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505151D29228FF200862A2F /* ProfileCardView.swift */; };
@@ -142,6 +145,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8504C6202934C55F0056D71F /* SesacAPIUserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIUserRouter.swift; sourceTree = "<group>"; };
+		8504C668293605100056D71F /* ChatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatData.swift; sourceTree = "<group>"; };
+		8504C66A29361BBD0056D71F /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 		850515142922295800862A2F /* GreenSelectedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenSelectedButton.swift; sourceTree = "<group>"; };
 		8505151D29228FF200862A2F /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		8505151F2922949400862A2F /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
@@ -290,6 +296,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8504C61F2934C53B0056D71F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				859921FD291C0459007F96A6 /* SesacAPIRouter.swift */,
+				8504C6202934C55F0056D71F /* SesacAPIUserRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8504C665293604630056D71F /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				8504C666293604820056D71F /* Realm */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		8504C666293604820056D71F /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				8504C667293604AB0056D71F /* Model */,
+				8504C66A29361BBD0056D71F /* ChatRepository.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		8504C667293604AB0056D71F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8504C668293605100056D71F /* ChatData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		850515252923633800862A2F /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,6 +546,7 @@
 			isa = PBXGroup;
 			children = (
 				85D341BB291965AC00F27A78 /* SeSAC_StudyMatchingApp.entitlements */,
+				8504C665293604630056D71F /* DataBase */,
 				850515362924063700862A2F /* Domain */,
 				85350A742918DC4D00C70515 /* Resource */,
 				85350A532918C60000C70515 /* Presentation */,
@@ -895,7 +936,7 @@
 		85992200291C0AEE007F96A6 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
-				859921FD291C0459007F96A6 /* SesacAPIRouter.swift */,
+				8504C61F2934C53B0056D71F /* Router */,
 				859921F7291C0086007F96A6 /* UserData.swift */,
 				85092938292635800074912E /* SearchData.swift */,
 				85092940292772FA0074912E /* SearchSesacData.swift */,
@@ -1309,6 +1350,7 @@
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
 				85350A992919129400C70515 /* CertificationRequestViewController.swift in Sources */,
 				8505155C2925149D00862A2F /* SearchViewController.swift in Sources */,
+				8504C669293605100056D71F /* ChatData.swift in Sources */,
 				85092968292B62B70074912E /* SearchTabViewModel.swift in Sources */,
 				850515422924B3A600862A2F /* WithdrawPopupView.swift in Sources */,
 				85EF7E73292E5A99008426AF /* MyChatTableViewCell.swift in Sources */,
@@ -1350,6 +1392,7 @@
 				85350A862918F70500C70515 /* UIColor+Extension.swift in Sources */,
 				8599223E291D6ADB007F96A6 /* HomeViewModel.swift in Sources */,
 				85350A7B2918E2C300C70515 /* Assets.swift in Sources */,
+				8504C66B29361BBD0056D71F /* ChatRepository.swift in Sources */,
 				85350A682918CC9400C70515 /* BaseViewController.swift in Sources */,
 				85350AAB29193B8700C70515 /* UserConfigureView.swift in Sources */,
 				856E1B172932018100CA6AE9 /* String+Extension.swift in Sources */,
@@ -1373,6 +1416,7 @@
 				859921F8291C0086007F96A6 /* UserData.swift in Sources */,
 				85092963292B4CF00074912E /* SesacCardTableViewCell.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
+				8504C6212934C55F0056D71F /* SesacAPIUserRouter.swift in Sources */,
 				85F3CA5C29309FCC007079D8 /* DateTabeViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
 				85992215291CD686007F96A6 /* BirthViewModel.swift in Sources */,
