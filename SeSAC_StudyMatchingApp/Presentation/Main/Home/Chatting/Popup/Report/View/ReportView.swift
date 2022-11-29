@@ -13,6 +13,7 @@ class ReportView: BaseView {
     lazy var popupView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
+        view.layer.cornerRadius = 20
         return view
     }()
     
@@ -105,7 +106,7 @@ class ReportView: BaseView {
         popupView.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview().inset(16)
             make.center.equalTo(safeAreaLayoutGuide.snp.center)
-            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.55)
+            make.height.equalTo(safeAreaLayoutGuide.snp.height).multipliedBy(0.6)
         }
         
         reportButton.snp.makeConstraints { make in
@@ -116,7 +117,7 @@ class ReportView: BaseView {
         reportTextView.snp.makeConstraints { make in
             make.trailing.leading.equalTo(reportButton)
             make.bottom.equalTo(reportButton.snp.top).offset(-24)
-            make.height.equalToSuperview().multipliedBy(0.5)
+            make.height.equalToSuperview().multipliedBy(0.35)
         }
         
         firstButton.snp.makeConstraints { make in

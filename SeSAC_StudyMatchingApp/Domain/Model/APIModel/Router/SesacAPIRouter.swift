@@ -22,6 +22,7 @@ enum SesacAPIRouter: URLRequestConvertible {
     case studyAccept(uid: String)
     case chatPost(chat: String, uid: String)
     case chatGet(lastDate: String, uid: String)
+    case studyDodge(uid: String)
     
     var baseURL: URL {
         switch self {
@@ -47,6 +48,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             return URL(string: "http://api.sesac.co.kr:1210/v1/chat")!
         case .chatGet:
             return URL(string: "http://api.sesac.co.kr:1210/v1/chat")!
+        case .studyDodge:
+            return URL(string: "http://api.sesac.co.kr:1210/v1/queue/dodge")!
         }
     }
     
@@ -64,6 +67,7 @@ enum SesacAPIRouter: URLRequestConvertible {
         case .studyAccept: return .post
         case .chatPost: return .post
         case .chatGet: return .get
+        case .studyDodge: return .post
         }
     }
     
@@ -137,6 +141,11 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["Content-Type": "application/x-www-form-urlencoded",
                     "accept": "*/*",
                     "idtoken": idToken]
+        case .studyDodge:
+            guard let idToken = UserManager.authVerificationToken else { return ["": ""] }
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "accept": "*/*",
+                    "idtoken": idToken]
         }
     }
     
@@ -181,6 +190,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["chat": chat]
         case .chatGet(let date, _):
             return ["lastchatDate": date]
+        case .studyDodge(let uid):
+            return ["otheruid": uid]
         }
     }
     

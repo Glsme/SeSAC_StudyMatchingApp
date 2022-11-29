@@ -22,10 +22,7 @@ class CancelViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-    
-    override func configureUI() {
-        mainView.setPopupText("스터디를 취소하겠습니까?", subTitle: "스터디를 취소하시면 패널티가 부과됩니다.")
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     }
     
     override func bindData() {
@@ -39,7 +36,13 @@ class CancelViewController: BaseViewController {
         mainView.okButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                
+                vc.viewModel.requestDodge(uid: vc.viewModel.uid) {
+                    vc.dismiss(animated: false) {
+                        let chatVC = ChattingViewController()
+                        guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+                        vc.navigationController?.popViewController(animated: false)
+                    }
+                }
             }
             .disposed(by: disposebag)
     }

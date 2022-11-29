@@ -136,10 +136,6 @@ class ChattingViewController: BaseViewController {
                     vc.mainView.topButtonStackView.snp.updateConstraints { make in
                         make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top)
                     }
-                    //
-                    //                    UIView.animate(withDuration: 0.3) {
-                    //                        vc.view.layoutIfNeeded()
-                    //                    }
                 } else {
                     vc.mainView.topBGView.isHidden = vc.moreButtonToggle
                     
@@ -227,9 +223,44 @@ class ChattingViewController: BaseViewController {
         mainView.reportButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
+                vc.mainView.topBGView.isHidden = vc.moreButtonToggle
+                
+                vc.mainView.topButtonStackView.snp.updateConstraints { make in
+                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top)
+                }
+                
+                vc.moreButtonToggle.toggle()
+                
                 let reportVC = ReportViewController()
-                reportVC.modalPresentationStyle = .currentContext
-                vc.transViewController(ViewController: reportVC, type: .presentFullScreenWithoutAni)
+                reportVC.modalPresentationStyle = .overCurrentContext
+                vc.present(reportVC, animated: false)
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.cancelButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.mainView.topBGView.isHidden = vc.moreButtonToggle
+                
+                vc.mainView.topButtonStackView.snp.updateConstraints { make in
+                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top)
+                }
+                
+                vc.moreButtonToggle.toggle()
+                
+                let cancelVC = CancelViewController()
+                
+                guard let data = vc.viewModel.data else { return }
+                
+                if data.dodged == 1 || data.reviewed == 1 {
+                    cancelVC.mainView.setPopupText("스터디를 종료하시겠습니까?", subTitle: "상대방이 스터디를 취소했기 때문에 패널티가 부과되지 않습니다.")
+                } else {
+                    cancelVC.mainView.setPopupText("스터디를 취소하시겠습니까?", subTitle: "스터디를 취소하시면 패널티가 부과됩니다.")
+                }
+                
+                cancelVC.viewModel.uid = data.matchedUid ?? ""
+                cancelVC.modalPresentationStyle = .overCurrentContext
+                vc.present(cancelVC, animated: false)
             }
             .disposed(by: disposeBag)
         

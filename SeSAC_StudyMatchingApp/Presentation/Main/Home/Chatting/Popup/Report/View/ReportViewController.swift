@@ -21,8 +21,7 @@ class ReportViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
-        view.alpha = 0.5
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     }
     
     override func bindData() {

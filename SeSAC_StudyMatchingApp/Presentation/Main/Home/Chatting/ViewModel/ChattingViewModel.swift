@@ -190,9 +190,11 @@ class ChattingViewModel: CommonViewModel {
     
     func requestMyQueueState(completion: @escaping (MyQueueState) -> Void) {
         let api = SesacAPIRouter.myQueueStateGet
-        SesacSignupAPIService.shared.requestMyStateData(router: api) { response in
+        SesacSignupAPIService.shared.requestMyStateData(router: api) { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let success):
+                self.data = success
                 completion(success)
             case .failure(let error):
                 print("error: \(error)")
