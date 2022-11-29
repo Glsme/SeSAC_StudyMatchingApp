@@ -121,6 +121,13 @@ class ChattingViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
 //                print("tap moreButton, \(vc.moreButtonToggle)")
+                vc.viewModel.requestMyQueueState { result in
+                    if result.matched == 1 {
+                        vc.mainView.setMatchedButtonText(true)
+                    } else if result.dodged == 1 || result.reviewed == 1 {
+                        vc.mainView.setMatchedButtonText(false)
+                    }
+                }
                 
                 if vc.moreButtonToggle {
                     vc.mainView.topBGView.isHidden = vc.moreButtonToggle

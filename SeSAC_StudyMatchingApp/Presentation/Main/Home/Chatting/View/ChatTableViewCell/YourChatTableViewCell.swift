@@ -43,7 +43,7 @@ class YourChatTableViewCell: UITableViewCell {
     
     let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d HH:mm"
+        dateFormatter.dateFormat = "M/d a HH:mm"
         dateFormatter.timeZone = TimeZone(identifier: "UTC+18")
         dateFormatter.locale = Locale(identifier: "ko_KR")
         return dateFormatter
@@ -72,7 +72,7 @@ class YourChatTableViewCell: UITableViewCell {
     func setConstraints() {
         talkBubble.snp.makeConstraints { make in
             make.top.bottom.leading.equalToSuperview().inset(16)
-            make.trailing.lessThanOrEqualTo(safeAreaLayoutGuide.snp.trailing).offset(-70)
+            make.trailing.lessThanOrEqualTo(safeAreaLayoutGuide.snp.trailing).offset(-100)
         }
         
         talkLabel.snp.makeConstraints { make in

@@ -49,6 +49,7 @@ class ChattingViewModel: CommonViewModel {
     
     let iso8601DateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         return dateFormatter
     }()
@@ -149,10 +150,10 @@ class ChattingViewModel: CommonViewModel {
             sections.append(SectionOfMessageCell(header: "\(section.count)", items: section))
         }
         
+        mychatData = data
         chat.onNext(sections)
         
         guard let itemsCount = sections.last?.items.count else { return }
-        
         completion(sections.count - 1, itemsCount - 1)
     }
     
@@ -185,6 +186,18 @@ class ChattingViewModel: CommonViewModel {
         }
         
         ChatRepository.shared.chatWrite(task, chatData: chatData)
+    }
+    
+    func requestMyQueueState(completion: @escaping (MyQueueState) -> Void) {
+        let api = SesacAPIRouter.myQueueStateGet
+        SesacSignupAPIService.shared.requestMyStateData(router: api) { response in
+            switch response {
+            case .success(let success):
+                completion(success)
+            case .failure(let error):
+                print("error: \(error)")
+            }
+        }
     }
 }
 

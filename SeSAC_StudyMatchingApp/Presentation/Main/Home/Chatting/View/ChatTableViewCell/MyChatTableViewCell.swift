@@ -73,7 +73,7 @@ class MyChatTableViewCell: UITableViewCell {
     func setConstraints() {
         talkBubble.snp.makeConstraints { make in
             make.top.bottom.trailing.equalToSuperview().inset(16)
-            make.leading.greaterThanOrEqualTo(safeAreaLayoutGuide.snp.leading).offset(70)
+            make.leading.greaterThanOrEqualTo(safeAreaLayoutGuide.snp.leading).offset(100)
         }
         
         talkLabel.snp.makeConstraints { make in

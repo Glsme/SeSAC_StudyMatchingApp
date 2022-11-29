@@ -15,7 +15,7 @@ class ChatView: BaseView {
         view.register(DateTableViewCell.self, forCellReuseIdentifier: DateTableViewCell.reuseIdentifier)
         view.register(YourChatTableViewCell.self, forCellReuseIdentifier: YourChatTableViewCell.reuseIdentifier)
         view.register(MyChatTableViewCell.self, forCellReuseIdentifier: MyChatTableViewCell.reuseIdentifier)
-//        view.estimatedRowHeight = 100
+        //        view.estimatedRowHeight = 100
         view.rowHeight = UITableView.automaticDimension
         view.separatorColor = .white
         return view
@@ -176,6 +176,36 @@ class ChatView: BaseView {
             sendButton.setImage(UIImage(named: ChattingAssets.sendFillIcon.rawValue), for: .normal)
         } else {
             sendButton.setImage(UIImage(named: ChattingAssets.sendIcon.rawValue), for: .normal)
+        }
+    }
+    
+    func setMatchedButtonText(_ matched: Bool) {
+        if matched {
+            var config = UIButton.Configuration.tinted()
+            var titleAttr = AttributedString.init("스터디 취소")
+            titleAttr.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14)
+            titleAttr.foregroundColor = .black
+            config.attributedTitle = titleAttr
+            
+            config.image = UIImage(named: ChattingAssets.cancelButton.rawValue)
+            config.imagePadding = 5
+            config.imagePlacement = .top
+            config.baseBackgroundColor = .white
+            
+            cancelButton.configuration = config
+        } else {
+            var config = UIButton.Configuration.tinted()
+            var titleAttr = AttributedString.init("스터디 종료")
+            titleAttr.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14)
+            titleAttr.foregroundColor = .black
+            config.attributedTitle = titleAttr
+            
+            config.image = UIImage(named: ChattingAssets.cancelButton.rawValue)
+            config.imagePadding = 5
+            config.imagePlacement = .top
+            config.baseBackgroundColor = .white
+            
+            cancelButton.configuration = config
         }
     }
 }

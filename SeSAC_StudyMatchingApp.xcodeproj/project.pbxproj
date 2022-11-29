@@ -12,6 +12,9 @@
 		8504C6212934C55F0056D71F /* SesacAPIUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C6202934C55F0056D71F /* SesacAPIUserRouter.swift */; };
 		8504C669293605100056D71F /* ChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C668293605100056D71F /* ChatData.swift */; };
 		8504C66B29361BBD0056D71F /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C66A29361BBD0056D71F /* ChatRepository.swift */; };
+		8504C67329366E8B0056D71F /* ChattingPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C67229366E8B0056D71F /* ChattingPopupViewModel.swift */; };
+		8504C67529366EA80056D71F /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C67429366EA80056D71F /* ReportViewController.swift */; };
+		8504C67729366EDB0056D71F /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C67629366EDB0056D71F /* ReportView.swift */; };
 		850515152922295800862A2F /* GreenSelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515142922295800862A2F /* GreenSelectedButton.swift */; };
 		85051518292243BB00862A2F /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 85051517292243BB00862A2F /* MultiSlider */; };
 		8505151E29228FF200862A2F /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505151D29228FF200862A2F /* ProfileCardView.swift */; };
@@ -148,6 +151,9 @@
 		8504C6202934C55F0056D71F /* SesacAPIUserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIUserRouter.swift; sourceTree = "<group>"; };
 		8504C668293605100056D71F /* ChatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatData.swift; sourceTree = "<group>"; };
 		8504C66A29361BBD0056D71F /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
+		8504C67229366E8B0056D71F /* ChattingPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingPopupViewModel.swift; sourceTree = "<group>"; };
+		8504C67429366EA80056D71F /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		8504C67629366EDB0056D71F /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		850515142922295800862A2F /* GreenSelectedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenSelectedButton.swift; sourceTree = "<group>"; };
 		8505151D29228FF200862A2F /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		8505151F2922949400862A2F /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
@@ -328,6 +334,56 @@
 				8504C668293605100056D71F /* ChatData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8504C66C29366C050056D71F /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				8504C67029366CE40056D71F /* ViewModel */,
+				8504C66F29366CD70056D71F /* review */,
+				8504C66E29366CCF0056D71F /* cancel */,
+				8504C66D29366CBF0056D71F /* Report */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		8504C66D29366CBF0056D71F /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				8504C67129366CF00056D71F /* View */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		8504C66E29366CCF0056D71F /* cancel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cancel;
+			sourceTree = "<group>";
+		};
+		8504C66F29366CD70056D71F /* review */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = review;
+			sourceTree = "<group>";
+		};
+		8504C67029366CE40056D71F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8504C67229366E8B0056D71F /* ChattingPopupViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8504C67129366CF00056D71F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8504C67429366EA80056D71F /* ReportViewController.swift */,
+				8504C67629366EDB0056D71F /* ReportView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		850515252923633800862A2F /* CustomView */ = {
@@ -1167,6 +1223,7 @@
 		85EF7E68292DFA5D008426AF /* Chatting */ = {
 			isa = PBXGroup;
 			children = (
+				8504C66C29366C050056D71F /* Popup */,
 				85EF7E6A292DFA79008426AF /* ViewModel */,
 				85EF7E69292DFA73008426AF /* View */,
 			);
@@ -1373,6 +1430,7 @@
 				8509296F292BBBD60074912E /* SearchedViewModel.swift in Sources */,
 				85F3CA662930FD9A007079D8 /* APIKey.swift in Sources */,
 				85350A662918CC1000C70515 /* BaseViewProtocol.swift in Sources */,
+				8504C67529366EA80056D71F /* ReportViewController.swift in Sources */,
 				850515152922295800862A2F /* GreenSelectedButton.swift in Sources */,
 				85350A6C2918D08C00C70515 /* BaseCollectionViewCell.swift in Sources */,
 				8505156029251FF100862A2F /* TagCell.swift in Sources */,
@@ -1412,10 +1470,12 @@
 				85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */,
 				859921FC291C01D1007F96A6 /* SesacAPIService.swift in Sources */,
 				85F3CA5E2930F940007079D8 /* MyChat.swift in Sources */,
+				8504C67729366EDB0056D71F /* ReportView.swift in Sources */,
 				85350AB4291944DD00C70515 /* CertificationReceivingView.swift in Sources */,
 				859921F8291C0086007F96A6 /* UserData.swift in Sources */,
 				85092963292B4CF00074912E /* SesacCardTableViewCell.swift in Sources */,
 				85350A6A2918D06800C70515 /* OnboardingCollectionViewCell.swift in Sources */,
+				8504C67329366E8B0056D71F /* ChattingPopupViewModel.swift in Sources */,
 				8504C6212934C55F0056D71F /* SesacAPIUserRouter.swift in Sources */,
 				85F3CA5C29309FCC007079D8 /* DateTabeViewCell.swift in Sources */,
 				85350A972919125E00C70515 /* CertificationRequsetView.swift in Sources */,
