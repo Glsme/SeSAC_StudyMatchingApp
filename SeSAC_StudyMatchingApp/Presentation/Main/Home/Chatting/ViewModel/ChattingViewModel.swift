@@ -81,7 +81,7 @@ class ChattingViewModel: CommonViewModel {
             switch response {
             case .success(let success):
                 self.mychatData = success
-                self.inputChatData(data: success)
+                self.inputChatData(data: success) { _, _ in }
 //                self.pushAllData(success)
             case .failure(let error):
                 print("error:: \(error)")
@@ -89,7 +89,7 @@ class ChattingViewModel: CommonViewModel {
         }
     }
     
-    func inputChatData(data: MyChat) {
+    func inputChatData(data: MyChat, completion: @escaping (Int, Int) -> Void) {
         guard !data.payload.isEmpty else { return }
         guard var date = data.payload[0].createdAt.toDate() else { return }
         var sections: [SectionOfMessageCell] = []
@@ -124,6 +124,10 @@ class ChattingViewModel: CommonViewModel {
         }
         
         chat.onNext(sections)
+        
+        guard let itemsCount = sections.last?.items.count else { return }
+        
+        completion(sections.count - 1, itemsCount - 1)
     }
     
     func pushAllData(_ chat: MyChat) {

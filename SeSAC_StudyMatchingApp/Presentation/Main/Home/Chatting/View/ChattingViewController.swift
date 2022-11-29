@@ -26,7 +26,7 @@ class ChattingViewController: BaseViewController {
         
         if indexPath.row == 0 {
             guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: DateTableViewCell.reuseIdentifier, for: indexPath) as? DateTableViewCell else { return UITableViewCell() }
-
+            
             guard let date = item.message.createdAt.toDate() else { return UITableViewCell() }
             cell.dateLabel.text = self.viewModel.dateFormatter.string(from: date)
             if indexPath.section == 0 {
@@ -89,7 +89,7 @@ class ChattingViewController: BaseViewController {
         let value = Payload(id: id, to: to, from: from, chat: chat, createdAt: createdAt)
         
         viewModel.mychatData.payload.append(value)
-        viewModel.inputChatData(data: viewModel.mychatData)
+        viewModel.inputChatData(data: viewModel.mychatData) { _, _ in }
     }
     
     override func configureUI() {
@@ -128,10 +128,10 @@ class ChattingViewController: BaseViewController {
                     vc.mainView.topButtonStackView.snp.updateConstraints { make in
                         make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top)
                     }
-//
-//                    UIView.animate(withDuration: 0.3) {
-//                        vc.view.layoutIfNeeded()
-//                    }
+                    //
+                    //                    UIView.animate(withDuration: 0.3) {
+                    //                        vc.view.layoutIfNeeded()
+                    //                    }
                 } else {
                     vc.mainView.topBGView.isHidden = vc.moreButtonToggle
                     
@@ -175,9 +175,9 @@ class ChattingViewController: BaseViewController {
                     make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(height - extra + 16)
                 }
                 
-//                self.mainView.chatTableView.snp.updateConstraints { make in
-//                    make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(height - extra)
-//                }
+                //                self.mainView.chatTableView.snp.updateConstraints { make in
+                //                    make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(height - extra)
+                //                }
                 
                 UIView.animate(withDuration: 0.5) {
                     self.view.layoutIfNeeded()
@@ -197,9 +197,9 @@ class ChattingViewController: BaseViewController {
                     make.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(16)
                 }
                 
-//                vc.mainView.chatTableView.snp.updateConstraints { make in
-//                    make.bottom.equalTo(vc.mainView.userInputView.snp.top).inset(16)
-//                }
+                //                vc.mainView.chatTableView.snp.updateConstraints { make in
+                //                    make.bottom.equalTo(vc.mainView.userInputView.snp.top).inset(16)
+                //                }
             })
             .disposed(by: disposeBag)
         
@@ -235,7 +235,9 @@ class ChattingViewController: BaseViewController {
                         let value = Payload(id: "", to: self.viewModel.data?.matchedUid ?? "", from: UserManager.myUid ?? "", chat: text, createdAt: "\(date)")
                         
                         self.viewModel.mychatData.payload.append(value)
-                        self.viewModel.inputChatData(data: self.viewModel.mychatData)
+                        self.viewModel.inputChatData(data: self.viewModel.mychatData) { section, row in
+                            vc.mainView.chatTableView.scrollToRow(at: IndexPath(row: row, section: section), at: .bottom, animated: false)
+                        }
                         
                         self.viewModel.savePostData(value)
                     } else {
