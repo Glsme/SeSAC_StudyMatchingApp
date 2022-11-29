@@ -15,6 +15,7 @@
 		8504C67329366E8B0056D71F /* ChattingPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C67229366E8B0056D71F /* ChattingPopupViewModel.swift */; };
 		8504C67529366EA80056D71F /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C67429366EA80056D71F /* ReportViewController.swift */; };
 		8504C67729366EDB0056D71F /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C67629366EDB0056D71F /* ReportView.swift */; };
+		8504C67A293682340056D71F /* CancelVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504C679293682340056D71F /* CancelVIewController.swift */; };
 		850515152922295800862A2F /* GreenSelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850515142922295800862A2F /* GreenSelectedButton.swift */; };
 		85051518292243BB00862A2F /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 85051517292243BB00862A2F /* MultiSlider */; };
 		8505151E29228FF200862A2F /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505151D29228FF200862A2F /* ProfileCardView.swift */; };
@@ -154,6 +155,7 @@
 		8504C67229366E8B0056D71F /* ChattingPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingPopupViewModel.swift; sourceTree = "<group>"; };
 		8504C67429366EA80056D71F /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		8504C67629366EDB0056D71F /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		8504C679293682340056D71F /* CancelVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelVIewController.swift; sourceTree = "<group>"; };
 		850515142922295800862A2F /* GreenSelectedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenSelectedButton.swift; sourceTree = "<group>"; };
 		8505151D29228FF200862A2F /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		8505151F2922949400862A2F /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		8504C66E29366CCF0056D71F /* cancel */ = {
 			isa = PBXGroup;
 			children = (
+				8504C678293682250056D71F /* View */,
 			);
 			path = cancel;
 			sourceTree = "<group>";
@@ -382,6 +385,14 @@
 			children = (
 				8504C67429366EA80056D71F /* ReportViewController.swift */,
 				8504C67629366EDB0056D71F /* ReportView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8504C678293682250056D71F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8504C679293682340056D71F /* CancelVIewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1402,6 +1413,7 @@
 				85992210291CCCD3007F96A6 /* NicknameViewModel.swift in Sources */,
 				8505155A2925149300862A2F /* SeachView.swift in Sources */,
 				85051529292367BC00862A2F /* CustomStudyView.swift in Sources */,
+				8504C67A293682340056D71F /* CancelVIewController.swift in Sources */,
 				85E3ABB4292216FE00F890AF /* ManagementViewModel.swift in Sources */,
 				85EF7E6C292DFA82008426AF /* ChattingViewController.swift in Sources */,
 				85350A5A2918C81600C70515 /* OnboardingView.swift in Sources */,
