@@ -82,7 +82,7 @@ class ChattingViewModel: CommonViewModel {
             case .success(let success):
                 self.mychatData = success
                 self.inputChatData(data: success)
-                self.pushAllData(success)
+//                self.pushAllData(success)
             case .failure(let error):
                 print("error:: \(error)")
             }
@@ -129,7 +129,7 @@ class ChattingViewModel: CommonViewModel {
     func pushAllData(_ chat: MyChat) {
         guard let uid = data?.matchedUid else { return }
         
-        var chatArray = List<ChatListData>()
+        let chatArray = List<ChatListData>()
         
         for item in chat.payload {
             let chat = ChatListData(id: item.id, to: item.to, from: item.from, chat: item.chat, createdAt: item.createdAt)
@@ -150,7 +150,6 @@ class ChattingViewModel: CommonViewModel {
         for item in ChatRepository.shared.localRealm.objects(ChatData.self) {
             if item.uid == uid {
                 chatData = item
-                
                 break
             }
         }

@@ -11,10 +11,9 @@ import RealmSwift
 class ChatData: Object {
     private override init() { }
     
-    @Persisted var uid: String
     @Persisted var chatList: List<ChatListData>
     
-    @Persisted(primaryKey: true) var objectId: ObjectId
+    @Persisted(primaryKey: true) var uid: String
     
     convenience init(uid: String, chatList: List<ChatListData>) {
         self.init()
