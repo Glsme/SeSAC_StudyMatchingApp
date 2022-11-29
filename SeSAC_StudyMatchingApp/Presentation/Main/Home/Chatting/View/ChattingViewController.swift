@@ -120,7 +120,7 @@ class ChattingViewController: BaseViewController {
         moreButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                print("tap moreButton, \(vc.moreButtonToggle)")
+//                print("tap moreButton, \(vc.moreButtonToggle)")
                 
                 if vc.moreButtonToggle {
                     vc.mainView.topBGView.isHidden = vc.moreButtonToggle
@@ -236,7 +236,7 @@ class ChattingViewController: BaseViewController {
                         
                         self.viewModel.mychatData.payload.append(value)
                         self.viewModel.inputChatData(data: self.viewModel.mychatData) { section, row in
-                            vc.mainView.chatTableView.scrollToRow(at: IndexPath(row: row, section: section), at: .bottom, animated: false)
+//                            vc.mainView.chatTableView.scrollToRow(at: IndexPath(row: row, section: section), at: .bottom, animated: false)
                         }
                         
                         self.viewModel.savePostData(value)

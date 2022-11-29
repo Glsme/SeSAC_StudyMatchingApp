@@ -78,15 +78,15 @@ class ChattingViewModel: CommonViewModel {
         guard let uid = data.matchedUid else { return }
         
         tasks = ChatRepository.shared.fetchChatData(uid: uid)
+        var date: String = "2000-01-01T00:00:00.000Z"
+        if let task = tasks.first {
+            let chatData = transChatDataToMyChat(task)
+            inputChatData(data: chatData) { _, _ in }
+            
+            guard let targetDateString = chatData.payload.last?.createdAt else { return }
+            date = targetDateString
+        }
         
-        guard let task = tasks.first else { return }
-
-        let chatData = transChatDataToMyChat(task)
-        inputChatData(data: chatData) { _, _ in }
-        
-        guard let targetDateString = chatData.payload.last?.createdAt else { return }
-        
-        let date: String = targetDateString
         print("last date is \(date)")
         let api = SesacAPIRouter.chatGet(lastDate: date, uid: uid)
         
