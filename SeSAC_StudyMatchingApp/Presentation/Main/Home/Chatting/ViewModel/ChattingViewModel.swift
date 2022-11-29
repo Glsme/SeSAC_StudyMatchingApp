@@ -33,7 +33,9 @@ class ChattingViewModel: CommonViewModel {
     var data: MyQueueState?
     var mychatData: MyChat = MyChat(payload: [])
     var chat = PublishSubject<[SectionOfMessageCell]>()
-    var payload: [MessageCell] = []
+    var payloadArray: [Payload] = []
+    var sections: [SectionOfMessageCell] = []
+    var tasks: Results<ChatData>!
     
     func fetchChats() {
         getChat()
@@ -73,7 +75,17 @@ class ChattingViewModel: CommonViewModel {
     func getChat() {
         guard let data = data else { return }
         guard let uid = data.matchedUid else { return }
-        let date: String = "2000-01-01T00:00:00.000Z"
+        
+        tasks = ChatRepository.shared.fetchChatData(uid: uid)
+        
+        guard let task = tasks.first else { return }
+
+        let chatData = transChatDataToMyChat(task)
+        inputChatData(data: chatData) { _, _ in }
+        
+        guard let targetDateString = chatData.payload.last?.createdAt else { return }
+        
+        let date: String = targetDateString
         let api = SesacAPIRouter.chatGet(lastDate: date, uid: uid)
         
         SesacSignupAPIService.shared.requestGetChat(router: api) { [weak self] response in
@@ -89,11 +101,22 @@ class ChattingViewModel: CommonViewModel {
         }
     }
     
+    func transChatDataToMyChat(_ chatData: ChatData) -> MyChat {
+        var mychat = MyChat(payload: [])
+        
+        chatData.chatList.forEach {
+            let payload: Payload = Payload(id: $0.id, to: $0.to, from: $0.from, chat: $0.chat, createdAt: $0.createdAt)
+            
+            mychat.payload.append(payload)
+        }
+        
+        return mychat
+    }
+    
     func inputChatData(data: MyChat, completion: @escaping (Int, Int) -> Void) {
         guard !data.payload.isEmpty else { return }
         guard var date = data.payload[0].createdAt.toDate() else { return }
-        var sections: [SectionOfMessageCell] = []
-        var dateArray: [Payload] = [data.payload[0]]
+        payloadArray.append(data.payload[0])
         
         data.payload.forEach {
             guard let targetDate = $0.createdAt.toDate() else { return }
@@ -102,11 +125,11 @@ class ChattingViewModel: CommonViewModel {
                 guard let nexDate = $0.createdAt.toDate() else { return }
                 date = nexDate
                 
-                dateArray.append($0)
+                payloadArray.append($0)
             }
         }
         
-        for date in dateArray {
+        for date in payloadArray {
             var section: [MessageCell] = []
             guard let currentDate = date.createdAt.toDate() else { return }
             

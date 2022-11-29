@@ -17,6 +17,10 @@ class ChatRepository {
     
     var primaryKey: ObjectId?
     
+    func fetchChatData(uid: String) -> Results<ChatData> {
+        return localRealm.objects(ChatData.self).filter("uid == %@", uid)
+    }
+    
     func write(_ task: ChatData) {
         try! localRealm.write {
             localRealm.add(task)
