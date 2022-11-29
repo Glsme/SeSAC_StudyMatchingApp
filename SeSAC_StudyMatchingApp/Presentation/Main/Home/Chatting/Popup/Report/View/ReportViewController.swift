@@ -7,9 +7,13 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 class ReportViewController: BaseViewController {
     let mainView = ReportView()
     let viewModel = ChattingViewModel()
+    let disposebag = DisposeBag()
     
     override func loadView() {
         self.view = mainView
@@ -17,6 +21,16 @@ class ReportViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .black
+        view.alpha = 0.5
+    }
+    
+    override func bindData() {
+        mainView.closeButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.dismiss(animated: false)
+            }
+            .disposed(by: disposebag)
     }
 }

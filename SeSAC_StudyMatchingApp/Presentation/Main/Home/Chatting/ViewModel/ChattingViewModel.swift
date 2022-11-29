@@ -77,7 +77,7 @@ class ChattingViewModel: CommonViewModel {
         guard let uid = data.matchedUid else { return }
         
         tasks = ChatRepository.shared.fetchChatData(uid: uid)
-        var date: String = tasks.first?.chatList.first?.createdAt ?? "2000-01-01T00:00:00.000Z"
+        let date: String = tasks.first?.chatList.first?.createdAt ?? "2000-01-01T00:00:00.000Z"
         
         print("last date is \(date)")
         let api = SesacAPIRouter.chatGet(lastDate: date, uid: uid)
