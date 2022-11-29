@@ -57,8 +57,9 @@ class ChattingViewModel: CommonViewModel {
     
     let timeFormatter: DateFormatter = {
         let timeForatter = DateFormatter()
-        timeForatter.dateFormat = "HH:mm"
+        timeForatter.dateFormat = "a HH:mm"
         timeForatter.timeZone = TimeZone(identifier: "UTC+18")
+        timeForatter.locale = Locale(identifier: "ko_KR")
         return timeForatter
     }()
     
@@ -86,6 +87,7 @@ class ChattingViewModel: CommonViewModel {
         guard let targetDateString = chatData.payload.last?.createdAt else { return }
         
         let date: String = targetDateString
+        print("last date is \(date)")
         let api = SesacAPIRouter.chatGet(lastDate: date, uid: uid)
         
         SesacSignupAPIService.shared.requestGetChat(router: api) { [weak self] response in

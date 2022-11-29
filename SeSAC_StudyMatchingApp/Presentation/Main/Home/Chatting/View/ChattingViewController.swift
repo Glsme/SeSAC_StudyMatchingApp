@@ -45,14 +45,14 @@ class ChattingViewController: BaseViewController {
                 guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.reuseIdentifier) as? MyChatTableViewCell else { return UITableViewCell() }
                 
                 cell.talkLabel.text = item.message.chat
-                cell.timeLabel.text = self.viewModel.timeFormatter.string(from: item.message.createdAt.toDate() ?? Date())
+                cell.setTimeText(item.message.createdAt)
                 
                 return cell
             } else {
                 guard let cell = self.mainView.chatTableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier) as? YourChatTableViewCell else { return UITableViewCell() }
                 
                 cell.talkLabel.text = item.message.chat
-                cell.timeLabel.text = self.viewModel.timeFormatter.string(from: item.message.createdAt.toDate() ?? Date())
+                cell.setTimeText(item.message.createdAt)
                 
                 return cell
             }
@@ -67,7 +67,7 @@ class ChattingViewController: BaseViewController {
         super.viewDidLoad()
         
         //MARK: Realm URL
-        print("RealmURL: \(ChatRepository.shared.localRealm.configuration.fileURL!)")
+//        print("RealmURL: \(ChatRepository.shared.localRealm.configuration.fileURL!)")
         
         viewModel.fetchChats()
         NotificationCenter.default.addObserver(self, selector: #selector(getMessage), name: NSNotification.Name("getMessage"), object: nil)

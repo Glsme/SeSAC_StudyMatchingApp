@@ -33,6 +33,22 @@ class YourChatTableViewCell: UITableViewCell {
         return view
     }()
     
+    let timeFormatter: DateFormatter = {
+        let timeForatter = DateFormatter()
+        timeForatter.dateFormat = "a HH:mm"
+        timeForatter.timeZone = TimeZone(identifier: "UTC+18")
+        timeForatter.locale = Locale(identifier: "ko_KR")
+        return timeForatter
+    }()
+    
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M/d HH:mm"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC+18")
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        return dateFormatter
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -67,6 +83,21 @@ class YourChatTableViewCell: UITableViewCell {
         timeLabel.snp.makeConstraints { make in
             make.leading.equalTo(talkBubble.snp.trailing).offset(8)
             make.bottom.equalTo(talkBubble.snp.bottom)
+        }
+    }
+    
+    func setTimeText(_ text: String) {
+        guard let date = text.toDate() else { return }
+        
+        let dateComponent = Calendar.current.dateComponents([.day], from: date)
+        let currentDateComponent = Calendar.current.dateComponents([.day], from: Date())
+        
+//        print(dateComponent, currentDateComponent)
+        
+        if dateComponent == currentDateComponent {
+            timeLabel.text = timeFormatter.string(from: date)
+        } else {
+            timeLabel.text = dateFormatter.string(from: date)
         }
     }
 }
