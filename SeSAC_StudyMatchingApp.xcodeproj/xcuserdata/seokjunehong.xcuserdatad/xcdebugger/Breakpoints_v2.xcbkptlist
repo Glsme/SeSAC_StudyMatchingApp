@@ -14,8 +14,8 @@
             filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/ViewModel/ChattingViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "getChat()"
             landmarkType = "7">
             <Locations>
@@ -62,8 +62,8 @@
             filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/ViewModel/ChattingViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "getChat()"
             landmarkType = "7">
             <Locations>
@@ -103,49 +103,97 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "98C3C5C9-F693-458B-AACD-85CE86F76C34"
+            uuid = "6BF7999F-BEF3-44C0-8785-266F08E25377"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/View/ChattingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "getMessage(notification:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "241C2D10-C164-413D-BAFE-65E55F699D01"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/ViewModel/ChattingViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "getChat()"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "inputChatData(data:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "98C3C5C9-F693-458B-AACD-85CE86F76C34 - c6cb358bce1b7407"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SeSAC_StudyMatchingApp.ChattingViewModel.getChat() -&gt; ()"
-                  moduleName = "SeSAC_StudyMatchingApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/seokjunehong/Desktop/iOS/seSAC/SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/ViewModel/ChattingViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "396">
-               </Location>
-               <Location
-                  uuid = "98C3C5C9-F693-458B-AACD-85CE86F76C34 - c6cb358bce1b7407"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SeSAC_StudyMatchingApp.ChattingViewModel.getChat() -&gt; ()"
-                  moduleName = "SeSAC_StudyMatchingApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/seokjunehong/Desktop/iOS/seSAC/SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/ViewModel/ChattingViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "616">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3B81DFD-4CBB-4576-A130-7390561541EB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/ViewModel/ChattingViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "inputChatData(data:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91BF124F-8090-43E1-8C73-812D0DC2E2A3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/ViewModel/ChattingViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "inputChatData(data:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D3EBEBB-6AE4-41A0-8AFA-1090C82BE436"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/ViewModel/ChattingViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "inputChatData(data:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3711DF0C-ED75-497B-A0CF-6C511139FDD4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/ViewModel/ChattingViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "inputChatData(data:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

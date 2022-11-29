@@ -33,8 +33,6 @@ class ChattingViewModel: CommonViewModel {
     var data: MyQueueState?
     var mychatData: MyChat = MyChat(payload: [])
     var chat = PublishSubject<[SectionOfMessageCell]>()
-    var payloadArray: [Payload] = []
-    var sections: [SectionOfMessageCell] = []
     var tasks: Results<ChatData>!
     
     func fetchChats() {
@@ -78,14 +76,7 @@ class ChattingViewModel: CommonViewModel {
         guard let uid = data.matchedUid else { return }
         
         tasks = ChatRepository.shared.fetchChatData(uid: uid)
-        var date: String = "2000-01-01T00:00:00.000Z"
-        if let task = tasks.first {
-            let chatData = transChatDataToMyChat(task)
-            inputChatData(data: chatData) { _, _ in }
-            
-            guard let targetDateString = chatData.payload.last?.createdAt else { return }
-            date = targetDateString
-        }
+        var date: String = tasks.first?.chatList.first?.createdAt ?? "2000-01-01T00:00:00.000Z"
         
         print("last date is \(date)")
         let api = SesacAPIRouter.chatGet(lastDate: date, uid: uid)
@@ -95,7 +86,14 @@ class ChattingViewModel: CommonViewModel {
             switch response {
             case .success(let success):
                 self.mychatData = success
-                self.inputChatData(data: success) { _, _ in }
+                var myChat: MyChat = MyChat(payload: [])
+                
+                if let task = self.tasks.first {
+                    myChat = self.transChatDataToMyChat(task)
+                }
+                
+                myChat.payload.append(contentsOf: success.payload)
+                self.inputChatData(data: myChat) { _, _ in }
 //                self.pushAllData(success)
             case .failure(let error):
                 print("error:: \(error)")
@@ -116,6 +114,9 @@ class ChattingViewModel: CommonViewModel {
     }
     
     func inputChatData(data: MyChat, completion: @escaping (Int, Int) -> Void) {
+        var payloadArray: [Payload] = []
+        var sections: [SectionOfMessageCell] = []
+        
         guard !data.payload.isEmpty else { return }
         guard var date = data.payload[0].createdAt.toDate() else { return }
         payloadArray.append(data.payload[0])
