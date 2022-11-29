@@ -35,6 +35,8 @@ class ChattingViewController: BaseViewController {
                 }
                 
                 cell.setFirstMatched(true)
+            } else {
+                cell.setFirstMatched(false)
             }
             
             return cell
@@ -63,6 +65,9 @@ class ChattingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //MARK: Realm URL
+        print("RealmURL: \(ChatRepository.shared.localRealm.configuration.fileURL!)")
         
         viewModel.fetchChats()
         NotificationCenter.default.addObserver(self, selector: #selector(getMessage), name: NSNotification.Name("getMessage"), object: nil)
@@ -110,12 +115,6 @@ class ChattingViewController: BaseViewController {
     override func bindData() {
         viewModel.chat
             .bind(to: mainView.chatTableView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-        
-        viewModel.chat
-            .bind { value in
-                print(value)
-            }
             .disposed(by: disposeBag)
         
         moreButton.rx.tap
@@ -237,6 +236,8 @@ class ChattingViewController: BaseViewController {
                         
                         self.viewModel.mychatData.payload.append(value)
                         self.viewModel.inputChatData(data: self.viewModel.mychatData)
+                        
+                        self.viewModel.savePostData(value)
                     } else {
                         vc.view.makeToast("전송에 실패했습니다.", position: .center)
                     }

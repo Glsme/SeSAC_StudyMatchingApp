@@ -23,7 +23,20 @@ class ChatRepository {
         }
     }
     
+    func chatWrite(_ task: Payload, chatData: ChatData) {
+        let data: ChatListData = ChatListData(id: task.id, to: task.to, from: task.from, chat: task.chat, createdAt: task.createdAt)
+        try! localRealm.write {
+            chatData.chatList.append(data)
+        }
+    }
+    
     func getData() -> Results<ChatData> {
         return localRealm.objects(ChatData.self)
+    }
+    
+    func fetchData(_ task: ChatData, uid: String) {
+        try! localRealm.write {
+            task.uid = uid
+        }
     }
 }

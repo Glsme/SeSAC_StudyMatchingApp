@@ -16,9 +16,10 @@ class ChatData: Object {
     
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(uid: String) {
+    convenience init(uid: String, chatList: List<ChatListData>) {
         self.init()
         self.uid = uid
+        self.chatList = chatList
     }
 }
 
@@ -31,7 +32,7 @@ class ChatListData: Object {
     
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(id: String, to: String, from: String, chat: String, createdAt: String, objectId: ObjectId) {
+    convenience init(id: String, to: String, from: String, chat: String, createdAt: String) {
         self.init()
         self.id = id
         self.to = to

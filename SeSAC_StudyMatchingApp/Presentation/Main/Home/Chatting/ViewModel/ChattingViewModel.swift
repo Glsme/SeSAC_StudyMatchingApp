@@ -7,15 +7,12 @@
 
 import Foundation
 
+import RealmSwift
 import RxDataSources
 import RxSwift
 
 struct MessageCell {
     var message: Payload
-    
-    init(message: Payload) {
-        self.message = message
-    }
 }
 
 struct SectionOfMessageCell {
@@ -85,6 +82,7 @@ class ChattingViewModel: CommonViewModel {
             case .success(let success):
                 self.mychatData = success
                 self.inputChatData(data: success)
+                self.pushAllData(success)
             case .failure(let error):
                 print("error:: \(error)")
             }
@@ -115,9 +113,7 @@ class ChattingViewModel: CommonViewModel {
             section.append(MessageCell(message: date))
             
             for chat in data.payload {
-                guard let targetDate = chat.createdAt.toDate() else {
-                    print(chat.createdAt.toDate(), "@@@@@@@@")
-                    return }
+                guard let targetDate = chat.createdAt.toDate() else { return }
                 
                 if dateFormatter.string(from: currentDate) == dateFormatter.string(from: targetDate) {
                     section.append(MessageCell(message: chat))
@@ -128,6 +124,38 @@ class ChattingViewModel: CommonViewModel {
         }
         
         chat.onNext(sections)
+    }
+    
+    func pushAllData(_ chat: MyChat) {
+        guard let uid = data?.matchedUid else { return }
+        
+        var chatArray = List<ChatListData>()
+        
+        for item in chat.payload {
+            let chat = ChatListData(id: item.id, to: item.to, from: item.from, chat: item.chat, createdAt: item.createdAt)
+            
+            chatArray.append(chat)
+        }
+        
+        let chatData: ChatData = ChatData(uid: uid, chatList: chatArray)
+        
+        ChatRepository.shared.write(chatData)
+    }
+    
+    func savePostData(_ task: Payload) {
+        guard let uid = data?.matchedUid else { return }
+        
+        var chatData: ChatData = ChatData(uid: "", chatList: List<ChatListData>())
+        
+        for item in ChatRepository.shared.localRealm.objects(ChatData.self) {
+            if item.uid == uid {
+                chatData = item
+                
+                break
+            }
+        }
+        
+        ChatRepository.shared.chatWrite(task, chatData: chatData)
     }
 }
 
