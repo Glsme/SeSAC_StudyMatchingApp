@@ -180,6 +180,7 @@ class ReviewView: BaseView {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.firstButton.setSelectedStyle(vc.checkButtonTapped(vc.firstButton))
+                vc.reviewButton.setEnabledButton(vc.checkOtherButtonTabOrTextviewIsNotNil())
             }
             .disposed(by: disposeBag)
         
@@ -187,6 +188,7 @@ class ReviewView: BaseView {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.secondButton.setSelectedStyle(vc.checkButtonTapped(vc.secondButton))
+                vc.reviewButton.setEnabledButton(vc.checkOtherButtonTabOrTextviewIsNotNil())
             }
             .disposed(by: disposeBag)
         
@@ -194,6 +196,7 @@ class ReviewView: BaseView {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.thirdButton.setSelectedStyle(vc.checkButtonTapped(vc.thirdButton))
+                vc.reviewButton.setEnabledButton(vc.checkOtherButtonTabOrTextviewIsNotNil())
             }
             .disposed(by: disposeBag)
         
@@ -201,6 +204,7 @@ class ReviewView: BaseView {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.fourthButton.setSelectedStyle(vc.checkButtonTapped(vc.fourthButton))
+                vc.reviewButton.setEnabledButton(vc.checkOtherButtonTabOrTextviewIsNotNil())
             }
             .disposed(by: disposeBag)
         
@@ -208,6 +212,7 @@ class ReviewView: BaseView {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.fifthButton.setSelectedStyle(vc.checkButtonTapped(vc.fifthButton))
+                vc.reviewButton.setEnabledButton(vc.checkOtherButtonTabOrTextviewIsNotNil())
             }
             .disposed(by: disposeBag)
         
@@ -215,6 +220,7 @@ class ReviewView: BaseView {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.sixthButton.setSelectedStyle(vc.checkButtonTapped(vc.sixthButton))
+                vc.reviewButton.setEnabledButton(vc.checkOtherButtonTabOrTextviewIsNotNil())
             }
             .disposed(by: disposeBag)
     }
@@ -225,5 +231,37 @@ class ReviewView: BaseView {
         } else {
             return true
         }
+    }
+    
+    func checkOtherButtonTabOrTextviewIsNotNil() -> Bool {
+        if firstButton.backgroundColor == .sesacGreen {
+            return true
+        }
+        
+        if secondButton.backgroundColor == .sesacGreen {
+            return true
+        }
+        
+        if thirdButton.backgroundColor == .sesacGreen {
+            return true
+        }
+        
+        if fourthButton.backgroundColor == .sesacGreen {
+            return true
+        }
+        
+        if fifthButton.backgroundColor == .sesacGreen {
+            return true
+        }
+        
+        if sixthButton.backgroundColor == .sesacGreen {
+            return true
+        }
+        
+        if reviewTextView.text != "" {
+            return true
+        }
+        
+        return false
     }
 }
