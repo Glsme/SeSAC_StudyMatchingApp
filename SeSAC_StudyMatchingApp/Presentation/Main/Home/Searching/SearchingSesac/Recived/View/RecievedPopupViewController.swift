@@ -51,10 +51,13 @@ class RecievedPopupViewController: BaseViewController {
             guard let self = self else { return }
             switch MatchingAcceptCode(rawValue: statusCode) {
             case .success:
-                self.dismiss(animated: false) {
-                    let chatVC = ChattingViewController()
-                    guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
-                    vc.transViewController(ViewController: chatVC, type: .push)
+                self.requestMyQueueState { data in
+                    self.dismiss(animated: false) {
+                        let chatVC = ChattingViewController()
+                        chatVC.viewModel.data = data
+                        guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+                        vc.transViewController(ViewController: chatVC, type: .push)
+                    }
                 }
             case .alreadyMatching:
                 self.dismiss(animated: false) {
@@ -73,6 +76,20 @@ class RecievedPopupViewController: BaseViewController {
                 }
             default:
                 print(MatchingCode(rawValue: statusCode)!)
+            }
+        }
+    }
+    
+    func requestMyQueueState(completion: @escaping (MyQueueState) -> Void) {
+        let api = SesacAPIRouter.myQueueStateGet
+        
+        SesacSignupAPIService.shared.requestMyStateData(router: api) { response in
+            switch response {
+            case .success(let success):
+                completion(success)
+            case .failure(let error):
+                print("error: \(error)")
+                self.view.makeToast("error: \(error)", position: .center)
             }
         }
     }
