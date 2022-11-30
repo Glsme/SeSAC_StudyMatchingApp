@@ -49,7 +49,23 @@ class ReviewViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 if vc.mainView.reviewButton.backgroundColor == .sesacGreen {
-                    print("hi")
+                    let reputation = vc.setReputation()
+                    let comment = vc.mainView.reviewTextView.text ?? ""
+                    
+                    vc.viewModel.requestReview(uid: vc.viewModel.uid, reputation: reputation, comment: comment) {
+                        vc.dismiss(animated: false) {
+                            guard let topVC = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+                            
+                            guard let vcs = topVC.navigationController?.viewControllers else { return }
+                            
+                            for vc in vcs {
+                                if let rootVC = vc as? HomeViewController {
+                                    topVC.navigationController?.popToViewController(rootVC, animated: false)
+                                    rootVC.view.makeToast(CertificationRequestMents.alreadySignup.rawValue)
+                                }
+                            }
+                        }
+                    }
                 } else {
                     vc.view.makeToast("리뷰 버튼, 혹은 내용을 입력해주세요.", position: .center)
                 }
@@ -59,10 +75,39 @@ class ReviewViewController: BaseViewController {
         mainView.reviewTextView.rx.didChange
             .withUnretained(self)
             .bind { (vc, text) in
-                print(text)
                 let checkBool: Bool = vc.mainView.checkOtherButtonTabOrTextviewIsNotNil()
                 vc.mainView.reviewButton.setEnabledButton(checkBool)
             }
             .disposed(by: disposebag)
+    }
+    
+    func setReputation() -> Array<Int> {
+        var array: Array<Int> = Array<Int>(repeating: 0, count: 6)
+        
+        if mainView.firstButton.backgroundColor == .sesacGreen {
+            array[0] = 1
+        }
+        
+        if mainView.secondButton.backgroundColor == .sesacGreen {
+            array[1] = 1
+        }
+        
+        if mainView.thirdButton.backgroundColor == .sesacGreen {
+            array[2] = 1
+        }
+        
+        if mainView.fourthButton.backgroundColor == .sesacGreen {
+            array[3] = 1
+        }
+        
+        if mainView.fifthButton.backgroundColor == .sesacGreen {
+            array[4] = 1
+        }
+        
+        if mainView.sixthButton.backgroundColor == .sesacGreen {
+            array[5] = 1
+        }
+        
+        return array
     }
 }

@@ -31,6 +31,25 @@ class ChattingPopupViewModel: CommonViewModel {
             }
         }
     }
+    
+    func requestReview(uid: String, reputation: Array<Int>, comment: String, completion: @escaping () -> Void) {
+        let data: UserReview = UserReview(uid: uid, reputation: reputation, comment: comment)
+        let api = SesacAPIRouter.ratePost(data: data)
+        
+        SesacSignupAPIService.shared.requestPostChat(router: api) { statusCode in
+            if DodgeResponseCode(rawValue: statusCode) == .success {
+                completion()
+            } else {
+                print(DodgeResponseCode(rawValue: statusCode))
+            }
+        }
+    }
+}
+
+struct UserReview {
+    let uid: String
+    let reputation: Array<Int>
+    let comment: String
 }
 
 enum DodgeResponseCode: Int {

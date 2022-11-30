@@ -14,7 +14,8 @@ class CancelViewController: BaseViewController {
     let mainView = WithdrawPopupView()
     let viewModel = ChattingPopupViewModel()
     let disposebag = DisposeBag()
-    
+    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+
     override func loadView() {
         self.view = mainView
     }
@@ -41,9 +42,13 @@ class CancelViewController: BaseViewController {
             .bind { (vc, _) in
                 vc.viewModel.requestDodge(uid: vc.viewModel.uid) {
                     vc.dismiss(animated: false) {
-                        let chatVC = ChattingViewController()
-                        guard let vc = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
-                        vc.navigationController?.popViewController(animated: false)
+                        guard let vcs = vc.navigationController?.viewControllers else { return }
+                        
+                        for viewController in vcs {
+                            if let rootVC = viewController as? HomeViewController {
+                                vc.navigationController?.popToViewController(rootVC, animated: true)
+                            }
+                        }
                     }
                 }
             }

@@ -23,6 +23,7 @@ enum SesacAPIRouter: URLRequestConvertible {
     case chatPost(chat: String, uid: String)
     case chatGet(lastDate: String, uid: String)
     case studyDodge(uid: String)
+    case ratePost(data: UserReview)
     
     var baseURL: URL {
         switch self {
@@ -50,6 +51,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             return URL(string: "http://api.sesac.co.kr:1210/v1/chat")!
         case .studyDodge:
             return URL(string: "http://api.sesac.co.kr:1210/v1/queue/dodge")!
+        case .ratePost:
+            return URL(string: "http://api.sesac.co.kr:1210/v1/queue/rate")!
         }
     }
     
@@ -68,6 +71,7 @@ enum SesacAPIRouter: URLRequestConvertible {
         case .chatPost: return .post
         case .chatGet: return .get
         case .studyDodge: return .post
+        case .ratePost: return .post
         }
     }
     
@@ -146,6 +150,11 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["Content-Type": "application/x-www-form-urlencoded",
                     "accept": "*/*",
                     "idtoken": idToken]
+        case .ratePost:
+            guard let idToken = UserManager.authVerificationToken else { return ["": ""] }
+            return ["Content-Type": "application/x-www-form-urlencoded",
+                    "accept": "*/*",
+                    "idtoken": idToken]
         }
     }
     
@@ -192,6 +201,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             return ["lastchatDate": date]
         case .studyDodge(let uid):
             return ["otheruid": uid]
+        case .ratePost(let data):
+            return ["otheruid": data.uid, "reputation": data.reputation, "comment": data.comment]
         }
     }
     
@@ -203,6 +214,8 @@ enum SesacAPIRouter: URLRequestConvertible {
             url = url.appendingPathComponent(uid)
         case .chatGet(_, let uid):
             url = url.appendingPathComponent(uid)
+        case .ratePost(let data):
+            url = url.appendingPathComponent(data.uid)
         default:
             break
         }

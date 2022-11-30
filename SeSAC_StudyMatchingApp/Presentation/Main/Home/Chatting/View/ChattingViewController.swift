@@ -253,7 +253,7 @@ class ChattingViewController: BaseViewController {
                 guard let data = vc.viewModel.data else { return }
                 
                 if data.dodged == 1 || data.reviewed == 1 {
-                    cancelVC.mainView.setPopupText("스터디를 종료하시겠습니까?", subTitle: "상대방이 스터디를 취소했기 때문에 패널티가 부과되지 않습니다.")
+                    cancelVC.mainView.setPopupText("스터디를 종료하시겠습니까?", subTitle: "상대방이 스터디를 취소했기 때문에\n패널티가 부과되지 않습니다.")
                 } else {
                     cancelVC.mainView.setPopupText("스터디를 취소하시겠습니까?", subTitle: "스터디를 취소하시면 패널티가 부과됩니다.")
                 }
@@ -276,6 +276,9 @@ class ChattingViewController: BaseViewController {
                 vc.moreButtonToggle.toggle()
                 
                 let reviewVC = ReviewViewController()
+                guard let data = vc.viewModel.data else { return }
+
+                reviewVC.viewModel.uid = data.matchedUid ?? ""
                 reviewVC.modalPresentationStyle = .overCurrentContext
                 vc.present(reviewVC, animated: false)
             }
