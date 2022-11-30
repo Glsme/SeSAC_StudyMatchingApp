@@ -17,7 +17,7 @@ protocol InOutputViewModel {
 }
 
 class CommonViewModel {
-    func refreshToken() {
+    func refreshToken(completion: @escaping () -> Void) {
         let currentUser = Auth.auth().currentUser
         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
             if let error = error {
@@ -26,6 +26,7 @@ class CommonViewModel {
             }
             
             UserManager.authVerificationToken = idToken
+            completion()
         }
     }
 }

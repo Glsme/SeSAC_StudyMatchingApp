@@ -22,14 +22,14 @@ final class HomeViewModel: CommonViewModel {
                 
                 guard let error = error as? LoginError else { return }
                 if error == .firbaseTokenError {
-                    self.refreshToken()
-                    
-                    SesacSignupAPIService.shared.requestSesacSearch(router: api) { response in
-                        switch response {
-                        case .success(let success):
-                            completion(.success(success))
-                        case .failure(let failure):
-                            completion(.failure(failure))
+                    self.refreshToken {
+                        SesacSignupAPIService.shared.requestSesacSearch(router: api) { response in
+                            switch response {
+                            case .success(let success):
+                                completion(.success(success))
+                            case .failure(let failure):
+                                completion(.failure(failure))
+                            }
                         }
                     }
                 } else {

@@ -12,11 +12,22 @@ class ChattingPopupViewModel: CommonViewModel {
     
     func requestDodge(uid: String, completion: @escaping () -> Void) {
         let api = SesacAPIRouter.studyDodge(uid: uid)
-        SesacSignupAPIService.shared.requestPostChat(router: api) { statusCode in
+        SesacSignupAPIService.shared.requestPostChat(router: api) { [weak self] statusCode in
+            guard let self = self else { return }
             if DodgeResponseCode(rawValue: statusCode) == .success {
                 completion()
             } else {
-                print(DodgeResponseCode(rawValue: statusCode))
+                if DodgeResponseCode(rawValue: statusCode) == .firebaseError {
+                    self.refreshToken {
+                        SesacSignupAPIService.shared.requestPostChat(router: api) { statusCode in
+                            if DodgeResponseCode(rawValue: statusCode) == .success {
+                                completion()
+                            } else {
+                                print(DodgeResponseCode(rawValue: statusCode))
+                            }
+                        }
+                    }
+                }
             }
         }
     }

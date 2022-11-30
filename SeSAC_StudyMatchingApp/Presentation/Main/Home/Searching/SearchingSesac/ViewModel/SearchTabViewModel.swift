@@ -39,16 +39,16 @@ class SearchTabViewModel: CommonViewModel {
                 
                 switch failure {
                 case .firebaseError:
-                    self.refreshToken()
-                    
-                    SesacSignupAPIService.shared.requestMyStateData(router: api) { response in
-                        switch response {
-                        case .success(let success):
-                            if success.matched == 1 {
-                                completion(success)
+                    self.refreshToken {
+                        SesacSignupAPIService.shared.requestMyStateData(router: api) { response in
+                            switch response {
+                            case .success(let success):
+                                if success.matched == 1 {
+                                    completion(success)
+                                }
+                            case .failure(let failure):
+                                print(failure)
                             }
-                        case .failure(let failure):
-                            print(failure)
                         }
                     }
                 default:
