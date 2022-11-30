@@ -8,6 +8,8 @@
 import UIKit
 
 import SnapKit
+import RxCocoa
+import RxSwift
 
 class ReviewView: BaseView {
     lazy var popupView: UIView = {
@@ -90,8 +92,12 @@ class ReviewView: BaseView {
         return view
     }()
     
+    let disposeBag = DisposeBag()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        bindData()
     }
     
     override func configureUI() {
@@ -166,6 +172,58 @@ class ReviewView: BaseView {
         fourthButton.snp.makeConstraints { make in
             make.width.height.bottom.equalTo(firstButton)
             make.trailing.equalTo(sixthButton)
+        }
+    }
+    
+    func bindData() {
+        firstButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.firstButton.setSelectedStyle(vc.checkButtonTapped(vc.firstButton))
+            }
+            .disposed(by: disposeBag)
+        
+        secondButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.secondButton.setSelectedStyle(vc.checkButtonTapped(vc.secondButton))
+            }
+            .disposed(by: disposeBag)
+        
+        thirdButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.thirdButton.setSelectedStyle(vc.checkButtonTapped(vc.thirdButton))
+            }
+            .disposed(by: disposeBag)
+        
+        fourthButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.fourthButton.setSelectedStyle(vc.checkButtonTapped(vc.fourthButton))
+            }
+            .disposed(by: disposeBag)
+        
+        fifthButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.fifthButton.setSelectedStyle(vc.checkButtonTapped(vc.fifthButton))
+            }
+            .disposed(by: disposeBag)
+        
+        sixthButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.sixthButton.setSelectedStyle(vc.checkButtonTapped(vc.sixthButton))
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func checkButtonTapped(_ button: UIButton) -> Bool {
+        if button.backgroundColor == .sesacGreen {
+            return false
+        } else {
+            return true
         }
     }
 }
