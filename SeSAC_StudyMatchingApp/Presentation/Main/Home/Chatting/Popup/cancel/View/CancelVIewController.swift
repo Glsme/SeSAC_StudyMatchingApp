@@ -22,6 +22,9 @@ class CancelViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func configureUI() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     }
     

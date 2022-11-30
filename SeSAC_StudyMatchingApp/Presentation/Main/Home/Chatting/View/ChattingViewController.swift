@@ -264,6 +264,23 @@ class ChattingViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        mainView.writeButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.mainView.topBGView.isHidden = vc.moreButtonToggle
+                
+                vc.mainView.topButtonStackView.snp.updateConstraints { make in
+                    make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top)
+                }
+                
+                vc.moreButtonToggle.toggle()
+                
+                let reviewVC = ReviewViewController()
+                reviewVC.modalPresentationStyle = .overCurrentContext
+                vc.present(reviewVC, animated: false)
+            }
+            .disposed(by: disposeBag)
+        
         mainView.sendButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in

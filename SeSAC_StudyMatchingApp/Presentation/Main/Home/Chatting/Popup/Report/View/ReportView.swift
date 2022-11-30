@@ -80,6 +80,7 @@ class ReportView: BaseView {
         let view = GreenBgButton()
         view.setEnabledButton(false)
         view.setTitle("신고하기", for: .normal)
+        view.titleLabel?.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
         return view
     }()
     
