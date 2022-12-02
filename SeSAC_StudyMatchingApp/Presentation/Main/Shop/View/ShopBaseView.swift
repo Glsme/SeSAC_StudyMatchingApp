@@ -10,19 +10,25 @@ import UIKit
 import SnapKit
 
 class ShopBaseView: BaseView {
-    let baseView = UIView()
+    let barView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        self.addSubview(baseView)
+        self.addSubview(barView)
     }
     
     override func setConstraints() {
-        baseView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        barView.snp.makeConstraints { make in
+            make.trailing.leading.equalTo(safeAreaLayoutGuide).inset(16)
+            make.top.equalToSuperview()
+            make.height.equalTo(44)
         }
     }
 }

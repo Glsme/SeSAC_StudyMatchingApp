@@ -14,7 +14,7 @@ import Pageboy
 class ShopTabViewController: TabmanViewController {
     let characterVC = CharacterViewController()
     let backgroundVC = BackgroundViewController()
-    let characterView = ShopCharacterView()
+    let characterView = ShopBaseView()
     
     private var viewControllers: [UIViewController] = []
     

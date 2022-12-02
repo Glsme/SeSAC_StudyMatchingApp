@@ -18,32 +18,18 @@ class ShopCharacterView: BaseView {
         return view
     }()
     
-    let barView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        [imageBGView, barView].forEach {
-            self.addSubview($0)
-        }
+        self.addSubview(imageBGView)
     }
     
     override func setConstraints() {
         imageBGView.snp.makeConstraints { make in
             make.trailing.leading.top.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.5)
-        }
-        
-        barView.snp.makeConstraints { make in
-            make.trailing.leading.equalTo(imageBGView)
-            make.top.equalTo(imageBGView.snp.bottom)
-            make.height.equalTo(44)
         }
     }
 }
