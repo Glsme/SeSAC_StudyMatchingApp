@@ -26,7 +26,7 @@ class ShopBaseView: BaseView {
     
     override func setConstraints() {
         barView.snp.makeConstraints { make in
-            make.trailing.leading.equalTo(safeAreaLayoutGuide).inset(16)
+            make.trailing.leading.equalTo(safeAreaLayoutGuide)
             make.top.equalToSuperview()
             make.height.equalTo(44)
         }

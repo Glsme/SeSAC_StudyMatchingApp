@@ -30,10 +30,6 @@ class ShopTabViewController: TabmanViewController {
     
     func configureUI() {
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = false
-        
-        navigationItem.title = "새싹샵"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 14) ?? UIFont.systemFont(ofSize: 14)]
         
         viewControllers.append(characterVC)
         viewControllers.append(backgroundVC)

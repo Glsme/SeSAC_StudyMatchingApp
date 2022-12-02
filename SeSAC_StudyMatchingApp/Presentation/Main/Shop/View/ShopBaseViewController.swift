@@ -21,6 +21,7 @@ class ShopBaseViewController: BaseViewController {
     }
     
     override func configureUI() {
+        setNavigationTitle("새싹샵")
         view.backgroundColor = .white
         
         let vc = ShopTabViewController()
@@ -30,7 +31,7 @@ class ShopBaseViewController: BaseViewController {
         vc.view.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(mainView.safeAreaLayoutGuide)
-            make.top.equalTo(mainView.imageBGView.snp.bottom)
+            make.top.equalTo(mainView.imageBGView.snp.bottom).offset(44)
         }
     }
 }
