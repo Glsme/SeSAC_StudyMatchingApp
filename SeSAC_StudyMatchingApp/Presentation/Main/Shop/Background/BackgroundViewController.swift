@@ -10,5 +10,7 @@ import UIKit
 class BackgroundViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .sesacError
     }
 }
