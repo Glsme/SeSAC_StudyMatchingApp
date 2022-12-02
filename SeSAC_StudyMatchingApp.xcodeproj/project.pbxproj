@@ -98,6 +98,10 @@
 		8542BE2A2921F77F00CF799A /* MyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542BE292921F77F00CF799A /* MyInfoTableViewCell.swift */; };
 		856CA9152937382F001670ED /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CA9142937382F001670ED /* ReviewViewController.swift */; };
 		856CA91729373848001670ED /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CA91629373848001670ED /* ReviewView.swift */; };
+		856CA91C29378B20001670ED /* ShopTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CA91B29378B20001670ED /* ShopTabViewController.swift */; };
+		856CA91E29378B46001670ED /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CA91D29378B46001670ED /* ShopView.swift */; };
+		856CA92129378E10001670ED /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CA92029378E10001670ED /* CharacterViewController.swift */; };
+		856CA92329378E1F001670ED /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CA92229378E1F001670ED /* BackgroundViewController.swift */; };
 		856E1B172932018100CA6AE9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E1B162932018100CA6AE9 /* String+Extension.swift */; };
 		859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */; };
 		859921E4291A788F007F96A6 /* Userdefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E3291A788F007F96A6 /* Userdefault.swift */; };
@@ -234,6 +238,10 @@
 		8542BE292921F77F00CF799A /* MyInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoTableViewCell.swift; sourceTree = "<group>"; };
 		856CA9142937382F001670ED /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		856CA91629373848001670ED /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		856CA91B29378B20001670ED /* ShopTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTabViewController.swift; sourceTree = "<group>"; };
+		856CA91D29378B46001670ED /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		856CA92029378E10001670ED /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		856CA92229378E1F001670ED /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		856E1B162932018100CA6AE9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		859921E3291A788F007F96A6 /* Userdefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefault.swift; sourceTree = "<group>"; };
@@ -962,6 +970,49 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		856CA91829378AFF001670ED /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				856CA92429378E23001670ED /* Background */,
+				856CA91F29378DED001670ED /* Character */,
+				856CA91A29378B0D001670ED /* ViewModel */,
+				856CA91929378B08001670ED /* View */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		856CA91929378B08001670ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				856CA91B29378B20001670ED /* ShopTabViewController.swift */,
+				856CA91D29378B46001670ED /* ShopView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		856CA91A29378B0D001670ED /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		856CA91F29378DED001670ED /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				856CA92029378E10001670ED /* CharacterViewController.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		856CA92429378E23001670ED /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				856CA92229378E1F001670ED /* BackgroundViewController.swift */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
 		859921E2291A787D007F96A6 /* ProtpertyWrapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1153,6 +1204,7 @@
 		85992237291D680D007F96A6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				856CA91829378AFF001670ED /* Shop */,
 				8542BE1B2921F06000CF799A /* TabBar */,
 				8542BE1C2921F06A00CF799A /* MyInfo */,
 				85992238291D69CE007F96A6 /* Home */,
@@ -1403,6 +1455,7 @@
 				85092950292B27DF0074912E /* SearchTabViewController.swift in Sources */,
 				8599221B291D1BBA007F96A6 /* Date+Extension.swift in Sources */,
 				859921E4291A788F007F96A6 /* Userdefault.swift in Sources */,
+				856CA92129378E10001670ED /* CharacterViewController.swift in Sources */,
 				85350A802918F24D00C70515 /* Fonts.swift in Sources */,
 				85350A772918DD7E00C70515 /* ReusableProtocol+Extension.swift in Sources */,
 				850515402924994600862A2F /* MypageUpdate.swift in Sources */,
@@ -1417,6 +1470,7 @@
 				85092957292B297C0074912E /* AroundSesacViewController.swift in Sources */,
 				859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */,
 				850515202922949400862A2F /* ProfileTitleView.swift in Sources */,
+				856CA91E29378B46001670ED /* ShopView.swift in Sources */,
 				8599222D291D2D0E007F96A6 /* GenderViewController.swift in Sources */,
 				8542BE0E291E737C00CF799A /* SplashView.swift in Sources */,
 				8542BE242921F22E00CF799A /* MyInfoViewModel.swift in Sources */,
@@ -1470,6 +1524,7 @@
 				850515222922B51B00862A2F /* ProfileNicknameView.swift in Sources */,
 				85350A732918DC1200C70515 /* ReusableProtocol.swift in Sources */,
 				8505155E29251B0D00862A2F /* SearchViewModel.swift in Sources */,
+				856CA92329378E1F001670ED /* BackgroundViewController.swift in Sources */,
 				85EF7E75292E6028008426AF /* ChatView.swift in Sources */,
 				85D341C5291A33E600F27A78 /* CertificationError.swift in Sources */,
 				8542BE12291E7BD500CF799A /* SplashViewModel.swift in Sources */,
@@ -1489,6 +1544,7 @@
 				85EF7E6E292DFB29008426AF /* ChattingViewModel.swift in Sources */,
 				85350A562918C7FA00C70515 /* OnboardingViewController.swift in Sources */,
 				85EF7E70292E5A4F008426AF /* YourChatTableViewCell.swift in Sources */,
+				856CA91C29378B20001670ED /* ShopTabViewController.swift in Sources */,
 				85EF7E67292DD3A2008426AF /* RecievedPopupViewController.swift in Sources */,
 				85992220291D1ED1007F96A6 /* EmailViewModel.swift in Sources */,
 				8505152D2923693E00862A2F /* CustomAgeView.swift in Sources */,
