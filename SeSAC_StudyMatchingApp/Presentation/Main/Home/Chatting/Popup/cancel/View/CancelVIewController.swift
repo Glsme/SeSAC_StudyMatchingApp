@@ -42,11 +42,14 @@ class CancelViewController: BaseViewController {
             .bind { (vc, _) in
                 vc.viewModel.requestDodge(uid: vc.viewModel.uid) {
                     vc.dismiss(animated: false) {
-                        guard let vcs = vc.navigationController?.viewControllers else { return }
+                        guard let topVC = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
                         
-                        for viewController in vcs {
-                            if let rootVC = viewController as? HomeViewController {
-                                vc.navigationController?.popToViewController(rootVC, animated: true)
+                        guard let vcs = topVC.navigationController?.viewControllers else { return }
+                        
+                        for vc in vcs {
+                            if let rootVC = vc as? HomeViewController {
+                                topVC.navigationController?.popToViewController(rootVC, animated: false)
+                                rootVC.view.makeToast(CertificationRequestMents.alreadySignup.rawValue)
                             }
                         }
                     }
