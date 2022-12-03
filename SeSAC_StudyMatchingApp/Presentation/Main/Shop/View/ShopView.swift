@@ -10,11 +10,17 @@ import UIKit
 import SnapKit
 
 final class ShopCharacterView: BaseView {
-    let imageBGView: UIImageView = {
+    lazy var imageBGView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: SesacBGAssets.sesacBG1.rawValue)
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
+        return view
+    }()
+    
+    lazy var characterView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: SesacCharaterAssets.sesacFace1.rawValue)
         return view
     }()
     
@@ -23,13 +29,21 @@ final class ShopCharacterView: BaseView {
     }
     
     override func configureUI() {
-        self.addSubview(imageBGView)
+        [imageBGView, characterView].forEach {
+            self.addSubview($0)
+        }
     }
     
     override func setConstraints() {
         imageBGView.snp.makeConstraints { make in
             make.trailing.leading.top.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.5)
+        }
+        
+        characterView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(imageBGView.snp.bottom).offset(12)
+            make.height.width.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.49)
         }
     }
 }

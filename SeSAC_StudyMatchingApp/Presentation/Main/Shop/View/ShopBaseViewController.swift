@@ -31,7 +31,7 @@ final class ShopBaseViewController: BaseViewController {
         vc.view.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(mainView.safeAreaLayoutGuide)
-            make.top.equalTo(mainView.imageBGView.snp.bottom).offset(44)
+            make.top.equalTo(mainView.imageBGView.snp.bottom)
         }
     }
 }
