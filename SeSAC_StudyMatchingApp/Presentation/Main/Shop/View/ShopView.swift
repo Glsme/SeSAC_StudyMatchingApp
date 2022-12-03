@@ -24,19 +24,27 @@ final class ShopCharacterView: BaseView {
         return view
     }()
     
+    lazy var saveButton: GreenSelectedButton = {
+        let view = GreenSelectedButton()
+        view.setSelectedStyle(true)
+        view.setTitle("저장하기", for: .normal)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        [imageBGView, characterView].forEach {
+        [imageBGView, characterView, saveButton].forEach {
             self.addSubview($0)
         }
     }
     
     override func setConstraints() {
         imageBGView.snp.makeConstraints { make in
-            make.trailing.leading.top.equalTo(safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.trailing.leading.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.5)
         }
         
@@ -44,6 +52,12 @@ final class ShopCharacterView: BaseView {
             make.centerX.equalToSuperview()
             make.bottom.equalTo(imageBGView.snp.bottom).offset(12)
             make.height.width.equalTo(safeAreaLayoutGuide.snp.width).multipliedBy(0.49)
+        }
+        
+        saveButton.snp.makeConstraints { make in
+            make.trailing.top.equalTo(imageBGView).inset(16)
+            make.height.equalTo(40)
+            make.width.equalTo(80)
         }
     }
 }

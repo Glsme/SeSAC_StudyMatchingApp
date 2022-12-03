@@ -8,9 +8,12 @@
 import UIKit
 
 import SnapKit
+import RxCocoa
+import RxSwift
 
 final class ShopBaseViewController: BaseViewController {
     let mainView = ShopCharacterView()
+    let disposebag = DisposeBag()
     
     override func loadView() {
         self.view = mainView
@@ -33,5 +36,14 @@ final class ShopBaseViewController: BaseViewController {
             make.bottom.equalTo(mainView.safeAreaLayoutGuide)
             make.top.equalTo(mainView.imageBGView.snp.bottom)
         }
+    }
+    
+    override func bindData() {
+        mainView.saveButton.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                print("Save Button Tap")
+            }
+            .disposed(by: disposebag)
     }
 }
