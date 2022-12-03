@@ -34,7 +34,7 @@ extension SectionOfMyInfoCell: SectionModelType {
     }
 }
 
-class MyInfoViewModel {
+final class MyInfoViewModel {
     var cellDatas: [MyInfoCell] = [MyInfoCell(image: "", title: "김새싹"),
                                    MyInfoCell(image: MyInfoAssets.notice.rawValue, title: MyInfoMents.notice.rawValue),
                                    MyInfoCell(image: MyInfoAssets.faq.rawValue, title: MyInfoMents.faq.rawValue),

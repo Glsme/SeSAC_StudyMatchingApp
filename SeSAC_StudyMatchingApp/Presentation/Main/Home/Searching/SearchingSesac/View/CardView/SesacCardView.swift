@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class SesacCardView: BaseView {
+final class SesacCardView: BaseView {
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.separatorColor = .white

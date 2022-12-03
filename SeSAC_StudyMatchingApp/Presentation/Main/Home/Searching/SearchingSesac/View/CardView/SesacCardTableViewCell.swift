@@ -11,7 +11,7 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
-class SesacCardTableViewCell: UITableViewCell {
+final class SesacCardTableViewCell: UITableViewCell {
     lazy var cardView = ProfileCardView()
     lazy var requsetButton: UIButton = {
         let view = UIButton()

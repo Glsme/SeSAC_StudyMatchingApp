@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class ManagementView: UIScrollView {
+final class ManagementView: UIScrollView {
     
     lazy var genderView = CustomGenderView()
     lazy var studyView = CustomStudyView()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmailView: UserConfigureView {
+final class EmailView: UserConfigureView {
     lazy var emailTextField: BlackHighlightTextField = {
         let view = BlackHighlightTextField()
         view.setPlaceHolder(SignupMents.emailPlaceHolder.rawValue)

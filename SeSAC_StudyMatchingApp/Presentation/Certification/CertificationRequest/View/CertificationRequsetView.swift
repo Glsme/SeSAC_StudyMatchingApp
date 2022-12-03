@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CertificationRequsetView: UserConfigureView {
+final class CertificationRequsetView: UserConfigureView {
     lazy var phoneNumberTextField: BlackHighlightTextField = {
         let view = BlackHighlightTextField()
         view.setStyle(font: UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14), keyboardType: .numberPad)

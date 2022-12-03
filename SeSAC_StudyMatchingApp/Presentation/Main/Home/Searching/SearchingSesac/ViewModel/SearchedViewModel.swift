@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchedViewModel {
+final class SearchedViewModel {
     var searchedData: SearchData?
     var lat: Double = 0
     var long: Double = 0

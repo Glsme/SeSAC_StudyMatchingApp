@@ -11,7 +11,7 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
-class ReviewView: BaseView {
+final class ReviewView: BaseView {
     lazy var popupView: UIView = {
         let view = UIView()
         view.backgroundColor = .white

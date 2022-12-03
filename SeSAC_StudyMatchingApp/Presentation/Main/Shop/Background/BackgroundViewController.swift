@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BackgroundViewController: BaseViewController {
+final class BackgroundViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         

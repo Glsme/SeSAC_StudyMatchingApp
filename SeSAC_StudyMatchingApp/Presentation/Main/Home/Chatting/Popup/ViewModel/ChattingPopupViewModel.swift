@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ChattingPopupViewModel: CommonViewModel {
+final class ChattingPopupViewModel: CommonViewModel {
     var uid: String = ""
     
     func requestDodge(uid: String, completion: @escaping () -> Void) {

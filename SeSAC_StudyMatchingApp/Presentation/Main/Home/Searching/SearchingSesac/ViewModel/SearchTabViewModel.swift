@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchTabViewModel: CommonViewModel {
+final class SearchTabViewModel: CommonViewModel {
     var searchData: SearchData?
     var lat: Double = 0
     var long: Double = 0

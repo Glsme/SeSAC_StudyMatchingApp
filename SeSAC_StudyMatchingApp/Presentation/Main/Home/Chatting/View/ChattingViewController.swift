@@ -13,7 +13,7 @@ import RxGesture
 import RxKeyboard
 import RxSwift
 
-class ChattingViewController: BaseViewController {
+final class ChattingViewController: BaseViewController {
     let mainView = ChatView()
     let viewModel = ChattingViewModel()
     let disposeBag = DisposeBag()

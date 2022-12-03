@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseMessaging
 import RxCocoa
 
-class GenderViewModel: InOutputViewModel {
+final class GenderViewModel: InOutputViewModel {
     struct Input {
         let womanButtonTapped: ControlEvent<Void>
         let manButtonTapped: ControlEvent<Void>

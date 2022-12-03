@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class ChatView: BaseView {
+final class ChatView: BaseView {
     lazy var chatTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.register(DateTableViewCell.self, forCellReuseIdentifier: DateTableViewCell.reuseIdentifier)

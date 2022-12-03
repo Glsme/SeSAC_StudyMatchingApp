@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class GenderView: UserConfigureView {
+final class GenderView: UserConfigureView {
     let manButton: UIButton = {
         let view = UIButton()
         view.layer.borderColor = UIColor.sesacGray4.cgColor

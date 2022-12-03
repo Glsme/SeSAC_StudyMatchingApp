@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class AroundSesacViewController: BaseViewController {
+final class AroundSesacViewController: BaseViewController {
     let mainView = SesacCardView()
     let disposeBag = DisposeBag()
     let viewModel = SearchedViewModel()

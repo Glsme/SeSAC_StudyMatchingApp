@@ -9,7 +9,7 @@ import Foundation
 
 import RxCocoa
 
-class EmailViewModel: InOutputViewModel {
+final class EmailViewModel: InOutputViewModel {
     struct Input {
         let emailText: ControlProperty<String?>
         let nextButtonTapped: ControlEvent<Void>

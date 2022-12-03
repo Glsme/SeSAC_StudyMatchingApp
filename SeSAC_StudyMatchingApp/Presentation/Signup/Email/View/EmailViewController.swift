@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class EmailViewController: BaseViewController {
+final class EmailViewController: BaseViewController {
     let mainView = EmailView()
     let viewModel = EmailViewModel()
     let disposeBag = DisposeBag()

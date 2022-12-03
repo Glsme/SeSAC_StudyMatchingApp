@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class NoSearchView: BaseView {
+final class NoSearchView: BaseView {
     lazy var changeButton: GreenSelectedButton = {
         let view = GreenSelectedButton()
         view.setSelectedStyle(true)

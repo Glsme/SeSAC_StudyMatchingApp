@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import RxKeyboard
 
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
     let mainView = SearchView()
     let viewModel = SearchViewModel()
     let disposeBag = DisposeBag()

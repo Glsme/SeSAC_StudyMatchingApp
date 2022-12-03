@@ -12,7 +12,7 @@ import RxGesture
 import RxSwift
 import Toast
 
-class CertificationRequestViewController: BaseViewController {
+final class CertificationRequestViewController: BaseViewController {
     let mainView = CertificationRequsetView()
     let viewModel = CertificationRequestViewModel()
     let disposeBag = DisposeBag()

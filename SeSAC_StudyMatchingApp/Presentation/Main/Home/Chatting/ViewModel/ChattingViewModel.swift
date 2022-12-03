@@ -29,7 +29,7 @@ extension SectionOfMessageCell: SectionModelType {
     }
 }
 
-class ChattingViewModel: CommonViewModel {
+final class ChattingViewModel: CommonViewModel {
     var data: MyQueueState?
     var mychatData: MyChat = MyChat(payload: [])
     var chat = PublishSubject<[SectionOfMessageCell]>()

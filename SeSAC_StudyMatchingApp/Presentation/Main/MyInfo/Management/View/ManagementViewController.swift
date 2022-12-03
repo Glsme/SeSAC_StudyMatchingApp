@@ -12,7 +12,7 @@ import RxDataSources
 import RxSwift
 import RxGesture
 
-class ManagementViewController: BaseViewController {
+final class ManagementViewController: BaseViewController {
     let mainView = ManagementView()
     let viewModel = ManagementViewModel()
     let disposeBag = DisposeBag()

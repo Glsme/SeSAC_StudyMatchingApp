@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class WithdrawPopupView: BaseView {
+final class WithdrawPopupView: BaseView {
     lazy var popupView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 16

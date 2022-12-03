@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class ShopBaseViewController: BaseViewController {
+final class ShopBaseViewController: BaseViewController {
     let mainView = ShopCharacterView()
     
     override func loadView() {

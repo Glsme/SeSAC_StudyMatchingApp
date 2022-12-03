@@ -11,7 +11,7 @@ import SnapKit
 import Tabman
 import Pageboy
 
-class ShopTabViewController: TabmanViewController {
+final class ShopTabViewController: TabmanViewController {
     let characterVC = CharacterViewController()
     let backgroundVC = BackgroundViewController()
     let characterView = ShopBaseView()

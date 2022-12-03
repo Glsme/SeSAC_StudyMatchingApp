@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class CancelViewController: BaseViewController {
+final class CancelViewController: BaseViewController {
     let mainView = WithdrawPopupView()
     let viewModel = ChattingPopupViewModel()
     let disposebag = DisposeBag()

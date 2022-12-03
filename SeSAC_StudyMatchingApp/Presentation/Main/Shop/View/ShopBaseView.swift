@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class ShopBaseView: BaseView {
+final class ShopBaseView: BaseView {
     let barView: UIView = {
         let view = UIView()
         view.backgroundColor = .white

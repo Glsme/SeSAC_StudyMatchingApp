@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class ReportView: BaseView {
+final class ReportView: BaseView {
     lazy var popupView: UIView = {
         let view = UIView()
         view.backgroundColor = .white

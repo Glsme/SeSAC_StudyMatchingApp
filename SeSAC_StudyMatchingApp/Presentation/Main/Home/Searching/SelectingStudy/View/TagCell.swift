@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class TagCell: UICollectionViewCell {
+final class TagCell: UICollectionViewCell {
     lazy var tagView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear

@@ -9,7 +9,7 @@ import UIKit
 
 import MapKit
 
-class CustomAnnotationView: MKAnnotationView {
+final class CustomAnnotationView: MKAnnotationView {
     
     static let identifier = "CustomAnnotationView"
     

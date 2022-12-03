@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class MyChatTableViewCell: UITableViewCell {
+final class MyChatTableViewCell: UITableViewCell {
     lazy var talkBubble: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8

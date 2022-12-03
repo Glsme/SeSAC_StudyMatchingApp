@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class ReportViewController: BaseViewController {
+final class ReportViewController: BaseViewController {
     let mainView = ReportView()
     let viewModel = ChattingViewModel()
     let disposebag = DisposeBag()

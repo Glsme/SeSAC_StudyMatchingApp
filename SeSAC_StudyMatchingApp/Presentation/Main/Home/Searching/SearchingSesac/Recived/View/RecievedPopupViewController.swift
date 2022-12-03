@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class RecievedPopupViewController: BaseViewController {
+final class RecievedPopupViewController: BaseViewController {
     let mainView = WithdrawPopupView()
     let disposeBag = DisposeBag()
     var uid: String = ""

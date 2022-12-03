@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class DateTableViewCell: UITableViewCell {
+final class DateTableViewCell: UITableViewCell {
     lazy var totalView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [dateView, matchedView])
         view.axis = .vertical

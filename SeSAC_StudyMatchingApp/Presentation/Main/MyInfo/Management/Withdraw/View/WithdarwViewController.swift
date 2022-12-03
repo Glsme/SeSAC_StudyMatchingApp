@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class WithdarwViewController: BaseViewController {
+final class WithdarwViewController: BaseViewController {
     let mainView = WithdrawPopupView()
     let viewModel = WithdrawViewModel()
     let disposeBag = DisposeBag()

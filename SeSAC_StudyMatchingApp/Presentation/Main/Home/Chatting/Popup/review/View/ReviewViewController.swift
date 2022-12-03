@@ -11,7 +11,7 @@ import RxCocoa
 import RxGesture
 import RxSwift
 
-class ReviewViewController: BaseViewController {
+final class ReviewViewController: BaseViewController {
     let mainView = ReviewView()
     let viewModel = ChattingPopupViewModel()
     let disposebag = DisposeBag()

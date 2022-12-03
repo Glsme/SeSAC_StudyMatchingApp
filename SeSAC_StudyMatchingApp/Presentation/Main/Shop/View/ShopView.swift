@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class ShopCharacterView: BaseView {
+final class ShopCharacterView: BaseView {
     let imageBGView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: SesacBGAssets.sesacBG1.rawValue)
