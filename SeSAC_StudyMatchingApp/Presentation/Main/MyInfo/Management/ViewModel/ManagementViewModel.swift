@@ -92,7 +92,7 @@ final class ManagementViewModel {
     
     func requsetUpdateMyPage(completion: @escaping () -> Void) {
         guard let mypageUpdate = mypageUpdate else { return }
-        let api = SesacAPIRouter.updatePut(mypage: mypageUpdate)
+        let api = SesacAPIUserRouter.updatePut(mypage: mypageUpdate)
         
         SesacSignupAPIService.shared.requestSesacUpdate(router: api) { response in
             switch response {

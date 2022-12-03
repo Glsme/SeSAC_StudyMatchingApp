@@ -42,7 +42,7 @@ class GenderViewModel: InOutputViewModel {
             }
         }
         
-        let api = SesacAPIRouter.signupPost
+        let api = SesacAPIUserRouter.signupPost
         SesacSignupAPIService.shared.requestSesacLogin(router: api) { response in
             switch response {
             case .success(let success):
@@ -64,7 +64,7 @@ class GenderViewModel: InOutputViewModel {
             }
             
             UserManager.authVerificationToken = idToken
-            let api = SesacAPIRouter.signupPost
+            let api = SesacAPIUserRouter.signupPost
             
             SesacSignupAPIService.shared.requestSesacLogin(router: api) { response in
                 switch response {

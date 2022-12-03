@@ -67,7 +67,7 @@ class MyInfoViewModel {
     }
     
     func loginSesacServer(completion: @escaping (Result<UserData, LoginError>) -> Void) {
-        let api = SesacAPIRouter.loginGet
+        let api = SesacAPIUserRouter.loginGet
         SesacSignupAPIService.shared.requestSesacLogin(router: api) { response in
             switch response {
             case .success(let success):
@@ -88,7 +88,7 @@ class MyInfoViewModel {
             }
             
             UserManager.authVerificationToken = idToken
-            let api = SesacAPIRouter.loginGet
+            let api = SesacAPIUserRouter.loginGet
             
             SesacSignupAPIService.shared.requestSesacLogin(router: api) { response in
                 switch response {
