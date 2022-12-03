@@ -19,6 +19,19 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    lazy var titleLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 16)
+        return view
+    }()
+    
+    lazy var descriptionLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont(name: Fonts.notoSansKRRegular.rawValue, size: 14)
+        view.numberOfLines = 0
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -31,7 +44,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     }
     
     func configureUI() {
-        [characterImageView].forEach {
+        [characterImageView, titleLabel, descriptionLabel].forEach {
             self.addSubview($0)
         }
     }
@@ -42,6 +55,17 @@ class CharacterCollectionViewCell: UICollectionViewCell {
             make.top.equalToSuperview()
             make.width.equalToSuperview().inset(16)
             make.height.equalTo(characterImageView.snp.width)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(characterImageView)
+            make.top.equalTo(characterImageView.snp.bottom).offset(8)
+        }
+        
+        descriptionLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.trailing.leading.equalTo(characterImageView)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
         }
     }
 }

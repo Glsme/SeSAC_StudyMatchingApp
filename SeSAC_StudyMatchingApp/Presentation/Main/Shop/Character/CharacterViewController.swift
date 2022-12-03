@@ -36,8 +36,9 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier, for: indexPath) as? CharacterCollectionViewCell else {
             return UICollectionViewCell() }
        
-        cell.backgroundColor = .brown
         cell.characterImageView.image = UIImage(named: viewModel.setCharacterImage(index: indexPath.item))
+        cell.titleLabel.text = viewModel.setCharacterTitle(index: indexPath.item)
+        cell.descriptionLabel.text = viewModel.setCharacterDescription(index: indexPath.item)
         
         return cell
     }
