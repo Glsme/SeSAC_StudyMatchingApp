@@ -117,4 +117,17 @@ final class SesacSignupAPIService {
             }
         }
     }
+    
+    public func requestShopInfo(router: SesacAPIUserRouter, completion: @escaping (Result<ShopInfo, LoginError>) -> Void) {
+        AF.request(router).responseDecodable(of: ShopInfo.self) { response in
+            switch response.result {
+            case .success(let success):
+                completion(.success(success))
+            case .failure(_):
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let error = LoginError(rawValue: statusCode) else { return }
+                completion(.failure(error))
+            }
+        }
+    }
 }

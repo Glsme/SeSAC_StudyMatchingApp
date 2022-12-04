@@ -15,6 +15,8 @@ enum SesacAPIUserRouter: URLRequestConvertible {
     case updatePut(mypage: MypageUpdate)
     case withdraw
     case updateFCMPut(fcmToken: String)
+    case shopMyInfo
+    case shopIOS(receipt: String, product: String)
     
     var baseURL: URL {
         switch self {
@@ -28,6 +30,10 @@ enum SesacAPIUserRouter: URLRequestConvertible {
             return URL(string: "http://api.sesac.co.kr:1210/v1/user/withdraw")!
         case .updateFCMPut:
             return URL(string: "http://api.sesac.co.kr:1210/v1/user/update_fcm_token")!
+        case .shopMyInfo:
+            return URL(string: "http://api.sesac.co.kr:1210/v1/user/shop/myinfo")!
+        case .shopIOS:
+            return URL(string: "http://api.sesac.co.kr:1210/v1/user/shop/ios")!
         }
     }
     
@@ -38,6 +44,8 @@ enum SesacAPIUserRouter: URLRequestConvertible {
         case .updatePut: return .put
         case .withdraw: return .post
         case .updateFCMPut: return .put
+        case .shopMyInfo: return .get
+        case .shopIOS: return .post
         }
     }
     
@@ -50,7 +58,7 @@ enum SesacAPIUserRouter: URLRequestConvertible {
     
     var parameters: [String: Any] {
         switch self {
-        case .loginGet, .withdraw:
+        case .loginGet, .withdraw, .shopMyInfo:
             return ["": ""]
         case .signupPost:
             guard let phoneNumber = UserManager.phoneNumber else { return ["": ""] }
@@ -73,11 +81,13 @@ enum SesacAPIUserRouter: URLRequestConvertible {
                     "study": myPage.study]
         case .updateFCMPut(let fcmToken):
             return ["FCMtoken": fcmToken]
+        case .shopIOS(let receipt, let product):
+            return ["receipt": receipt, "product": product]
         }
     }
     
     func asURLRequest() throws -> URLRequest {
-        var url = baseURL
+        let url = baseURL
         var request = URLRequest(url: url)
         
         request.method = method

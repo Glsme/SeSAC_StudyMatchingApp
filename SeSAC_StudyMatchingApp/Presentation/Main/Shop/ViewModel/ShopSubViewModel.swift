@@ -16,6 +16,7 @@ class ShopSubViewModel {
     var characterTitleArray: [String] = ["기본 새싹"]
     var characterPriceArray: [String] = ["0"]
     var characterDescriptionArray: [String] = ["새싹을 대표하는 기본 식물입니다. 다른 새싹들과 함께 하는 것을 좋아합니다."]
+    var shopInfoData: ShopInfo?
     
     let numberFormatter: NumberFormatter = {
         let f = NumberFormatter()
@@ -55,6 +56,32 @@ class ShopSubViewModel {
     func setCharacterPrice(index: Int) -> String {
         guard index < characterPriceArray.count else { return "" }
         return characterPriceArray[index]
+    }
+    
+    func requestShopMyInfo(completion: @escaping (ShopInfo) -> Void) {
+        let api = SesacAPIUserRouter.shopMyInfo
+        
+        SesacSignupAPIService.shared.requestShopInfo(router: api) { response in
+            switch response {
+            case .success(let success):
+                completion(success)
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func requestPushReceipt(receipt: String, product: String) {
+        let api = SesacAPIUserRouter.shopIOS(receipt: receipt, product: product)
+        
+        SesacSignupAPIService.shared.requestFCMTokenUpdate(router: api) { [weak self] statusCode in
+            guard let self = self else { return }
+            if statusCode == 200 {
+                self.requestShopMyInfo { _ in }
+            } else {
+                print(statusCode)
+            }
+        }
     }
 }
 

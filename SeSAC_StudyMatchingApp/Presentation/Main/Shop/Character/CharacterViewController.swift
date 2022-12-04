@@ -28,6 +28,7 @@ final class CharacterViewController: BaseViewController {
         
         view.backgroundColor = .sesacFocus
         requestProductData()
+        requestData()
     }
     
     override func configureUI() {
@@ -45,6 +46,13 @@ final class CharacterViewController: BaseViewController {
             print("In App Purchase Not Enabled")
         }
     }
+    
+    func requestData() {
+        viewModel.requestShopMyInfo { [weak self] data in
+            guard let self = self else { return }
+            self.viewModel.shopInfoData = data
+        }
+    }
 }
 
 extension CharacterViewController: SKProductsRequestDelegate {
@@ -54,9 +62,8 @@ extension CharacterViewController: SKProductsRequestDelegate {
         if products.count > 0 {
             for i in products {
                 productArray.append(i)
-                product = i //옵션. 테이블뷰 셀에서 구매하기 버튼 클릭 시, 버튼 클릭 시
+                product = i
                 
-                print(i.localizedTitle, i.price, i.priceLocale, i.localizedDescription, "!!!!")
                 viewModel.characterTitleArray.append(i.localizedTitle)
                 viewModel.characterDescriptionArray.append(i.localizedDescription)
                 viewModel.characterPriceArray.append(viewModel.numberFormatter.string(for: i.price) ?? "")
@@ -70,23 +77,41 @@ extension CharacterViewController: SKProductsRequestDelegate {
             print("No Product Found")
         }
     }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased: //구매 승인 이후에 영수증 검증
+                
+                print("Transaction Approved. \(transaction.payment.productIdentifier)")
+                receiptValidation(transaction: transaction, productIdentifier: transaction.payment.productIdentifier)
+                
+            case .failed: //실패 토스트, transaction
+                print("Transaction Failed")
+                SKPaymentQueue.default().finishTransaction(transaction)
+                
+            default:
+                break
+            }
+        }
+    }
 }
 
 //영수증 검증
 extension CharacterViewController: SKPaymentTransactionObserver {
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        print("queue: \(queue), updatedTransactions: \(transactions)")
+    func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
+        print("removedTransactions")
     }
     
     func receiptValidation(transaction: SKPaymentTransaction, productIdentifier: String) {
-            let receiptFileURL = Bundle.main.appStoreReceiptURL
-            let receiptData = try? Data(contentsOf: receiptFileURL!)
-            let receiptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-           
-            print(receiptString)
-            SKPaymentQueue.default().finishTransaction(transaction)
-            
-        }
+        let receiptFileURL = Bundle.main.appStoreReceiptURL
+        let receiptData = try? Data(contentsOf: receiptFileURL!)
+        guard let receiptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) else { return }
+        
+        viewModel.requestPushReceipt(receipt: receiptString, product: productIdentifier)
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
 }
 
 extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDataSource {
