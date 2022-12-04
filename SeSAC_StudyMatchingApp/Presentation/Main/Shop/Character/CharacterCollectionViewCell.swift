@@ -32,6 +32,14 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    lazy var buyButton: GreenBgButton = {
+        let view = GreenBgButton()
+        view.clipsToBounds = true
+        view.titleLabel?.font = UIFont(name: Fonts.notoSansKRMedium.rawValue, size: 12)
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -44,7 +52,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     }
     
     func configureUI() {
-        [characterImageView, titleLabel, descriptionLabel].forEach {
+        [characterImageView, titleLabel, descriptionLabel, buyButton].forEach {
             self.addSubview($0)
         }
     }
@@ -66,6 +74,13 @@ class CharacterCollectionViewCell: UICollectionViewCell {
             make.bottom.equalToSuperview()
             make.trailing.leading.equalTo(characterImageView)
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
+        }
+        
+        buyButton.snp.makeConstraints { make in
+            make.trailing.equalTo(characterImageView)
+            make.top.equalTo(titleLabel)
+            make.height.equalTo(20)
+            make.width.equalToSuperview().multipliedBy(0.3)
         }
     }
 }

@@ -25,7 +25,7 @@ final class MainTabBarController: UITabBarController {
         let homeNaviVC = UINavigationController(rootViewController: homeVC)
         let shopVC = ShopBaseViewController()
         let shopNaviVC = UINavigationController(rootViewController: shopVC)
-        let test2 = HomeViewController()
+        let test2 = UIViewController()
         let myInfoVC = MyInfoViewController()
         let myInfoNaviVC = UINavigationController(rootViewController: myInfoVC)
         

@@ -23,7 +23,7 @@ class ShopSubViewModel {
         case .image5:
             return SesacCharaterAssets.sesacFace5.rawValue
         case .none:
-            return ""
+            return SesacCharaterAssets.sesacFace1.rawValue
         }
     }
     
@@ -42,7 +42,7 @@ class ShopSubViewModel {
         case .image5:
             return "골드 새싹"
         case .none:
-            return ""
+            return "기본 새싹"
         }
     }
     
@@ -61,7 +61,7 @@ class ShopSubViewModel {
         case .image5:
             return "화려하고 멋있는 삶을 살며 돈과 인생을 플렉스 하는 자유분방한 새싹입니다."
         case .none:
-            return ""
+            return "새싹을 대표하는 기본 식물입니다. 다른 새싹들과 함께 하는 것을 좋아합니다."
         }
     }
 }

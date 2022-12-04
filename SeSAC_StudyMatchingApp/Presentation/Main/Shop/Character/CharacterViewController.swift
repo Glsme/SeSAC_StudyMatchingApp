@@ -39,7 +39,8 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.characterImageView.image = UIImage(named: viewModel.setCharacterImage(index: indexPath.item))
         cell.titleLabel.text = viewModel.setCharacterTitle(index: indexPath.item)
         cell.descriptionLabel.text = viewModel.setCharacterDescription(index: indexPath.item)
-        
+        cell.buyButton.setTitle("1,200", for: .normal)
+        cell.buyButton.setEnabledButton(true)
         return cell
     }
     

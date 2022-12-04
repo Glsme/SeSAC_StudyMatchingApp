@@ -13,7 +13,9 @@ import RxSwift
 
 final class ShopBaseViewController: BaseViewController {
     let mainView = ShopCharacterView()
+    let viewModel = ShopSubViewModel()
     let disposebag = DisposeBag()
+    let vc = ShopTabViewController()
     
     override func loadView() {
         self.view = mainView
@@ -27,7 +29,7 @@ final class ShopBaseViewController: BaseViewController {
         setNavigationTitle("새싹샵")
         view.backgroundColor = .white
         
-        let vc = ShopTabViewController()
+        
         self.addChild(vc)
         self.view.addSubview(vc.view)
         
@@ -43,6 +45,14 @@ final class ShopBaseViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 print("Save Button Tap")
+            }
+            .disposed(by: disposebag)
+        
+        vc.characterVC.mainView.characterCollectionView.rx.itemSelected
+            .withUnretained(self)
+            .bind { vc, value in
+                let imageString = vc.viewModel.setCharacterImage(index: value.item)
+                vc.mainView.characterView.image = UIImage(named: imageString)
             }
             .disposed(by: disposebag)
     }
