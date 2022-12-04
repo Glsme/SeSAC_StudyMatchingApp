@@ -8,8 +8,11 @@
 import UIKit
 
 import SnapKit
+import RxSwift
 
 class CharacterCollectionViewCell: UICollectionViewCell {
+    var cellDisposebag = DisposeBag()
+    
     lazy var characterImageView: UIImageView = {
         let view = UIImageView()
         view.clipsToBounds = true
@@ -53,7 +56,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     func configureUI() {
         [characterImageView, titleLabel, descriptionLabel, buyButton].forEach {
-            self.addSubview($0)
+            self.contentView.addSubview($0)
         }
     }
     
@@ -82,5 +85,11 @@ class CharacterCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(20)
             make.width.equalToSuperview().multipliedBy(0.3)
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.cellDisposebag = DisposeBag()
     }
 }
