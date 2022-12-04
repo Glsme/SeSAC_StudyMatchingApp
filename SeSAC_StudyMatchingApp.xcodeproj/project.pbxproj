@@ -53,6 +53,7 @@
 		8509296F292BBBD60074912E /* SearchedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509296E292BBBD60074912E /* SearchedViewModel.swift */; };
 		850929A6292CB60E0074912E /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850929A5292CB60E0074912E /* ReviewTableViewController.swift */; };
 		850929AB292CD5A70074912E /* RequestPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850929AA292CD5A70074912E /* RequestPopupViewController.swift */; };
+		8533F2AF293C6D1F009302AC /* SesacAPIQueueRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533F2AE293C6D1F009302AC /* SesacAPIQueueRouter.swift */; };
 		85350A3E2918C1D600C70515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3D2918C1D600C70515 /* AppDelegate.swift */; };
 		85350A402918C1D600C70515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85350A3F2918C1D600C70515 /* SceneDelegate.swift */; };
 		85350A472918C1D700C70515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85350A462918C1D700C70515 /* Assets.xcassets */; };
@@ -108,12 +109,12 @@
 		856CA930293B3D86001670ED /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CA92F293B3D86001670ED /* CharacterCollectionViewCell.swift */; };
 		856CA933293B45A6001670ED /* ShopSubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CA932293B45A6001670ED /* ShopSubViewModel.swift */; };
 		856E1B172932018100CA6AE9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E1B162932018100CA6AE9 /* String+Extension.swift */; };
+		85980277293CBC6D001945BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85980276293CBC6D001945BA /* GoogleService-Info.plist */; };
 		859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */; };
 		859921E4291A788F007F96A6 /* Userdefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E3291A788F007F96A6 /* Userdefault.swift */; };
 		859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E6291A7D7B007F96A6 /* RegexVaidation.swift */; };
 		859921EB291AB490007F96A6 /* FirebaseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921EA291AB490007F96A6 /* FirebaseAPIService.swift */; };
 		859921ED291AC1E3007F96A6 /* InOutputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921EC291AC1E3007F96A6 /* InOutputViewModel.swift */; };
-		859921F2291BFB36007F96A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 859921F1291BFB36007F96A6 /* GoogleService-Info.plist */; };
 		859921F5291BFE11007F96A6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 859921F4291BFE11007F96A6 /* Alamofire */; };
 		859921F8291C0086007F96A6 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921F7291C0086007F96A6 /* UserData.swift */; };
 		859921FC291C01D1007F96A6 /* SesacAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921FB291C01D1007F96A6 /* SesacAPIService.swift */; };
@@ -201,6 +202,7 @@
 		8509296E292BBBD60074912E /* SearchedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedViewModel.swift; sourceTree = "<group>"; };
 		850929A5292CB60E0074912E /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		850929AA292CD5A70074912E /* RequestPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPopupViewController.swift; sourceTree = "<group>"; };
+		8533F2AE293C6D1F009302AC /* SesacAPIQueueRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIQueueRouter.swift; sourceTree = "<group>"; };
 		85350A3A2918C1D600C70515 /* SeSAC_StudyMatchingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_StudyMatchingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85350A3D2918C1D600C70515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85350A3F2918C1D600C70515 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,12 +255,12 @@
 		856CA92F293B3D86001670ED /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		856CA932293B45A6001670ED /* ShopSubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSubViewModel.swift; sourceTree = "<group>"; };
 		856E1B162932018100CA6AE9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		85980276293CBC6D001945BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		859921E3291A788F007F96A6 /* Userdefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefault.swift; sourceTree = "<group>"; };
 		859921E6291A7D7B007F96A6 /* RegexVaidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexVaidation.swift; sourceTree = "<group>"; };
 		859921EA291AB490007F96A6 /* FirebaseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIService.swift; sourceTree = "<group>"; };
 		859921EC291AC1E3007F96A6 /* InOutputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOutputViewModel.swift; sourceTree = "<group>"; };
-		859921F1291BFB36007F96A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		859921F7291C0086007F96A6 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		859921FB291C01D1007F96A6 /* SesacAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIService.swift; sourceTree = "<group>"; };
 		859921FD291C0459007F96A6 /* SesacAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAPIRouter.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 			children = (
 				859921FD291C0459007F96A6 /* SesacAPIRouter.swift */,
 				8504C6202934C55F0056D71F /* SesacAPIUserRouter.swift */,
+				8533F2AE293C6D1F009302AC /* SesacAPIQueueRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -618,7 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				85D341B529195FA200F27A78 /* .gitignore */,
-				859921F1291BFB36007F96A6 /* GoogleService-Info.plist */,
+				85980276293CBC6D001945BA /* GoogleService-Info.plist */,
 				85350A3C2918C1D600C70515 /* SeSAC_StudyMatchingApp */,
 				85350A3B2918C1D600C70515 /* Products */,
 			);
@@ -1453,7 +1456,7 @@
 				85350A4A2918C1D700C70515 /* LaunchScreen.storyboard in Resources */,
 				85350A822918F58800C70515 /* NotoSansKR-Regular.otf in Resources */,
 				85350A472918C1D700C70515 /* Assets.xcassets in Resources */,
-				859921F2291BFB36007F96A6 /* GoogleService-Info.plist in Resources */,
+				85980277293CBC6D001945BA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1518,6 +1521,7 @@
 				85350AA0291924FA00C70515 /* BaseButton.swift in Sources */,
 				8599223C291D6A8E007F96A6 /* HomeViewController.swift in Sources */,
 				856CA91729373848001670ED /* ReviewView.swift in Sources */,
+				8533F2AF293C6D1F009302AC /* SesacAPIQueueRouter.swift in Sources */,
 				8505151E29228FF200862A2F /* ProfileCardView.swift in Sources */,
 				85350A9E291924B500C70515 /* GreenBgButton.swift in Sources */,
 				850929482929CEC10074912E /* MyQueueStateResponse.swift in Sources */,
@@ -1732,10 +1736,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3K4KWAG7KD;
+				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSAC_StudyMatchingApp/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "새싹스터디";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치 검색을 위하여 위치 권한 정보가 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1745,7 +1750,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesacslp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesac1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1766,10 +1771,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3K4KWAG7KD;
+				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSAC_StudyMatchingApp/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "새싹스터디";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치 검색을 위하여 위치 권한 정보가 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1779,7 +1785,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesacslp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesac1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -38,7 +38,7 @@ final class SearchViewModel {
     }
     
     func requsetSearchData(lat: Double, long: Double, completion: @escaping (Result<SearchData, Error>) -> Void) {
-        let api = SesacAPIRouter.searchPost(lat: String(lat), long: String(long))
+        let api = SesacAPIQueueRouter.searchPost(lat: String(lat), long: String(long))
         SesacSignupAPIService.shared.requestSesacSearch(router: api) { response in
             switch response {
             case .success(let success):

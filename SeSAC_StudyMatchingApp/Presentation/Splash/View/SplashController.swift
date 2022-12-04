@@ -36,7 +36,7 @@ final class SplashController: BaseViewController {
             self.mainView.imageView.alpha = 1
         }) { [weak self] _ in
             guard let self = self else { return }
-            
+            self.viewMdoel.requestFCMTokenUpdate()
             self.checkAppFirstRunning()
         }
     }

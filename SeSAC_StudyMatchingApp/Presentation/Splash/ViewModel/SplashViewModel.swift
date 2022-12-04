@@ -45,4 +45,13 @@ final class SplashViewModel {
             }
         }
     }
+    
+    func requestFCMTokenUpdate() {
+        guard let fcmToken = UserManager.fcmToken else { return }
+        let api = SesacAPIUserRouter.updateFCMPut(fcmToken: fcmToken)
+        
+        SesacSignupAPIService.shared.requestFCMTokenUpdate(router: api) { statusCode in
+            print("fcm token update statusCode :: \(statusCode)")
+        }
+    }
 }

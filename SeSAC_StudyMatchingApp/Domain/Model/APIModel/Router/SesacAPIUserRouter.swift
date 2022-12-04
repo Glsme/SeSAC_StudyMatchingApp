@@ -14,6 +14,7 @@ enum SesacAPIUserRouter: URLRequestConvertible {
     case signupPost
     case updatePut(mypage: MypageUpdate)
     case withdraw
+    case updateFCMPut(fcmToken: String)
     
     var baseURL: URL {
         switch self {
@@ -25,6 +26,8 @@ enum SesacAPIUserRouter: URLRequestConvertible {
             return URL(string: "http://api.sesac.co.kr:1210/v1/user/mypage")!
         case .withdraw:
             return URL(string: "http://api.sesac.co.kr:1210/v1/user/withdraw")!
+        case .updateFCMPut:
+            return URL(string: "http://api.sesac.co.kr:1210/v1/user/update_fcm_token")!
         }
     }
     
@@ -34,6 +37,7 @@ enum SesacAPIUserRouter: URLRequestConvertible {
         case .signupPost: return .post
         case .updatePut: return .put
         case .withdraw: return .post
+        case .updateFCMPut: return .put
         }
     }
     
@@ -67,6 +71,8 @@ enum SesacAPIUserRouter: URLRequestConvertible {
                     "ageMax": String(myPage.ageMax),
                     "gender": String(myPage.gender),
                     "study": myPage.study]
+        case .updateFCMPut(let fcmToken):
+            return ["FCMtoken": fcmToken]
         }
     }
     

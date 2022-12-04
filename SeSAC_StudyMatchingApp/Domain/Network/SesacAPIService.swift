@@ -13,6 +13,13 @@ final class SesacSignupAPIService {
     
     private init() { }
     
+    public func requestFCMTokenUpdate(router: SesacAPIUserRouter, completion: @escaping (Int) -> Void) {
+        AF.request(router).responseString { response in
+            guard let statusCode = response.response?.statusCode else { return }
+            completion(statusCode)
+        }
+    }
+    
     public func requestSesacLogin(router: SesacAPIUserRouter, completionHandler: @escaping(Result<UserData, Error>) -> Void) {
         AF.request(router).responseDecodable(of: UserData.self) { response in
             switch response.result {
@@ -46,7 +53,7 @@ final class SesacSignupAPIService {
         }
     }
     
-    public func requestSesacSearch(router: SesacAPIRouter, completionHandler: @escaping (Result<SearchData, Error>) -> Void) {
+    public func requestSesacSearch(router: SesacAPIQueueRouter, completionHandler: @escaping (Result<SearchData, Error>) -> Void) {
         AF.request(router).responseDecodable(of: SearchData.self) { response in
             switch response.result {
             case .success(let success):
