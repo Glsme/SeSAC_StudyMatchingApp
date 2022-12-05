@@ -24,6 +24,11 @@ final class ShopBaseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         requestData()
     }
     
@@ -46,8 +51,17 @@ final class ShopBaseViewController: BaseViewController {
         mainView.saveButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                print("Save Button Tap")
                 
+                vc.viewModel.updateProfile(sesac: vc.viewModel.currentSesacImage, background: 0) { response in
+                    switch response {
+                    case .success:
+                        vc.view.makeToast("성공적으로 저장되었습니다", position: .center)
+                    case .dontHaveItem:
+                        vc.view.makeToast("구매가 필요한 아이템이 있어요", position: .center)
+                    default:
+                        print(response)
+                    }
+                }
             }
             .disposed(by: disposebag)
         
