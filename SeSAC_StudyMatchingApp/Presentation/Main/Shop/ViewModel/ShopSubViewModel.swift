@@ -17,6 +17,8 @@ class ShopSubViewModel {
     var characterPriceArray: [String] = ["0"]
     var characterDescriptionArray: [String] = ["새싹을 대표하는 기본 식물입니다. 다른 새싹들과 함께 하는 것을 좋아합니다."]
     var shopInfoData: ShopInfo?
+    var currentSesacImage: Int = 0
+    var currentBGImage: Int = 0
     
     let numberFormatter: NumberFormatter = {
         let f = NumberFormatter()
@@ -86,6 +88,16 @@ class ShopSubViewModel {
             }
         }
     }
+    
+    func updateProfile(sesac: Int, background: Int, completion: @escaping (ProfileUpdate) -> Void) {
+        let api = SesacAPIUserRouter.shopItemPost(sesac: sesac, background: background)
+        
+        SesacSignupAPIService.shared.requestUpdateProfile(router: api) { statusCode in
+            let statusCode = ProfileUpdate(rawValue: statusCode)
+            
+            completion(statusCode ?? ProfileUpdate.clientError)
+        }
+    }
 }
 
 enum CharacterImage: Int {
@@ -94,4 +106,13 @@ enum CharacterImage: Int {
     case image3 = 2
     case image4 = 3
     case image5 = 4
+}
+
+enum ProfileUpdate: Int {
+    case success = 200
+    case dontHaveItem = 201
+    case firebaseTokenError = 401
+    case noSignup = 406
+    case serverError = 500
+    case clientError = 501
 }

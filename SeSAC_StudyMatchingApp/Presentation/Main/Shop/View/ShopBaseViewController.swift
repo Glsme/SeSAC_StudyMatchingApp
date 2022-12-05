@@ -23,6 +23,8 @@ final class ShopBaseViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        requestData()
     }
     
     override func configureUI() {
@@ -45,6 +47,7 @@ final class ShopBaseViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 print("Save Button Tap")
+                
             }
             .disposed(by: disposebag)
         
@@ -52,8 +55,19 @@ final class ShopBaseViewController: BaseViewController {
             .withUnretained(self)
             .bind { vc, value in
                 let imageString = vc.viewModel.setCharacterImage(index: value.item)
+                vc.viewModel.currentSesacImage = value.item
                 vc.mainView.characterView.image = UIImage(named: imageString)
             }
             .disposed(by: disposebag)
+    }
+    
+    func requestData() {
+        viewModel.requestShopMyInfo { [weak self] data in
+            guard let self = self else { return }
+            self.viewModel.shopInfoData = data
+            
+            let imageString = self.viewModel.setCharacterImage(index: data.sesac)
+            self.mainView.characterView.image = UIImage(named: imageString)
+        }
     }
 }

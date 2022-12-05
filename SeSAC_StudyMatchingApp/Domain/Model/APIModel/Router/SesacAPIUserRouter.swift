@@ -17,6 +17,7 @@ enum SesacAPIUserRouter: URLRequestConvertible {
     case updateFCMPut(fcmToken: String)
     case shopMyInfo
     case shopIOS(receipt: String, product: String)
+    case shopItemPost(sesac: Int, background: Int)
     
     var baseURL: URL {
         switch self {
@@ -34,6 +35,8 @@ enum SesacAPIUserRouter: URLRequestConvertible {
             return URL(string: "http://api.sesac.co.kr:1210/v1/user/shop/myinfo")!
         case .shopIOS:
             return URL(string: "http://api.sesac.co.kr:1210/v1/user/shop/ios")!
+        case .shopItemPost:
+            return URL(string: "http://api.sesac.co.kr:1210/v1/user/shop/item")!
         }
     }
     
@@ -46,6 +49,7 @@ enum SesacAPIUserRouter: URLRequestConvertible {
         case .updateFCMPut: return .put
         case .shopMyInfo: return .get
         case .shopIOS: return .post
+        case .shopItemPost: return .post
         }
     }
     
@@ -83,6 +87,8 @@ enum SesacAPIUserRouter: URLRequestConvertible {
             return ["FCMtoken": fcmToken]
         case .shopIOS(let receipt, let product):
             return ["receipt": receipt, "product": product]
+        case .shopItemPost(let sesac, let background):
+            return ["sesac": sesac, "background": background]
         }
     }
     

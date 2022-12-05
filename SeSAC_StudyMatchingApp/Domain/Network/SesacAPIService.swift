@@ -130,4 +130,11 @@ final class SesacSignupAPIService {
             }
         }
     }
+    
+    public func requestUpdateProfile(router: SesacAPIUserRouter, completion: @escaping (Int) -> Void) {
+        AF.request(router).responseString { response in
+            guard let statusCode = response.response?.statusCode else { return }
+            completion(statusCode)
+        }
+    }
 }
