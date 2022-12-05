@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class CharacterView: BaseView {
+final class CharacterView: BaseView {
     lazy var characterCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
         view.register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: CharacterCollectionViewCell.reuseIdentifier)

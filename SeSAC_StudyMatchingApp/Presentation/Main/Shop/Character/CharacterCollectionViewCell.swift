@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 
-class CharacterCollectionViewCell: UICollectionViewCell {
+final class CharacterCollectionViewCell: UICollectionViewCell {
     var cellDisposebag = DisposeBag()
     
     lazy var characterImageView: UIImageView = {

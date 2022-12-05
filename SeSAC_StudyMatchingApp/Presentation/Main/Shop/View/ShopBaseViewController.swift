@@ -14,7 +14,7 @@ import RxSwift
 final class ShopBaseViewController: BaseViewController {
     let mainView = ShopCharacterView()
     let viewModel = ShopSubViewModel()
-    let disposebag = DisposeBag()
+    var disposebag = DisposeBag()
     let vc = ShopTabViewController()
     
     override func loadView() {
@@ -24,12 +24,20 @@ final class ShopBaseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        vc.backgroundVC.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         requestData()
+        disposebag = DisposeBag()
+        bindData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
     }
     
     override func configureUI() {
@@ -52,10 +60,11 @@ final class ShopBaseViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 
-                vc.viewModel.updateProfile(sesac: vc.viewModel.currentSesacImage, background: 0) { response in
+                vc.viewModel.updateProfile(sesac: vc.viewModel.currentSesacImage, background: vc.viewModel.currentBGImage) { response in
                     switch response {
                     case .success:
                         vc.view.makeToast("성공적으로 저장되었습니다", position: .center)
+                        UserManager.sesac = vc.viewModel.currentSesacImage
                     case .dontHaveItem:
                         vc.view.makeToast("구매가 필요한 아이템이 있어요", position: .center)
                     default:
@@ -68,6 +77,7 @@ final class ShopBaseViewController: BaseViewController {
         vc.characterVC.mainView.characterCollectionView.rx.itemSelected
             .withUnretained(self)
             .bind { vc, value in
+                print("character Tap")
                 let imageString = vc.viewModel.setCharacterImage(index: value.item)
                 vc.viewModel.currentSesacImage = value.item
                 vc.mainView.characterView.image = UIImage(named: imageString)
@@ -77,9 +87,11 @@ final class ShopBaseViewController: BaseViewController {
         vc.backgroundVC.mainView.backgroundCollectionView.rx.itemSelected
             .withUnretained(self)
             .bind { vc, value in
-                print("tap")
-                let imageString = vc.viewModel.setBGImage(index: value.item)
-                vc.mainView.imageBGView.image = UIImage(named: imageString)
+                print("index \(value.item)")
+                
+                let imageStirng = vc.viewModel.setBGImage(index: value.item)
+                vc.viewModel.currentBGImage = value.item
+                vc.mainView.imageBGView.image = UIImage(named: imageStirng)
             }
             .disposed(by: disposebag)
     }
@@ -90,6 +102,8 @@ final class ShopBaseViewController: BaseViewController {
             self.viewModel.shopInfoData = data
             self.vc.backgroundVC.viewModel.shopInfoData = data
             self.vc.backgroundVC.mainView.backgroundCollectionView.reloadData()
+            self.vc.characterVC.viewModel.shopInfoData = data
+            self.vc.characterVC.mainView.characterCollectionView.reloadData()
             
             let imageString = self.viewModel.setCharacterImage(index: data.sesac)
             let bgImageString = self.viewModel.setBGImage(index: data.background)

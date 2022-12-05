@@ -7,8 +7,10 @@
 
 import UIKit
 
-class BackgroundView: BaseView {
-    lazy var backgroundCollectionView: UICollectionView = {
+import SnapKit
+
+final class BackgroundView: BaseView {
+    let backgroundCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
         view.register(BackgroundCollectionViewCell.self, forCellWithReuseIdentifier: BackgroundCollectionViewCell.reuseIdentifier)
         return view
@@ -29,7 +31,7 @@ class BackgroundView: BaseView {
         }
     }
     
-    func setCollectionViewLayout() -> UICollectionViewFlowLayout {
+    static func setCollectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
 //        let spacing: CGFloat = 16
         let width = UIScreen.main.bounds.width

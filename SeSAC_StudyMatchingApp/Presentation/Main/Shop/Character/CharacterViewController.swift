@@ -27,7 +27,7 @@ final class CharacterViewController: BaseViewController {
         super.viewDidLoad()
         
         requestProductData()
-        requestData()
+//        requestData()
     }
     
     override func configureUI() {

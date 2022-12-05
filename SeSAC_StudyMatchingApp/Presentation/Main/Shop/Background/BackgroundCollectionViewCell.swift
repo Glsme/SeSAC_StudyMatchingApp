@@ -11,7 +11,7 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
-class BackgroundCollectionViewCell: UICollectionViewCell {
+final class BackgroundCollectionViewCell: UICollectionViewCell {
     var cellDisposebag = DisposeBag()
     
     lazy var backgroundImageView: UIImageView = {
@@ -58,7 +58,7 @@ class BackgroundCollectionViewCell: UICollectionViewCell {
     
     func configureUI() {
         [backgroundImageView, titleLabel, descriptionLabel, buyButton].forEach {
-            self.addSubview($0)
+            self.contentView.addSubview($0)
         }
     }
     
@@ -69,7 +69,7 @@ class BackgroundCollectionViewCell: UICollectionViewCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(backgroundImageView).multipliedBy(0.9)
+            make.centerY.equalTo(backgroundImageView).multipliedBy(0.8)
             make.leading.equalTo(backgroundImageView.snp.trailing).offset(12)
         }
         
