@@ -51,6 +51,7 @@ final class CharacterViewController: BaseViewController {
         viewModel.requestShopMyInfo { [weak self] data in
             guard let self = self else { return }
             self.viewModel.shopInfoData = data
+            self.mainView.characterCollectionView.reloadData()
         }
     }
 }
@@ -109,7 +110,11 @@ extension CharacterViewController: SKPaymentTransactionObserver {
         let receiptData = try? Data(contentsOf: receiptFileURL!)
         guard let receiptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) else { return }
         
-        viewModel.requestPushReceipt(receipt: receiptString, product: productIdentifier)
+        viewModel.requestPushReceipt(receipt: receiptString, product: productIdentifier) { [weak self] in
+            guard let self = self else { return }
+            self.mainView.characterCollectionView.reloadData()
+        }
+        
         SKPaymentQueue.default().finishTransaction(transaction)
     }
 }
@@ -126,15 +131,23 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.characterImageView.image = UIImage(named: viewModel.setCharacterImage(index: indexPath.item))
         cell.titleLabel.text = viewModel.setCharacterTitle(index: indexPath.item)
         cell.descriptionLabel.text = viewModel.setCharacterDescription(index: indexPath.item)
-        cell.buyButton.setTitle(viewModel.setCharacterPrice(index: indexPath.item), for: .normal)
-        cell.buyButton.setEnabledButton(true)
+        
+        if let data = viewModel.shopInfoData, data.sesacCollection.contains(indexPath.item) {
+            cell.buyButton.setTitle("보유", for: .normal)
+            cell.buyButton.setEnabledButton(false)
+        } else {
+            cell.buyButton.setTitle(viewModel.setCharacterPrice(index: indexPath.item), for: .normal)
+            cell.buyButton.setEnabledButton(true)
+        }
+        
         cell.buyButton.rx.tapGesture()
             .when(.recognized)
             .withUnretained(self)
             .bind { (vc, _) in
                 print("\(indexPath.item) button is tapped")
                 
-                if indexPath.item != 0 {
+                guard let text = cell.buyButton.titleLabel?.text else { return }
+                if indexPath.item != 0, text != "보유" {
                     let payment = SKPayment(product: vc.productArray[indexPath.item - 1])
                     SKPaymentQueue.default().add(payment)
                     SKPaymentQueue.default().add(vc)

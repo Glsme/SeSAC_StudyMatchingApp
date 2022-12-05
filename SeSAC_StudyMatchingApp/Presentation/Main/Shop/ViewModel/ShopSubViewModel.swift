@@ -71,13 +71,16 @@ class ShopSubViewModel {
         }
     }
     
-    func requestPushReceipt(receipt: String, product: String) {
+    func requestPushReceipt(receipt: String, product: String, completion: @escaping () -> Void) {
         let api = SesacAPIUserRouter.shopIOS(receipt: receipt, product: product)
         
         SesacSignupAPIService.shared.requestFCMTokenUpdate(router: api) { [weak self] statusCode in
             guard let self = self else { return }
             if statusCode == 200 {
-                self.requestShopMyInfo { _ in }
+                self.requestShopMyInfo { data in
+                    self.shopInfoData = data
+                    completion()
+                }
             } else {
                 print(statusCode)
             }
