@@ -112,6 +112,8 @@
 		85980277293CBC6D001945BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85980276293CBC6D001945BA /* GoogleService-Info.plist */; };
 		8598027A293CD28C001945BA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85980279293CD28C001945BA /* StoreKit.framework */; };
 		8598027C293CF2C8001945BA /* ShopInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598027B293CF2C8001945BA /* ShopInfo.swift */; };
+		85980280293E17BE001945BA /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598027F293E17BE001945BA /* BackgroundView.swift */; };
+		85980282293E184B001945BA /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85980281293E184B001945BA /* BackgroundCollectionViewCell.swift */; };
 		859921E1291A75ED007F96A6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */; };
 		859921E4291A788F007F96A6 /* Userdefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E3291A788F007F96A6 /* Userdefault.swift */; };
 		859921E7291A7D7B007F96A6 /* RegexVaidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859921E6291A7D7B007F96A6 /* RegexVaidation.swift */; };
@@ -260,6 +262,8 @@
 		85980276293CBC6D001945BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85980279293CD28C001945BA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8598027B293CF2C8001945BA /* ShopInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfo.swift; sourceTree = "<group>"; };
+		8598027F293E17BE001945BA /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		85980281293E184B001945BA /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
 		859921E0291A75ED007F96A6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		859921E3291A788F007F96A6 /* Userdefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefault.swift; sourceTree = "<group>"; };
 		859921E6291A7D7B007F96A6 /* RegexVaidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexVaidation.swift; sourceTree = "<group>"; };
@@ -1033,6 +1037,8 @@
 			isa = PBXGroup;
 			children = (
 				856CA92229378E1F001670ED /* BackgroundViewController.swift */,
+				8598027F293E17BE001945BA /* BackgroundView.swift */,
+				85980281293E184B001945BA /* BackgroundCollectionViewCell.swift */,
 			);
 			path = Background;
 			sourceTree = "<group>";
@@ -1500,6 +1506,7 @@
 				8509295E292B36130074912E /* SesacCardView.swift in Sources */,
 				8599220A291CB0A7007F96A6 /* NicknameViewController.swift in Sources */,
 				8599220D291CB1FA007F96A6 /* BlackHighlightTextField.swift in Sources */,
+				85980282293E184B001945BA /* BackgroundCollectionViewCell.swift in Sources */,
 				856CA930293B3D86001670ED /* CharacterCollectionViewCell.swift in Sources */,
 				85992222291D1EDB007F96A6 /* EmailView.swift in Sources */,
 				85092957292B297C0074912E /* AroundSesacViewController.swift in Sources */,
@@ -1609,6 +1616,7 @@
 				85092959292B29890074912E /* RecivedViewController.swift in Sources */,
 				859921EB291AB490007F96A6 /* FirebaseAPIService.swift in Sources */,
 				85350AA329192A9300C70515 /* TextFieldHighlightLine.swift in Sources */,
+				85980280293E17BE001945BA /* BackgroundView.swift in Sources */,
 				8599222B291D2D06007F96A6 /* GenderView.swift in Sources */,
 				85350AB62919470300C70515 /* CertificationReceivingViewController.swift in Sources */,
 				856CA92C293A144A001670ED /* ShopBaseView.swift in Sources */,

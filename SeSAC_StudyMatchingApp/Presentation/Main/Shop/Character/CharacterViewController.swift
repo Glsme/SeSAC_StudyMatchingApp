@@ -26,7 +26,6 @@ final class CharacterViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .sesacFocus
         requestProductData()
         requestData()
     }

@@ -73,15 +73,28 @@ final class ShopBaseViewController: BaseViewController {
                 vc.mainView.characterView.image = UIImage(named: imageString)
             }
             .disposed(by: disposebag)
+        
+        vc.backgroundVC.mainView.backgroundCollectionView.rx.itemSelected
+            .withUnretained(self)
+            .bind { vc, value in
+                print("tap")
+                let imageString = vc.viewModel.setBGImage(index: value.item)
+                vc.mainView.imageBGView.image = UIImage(named: imageString)
+            }
+            .disposed(by: disposebag)
     }
     
     func requestData() {
         viewModel.requestShopMyInfo { [weak self] data in
             guard let self = self else { return }
             self.viewModel.shopInfoData = data
+            self.vc.backgroundVC.viewModel.shopInfoData = data
+            self.vc.backgroundVC.mainView.backgroundCollectionView.reloadData()
             
             let imageString = self.viewModel.setCharacterImage(index: data.sesac)
+            let bgImageString = self.viewModel.setBGImage(index: data.background)
             self.mainView.characterView.image = UIImage(named: imageString)
+            self.mainView.imageBGView.image = UIImage(named: bgImageString)
         }
     }
 }
