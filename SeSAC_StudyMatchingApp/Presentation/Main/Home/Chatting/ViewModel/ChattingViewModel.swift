@@ -56,7 +56,7 @@ final class ChattingViewModel: CommonViewModel {
     
     let timeFormatter: DateFormatter = {
         let timeForatter = DateFormatter()
-        timeForatter.dateFormat = "a HH:mm"
+        timeForatter.dateFormat = "a hh:mm"
         timeForatter.timeZone = TimeZone(identifier: "UTC+18")
         timeForatter.locale = Locale(identifier: "ko_KR")
         return timeForatter

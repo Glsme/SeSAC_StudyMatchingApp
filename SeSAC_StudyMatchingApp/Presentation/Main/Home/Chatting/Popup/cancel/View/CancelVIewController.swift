@@ -49,7 +49,6 @@ final class CancelViewController: BaseViewController {
                         for vc in vcs {
                             if let rootVC = vc as? HomeViewController {
                                 topVC.navigationController?.popToViewController(rootVC, animated: false)
-                                rootVC.view.makeToast(CertificationRequestMents.alreadySignup.rawValue)
                             }
                         }
                     }

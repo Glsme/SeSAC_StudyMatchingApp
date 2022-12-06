@@ -35,7 +35,7 @@ final class MyChatTableViewCell: UITableViewCell {
     
     let timeFormatter: DateFormatter = {
         let timeForatter = DateFormatter()
-        timeForatter.dateFormat = "a HH:mm"
+        timeForatter.dateFormat = "a hh:mm"
         timeForatter.timeZone = TimeZone(identifier: "UTC+18")
         timeForatter.locale = Locale(identifier: "ko_KR")
         return timeForatter
@@ -43,7 +43,7 @@ final class MyChatTableViewCell: UITableViewCell {
     
     let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d a HH:mm"
+        dateFormatter.dateFormat = "M/d a hh:mm"
         dateFormatter.timeZone = TimeZone(identifier: "UTC+18")
         dateFormatter.locale = Locale(identifier: "ko_KR")
         return dateFormatter

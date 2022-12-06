@@ -297,7 +297,7 @@ final class ChattingViewController: BaseViewController {
                         
                         self.viewModel.mychatData.payload.append(value)
                         self.viewModel.inputChatData(data: self.viewModel.mychatData) { section, row in
-//                            vc.mainView.chatTableView.scrollToRow(at: IndexPath(row: row, section: section), at: .bottom, animated: false)
+                            vc.mainView.chatTableView.scrollToRow(at: IndexPath(row: row, section: section), at: .bottom, animated: false)
                         }
                         
                         self.viewModel.savePostData(value)
