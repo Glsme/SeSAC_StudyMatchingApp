@@ -3,4 +3,118 @@
    uuid = "B6A7F528-CEA7-4959-8EB6-70DC2C17FEE9"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1A2C966-C8AB-4896-A29E-8DBC5B6C7F86"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/Popup/review/View/ReviewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "bindData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43D813F2-CBDA-429A-A158-497B44362832"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/Popup/review/View/ReviewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "bindData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72EE72FE-513A-49C9-93E5-B96A7B9BC010"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/Popup/review/View/ReviewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "bindData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B5C530E-5BC1-4933-A725-E896256E23FF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/Popup/review/View/ReviewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "bindData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1B5C530E-5BC1-4933-A725-E896256E23FF - 155827a291255f7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in closure #3 (SeSAC_StudyMatchingApp.ReviewViewController, ()) -&gt; () in SeSAC_StudyMatchingApp.ReviewViewController.bindData() -&gt; ()"
+                  moduleName = "SeSAC_StudyMatchingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seokjunehong/Desktop/iOS/seSAC/SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/Popup/review/View/ReviewViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "1132">
+               </Location>
+               <Location
+                  uuid = "1B5C530E-5BC1-4933-A725-E896256E23FF - 155827a291255f7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in closure #3 (SeSAC_StudyMatchingApp.ReviewViewController, ()) -&gt; () in SeSAC_StudyMatchingApp.ReviewViewController.bindData() -&gt; ()"
+                  moduleName = "SeSAC_StudyMatchingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seokjunehong/Desktop/iOS/seSAC/SeSAC_StudyMatchingApp/SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/Popup/review/View/ReviewViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "1240">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "410BD4BA-72AD-4DAC-A3F3-0A448E01EC66"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_StudyMatchingApp/Presentation/Main/Home/Chatting/Popup/review/View/ReviewViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "bindData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
