@@ -131,9 +131,9 @@ self.dismiss(animated: false) {
 </br><br/>
 ## 🤔 회고
 
-- 프로젝트를 진행하면서 네트워크 통신 시 Error Handling을 계속 처리해주면서 네트워크 통신 Error 별 처리 및 대응에 조금 능숙해졌다고 생각했다. 하지만 각 API별로 중복되는 Error Code에 대해서 처리를 좀 더 깔끔하게 해주면 어땠을까 생각했다.
-- 채팅 기능 중, WebSocket을 사용하여 상대방의 문자를 수신할 수 있지만 송신은 하지 못하기 때문에 네트워크 Post 통신 후 성공 시 처리해주어야 했다. 이 때 발생하는 여러가지 상황들 (통신 시 미리 채팅 버블을 출력 후 통신 실패했을 때 처리 방식 등)을 고민하는 계기가 되었다. 추후 리팩토링 시 이 이슈에 대하여 좀 더 세부적으로 처리해보고 싶었다.
-- 채팅 기능 중, WebSocket을 사용하여 사용자의 문자를 송신할 때 id값을 가져올 수 없기 때문에 클라이언트 단에서 우선적으로 id값을 주어야 했다. 여기서 nil값으로 우선 처리하였는데 이 부분이 조금 아쉬웠다. nil값으로 처리하더라도 추후 데이터를 받는 과정에서 id값을 불러와서 교체해주는 방식으로 리팩토링하면 어떨까 생각했다.
-- 현재 핸드폰 인증 UI에서 Timer가 1분 동안 인증 체크 후, 시간이 만료되면 인증 번호를 재전송 해야하는 방식이다. 하지만 Foreground에서만 Timer가 동작하기때문에, 사용자가 앱을 Background로 이동했다가 다시 Foreground로 이동했을 때 그 시간을 체크하지 못한 채 Timer가 동작한다. 만약 Background에서도 Timer가 동작하려면 Background에서 Forground로 왔을 때 시간을 체크 후 Timer에 반영시키면 어떨까 생각했다.
-- 새싹샵 UI에서 Tabman Library를 사용하여 2개의 ViewController를 사용하고 있다. 이 중 첫 번째로 보여지는 ViewController는 Tabman을 사용하는 ViewController의`viewDidLoad()`가 실행됨에 따라 같이 `viewDidLoad()`가 실행되지만, 두번째 ViewController는 사용자가 화면을 옮기지 않는 이상 `viewDidLoad()`가 실행되지 않는다. 따라서 첫 번째 ViewController의 `ViewDidLoad()`가 실행될 때 두 번째 ViewController의 `viewDidLoad()`를 실행해줌으로 이슈를 해결하였는데, 이 방법이 과연 맞는 방법인지 생각했다.
+- 프로젝트를 진행하면서 네트워크 통신 시 Error Handling을 계속 처리해 주면서 네트워크 통신 Error 별 처리 및 대응에 조금 능숙해졌다고 생각했다. 하지만 각 API별로 중복되는 Error Code에 대해서 처리를 좀 더 깔끔하게 해주면 어땠을까 생각했다.
+- 채팅 기능 중, WebSocket을 사용하여 상대방의 문자를 수신할 수 있지만 송신은 하지 못하기 때문에 네트워크 Post 통신 후 성공 시 처리해 주어야 했다. 이때 발생하는 여러 가지 상황들 (통신 시 미리 채팅 버블을 출력 후 통신 실패했을 때 처리 방식 등)을 고민하는 계기가 되었다. 추후 리팩토링 시 이 이슈에 대하여 좀 더 세부적으로 처리해 보고 싶었다.
+- 채팅 기능 중, WebSocket을 사용하여 사용자의 문자를 송신할 때 id값을 가져올 수 없기 때문에 클라이언트 단에서 우선적으로 id값을 주어야 했다. 여기서 nil값으로 우선 처리하였는데 이 부분이 조금 아쉬웠다. nil값으로 처리하더라도 추후 데이터를 받는 과정에서 id값을 불러와서 교체해 주는 방식으로 리팩토링하면 어떨까 생각했다.
+- 현재 핸드폰 인증 UI에서 RxTimer가 1분 동안 인증 체크 후, 시간이 만료되면 인증 번호를 재전송해야 하는 방식이다. 하지만 Foreground에서만 Timer가 동작하기 때문에, 사용자가 앱을 Background로 이동했다가 다시 Foreground로 이동했을 때 그 시간을 체크하지 못한 채 Timer가 동작한다. 만약 Background에서도 Timer가 동작하려면 Background에서 Forground로 왔을 때 시간을 체크 후 Timer에 반영시키는 방향으로 추후 리팩토링해야겠다.
+- 새싹샵 UI에서 Tabman Library를 사용하여 2개의 ViewController를 사용하고 있다. 이 중 첫 번째로 보여지는 ViewController는 Tabman을 사용하는 ViewController의`viewDidLoad()`가 실행됨에 따라 같이 `viewDidLoad()`가 실행되지만, 두 번째 ViewController는 사용자가 화면을 옮기지 않는 이상 `viewDidLoad()`가 실행되지 않는다. 따라서 첫 번째 ViewController의 `ViewDidLoad()`가 실행될 때 두 번째 ViewController의 `viewDidLoad()`를 실행해줌으로 이슈를 해결하였는데, 이 방법이 과연 맞는 방법인지 생각했다.
 </br><br/>
