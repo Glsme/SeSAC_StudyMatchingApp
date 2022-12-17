@@ -74,7 +74,7 @@ private func resetAndGoTimer() {
             })
     }
 ```
-
+</br><br/>
 - Map에서 사용자가 위치를 변경할 때 API를 호출해야하는 이슈
     
     → 위치를 옮기고 나서 0.8초 후에 사용자의 위치 파악 후 API를 호출하는 방식으로 해결.
@@ -96,7 +96,7 @@ func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         }
     }
 ```
-
+</br><br/>
 - 네트워크 통신 중 Study List를 배열로 보내야하는 이슈
     
     → 배열을 Encode할 때 .noBracket으로 Encoding 후 통신하는 방식으로 해결
@@ -112,7 +112,7 @@ func asURLRequest() throws -> URLRequest {
         return try URLEncoding(arrayEncoding: .noBrackets).encode(request, with: parameters)
     }
 ```
-
+</br><br/>
 - 스터디 수락 버튼 탭 시 Chatting화면으로 넘어가야 하는 이슈
     
     → PopupView를 Dismiss 후 CompletionHandler를 통해 TopViewController를 찾고 Push 해주는 방식 적용.
