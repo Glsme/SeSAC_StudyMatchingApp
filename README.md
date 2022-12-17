@@ -6,7 +6,6 @@
 
 - Firebase Auth를 사용하여 사용자 핸드폰을 인증하고, 여러 디바이스에서 로그인 후 사용할 수 있습니다.
 - FCM을 사용하여 Push를 수신할 수 있습니다.
-- RxSwift, RxCocoa를 사용하여 각 이벤트를 핸들링할 수 있습니다.
 - 네트워크 통신을 하여 각 상황에서 사용자의 정보 및 다양한 데이터를 핸들링할 수 있습니다.
 - CLLocation을 사용하여 현재 위치를 기준으로 주변에 스터디를 원하는 사람을 찾고, 스터디를 요청 또는 수락할 수 있습니다.
 - WebSocket을 사용하여 실시간으로 상대방과 채팅할 수 있습니다.
@@ -16,8 +15,8 @@
 
 ## 🛠️ 사용 기술 및 라이브러리
 
-- `Swift`, `UIKit`, `MVVM`, `input•output`, `MapKit`, `CLLocation`, `Network`, `StoreKit` ,`APNs`
-- `SnapKit`, `RxSwift`, `RxGesture`, `RxKeyboard`, `RxDataSource`, `FirebaseAuth`, `FirebaseMessaging`, `Toast-Swift`, `Alamofire`, `Tabman`, `MultiSlider` , `SocketIO`
+- `Swift`, `MVVM`, `UIKit`, `input•output`, `MapKit`, `CLLocation`, `Network`, `StoreKit` , `APNs`
+- `RxSwift`, `RxCocoa`, `RxGesture`, `RxKeyboard`, `RxDataSource`, `FirebaseAuth`, `FirebaseMessaging`, `SnapKit`, `Toast-Swift`, `Alamofire`, `Tabman`, `MultiSlider` , `SocketIO`
 </br><br/>
 </br><br/>
 
